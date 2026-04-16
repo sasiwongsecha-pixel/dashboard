@@ -138,58 +138,6 @@
         .notif-title { font-size:13px; font-weight:600; color:var(--text-pri); }
         .notif-sub { font-size:11px; color:var(--text-sec); margin-top:2px; }
 
-        /* === CLAUDE USAGE === */
-        .usage-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:var(--gap); }
-        .usage-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-lg); padding:22px; backdrop-filter:blur(16px); display:flex; gap:22px; align-items:center; }
-        .gauge-wrap { position:relative; width:86px; height:86px; flex-shrink:0; }
-        .gauge-svg { width:86px; height:86px; transform:rotate(-90deg); }
-        .gauge-bg { fill:none; stroke:rgba(168,197,255,0.07); stroke-width:7; }
-        .gauge-fill { fill:none; stroke:var(--blue); stroke-width:7; stroke-linecap:round; stroke-dasharray:239; stroke-dashoffset:239; transition:stroke-dashoffset 0.6s var(--ease), stroke 0.3s; }
-        .gauge-fill.med { stroke:var(--gold); } .gauge-fill.hi { stroke:var(--red); }
-        .gauge-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-        .gauge-pct { font-size:15px; font-weight:700; color:var(--text-pri); font-variant-numeric:tabular-nums; }
-        .gauge-unit { font-size:9px; color:var(--text-mute); margin-top:1px; }
-        .usage-info { flex:1; min-width:0; }
-        .usage-title { font-size:14px; font-weight:700; color:var(--text-pri); margin-bottom:4px; }
-        .usage-sub { font-size:11px; color:var(--text-sec); margin-bottom:10px; }
-        .usage-bar-bg { height:6px; background:rgba(168,197,255,0.07); border-radius:10px; overflow:hidden; }
-        .usage-bar-fill { height:100%; border-radius:10px; background:linear-gradient(90deg,var(--blue),#b8d4ff); box-shadow:0 0 8px rgba(168,197,255,0.35); transition:width 0.6s var(--ease); }
-        .usage-bar-fill.med { background:linear-gradient(90deg,var(--gold),#f5d96b); box-shadow:0 0 8px rgba(240,204,85,0.3); }
-        .usage-bar-fill.hi  { background:linear-gradient(90deg,var(--red),#fca5a5); box-shadow:0 0 8px rgba(248,113,113,0.3); }
-        .usage-countdown { font-size:11.5px; color:var(--blue); margin-top:8px; font-variant-numeric:tabular-nums; }
-
-        /* === CLAUDE USAGE EDIT MODAL === */
-        .usage-edit-btn {
-            background:rgba(168,197,255,0.13); border:1px solid rgba(168,197,255,0.35);
-            color:var(--blue); font-size:11px; font-weight:700;
-            padding:5px 14px; border-radius:8px; cursor:pointer;
-            transition:all 0.2s; margin-left:auto; white-space:nowrap;
-            box-shadow:0 0 10px rgba(168,197,255,0.08);
-        }
-        .usage-edit-btn:hover { background:rgba(168,197,255,0.26); border-color:rgba(168,197,255,0.6); box-shadow:0 0 16px rgba(168,197,255,0.18); }
-        .usage-modal-overlay {
-            position:fixed; inset:0; z-index:400; background:rgba(5,8,15,0.78);
-            backdrop-filter:blur(8px); display:none; align-items:center; justify-content:center;
-        }
-        .usage-modal-overlay.open { display:flex; }
-        .usage-modal {
-            background:rgba(10,16,30,0.98); border:1px solid var(--border-hi);
-            border-radius:var(--r-lg); padding:28px 28px 22px; width:360px; max-width:92vw;
-            box-shadow:0 24px 64px rgba(0,0,0,0.75);
-        }
-        .usage-modal h3 { font-size:15px; font-weight:700; color:var(--text-pri); margin-bottom:6px; }
-        .usage-modal p { font-size:11.5px; color:var(--text-mute); margin-bottom:22px; line-height:1.6; }
-        .usage-modal p a { color:var(--blue); }
-        .modal-field { margin-bottom:18px; }
-        .modal-label { font-size:12px; color:var(--text-sec); margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; }
-        .modal-label span { color:var(--blue); font-weight:700; font-size:13px; font-variant-numeric:tabular-nums; }
-        .modal-range { width:100%; accent-color:var(--blue); cursor:pointer; height:4px; }
-        .modal-actions { display:flex; gap:10px; margin-top:22px; justify-content:flex-end; }
-        .modal-btn { padding:7px 18px; border-radius:8px; font-size:12px; font-weight:600; cursor:pointer; border:1px solid; transition:all 0.2s; }
-        .modal-btn.primary { background:rgba(168,197,255,0.14); border-color:rgba(168,197,255,0.35); color:var(--blue); }
-        .modal-btn.primary:hover { background:rgba(168,197,255,0.26); }
-        .modal-btn.secondary { background:transparent; border-color:var(--border); color:var(--text-sec); }
-        .modal-btn.secondary:hover { border-color:var(--border-hi); color:var(--text-pri); }
 
         /* === CALENDAR === */
         .cal-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-lg); padding:20px; backdrop-filter:blur(16px); }
@@ -525,46 +473,6 @@
 
     </div>
 
-    <!-- ===== CLAUDE SESSION TIMERS ===== -->
-    <h2 class="section-title">🤖 Claude Session Timers</h2>
-    <div class="usage-grid">
-        <div class="usage-card">
-            <div class="gauge-wrap">
-                <svg class="gauge-svg" viewBox="0 0 86 86">
-                    <circle class="gauge-bg" cx="43" cy="43" r="38"/>
-                    <circle class="gauge-fill" id="session-gauge" cx="43" cy="43" r="38"/>
-                </svg>
-                <div class="gauge-center">
-                    <div class="gauge-pct" id="session-pct">0.0%</div>
-                    <div class="gauge-unit">elapsed</div>
-                </div>
-            </div>
-            <div class="usage-info">
-                <div class="usage-title">Session Window</div>
-                <div class="usage-sub" id="session-start-lbl">5-hour rolling window</div>
-                <div class="usage-bar-bg"><div class="usage-bar-fill" id="session-bar" style="width:0%"></div></div>
-                <div class="usage-countdown" id="session-countdown">Calculating…</div>
-            </div>
-        </div>
-        <div class="usage-card">
-            <div class="gauge-wrap">
-                <svg class="gauge-svg" viewBox="0 0 86 86">
-                    <circle class="gauge-bg" cx="43" cy="43" r="38"/>
-                    <circle class="gauge-fill" id="weekly-gauge" cx="43" cy="43" r="38"/>
-                </svg>
-                <div class="gauge-center">
-                    <div class="gauge-pct" id="weekly-pct">0.0%</div>
-                    <div class="gauge-unit">elapsed</div>
-                </div>
-            </div>
-            <div class="usage-info">
-                <div class="usage-title">Weekly Window</div>
-                <div class="usage-sub">Resets every Thursday 14:00</div>
-                <div class="usage-bar-bg"><div class="usage-bar-fill" id="weekly-bar" style="width:0%"></div></div>
-                <div class="usage-countdown" id="weekly-countdown">Calculating…</div>
-            </div>
-        </div>
-    </div>
 
     <!-- ===== CALENDAR ===== -->
     <h2 class="section-title">📅 Calendar
@@ -1033,83 +941,6 @@ async function fetchAllIndices(){
     setInterval(fetchAllIndices, 30000);
 })();
 
-/* ============================================================
-   CLAUDE SESSION TIMERS — fully automatic, no manual input
-   • Session:  counts from page load, 5-hour window
-   • Weekly:   counts from last Thursday 14:00 → next Thursday 14:00
-   Both tick every second automatically.
-   ============================================================ */
-const SESSION_MS    = 5 * 60 * 60 * 1000;   // 5 hours
-const SESSION_START = Date.now();
-const GAUGE_C       = 2 * Math.PI * 38;
-
-function nextThu14(){
-    const n=new Date(), t=new Date(n);
-    t.setHours(14,0,0,0);
-    const d = (4 - n.getDay() + 7) % 7;
-    t.setDate(t.getDate() + (d===0 && n>=t ? 7 : d));
-    return t;
-}
-const WK_RESET    = nextThu14();
-const WK_START_MS = WK_RESET.getTime() - 7*24*3600*1000;
-const WK_TOTAL_MS = 7*24*3600*1000;
-
-function fmtCD(ms){
-    if(ms <= 0) return 'Window expired';
-    const s  = Math.floor(ms/1000);
-    const h  = Math.floor(s/3600);
-    const m  = Math.floor((s%3600)/60);
-    const sc = s % 60;
-    const ss = String(sc).padStart(2,'0');
-    const mm = String(m).padStart(2,'0');
-    return h > 0 ? `${h}h ${mm}m ${ss}s left` : `${mm}m ${ss}s left`;
-}
-
-function setGauge(gId, bId, pId, cId, pct, cd){
-    const c = Math.min(100, Math.max(0, pct));
-    const g  = document.getElementById(gId);
-    const b  = document.getElementById(bId);
-    const p  = document.getElementById(pId);
-    const ct = document.getElementById(cId);
-    if(g){ g.style.strokeDashoffset = (GAUGE_C*(1-c/100)).toFixed(2);
-           g.className = 'gauge-fill'+(c>=80?' hi':c>=50?' med':''); }
-    if(b){ b.style.width = c.toFixed(3)+'%';
-           b.className = 'usage-bar-fill'+(c>=80?' hi':c>=50?' med':''); }
-    if(p)  p.textContent = c.toFixed(1)+'%';
-    if(ct) ct.textContent = cd;
-}
-
-function tickUsage(){
-    const now = Date.now();
-
-    // ── Session: elapsed since page load ──
-    const sessionElapsed = now - SESSION_START;
-    const sessionLeft    = Math.max(0, SESSION_MS - sessionElapsed);
-    const sp = Math.min(100, (sessionElapsed / SESSION_MS) * 100);
-
-    // ── Weekly: elapsed since last Thursday 14:00 ──
-    const wkElapsed = now - WK_START_MS;
-    const wkLeft    = Math.max(0, WK_RESET.getTime() - now);
-    const wp = Math.min(100, (wkElapsed / WK_TOTAL_MS) * 100);
-
-    const wkLabel = wkLeft > 86400000
-        ? `Resets ${WK_RESET.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})} 14:00  (${fmtCD(wkLeft)})`
-        : fmtCD(wkLeft);
-
-    setGauge('session-gauge','session-bar','session-pct','session-countdown', sp, fmtCD(sessionLeft));
-    setGauge('weekly-gauge', 'weekly-bar', 'weekly-pct', 'weekly-countdown',  wp, wkLabel);
-
-    // update session start label once
-    const lbl = document.getElementById('session-start-lbl');
-    if(lbl && lbl.dataset.set !== '1'){
-        const st = new Date(SESSION_START);
-        lbl.textContent = 'Started ' + st.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
-        lbl.dataset.set = '1';
-    }
-}
-
-setInterval(tickUsage, 1000);
-tickUsage();
 
 /* ============================================================
    CALENDAR EVENTS — sasiwongse.cha@gmail.com + Thai Holidays
