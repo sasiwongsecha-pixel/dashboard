@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ Nongjoe Dashboard</title>
+    <!-- no external auth library needed — pure PKCE OAuth below -->
+    <style>
+        :root {
+            --bg-base:   #05080f;
+            --bg-layer:  #0a0f1c;
+            --bg-card:   rgba(13, 19, 34, 0.78);
+            --bg-card-h: rgba(20, 28, 50, 0.92);
+            --text-pri:  #e8e4f3;
+            --text-sec:  #8a82a8;
+            --text-mute: #4a4568;
+            --border:    rgba(168,197,255,0.1);
+            --border-hi: rgba(168,197,255,0.28);
+            --blue:  #a8c5ff; --purple: #c9b8ff; --cyan: #7df3ff;
+            --gold:  #f0cc55; --green: #4ade80;  --red: #f87171;
+            --green-glow: rgba(74,222,128,0.16);
+            --red-glow:   rgba(248,113,113,0.16);
+            --r-sm:8px; --r-md:14px; --r-lg:18px; --gap:16px;
+            --ease: cubic-bezier(0.4,0,0.2,1);
+        }
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Trebuchet MS', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-base); color: var(--text-pri);
+            min-height: 100vh; overflow-x: hidden;
+        }
+        body::before {
+            content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+            background:
+                radial-gradient(ellipse 55% 45% at 18% 65%, rgba(168,197,255,0.04) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 50% at 82% 18%, rgba(201,184,255,0.03) 0%, transparent 60%);
+        }
+
+        /* === PARTICLES CANVAS === */
+        #bg-canvas { position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:0; }
+
+        /* === TRADINGVIEW TICKER TAPE === */
+        .ticker-wrap {
+            position:fixed; top:0; left:0; right:0; z-index:100;
+            height:46px; background:rgba(5,8,15,0.95); border-bottom:1px solid var(--border);
+            backdrop-filter:blur(12px); overflow:hidden;
+        }
+        .ticker-wrap .tradingview-widget-container,
+        .ticker-wrap .tradingview-widget-container__widget { height:46px !important; }
+
+        /* === MAIN LAYOUT === */
+        .main { max-width:1720px; margin:0 auto; padding:62px 16px 120px; position:relative; z-index:1; }
+
+        /* === HEADER === */
+        .header {
+            background:linear-gradient(135deg,rgba(10,16,30,0.92),rgba(14,22,42,0.82));
+            border:1px solid var(--border-hi); border-radius:var(--r-lg);
+            padding:20px 28px; margin-bottom:22px;
+            display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap;
+            box-shadow:0 0 40px rgba(168,197,255,0.06), inset 0 1px 0 rgba(255,255,255,0.04);
+            backdrop-filter:blur(20px);
+        }
+        .header-left h1 { font-size:22px; font-weight:700; color:var(--text-pri); }
+        .header-status { display:flex; align-items:center; gap:8px; margin-top:4px; font-size:12px; color:var(--text-sec); flex-wrap:wrap; }
+        .live-dot { width:7px; height:7px; border-radius:50%; background:var(--green); animation:pulse-dot 1.8s ease-in-out infinite; flex-shrink:0; }
+        @keyframes pulse-dot { 0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,0.6)} 50%{box-shadow:0 0 0 5px rgba(74,222,128,0)} }
+        .api-dot { width:6px; height:6px; border-radius:50%; background:var(--text-mute); display:inline-block; margin-right:4px; }
+        .api-dot.ok { background:var(--green); } .api-dot.err { background:var(--red); } .api-dot.load { background:var(--gold); animation:pulse-dot 1s ease-in-out infinite; }
+        .header-right { text-align:right; flex-shrink:0; }
+        .clock { font-size:30px; font-weight:300; color:var(--blue); letter-spacing:2px; font-variant-numeric:tabular-nums; }
+        .clock-date { font-size:12px; color:var(--text-sec); margin-top:2px; }
+
+        /* === SECTION TITLES === */
+        .section-title {
+            font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--text-sec);
+            display:flex; align-items:center; gap:10px;
+            margin:28px 0 14px; padding-bottom:10px; border-bottom:1px solid var(--border); position:relative;
+        }
+        .section-title::after { content:''; position:absolute; bottom:-1px; left:0; width:36px; height:2px; background:linear-gradient(90deg,var(--blue),transparent); }
+
+        /* === ASSET GRID === */
+        .asset-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:var(--gap); }
+        .asset-grid.wide { grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); }
+
+        /* === ASSET CARD === */
+        .asset-card {
+            background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-lg);
+            padding:14px 14px 0; overflow:hidden;
+            transition:transform 0.25s var(--ease), border-color 0.25s var(--ease), box-shadow 0.25s var(--ease);
+            backdrop-filter:blur(16px); position:relative;
+        }
+        .asset-card::before {
+            content:''; position:absolute; inset:0; pointer-events:none;
+            background:linear-gradient(135deg,rgba(255,255,255,0.03) 0%,transparent 60%);
+        }
+        .asset-card:hover { border-color:var(--border-hi); transform:translateY(-3px); box-shadow:0 10px 36px rgba(0,0,0,0.5); }
+        .card-header { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+        .card-icon { font-size:16px; width:28px; height:28px; display:flex; align-items:center; justify-content:center; flex-shrink:0; border-radius:8px; background:rgba(168,197,255,0.07); border:1px solid var(--border); }
+        .card-info { flex:1; min-width:0; }
+        .card-sym { font-size:13px; font-weight:700; }
+        .card-name { font-size:10px; color:var(--text-mute); }
+        .card-badge { font-size:9px; font-weight:700; letter-spacing:0.8px; text-transform:uppercase; padding:2px 7px; border-radius:20px; background:rgba(168,197,255,0.08); border:1px solid rgba(168,197,255,0.15); color:var(--text-sec); flex-shrink:0; }
+        .tv-widget-wrap { height:175px; overflow:hidden; border-radius:0 0 var(--r-lg) var(--r-lg); margin:0 -14px; }
+        .tv-widget-wrap .tradingview-widget-container,
+        .tv-widget-wrap .tradingview-widget-container__widget { height:175px !important; width:100% !important; }
+
+        /* === MARKET STATUS === */
+        .mkt-row { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px; }
+        .mkt-badge { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-sm); padding:5px 13px; display:flex; align-items:center; gap:7px; font-size:11.5px; font-weight:600; }
+        .dot { width:6px; height:6px; border-radius:50%; }
+        .dot.open { background:var(--green); box-shadow:0 0 6px rgba(74,222,128,0.5); }
+        .dot.closed { background:var(--red); } .dot.pre { background:var(--gold); }
+
+        /* === NOTIFICATIONS === */
+        .notif-list { display:flex; flex-direction:column; gap:10px; margin-bottom:22px; }
+        .notif-card { background:var(--bg-card); border:1px solid var(--border); border-left:3px solid var(--blue); border-radius:var(--r-md); padding:13px 16px; display:flex; align-items:flex-start; gap:12px; transition:transform 0.2s var(--ease); backdrop-filter:blur(12px); }
+        .notif-card:hover { transform:translateX(4px); }
+        .notif-card.task { border-left-color:var(--purple); }
+        .notif-card.flight { border-left-color:var(--cyan); }
+        .notif-icon { font-size:18px; flex-shrink:0; margin-top:1px; }
+        .notif-title { font-size:13px; font-weight:600; color:var(--text-pri); }
+        .notif-sub { font-size:11px; color:var(--text-sec); margin-top:2px; }
+
+        /* === CLAUDE USAGE === */
+        .usage-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); gap:var(--gap); }
+        .usage-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-lg); padding:22px; backdrop-filter:blur(16px); display:flex; gap:22px; align-items:center; }
+        .gauge-wrap { position:relative; width:86px; height:86px; flex-shrink:0; }
+        .gauge-svg { width:86px; height:86px; transform:rotate(-90deg); }
+        .gauge-bg { fill:none; stroke:rgba(168,197,255,0.07); stroke-width:7; }
+        .gauge-fill { fill:none; stroke:var(--blue); stroke-width:7; stroke-linecap:round; stroke-dasharray:239; stroke-dashoffset:239; transition:stroke-dashoffset 0.6s var(--ease), stroke 0.3s; }
+        .gauge-fill.med { stroke:var(--gold); } .gauge-fill.hi { stroke:var(--red); }
+        .gauge-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+        .gauge-pct { font-size:15px; font-weight:700; color:var(--text-pri); font-variant-numeric:tabular-nums; }
+        .gauge-unit { font-size:9px; color:var(--text-mute); margin-top:1px; }
+        .usage-info { flex:1; min-width:0; }
+        .usage-title { font-size:14px; font-weight:700; color:var(--text-pri); margin-bottom:4px; }
+        .usage-sub { font-size:11px; color:var(--text-sec); margin-bottom:10px; }
+        .usage-bar-bg { height:6px; background:rgba(168,197,255,0.07); border-radius:10px; overflow:hidden; }
+        .usage-bar-fill { height:100%; border-radius:10px; background:linear-gradient(90deg,var(--blue),#b8d4ff); box-shadow:0 0 8px rgba(168,197,255,0.35); transition:width 0.6s var(--ease); }
+        .usage-bar-fill.med { background:linear-gradient(90deg,var(--gold),#f5d96b); box-shadow:0 0 8px rgba(240,204,85,0.3); }
+        .usage-bar-fill.hi  { background:linear-gradient(90deg,var(--red),#fca5a5); box-shadow:0 0 8px rgba(248,113,113,0.3); }
+        .usage-countdown { font-size:11.5px; color:var(--blue); margin-top:8px; font-variant-numeric:tabular-nums; }
+
+        /* === CALENDAR === */
+        .cal-card { background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-lg); padding:20px; backdrop-filter:blur(16px); }
+        .cal-nav { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+        .cal-nav h3 { font-size:15px; font-weight:700; }
+        .cal-btns { display:flex; gap:7px; }
+        .cal-btn { background:rgba(168,197,255,0.07); border:1px solid var(--border); color:var(--text-sec); padding:5px 11px; border-radius:7px; cursor:pointer; font-size:12px; transition:all 0.2s; }
+        .cal-btn:hover { background:rgba(168,197,255,0.14); color:var(--text-pri); border-color:var(--border-hi); }
+        .cal-weekdays { display:grid; grid-template-columns:repeat(7,1fr); text-align:center; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; color:var(--text-mute); margin-bottom:4px; }
+        .cal-days { display:grid; grid-template-columns:repeat(7,1fr); gap:2px; }
+        .cal-day { min-height:72px; border-radius:7px; padding:5px 4px 4px; font-size:11.5px; display:flex; flex-direction:column; align-items:stretch; transition:background 0.18s; position:relative; cursor:default; overflow:hidden; }
+        .cal-day:hover { background:rgba(168,197,255,0.06); }
+        .cal-day.other { opacity:0.22; }
+        .cal-day.today { background:rgba(168,197,255,0.12); border:1px solid rgba(168,197,255,0.28); }
+        .cal-day.today .day-num { color:var(--blue); font-weight:700; }
+        .day-num { font-size:12px; font-weight:600; margin-bottom:3px; padding-left:2px; flex-shrink:0; }
+        .day-events { display:flex; flex-direction:column; gap:2px; overflow:hidden; }
+        .day-event {
+            font-size:10px; font-weight:600; line-height:1.3;
+            padding:2px 5px; border-radius:4px;
+            white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+            max-width:100%;
+        }
+        .day-event.event  { background:rgba(168,197,255,0.18); color:#c8dcff; border-left:2px solid var(--blue); }
+        .day-event.task   { background:rgba(201,184,255,0.16); color:#ddd0ff; border-left:2px solid var(--purple); }
+        .day-event.flight  { background:rgba(125,243,255,0.14); color:#9ff6ff; border-left:2px solid var(--cyan); }
+        .day-event.outlook { background:rgba(255,160,80,0.15);  color:#ffd0a0; border-left:2px solid #ff9040; }
+        .day-more { font-size:9px; color:var(--text-mute); padding-left:4px; margin-top:1px; }
+        /* Outlook connect button */
+        .outlook-btn {
+            display:inline-flex; align-items:center; gap:6px;
+            background:rgba(255,160,80,0.12); border:1px solid rgba(255,160,80,0.3);
+            color:#ffd0a0; font-size:11px; font-weight:600;
+            padding:5px 12px; border-radius:8px; cursor:pointer;
+            transition:all 0.2s; white-space:nowrap;
+        }
+        .outlook-btn:hover { background:rgba(255,160,80,0.22); border-color:rgba(255,160,80,0.55); }
+        .outlook-btn.connected { background:rgba(74,222,128,0.1); border-color:rgba(74,222,128,0.3); color:#a0ffc8; cursor:default; }
+        .outlook-setup-banner {
+            background:rgba(255,160,80,0.07); border:1px solid rgba(255,160,80,0.2);
+            border-radius:var(--r-md); padding:14px 18px; margin-bottom:14px;
+            font-size:12px; color:var(--text-sec); line-height:1.8;
+        }
+        .outlook-setup-banner code { background:rgba(255,255,255,0.07); padding:1px 5px; border-radius:4px; font-size:11px; color:#ffd0a0; }
+        .outlook-setup-banner a { color:#ffd0a0; }
+
+        /* === FRIEREN CHARACTER === */
+        .frieren-widget {
+            position:fixed; bottom:20px; right:22px; z-index:200;
+            display:flex; flex-direction:column; align-items:flex-end; gap:8px;
+            user-select:none;
+        }
+        .speech-bubble {
+            background:rgba(14,22,42,0.96); border:1px solid var(--border-hi);
+            border-radius:14px 14px 4px 14px;
+            padding:10px 14px; max-width:180px;
+            font-size:12.5px; color:var(--text-pri); font-weight:500;
+            box-shadow:0 8px 28px rgba(0,0,0,0.6), 0 0 20px rgba(168,197,255,0.1);
+            backdrop-filter:blur(12px);
+            opacity:0; transform:translateY(8px) scale(0.95);
+            transition:opacity 0.3s var(--ease), transform 0.3s var(--ease);
+            pointer-events:none; line-height:1.5;
+        }
+        .speech-bubble.visible { opacity:1; transform:translateY(0) scale(1); }
+
+        .char-wrap {
+            position:relative; cursor:pointer;
+            filter:drop-shadow(0 4px 18px rgba(168,197,255,0.3));
+            transition:filter 0.3s;
+        }
+        .char-wrap:hover { filter:drop-shadow(0 6px 26px rgba(168,197,255,0.55)); }
+        .char-aura {
+            position:absolute; width:110px; height:86px; border-radius:50%; top:-5px; left:-5px;
+            background:radial-gradient(circle, rgba(168,197,255,0.15) 0%, transparent 70%);
+            animation:aura-pulse 3s ease-in-out infinite; pointer-events:none;
+        }
+        @keyframes aura-pulse { 0%,100%{opacity:0.7} 50%{opacity:1} }
+
+        /* Mood animations */
+        .char-svg { animation:idle-float 3.5s ease-in-out infinite; }
+        @keyframes idle-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
+        .char-svg.anim-slow { animation:idle-float 5s ease-in-out infinite; }
+        .char-svg.anim-bounce { animation:idle-bounce 1s ease-in-out 3; }
+        @keyframes idle-bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+        .char-svg.anim-magic { animation:char-magic 0.7s ease-out; }
+        @keyframes char-magic {
+            0%  { filter:drop-shadow(0 0 12px rgba(168,197,255,0.9)); transform:scale(1); }
+            50% { filter:drop-shadow(0 0 28px rgba(201,184,255,1)); transform:scale(1.15) rotate(-3deg); }
+            100%{ filter:drop-shadow(0 0 6px rgba(168,197,255,0.3)); transform:scale(1); }
+        }
+
+        /* Zzz bubbles */
+        .zzz-wrap { position:absolute; top:-12px; left:2px; pointer-events:none; }
+        .zzz { font-size:10px; font-weight:800; color:var(--text-sec); opacity:0; font-style:italic; position:absolute; animation:zzz-float 3s ease-in-out infinite; }
+        .zzz:nth-child(1){left:0;  top:0;   font-size:10px; animation-delay:0s; }
+        .zzz:nth-child(2){left:9px; top:-7px;font-size:8px; animation-delay:0.8s;}
+        .zzz:nth-child(3){left:17px;top:-13px;font-size:6px;animation-delay:1.6s;}
+        @keyframes zzz-float { 0%{opacity:0;transform:translateY(0)} 25%{opacity:0.7} 75%{opacity:0.4} 100%{opacity:0;transform:translateY(-18px) translateX(5px)} }
+        [data-mood="sleepy"] .zzz-wrap { display:block; }
+        [data-mood="morning"] .zzz-wrap,
+        [data-mood="focused"] .zzz-wrap,
+        [data-mood="tired"] .zzz-wrap,
+        [data-mood="happy"] .zzz-wrap,
+        [data-mood="worried"] .zzz-wrap { display:none; }
+
+        /* Sparkle stars for happy/morning */
+        .sparkle-wrap { position:absolute; top:-16px; right:-4px; pointer-events:none; }
+        .sparkle { font-size:11px; position:absolute; animation:sparkle-anim 2s ease-in-out infinite; }
+        .sparkle:nth-child(1){top:0;right:0; animation-delay:0s;}
+        .sparkle:nth-child(2){top:-8px;right:14px;animation-delay:0.5s;font-size:9px;}
+        .sparkle:nth-child(3){top:4px;right:24px;animation-delay:1s;font-size:8px;}
+        @keyframes sparkle-anim { 0%,100%{opacity:0;transform:scale(0.5)} 50%{opacity:1;transform:scale(1.1)} }
+        [data-mood="happy"] .sparkle-wrap,[data-mood="morning"] .sparkle-wrap { display:block; }
+        [data-mood="sleepy"] .sparkle-wrap,[data-mood="focused"] .sparkle-wrap,
+        [data-mood="tired"] .sparkle-wrap,[data-mood="worried"] .sparkle-wrap { display:none; }
+
+        /* SVG eye/mouth mood groups — default hidden */
+        .eye-grp, .mouth-grp { display:none; }
+
+        /* responsive */
+        @media(max-width:700px){
+            .asset-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));}
+            .header{padding:14px 16px;}
+            .clock{font-size:22px;}
+            .usage-card{flex-direction:column;text-align:center;}
+            .frieren-widget{bottom:14px;right:14px;}
+        }
+    </style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+
+<!-- ===== TRADINGVIEW TICKER TAPE ===== -->
+<div class="ticker-wrap">
+    <div class="tradingview-widget-container" style="height:46px">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+        {"symbols":[
+            {"proName":"BINANCE:BTCUSDT","title":"BTC/USD"},
+            {"proName":"BINANCE:ETHUSDT","title":"ETH/USD"},
+            {"proName":"NASDAQ:AMD","title":"AMD"},
+            {"proName":"NASDAQ:NVDA","title":"NVDA"},
+            {"proName":"NASDAQ:COIN","title":"COIN"},
+            {"proName":"COMEX:GC1!","title":"Gold"},
+            {"proName":"SP:SPX","title":"S&P 500"},
+            {"proName":"NASDAQ:IXIC","title":"NASDAQ"},
+            {"proName":"SET:SET","title":"SET Thailand"}
+        ],"showSymbolLogo":true,"colorTheme":"dark","isTransparent":true,"displayMode":"adaptive","locale":"en"}
+        </script>
+    </div>
+</div>
+
+<!-- ===== MAIN ===== -->
+<div class="main">
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-left">
+            <h1>⚡ Nongjoe Dashboard</h1>
+            <div class="header-status">
+                <span class="live-dot"></span>
+                <span>TradingView Live</span>
+                <span style="color:var(--text-mute)">•</span>
+                <span>sasiwongse.cha@gmail.com</span>
+                <span style="color:var(--text-mute)">•</span>
+                <span id="last-updated" style="color:var(--text-mute)">--</span>
+            </div>
+        </div>
+        <div class="header-right">
+            <div class="clock" id="clock">--:--:--</div>
+            <div class="clock-date" id="clock-date">--</div>
+        </div>
+    </header>
+
+    <!-- Market status -->
+    <div class="mkt-row">
+        <div class="mkt-badge"><span class="dot" id="us-dot"></span><span id="us-label">US Market</span></div>
+        <div class="mkt-badge"><span class="dot" id="th-dot"></span><span id="th-label">SET Thailand</span></div>
+        <div class="mkt-badge"><span class="dot open"></span><span>Crypto 24/7</span></div>
+    </div>
+
+    <!-- Notifications -->
+    <div id="notif-container"></div>
+
+    <!-- ===== CRYPTO ===== -->
+    <h2 class="section-title">🔐 Cryptocurrency</h2>
+    <div class="asset-grid">
+
+        <div class="asset-card">
+            <div class="card-header">
+                <div class="card-icon">₿</div>
+                <div class="card-info"><div class="card-sym">BTC</div><div class="card-name">Bitcoin</div></div>
+                <span class="card-badge">CRYPTO</span>
+            </div>
+            <div class="tv-widget-wrap">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                    {"symbol":"BINANCE:BTCUSDT","width":"100%","height":175,"locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"largeChartUrl":""}
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-card">
+            <div class="card-header">
+                <div class="card-icon">Ξ</div>
+                <div class="card-info"><div class="card-sym">ETH</div><div class="card-name">Ethereum</div></div>
+                <span class="card-badge">CRYPTO</span>
+            </div>
+            <div class="tv-widget-wrap">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                    {"symbol":"BINANCE:ETHUSDT","width":"100%","height":175,"locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"largeChartUrl":""}
+                    </script>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== STOCKS ===== -->
+    <h2 class="section-title">📈 Stocks &amp; Commodities</h2>
+    <div class="asset-grid wide">
+
+        <div class="asset-card">
+            <div class="card-header">
+                <div class="card-icon">💻</div>
+                <div class="card-info"><div class="card-sym">AMD</div><div class="card-name">AMD</div></div>
+                <span class="card-badge">STOCK</span>
+            </div>
+            <div class="tv-widget-wrap">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                    {"symbol":"NASDAQ:AMD","width":"100%","height":175,"locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"largeChartUrl":""}
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-card">
+            <div class="card-header">
+                <div class="card-icon">🟢</div>
+                <div class="card-info"><div class="card-sym">NVDA</div><div class="card-name">NVIDIA</div></div>
+                <span class="card-badge">STOCK</span>
+            </div>
+            <div class="tv-widget-wrap">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                    {"symbol":"NASDAQ:NVDA","width":"100%","height":175,"locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"largeChartUrl":""}
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-card">
+            <div class="card-header">
+                <div class="card-icon">🔵</div>
+                <div class="card-info"><div class="card-sym">COIN</div><div class="card-name">Coinbase</div></div>
+                <span class="card-badge">STOCK</span>
+            </div>
+            <div class="tv-widget-wrap">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                    {"symbol":"NASDAQ:COIN","width":"100%","height":175,"locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"largeChartUrl":""}
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-card">
+            <div class="card-header">
+                <div class="card-icon">🥇</div>
+                <div class="card-info"><div class="card-sym">XAU</div><div class="card-name">Gold</div></div>
+                <span class="card-badge">COMMODITY</span>
+            </div>
+            <div class="tv-widget-wrap">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                    {"symbol":"OANDA:XAUUSD","width":"100%","height":175,"locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"largeChartUrl":""}
+                    </script>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== INDICES ===== -->
+    <h2 class="section-title">🌐 Market Indices</h2>
+    <div class="asset-grid">
+
+        <div class="asset-card">
+            <div class="card-header">
+                <div class="card-icon">📊</div>
+                <div class="card-info"><div class="card-sym">S&amp;P 500</div><div class="card-name">US Large Cap</div></div>
+                <span class="card-badge">INDEX</span>
+            </div>
+            <div class="tv-widget-wrap">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                    {"symbol":"SP:SPX","width":"100%","height":175,"locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"largeChartUrl":""}
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-card">
+            <div class="card-header">
+                <div class="card-icon">📈</div>
+                <div class="card-info"><div class="card-sym">NASDAQ</div><div class="card-name">Tech Index</div></div>
+                <span class="card-badge">INDEX</span>
+            </div>
+            <div class="tv-widget-wrap">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                    {"symbol":"NASDAQ:IXIC","width":"100%","height":175,"locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"largeChartUrl":""}
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div class="asset-card">
+            <div class="card-header">
+                <div class="card-icon">🇹🇭</div>
+                <div class="card-info"><div class="card-sym">SET</div><div class="card-name">SET Thailand</div></div>
+                <span class="card-badge">INDEX</span>
+            </div>
+            <div class="tv-widget-wrap">
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
+                    {"symbol":"SET:SET","width":"100%","height":175,"locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"largeChartUrl":""}
+                    </script>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ===== CLAUDE USAGE ===== -->
+    <h2 class="section-title">🤖 Claude Plan Usage</h2>
+    <div class="usage-grid">
+        <div class="usage-card">
+            <div class="gauge-wrap">
+                <svg class="gauge-svg" viewBox="0 0 86 86">
+                    <circle class="gauge-bg" cx="43" cy="43" r="38"/>
+                    <circle class="gauge-fill" id="session-gauge" cx="43" cy="43" r="38"/>
+                </svg>
+                <div class="gauge-center">
+                    <div class="gauge-pct" id="session-pct">0%</div>
+                    <div class="gauge-unit">used</div>
+                </div>
+            </div>
+            <div class="usage-info">
+                <div class="usage-title">Current Session</div>
+                <div class="usage-sub">5-hour rolling window</div>
+                <div class="usage-bar-bg"><div class="usage-bar-fill" id="session-bar" style="width:0%"></div></div>
+                <div class="usage-countdown" id="session-countdown">Calculating…</div>
+            </div>
+        </div>
+        <div class="usage-card">
+            <div class="gauge-wrap">
+                <svg class="gauge-svg" viewBox="0 0 86 86">
+                    <circle class="gauge-bg" cx="43" cy="43" r="38"/>
+                    <circle class="gauge-fill" id="weekly-gauge" cx="43" cy="43" r="38"/>
+                </svg>
+                <div class="gauge-center">
+                    <div class="gauge-pct" id="weekly-pct">0%</div>
+                    <div class="gauge-unit">used</div>
+                </div>
+            </div>
+            <div class="usage-info">
+                <div class="usage-title">Weekly Quota</div>
+                <div class="usage-sub">All models — resets Thursday 14:00</div>
+                <div class="usage-bar-bg"><div class="usage-bar-fill" id="weekly-bar" style="width:0%"></div></div>
+                <div class="usage-countdown" id="weekly-countdown">Calculating…</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CALENDAR ===== -->
+    <h2 class="section-title">📅 Calendar
+        <span style="font-size:10px;color:var(--text-mute);font-weight:400;text-transform:none;letter-spacing:0;margin-left:6px;">
+            sasiwongse.cha@gmail.com
+        </span>
+        <span id="outlook-status-label" style="font-size:10px;color:var(--text-mute);font-weight:400;text-transform:none;letter-spacing:0;margin-left:4px;display:none;">
+            + kangaroo_chat@hotmail.com
+        </span>
+    </h2>
+    <div id="outlook-setup-banner" class="outlook-setup-banner" style="display:none">
+        <strong style="color:#ffd0a0;">⚙️ One-time Outlook setup required</strong><br>
+        To connect <code>kangaroo_chat@hotmail.com</code>, register a free Azure app:<br>
+        1. Go to <a href="https://portal.azure.com/#view/Microsoft_AAD_RegisteredApps/CreateApplicationBlade" target="_blank">portal.azure.com → App registrations → New</a><br>
+        2. Name it anything · Select <strong>Personal Microsoft accounts only</strong><br>
+        3. Redirect URI → <strong>Single-page application (SPA)</strong> → <code id="redirect-uri-hint">http://localhost:8080</code><br>
+        4. Copy the <strong>Application (client) ID</strong> and paste it below, then click Connect.<br>
+        <div style="display:flex;gap:8px;margin-top:10px;align-items:center;flex-wrap:wrap;">
+            <input id="outlook-client-id-input" placeholder="Paste Azure Client ID here…"
+                style="flex:1;min-width:200px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,160,80,0.3);border-radius:7px;padding:6px 10px;color:var(--text-pri);font-size:12px;outline:none;">
+            <button class="outlook-btn" onclick="saveAndConnectOutlook()">🔗 Connect Outlook</button>
+        </div>
+    </div>
+    <div class="cal-card">
+        <div class="cal-nav">
+            <h3 id="cal-title"></h3>
+            <div class="cal-btns">
+                <button class="cal-btn" onclick="calPrev()">← Prev</button>
+                <button class="cal-btn" onclick="calToday()">Today</button>
+                <button class="cal-btn" onclick="calNext()">Next →</button>
+                <button class="outlook-btn" id="outlook-connect-btn" onclick="toggleOutlookSetup()">📧 Connect Outlook</button>
+            </div>
+        </div>
+        <div class="cal-weekdays"><div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div></div>
+        <div class="cal-days" id="cal-days"></div>
+        <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap;align-items:center;">
+            <span class="day-event event"   style="pointer-events:none;font-size:10px;">📅 Event</span>
+            <span class="day-event task"    style="pointer-events:none;font-size:10px;">✅ Task</span>
+            <span class="day-event flight"  style="pointer-events:none;font-size:10px;">✈ Flight</span>
+            <span class="day-event outlook" style="pointer-events:none;font-size:10px;" id="outlook-legend" style="display:none">📧 Outlook</span>
+        </div>
+    </div>
+
+</div><!-- /main -->
+
+<!-- ===== FRIEREN CHARACTER ===== -->
+<div class="frieren-widget" id="frieren" data-mood="sleepy">
+    <div class="speech-bubble" id="speech-bubble" id="speech-bubble">
+        <span id="speech-text">zzz... 💤</span>
+    </div>
+    <div class="char-wrap" id="char-wrap" onclick="onFrierenClick()" title="Click me!">
+        <div class="char-aura"></div>
+        <!-- Zzz bubbles (sleepy mode) -->
+        <div class="zzz-wrap">
+            <span class="zzz">z</span>
+            <span class="zzz">z</span>
+            <span class="zzz">z</span>
+        </div>
+        <!-- Sparkles (happy/morning mode) -->
+        <div class="sparkle-wrap">
+            <span class="sparkle">✨</span>
+            <span class="sparkle">⭐</span>
+            <span class="sparkle">✨</span>
+        </div>
+
+        <!-- ===== FRIEREN SVG ===== -->
+        <svg id="char-svg" class="char-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200" width="100" height="76">
+            <defs>
+                <radialGradient id="skinG" cx="50%" cy="40%" r="55%">
+                    <stop offset="0%" stop-color="#fef0e0"/><stop offset="100%" stop-color="#f5dcc0"/>
+                </radialGradient>
+                <linearGradient id="hairG" x1="0" y1="0" x2="0.5" y2="1">
+                    <stop offset="0%" stop-color="#d8d0ea"/><stop offset="50%" stop-color="#c8bedd"/>
+                    <stop offset="100%" stop-color="#b5aacf"/>
+                </linearGradient>
+                <linearGradient id="robeG" x1="0.1" y1="0" x2="0.9" y2="1">
+                    <stop offset="0%" stop-color="#f0edf5"/><stop offset="100%" stop-color="#ddd8e8"/>
+                </linearGradient>
+            </defs>
+
+            <!-- ROBE / BLANKET -->
+            <path d="M20 148 Q22 130 50 122 Q80 114 130 114 Q180 114 210 124 Q240 134 242 152 Q244 172 220 182 Q180 194 130 194 Q70 194 35 182 Q15 174 20 148 Z" fill="url(#robeG)" stroke="#3a3548" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M58 140 Q90 132 125 138" fill="none" stroke="#c4bdd4" stroke-width="1.4" stroke-linecap="round" opacity="0.5"/>
+            <path d="M50 155 Q95 145 145 153" fill="none" stroke="#c4bdd4" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
+            <path d="M65 168 Q110 160 165 168" fill="none" stroke="#c4bdd4" stroke-width="1.1" stroke-linecap="round" opacity="0.35"/>
+
+            <!-- LEFT ARM -->
+            <path d="M72 108 Q58 102 48 108 Q38 116 36 128 Q34 136 40 138 Q46 134 50 124 Q54 114 66 110 Z" fill="url(#skinG)" stroke="#3a3548" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M48 108 Q50 96 58 88 Q62 84 66 86 Q62 92 58 100 Q54 108 48 108 Z" fill="url(#skinG)" stroke="#3a3548" stroke-width="1.8" stroke-linejoin="round"/>
+            <ellipse cx="64" cy="82" rx="8" ry="7" fill="url(#skinG)" stroke="#3a3548" stroke-width="2"/>
+
+            <!-- RIGHT HAND -->
+            <path d="M162 108 Q168 104 172 108 Q176 114 172 118 Q166 114 162 108 Z" fill="url(#skinG)" stroke="#3a3548" stroke-width="1.6" stroke-linejoin="round"/>
+
+            <!-- FACE -->
+            <ellipse cx="115" cy="78" rx="40" ry="38" fill="url(#skinG)" stroke="#3a3548" stroke-width="2.2"/>
+
+            <!-- HAIR BACK SIDES -->
+            <path d="M76 60 Q55 68 45 95 Q40 115 45 130 Q48 118 52 102 Q58 82 76 70 Z" fill="url(#hairG)" stroke="#3a3548" stroke-width="2"/>
+            <path d="M154 60 Q175 68 182 95 Q186 118 180 135 Q178 120 174 102 Q168 82 154 70 Z" fill="url(#hairG)" stroke="#3a3548" stroke-width="2"/>
+
+            <!-- HAIR TOP -->
+            <path d="M76 65 Q80 36 115 30 Q150 36 154 65 Q145 48 115 42 Q85 48 76 65 Z" fill="url(#hairG)" stroke="#3a3548" stroke-width="2"/>
+
+            <!-- BANGS -->
+            <path d="M74 65 Q80 50 92 58 Q86 66 82 78" fill="url(#hairG)" stroke="#3a3548" stroke-width="1.8"/>
+            <path d="M92 58 Q100 44 112 56 Q106 64 102 76" fill="url(#hairG)" stroke="#3a3548" stroke-width="1.8"/>
+            <path d="M112 56 Q122 42 134 56 Q128 64 124 74" fill="url(#hairG)" stroke="#3a3548" stroke-width="1.8"/>
+            <path d="M134 56 Q142 48 154 65 Q146 68 140 78" fill="url(#hairG)" stroke="#3a3548" stroke-width="1.8"/>
+            <path d="M88 38 Q92 24 98 36" fill="url(#hairG)" stroke="#3a3548" stroke-width="1.5"/>
+
+            <!-- BLUSH -->
+            <line x1="86" y1="86" x2="94" y2="86" stroke="#e8a090" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
+            <line x1="85" y1="89" x2="95" y2="89" stroke="#e8a090" stroke-width="1.3" stroke-linecap="round" opacity="0.4"/>
+            <line x1="136" y1="86" x2="144" y2="86" stroke="#e8a090" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
+            <line x1="135" y1="89" x2="145" y2="89" stroke="#e8a090" stroke-width="1.3" stroke-linecap="round" opacity="0.4"/>
+
+            <!-- === EYES — one group visible at a time === -->
+
+            <!-- SLEEPY eyes (default) -->
+            <g id="eyes-sleepy" class="eye-grp" style="display:block">
+                <path d="M92 80 Q97 84 102 80" fill="none" stroke="#3a3548" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M126 80 Q131 84 136 80" fill="none" stroke="#3a3548" stroke-width="2.5" stroke-linecap="round"/>
+                <!-- tiny lashes -->
+                <line x1="92" y1="80" x2="90" y2="77" stroke="#3a3548" stroke-width="1.5" stroke-linecap="round"/>
+                <line x1="126" y1="80" x2="124" y2="77" stroke="#3a3548" stroke-width="1.5" stroke-linecap="round"/>
+            </g>
+
+            <!-- AWAKE eyes (morning) -->
+            <g id="eyes-awake" class="eye-grp">
+                <circle cx="97" cy="80" r="7" fill="#f5dcc0" stroke="#3a3548" stroke-width="1.5"/>
+                <circle cx="131" cy="80" r="7" fill="#f5dcc0" stroke="#3a3548" stroke-width="1.5"/>
+                <circle cx="97" cy="80" r="4.5" fill="#4a3870"/>
+                <circle cx="131" cy="80" r="4.5" fill="#4a3870"/>
+                <circle cx="99" cy="78" r="1.5" fill="white" opacity="0.85"/>
+                <circle cx="133" cy="78" r="1.5" fill="white" opacity="0.85"/>
+            </g>
+
+            <!-- HAPPY eyes (^_^) -->
+            <g id="eyes-happy" class="eye-grp">
+                <path d="M90 82 Q97 74 104 82" fill="none" stroke="#3a3548" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M124 82 Q131 74 138 82" fill="none" stroke="#3a3548" stroke-width="2.5" stroke-linecap="round"/>
+            </g>
+
+            <!-- FOCUSED eyes (half-squint) -->
+            <g id="eyes-focused" class="eye-grp">
+                <path d="M91 80 Q97 77 103 80" fill="none" stroke="#3a3548" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M125 80 Q131 77 137 80" fill="none" stroke="#3a3548" stroke-width="2.2" stroke-linecap="round"/>
+                <circle cx="97" cy="81" r="2.5" fill="#4a3870" opacity="0.7"/>
+                <circle cx="131" cy="81" r="2.5" fill="#4a3870" opacity="0.7"/>
+            </g>
+
+            <!-- TIRED eyes (heavy lids) -->
+            <g id="eyes-tired" class="eye-grp">
+                <path d="M91 82 Q97 85 103 82" fill="none" stroke="#3a3548" stroke-width="2.2" stroke-linecap="round"/>
+                <path d="M125 82 Q131 85 137 82" fill="none" stroke="#3a3548" stroke-width="2.2" stroke-linecap="round"/>
+                <!-- heavy lids -->
+                <path d="M91 80 Q97 78 103 80" fill="none" stroke="#3a3548" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+                <path d="M125 80 Q131 78 137 80" fill="none" stroke="#3a3548" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+            </g>
+
+            <!-- WORRIED eyes (open + brow) -->
+            <g id="eyes-worried" class="eye-grp">
+                <circle cx="97" cy="80" r="6.5" fill="#f5dcc0" stroke="#3a3548" stroke-width="1.5"/>
+                <circle cx="131" cy="80" r="6.5" fill="#f5dcc0" stroke="#3a3548" stroke-width="1.5"/>
+                <circle cx="97" cy="80" r="4" fill="#4a3870"/>
+                <circle cx="131" cy="80" r="4" fill="#4a3870"/>
+                <circle cx="99" cy="78" r="1.3" fill="white" opacity="0.8"/>
+                <circle cx="133" cy="78" r="1.3" fill="white" opacity="0.8"/>
+                <!-- worry brows angled inward -->
+                <path d="M90 71 Q96 68 100 72" fill="none" stroke="#3a3548" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M128 72 Q132 68 138 71" fill="none" stroke="#3a3548" stroke-width="1.8" stroke-linecap="round"/>
+            </g>
+
+            <!-- === MOUTHS — one visible at a time === -->
+
+            <!-- NEUTRAL small frown (sleepy/default) -->
+            <g id="mouth-neutral" class="mouth-grp" style="display:block">
+                <path d="M109 96 Q115 98 121 96" fill="none" stroke="#3a3548" stroke-width="1.6" stroke-linecap="round"/>
+            </g>
+
+            <!-- SMALL SMILE (awake/focused) -->
+            <g id="mouth-smile" class="mouth-grp">
+                <path d="M107 94 Q115 100 123 94" fill="none" stroke="#3a3548" stroke-width="1.8" stroke-linecap="round"/>
+            </g>
+
+            <!-- BIG SMILE (happy) -->
+            <g id="mouth-bigsmile" class="mouth-grp">
+                <path d="M104 92 Q115 104 126 92" fill="none" stroke="#3a3548" stroke-width="2" stroke-linecap="round"/>
+                <path d="M104 92 Q115 104 126 92" fill="rgba(232,160,144,0.25)" stroke="none"/>
+            </g>
+
+            <!-- FROWN (worried/tired) -->
+            <g id="mouth-frown" class="mouth-grp">
+                <path d="M108 100 Q115 95 122 100" fill="none" stroke="#3a3548" stroke-width="1.6" stroke-linecap="round"/>
+            </g>
+
+            <!-- BLUE BOW -->
+            <path d="M100 110 Q115 106 130 110" fill="none" stroke="#6a9cc8" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M102 110 Q92 116 86 124 Q96 118 104 112 Z" fill="#7aabda" stroke="#3a3548" stroke-width="1.6" stroke-linejoin="round"/>
+            <path d="M128 110 Q138 116 144 124 Q134 118 126 112 Z" fill="#7aabda" stroke="#3a3548" stroke-width="1.6" stroke-linejoin="round"/>
+            <circle cx="115" cy="110" r="3.5" fill="#8cbce4" stroke="#3a3548" stroke-width="1.3"/>
+
+            <!-- SWEAT DROP (worried mode) -->
+            <g id="sweat-drop" style="display:none">
+                <path d="M148 58 Q150 50 152 58 Q150 62 148 58 Z" fill="#a8c5ff" stroke="#3a3548" stroke-width="0.8" opacity="0.8"/>
+            </g>
+        </svg>
+    </div>
+</div>
+
+<script>
+/* ============================================================
+   PARTICLE BACKGROUND
+   ============================================================ */
+(function(){
+    const cv=document.getElementById('bg-canvas');
+    const ctx=cv.getContext('2d');
+    function resize(){cv.width=window.innerWidth;cv.height=window.innerHeight;}
+    window.addEventListener('resize',resize);resize();
+    class P{
+        constructor(){this.reset(true);}
+        reset(init){
+            this.x=Math.random()*cv.width;
+            this.y=init?Math.random()*cv.height:cv.height+5;
+            this.vx=(Math.random()-0.5)*0.22;
+            this.vy=-(Math.random()*0.38+0.05);
+            this.r=Math.random()*1.2+0.2;
+            this.a=Math.random()*0.4+0.06;
+            this.color=`hsla(${210+Math.random()*50},75%,75%,`;
+        }
+        update(){this.x+=this.vx;this.y+=this.vy;this.a-=0.0005;if(this.y<-5||this.a<=0)this.reset(false);}
+        draw(){ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=this.color+this.a+')';ctx.fill();}
+    }
+    const ps=Array.from({length:80},()=>new P());
+    (function loop(){ctx.clearRect(0,0,cv.width,cv.height);ps.forEach(p=>{p.update();p.draw();});requestAnimationFrame(loop);})();
+})();
+
+/* ============================================================
+   CLOCK
+   ============================================================ */
+function tickClock(){
+    const n=new Date();
+    document.getElementById('clock').textContent=n.toLocaleTimeString('en-US',{hour12:false,hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    document.getElementById('clock-date').textContent=n.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+    document.getElementById('last-updated').textContent='Updated '+n.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+}
+tickClock(); setInterval(tickClock,1000);
+
+/* ============================================================
+   MARKET STATUS
+   ============================================================ */
+function updateMktStatus(){
+    const now=new Date();
+    const utc=now.getTime()+now.getTimezoneOffset()*60000;
+    const et=new Date(utc-4*3600000);
+    const d=et.getDay(),h=et.getHours(),m=et.getMinutes();
+    const uO=d>=1&&d<=5&&(h>9||(h===9&&m>=30))&&h<16;
+    const uP=d>=1&&d<=5&&h>=4&&(h<9||(h===9&&m<30));
+    const ud=document.getElementById('us-dot'),ul=document.getElementById('us-label');
+    ud.className='dot '+(uO?'open':uP?'pre':'closed');
+    ul.textContent=uO?'US Market Open':uP?'US Pre-Market':'US Market Closed';
+
+    const bkk=new Date(utc+7*3600000);
+    const bd=bkk.getDay(),bmt=bkk.getHours()*60+bkk.getMinutes();
+    const sO=bd>=1&&bd<=5&&((bmt>=600&&bmt<750)||(bmt>=840&&bmt<990));
+    const td=document.getElementById('th-dot'),tl=document.getElementById('th-label');
+    td.className='dot '+(sO?'open':'closed');
+    tl.textContent=sO?'SET Open':'SET Closed';
+}
+updateMktStatus(); setInterval(updateMktStatus,60000);
+
+/* ============================================================
+   CLAUDE USAGE GAUGES
+   ============================================================ */
+const SESSION_MS=5*60*60*1000,SESSION_START=new Date();
+const GAUGE_C=2*Math.PI*38;
+
+function nextThu14(){
+    const n=new Date(),t=new Date(n);t.setHours(14,0,0,0);
+    const d=(4-n.getDay()+7)%7;t.setDate(t.getDate()+(d===0&&n>=t?7:d));return t;
+}
+const WK_RESET=nextThu14();
+let wkStart;
+try{const s=sessionStorage.getItem('wkS');wkStart=s?new Date(s):new Date(WK_RESET.getTime()-7*24*3600000);}
+catch{wkStart=new Date(WK_RESET.getTime()-7*24*3600000);}
+
+function fmtCD(ms){
+    if(ms<=0)return'Resetting…';const s=Math.floor(ms/1000);
+    const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sc=s%60;
+    return h>0?`Resets in ${h}h ${m}m`:m>0?`Resets in ${m}m ${sc}s`:`Resets in ${sc}s`;
+}
+function setGauge(gId,bId,pId,cId,pct,cd){
+    const c=Math.min(100,Math.max(0,pct));
+    const g=document.getElementById(gId),b=document.getElementById(bId),p=document.getElementById(pId),ct=document.getElementById(cId);
+    if(g){g.style.strokeDashoffset=(GAUGE_C*(1-c/100)).toFixed(1);g.className='gauge-fill'+(c>=80?' hi':c>=50?' med':'');}
+    if(b){b.style.width=c+'%';b.className='usage-bar-fill'+(c>=80?' hi':c>=50?' med':'');}
+    if(p)p.textContent=Math.round(c)+'%';if(ct)ct.textContent=cd;
+}
+function tickUsage(){
+    const n=new Date();
+    const sp=Math.min(100,((n-SESSION_START)/SESSION_MS)*100);
+    setGauge('session-gauge','session-bar','session-pct','session-countdown',sp,fmtCD(Math.max(0,SESSION_MS-(n-SESSION_START))));
+    const wt=WK_RESET-wkStart,wp=Math.min(100,((n-wkStart)/wt)*100),wr=Math.max(0,WK_RESET-n);
+    const wt2=wr>86400000?`Resets ${WK_RESET.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})} 14:00`:fmtCD(wr);
+    setGauge('weekly-gauge','weekly-bar','weekly-pct','weekly-countdown',wp,wt2);
+}
+setInterval(tickUsage,1000);tickUsage();
+
+/* ============================================================
+   CALENDAR EVENTS (from Google Calendar — sasiwongse.cha@gmail.com)
+   ============================================================ */
+const EVENTS=[
+    {date:'2026-04-17',summary:'ผอ',type:'event'},
+    {date:'2026-04-18',summary:'1653',type:'task'},
+    {date:'2026-04-21',summary:'1653 ในเวลา',type:'task'},
+    {date:'2026-04-22',summary:'1653',type:'task'},
+    {date:'2026-04-24',summary:'ผอ',type:'event'},
+    {date:'2026-04-24',summary:'1653 ในเวลา',type:'task'},
+    {date:'2026-04-30',summary:'2500',type:'task'},
+    {date:'2026-05-01',summary:'ผอ',type:'event'},
+    {date:'2026-05-04',summary:'1666',type:'task'},
+    {date:'2026-05-07',summary:'✈ Flight to Surat Thani (FD 3239)',type:'flight',time:'11:30',loc:'Bangkok DMK'},
+    {date:'2026-05-08',summary:'ผอ',type:'event'},
+    {date:'2026-05-08',summary:'✈ Flight to Bangkok (FD 3332)',type:'flight',time:'19:05',loc:'Surat Thani URT'},
+    {date:'2026-05-11',summary:'ผอ',type:'event'},
+    {date:'2026-05-14',summary:'1666',type:'task'},
+    {date:'2026-05-15',summary:'ผอ',type:'event'},
+    {date:'2026-05-17',summary:'1667MR',type:'task'},
+    {date:'2026-05-20',summary:'ผอ',type:'event'},
+    {date:'2026-05-22',summary:'ผอ',type:'event'},
+    {date:'2026-05-24',summary:'1666',type:'task'},
+    {date:'2026-05-27',summary:'ผอ',type:'event'},
+    {date:'2026-05-29',summary:'ผอ',type:'event'},
+    {date:'2026-06-10',summary:'OPD200',type:'task'},
+    {date:'2026-06-17',summary:'OPD200',type:'task'},
+    {date:'2026-06-26',summary:'OPD200',type:'task'},
+];
+
+let calDate=new Date();
+function renderCal(){
+    const yr=calDate.getFullYear(),mo=calDate.getMonth();
+    document.getElementById('cal-title').textContent=new Date(yr,mo).toLocaleDateString('en-US',{month:'long',year:'numeric'});
+    const first=new Date(yr,mo,1).getDay(),days=new Date(yr,mo+1,0).getDate(),prevD=new Date(yr,mo,0).getDate();
+    const today=new Date(),grid=document.getElementById('cal-days');
+    grid.innerHTML='';
+    for(let i=first-1;i>=0;i--){const d=document.createElement('div');d.className='cal-day other';d.innerHTML=`<div class="day-num">${prevD-i}</div>`;grid.appendChild(d);}
+    for(let day=1;day<=days;day++){
+        const dt=new Date(yr,mo,day),isT=dt.toDateString()===today.toDateString();
+        const ds=`${yr}-${String(mo+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+        const evts=EVENTS.filter(e=>e.date===ds);
+        const d=document.createElement('div');d.className='cal-day'+(isT?' today':'');
+        const MAX_SHOW = 3;
+        const shown = evts.slice(0, MAX_SHOW);
+        const extra = evts.length - MAX_SHOW;
+        const chips = shown.map(e => {
+            const label = e.time ? `${e.summary} ${e.time}` : e.summary;
+            return `<div class="day-event ${e.type}" title="${e.summary}${e.time?' @ '+e.time:''}${e.loc?' · '+e.loc:''}">${label}</div>`;
+        }).join('');
+        const more = extra > 0 ? `<div class="day-more">+${extra} more</div>` : '';
+        d.innerHTML=`<div class="day-num">${day}</div><div class="day-events">${chips}${more}</div>`;
+        if(evts.length)d.title=evts.map(e=>e.summary+(e.time?` @ ${e.time} (${e.loc||''})`:'')).join('\n');
+        grid.appendChild(d);
+    }
+    const rem=42-grid.children.length;
+    for(let i=1;i<=rem;i++){const d=document.createElement('div');d.className='cal-day other';d.innerHTML=`<div class="day-num">${i}</div>`;grid.appendChild(d);}
+}
+function calPrev(){calDate.setMonth(calDate.getMonth()-1);renderCal();}
+function calNext(){calDate.setMonth(calDate.getMonth()+1);renderCal();}
+function calToday(){calDate=new Date();renderCal();}
+renderCal();
+
+/* ============================================================
+   NOTIFICATIONS (tomorrow's events from calendar)
+   ============================================================ */
+function renderNotifs(){
+    const tmrw=new Date();tmrw.setDate(tmrw.getDate()+1);
+    const ds=tmrw.toISOString().split('T')[0];
+    const evts=EVENTS.filter(e=>e.date===ds);
+    const c=document.getElementById('notif-container');
+    if(!evts.length){c.innerHTML='';return;}
+    const df=tmrw.toLocaleDateString('en-US',{weekday:'long',month:'short',day:'numeric'});
+    const typeIcon={event:'📅',task:'✅',flight:'✈️'};
+    c.innerHTML=`<h2 class="section-title">⏰ Tomorrow — ${df}</h2>
+        <div class="notif-list">${evts.map(e=>`
+        <div class="notif-card ${e.type}">
+            <div class="notif-icon">${typeIcon[e.type]||'📌'}</div>
+            <div>
+                <div class="notif-title">${e.summary}${e.time?' @ '+e.time:''}</div>
+                <div class="notif-sub">${e.loc||e.type.charAt(0).toUpperCase()+e.type.slice(1)}</div>
+            </div>
+        </div>`).join('')}</div>`;
+}
+renderNotifs();
+
+/* ============================================================
+   FRIEREN MOOD SYSTEM
+   ============================================================ */
+const MOOD_EYES = {
+    sleepy:  'eyes-sleepy',
+    morning: 'eyes-awake',
+    focused: 'eyes-focused',
+    tired:   'eyes-tired',
+    happy:   'eyes-happy',
+    worried: 'eyes-worried',
+};
+const MOOD_MOUTHS = {
+    sleepy:  'mouth-neutral',
+    morning: 'mouth-smile',
+    focused: 'mouth-smile',
+    tired:   'mouth-frown',
+    happy:   'mouth-bigsmile',
+    worried: 'mouth-frown',
+};
+const MOOD_MESSAGES = {
+    sleepy:  ['zzz... 💤','Need sleep... 😴','5 more mins... 💤','zzzz 🌙'],
+    morning: ['Good morning! ☀️','Checking markets~ 📈','New day, new gains! ✨','GM Nongjoe! 🌅'],
+    focused: ['Monitoring... 📊','HODL strong 💎','Watching the charts 🔍','On it! ⚡'],
+    tired:   ['Long day... 😪','Almost done~','Market closing soon...','Need rest... 😫'],
+    happy:   ['To the moon! 🚀','Green candles! 💚','Let\'s goooo! ⚡','Bullish! 📈'],
+    worried: ['Oh no... 📉','Stay calm... 💙','Diamond hands 💎','HODL! 😰'],
+};
+const MOOD_ANIMS = {
+    sleepy:'anim-slow', morning:'', focused:'', tired:'anim-slow', happy:'', worried:''
+};
+
+let currentMood = 'sleepy';
+let speechTimer = null;
+let isMagic = false;
+
+function getMoodFromTime(){
+    const h=new Date().getHours();
+    if(h>=0&&h<6)  return 'sleepy';
+    if(h>=6&&h<10) return 'morning';
+    if(h>=10&&h<17)return 'focused';
+    if(h>=17&&h<21)return 'tired';
+    return 'sleepy';
+}
+
+function applyMood(mood){
+    currentMood = mood;
+    const widget = document.getElementById('frieren');
+    const svg    = document.getElementById('char-svg');
+    if(!widget||!svg) return;
+
+    widget.dataset.mood = mood;
+
+    // Switch eye group
+    document.querySelectorAll('.eye-grp').forEach(g=>g.style.display='none');
+    const eyeEl=document.getElementById(MOOD_EYES[mood]);
+    if(eyeEl) eyeEl.style.display='block';
+
+    // Switch mouth group
+    document.querySelectorAll('.mouth-grp').forEach(g=>g.style.display='none');
+    const mouthEl=document.getElementById(MOOD_MOUTHS[mood]);
+    if(mouthEl) mouthEl.style.display='block';
+
+    // Sweat drop for worried
+    const sd=document.getElementById('sweat-drop');
+    if(sd) sd.style.display=(mood==='worried')?'block':'none';
+
+    // Animation speed
+    svg.className='char-svg '+(MOOD_ANIMS[mood]||'');
+}
+
+function showSpeech(text){
+    const bubble=document.getElementById('speech-bubble');
+    const textEl=document.getElementById('speech-text');
+    textEl.textContent=text;
+    bubble.classList.add('visible');
+    clearTimeout(speechTimer);
+    speechTimer=setTimeout(()=>bubble.classList.remove('visible'),3500);
+}
+
+function onFrierenClick(){
+    if(isMagic) return;
+    const msgs=MOOD_MESSAGES[currentMood];
+    showSpeech(msgs[Math.floor(Math.random()*msgs.length)]);
+    const svg=document.getElementById('char-svg');
+    isMagic=true;
+    svg.classList.add('anim-magic');
+    setTimeout(()=>{svg.classList.remove('anim-magic');svg.className='char-svg '+(MOOD_ANIMS[currentMood]||'');isMagic=false;},750);
+}
+
+// Auto-change mood + check market occasionally
+function updateMood(marketMood){
+    let mood=getMoodFromTime();
+    // Market override: if we got market signal
+    if(marketMood==='happy'||marketMood==='worried'){
+        // 30% chance market mood overrides time mood when market is open
+        const h=new Date().getHours();
+        if(h>=9&&h<23&&Math.random()<0.3) mood=marketMood;
+    }
+    applyMood(mood);
+}
+
+// Update every 5 minutes
+setInterval(()=>updateMood(),5*60*1000);
+applyMood(getMoodFromTime()); // initial
+
+// Fetch BTC to decide market mood for Frieren
+async function fetchFrierenMood(){
+    try{
+        const r=await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&include_24hr_change=true',{signal:AbortSignal.timeout(5000)});
+        const d=await r.json();
+        const ch=d?.bitcoin?.usd_24h_change??0;
+        updateMood(ch>1?'happy':ch<-2?'worried':null);
+    }catch{/* silently fail */}
+}
+fetchFrierenMood();
+setInterval(fetchFrierenMood, 5*60*1000);
+
+// Random idle speech every 8 minutes
+setInterval(()=>{
+    if(!document.getElementById('speech-bubble').classList.contains('visible')&&Math.random()<0.5){
+        const msgs=MOOD_MESSAGES[currentMood];
+        showSpeech(msgs[Math.floor(Math.random()*msgs.length)]);
+    }
+}, 8*60*1000);
+
+/* ============================================================
+   OUTLOOK / HOTMAIL CALENDAR — Pure PKCE OAuth (no library)
+   ============================================================ */
+const OUTLOOK_STORAGE_KEY = 'outlookClientId';
+const OUTLOOK_TOKEN_KEY   = 'outlookTokenData';
+const OUTLOOK_CLIENT_ID_DEFAULT = '974a93b9-deb9-4e37-a87a-dc954a5d2fc1';
+let outlookEventsLoaded = false;
+
+// ── If this page loaded inside an OAuth popup, relay the code and close ──
+(function handleOAuthPopupCallback(){
+    if(!window.opener) return;
+    const p = new URLSearchParams(window.location.search);
+    const code = p.get('code'), error = p.get('error');
+    if(code || error){
+        try { window.opener.postMessage({ type:'outlook_oauth', code, error }, window.location.origin); } catch{}
+        window.close();
+    }
+})();
+
+// ── Show redirect URI hint ──
+(function(){
+    const el = document.getElementById('redirect-uri-hint');
+    if(el){
+        const base = (window.location.origin && window.location.origin !== 'null')
+            ? window.location.origin : 'http://localhost:8080';
+        el.textContent = base + window.location.pathname;
+    }
+})();
+
+// ── PKCE helpers ──
+function pkceRandom(len){
+    const arr = crypto.getRandomValues(new Uint8Array(len || 64));
+    return btoa(String.fromCharCode(...arr)).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
+}
+async function pkceSHA256(str){
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return btoa(String.fromCharCode(...new Uint8Array(buf))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
+}
+
+function getOutlookClientId(){
+    return localStorage.getItem(OUTLOOK_STORAGE_KEY) || OUTLOOK_CLIENT_ID_DEFAULT;
+}
+
+function setOutlookBtnState(state, text){
+    const btn = document.getElementById('outlook-connect-btn');
+    if(!btn) return;
+    btn.textContent = text;
+    btn.disabled = (state === 'loading');
+    btn.classList.toggle('connected', state === 'connected');
+    btn.style.opacity = state === 'loading' ? '0.6' : '1';
+}
+
+function isOnLocalhost(){
+    return window.location.protocol === 'http:' || window.location.protocol === 'https:';
+}
+
+function tryLoadStoredToken(){
+    try {
+        const raw = localStorage.getItem(OUTLOOK_TOKEN_KEY);
+        if(!raw) return null;
+        const d = JSON.parse(raw);
+        if(Date.now() > d.expires) return null;
+        return d.token;
+    } catch { return null; }
+}
+
+function toggleOutlookSetup(){
+    if(outlookEventsLoaded){ setOutlookBtnState('connected','✅ Outlook Connected'); return; }
+    if(!isOnLocalhost()){
+        alert(
+            '⚠️  Outlook connection requires the local server.\n\n' +
+            'Please:\n' +
+            '1. Open Command Prompt\n' +
+            '2. Run:  python -m http.server 8080\n' +
+            '3. Open:  http://localhost:8080/personal_dashboard_v2.html\n' +
+            '4. Then click Connect Outlook again.'
+        );
+        return;
+    }
+    connectOutlookOAuth();
+}
+
+function saveAndConnectOutlook(){
+    const input = document.getElementById('outlook-client-id-input');
+    const clientId = (input?.value || '').trim();
+    if(!clientId){ alert('Please paste your Azure Client ID first.'); return; }
+    localStorage.setItem(OUTLOOK_STORAGE_KEY, clientId);
+    document.getElementById('outlook-setup-banner').style.display = 'none';
+    connectOutlookOAuth();
+}
+
+async function connectOutlookOAuth(){
+    setOutlookBtnState('loading', '⏳ Connecting…');
+
+    // Use cached token if still valid
+    const cached = tryLoadStoredToken();
+    if(cached){ await fetchOutlookCalendar(cached); return; }
+
+    const clientId   = getOutlookClientId();
+    const redirectUri = window.location.origin + window.location.pathname;
+
+    // Generate PKCE pair
+    const verifier  = pkceRandom(64);
+    const challenge = await pkceSHA256(verifier);
+    sessionStorage.setItem('pkce_verifier', verifier);
+
+    const authUrl = 'https://login.microsoftonline.com/consumers/oauth2/v2.0/authorize?' +
+        new URLSearchParams({
+            client_id: clientId,
+            response_type: 'code',
+            redirect_uri: redirectUri,
+            scope: 'Calendars.Read User.Read offline_access',
+            code_challenge: challenge,
+            code_challenge_method: 'S256',
+            prompt: 'select_account',
+            response_mode: 'query',
+        });
+
+    // Open login popup
+    const popup = window.open(authUrl, 'outlook_auth', 'width=520,height=640,left=200,top=100');
+    if(!popup){
+        setOutlookBtnState('idle', '📧 Connect Outlook');
+        alert('Popup was blocked. Please allow popups for this site and try again.');
+        return;
+    }
+
+    // Receive auth code via postMessage
+    const listener = async (evt) => {
+        if(evt.origin !== window.location.origin) return;
+        if(!evt.data || evt.data.type !== 'outlook_oauth') return;
+        window.removeEventListener('message', listener);
+        clearInterval(closeWatch);
+
+        if(evt.data.error){
+            setOutlookBtnState('idle', '📧 Connect Outlook');
+            alert('Outlook sign-in failed:\n' + evt.data.error);
+            return;
+        }
+
+        const code = evt.data.code;
+        if(!code){ setOutlookBtnState('idle', '📧 Connect Outlook'); return; }
+
+        // Exchange code → access token
+        try {
+            const cv = sessionStorage.getItem('pkce_verifier') || '';
+            sessionStorage.removeItem('pkce_verifier');
+
+            const tokenResp = await fetch(
+                'https://login.microsoftonline.com/consumers/oauth2/v2.0/token',
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({
+                        client_id: getOutlookClientId(),
+                        grant_type: 'authorization_code',
+                        code,
+                        redirect_uri: redirectUri,
+                        code_verifier: cv,
+                    })
+                }
+            );
+            if(!tokenResp.ok){
+                const txt = await tokenResp.text();
+                throw new Error(txt);
+            }
+            const td = await tokenResp.json();
+
+            localStorage.setItem(OUTLOOK_TOKEN_KEY, JSON.stringify({
+                token:         td.access_token,
+                refresh_token: td.refresh_token || '',
+                expires:       Date.now() + (td.expires_in - 60) * 1000,
+            }));
+
+            await fetchOutlookCalendar(td.access_token);
+
+        } catch(e){
+            console.error('Token exchange failed:', e);
+            setOutlookBtnState('idle', '📧 Connect Outlook');
+            const msg = e.message || String(e);
+            if(msg.includes('redirect_uri') || msg.includes('AADSTS50011')){
+                alert(
+                    '❌ Redirect URI mismatch.\n\n' +
+                    'In Azure Portal → App → Authentication:\n' +
+                    '  Platform: Single-page application (SPA)\n' +
+                    '  Redirect URI: ' + redirectUri + '\n\n' +
+                    'Save it and try again.'
+                );
+            } else {
+                alert('Token exchange failed:\n' + msg.slice(0,400));
+            }
+        }
+    };
+    window.addEventListener('message', listener);
+
+    // Watch for popup being closed manually
+    const closeWatch = setInterval(() => {
+        if(popup.closed){
+            clearInterval(closeWatch);
+            window.removeEventListener('message', listener);
+            const btn = document.getElementById('outlook-connect-btn');
+            if(btn && btn.disabled) setOutlookBtnState('idle', '📧 Connect Outlook');
+        }
+    }, 500);
+}
+
+async function fetchOutlookCalendar(token){
+    try {
+        const now   = new Date();
+        const start = new Date(now.getFullYear(), now.getMonth() - 1, 1).toISOString();
+        const end   = new Date(now.getFullYear(), now.getMonth() + 4, 0).toISOString();
+
+        const resp = await fetch(
+            `https://graph.microsoft.com/v1.0/me/calendarView?startDateTime=${start}&endDateTime=${end}&$top=150&$select=subject,start,end,isAllDay,location,showAs`,
+            { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
+        );
+        if(!resp.ok){
+            if(resp.status === 401){
+                localStorage.removeItem(OUTLOOK_TOKEN_KEY);
+                setOutlookBtnState('idle', '📧 Connect Outlook');
+                alert('Outlook session expired. Please connect again.');
+                return;
+            }
+            throw new Error('Graph API ' + resp.status);
+        }
+        const data = await resp.json();
+
+        const incoming = (data.value || [])
+            .filter(e => e.showAs !== 'free')
+            .map(e => {
+                const rawStart = e.isAllDay ? e.start.dateTime.split('T')[0]
+                    : new Date(e.start.dateTime + (e.start.timeZone === 'UTC' ? 'Z' : ''))
+                        .toLocaleDateString('sv-SE', { timeZone: 'Asia/Bangkok' });
+                const time = e.isAllDay ? null
+                    : new Date(e.start.dateTime + (e.start.timeZone === 'UTC' ? 'Z' : ''))
+                        .toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit', timeZone:'Asia/Bangkok' });
+                return {
+                    date: rawStart,
+                    summary: e.subject || '(No title)',
+                    type: 'outlook',
+                    time,
+                    loc: e.location?.displayName || '',
+                    source: 'outlook',
+                };
+            });
+
+        for(let i = EVENTS.length - 1; i >= 0; i--){
+            if(EVENTS[i].source === 'outlook') EVENTS.splice(i, 1);
+        }
+        EVENTS.push(...incoming);
+        EVENTS.sort((a,b) => a.date.localeCompare(b.date));
+
+        outlookEventsLoaded = true;
+        updateOutlookUI('kangaroo_chat@hotmail.com');
+        renderCal();
+        renderNotifs();
+
+    } catch(e){
+        console.error('Outlook calendar fetch failed:', e);
+        setOutlookBtnState('idle', '📧 Connect Outlook');
+        alert('Could not load Outlook calendar:\n' + e.message);
+    }
+}
+
+function updateOutlookUI(email){
+    const btn = document.getElementById('outlook-connect-btn');
+    if(btn){ btn.textContent = '✅ Outlook Connected'; btn.classList.add('connected'); }
+    const label = document.getElementById('outlook-status-label');
+    if(label){ label.style.display = 'inline'; label.textContent = `+ ${email}`; }
+    const leg = document.getElementById('outlook-legend');
+    if(leg) leg.style.display = 'inline';
+    const banner = document.getElementById('outlook-setup-banner');
+    if(banner) banner.style.display = 'none';
+}
+
+// Auto-reconnect on load if a valid cached token exists
+(async function autoReconnectOutlook(){
+    const token = tryLoadStoredToken();
+    if(!token) return;
+    try { await fetchOutlookCalendar(token); } catch { /* silent */ }
+})();
+</script>
+</body>
+</html>
