@@ -525,36 +525,8 @@
 
     </div>
 
-    <!-- ===== CLAUDE USAGE ===== -->
-    <h2 class="section-title">🤖 Claude Plan Usage
-        <button class="usage-edit-btn" onclick="openUsageModal()">✏️ Update Usage</button>
-    </h2>
-
-    <!-- Usage Update Modal -->
-    <div class="usage-modal-overlay" id="usage-modal-overlay" onclick="if(event.target===this)closeUsageModal()">
-        <div class="usage-modal">
-            <h3>✏️ Update Claude Usage</h3>
-            <p>
-                Check your actual usage at
-                <a href="https://claude.ai/settings/plans" target="_blank">claude.ai → Settings → Usage</a>,
-                then drag the sliders to match. The gauges will count up from here in real time.
-            </p>
-            <div class="modal-field">
-                <div class="modal-label">Current Session <span id="modal-session-val">0%</span></div>
-                <input type="range" class="modal-range" id="modal-session" min="0" max="100" value="0"
-                    oninput="document.getElementById('modal-session-val').textContent=this.value+'%'">
-            </div>
-            <div class="modal-field">
-                <div class="modal-label">Weekly Quota <span id="modal-weekly-val">0%</span></div>
-                <input type="range" class="modal-range" id="modal-weekly" min="0" max="100" value="0"
-                    oninput="document.getElementById('modal-weekly-val').textContent=this.value+'%'">
-            </div>
-            <div class="modal-actions">
-                <button class="modal-btn secondary" onclick="closeUsageModal()">Cancel</button>
-                <button class="modal-btn primary" onclick="saveUsageModal()">💾 Save &amp; Apply</button>
-            </div>
-        </div>
-    </div>
+    <!-- ===== CLAUDE SESSION TIMERS ===== -->
+    <h2 class="section-title">🤖 Claude Session Timers</h2>
     <div class="usage-grid">
         <div class="usage-card">
             <div class="gauge-wrap">
@@ -563,13 +535,13 @@
                     <circle class="gauge-fill" id="session-gauge" cx="43" cy="43" r="38"/>
                 </svg>
                 <div class="gauge-center">
-                    <div class="gauge-pct" id="session-pct">0%</div>
-                    <div class="gauge-unit">used</div>
+                    <div class="gauge-pct" id="session-pct">0.0%</div>
+                    <div class="gauge-unit">elapsed</div>
                 </div>
             </div>
             <div class="usage-info">
-                <div class="usage-title">Current Session</div>
-                <div class="usage-sub">5-hour rolling window</div>
+                <div class="usage-title">Session Window</div>
+                <div class="usage-sub" id="session-start-lbl">5-hour rolling window</div>
                 <div class="usage-bar-bg"><div class="usage-bar-fill" id="session-bar" style="width:0%"></div></div>
                 <div class="usage-countdown" id="session-countdown">Calculating…</div>
             </div>
@@ -581,13 +553,13 @@
                     <circle class="gauge-fill" id="weekly-gauge" cx="43" cy="43" r="38"/>
                 </svg>
                 <div class="gauge-center">
-                    <div class="gauge-pct" id="weekly-pct">0%</div>
-                    <div class="gauge-unit">used</div>
+                    <div class="gauge-pct" id="weekly-pct">0.0%</div>
+                    <div class="gauge-unit">elapsed</div>
                 </div>
             </div>
             <div class="usage-info">
-                <div class="usage-title">Weekly Quota</div>
-                <div class="usage-sub">All models — resets Thursday 14:00</div>
+                <div class="usage-title">Weekly Window</div>
+                <div class="usage-sub">Resets every Thursday 14:00</div>
                 <div class="usage-bar-bg"><div class="usage-bar-fill" id="weekly-bar" style="width:0%"></div></div>
                 <div class="usage-countdown" id="weekly-countdown">Calculating…</div>
             </div>
@@ -868,233 +840,272 @@ function updateMktStatus(){
 updateMktStatus(); setInterval(updateMktStatus,60000);
 
 /* ============================================================
-   MARKET INDICES — Yahoo Finance via CORS proxy, refresh 30s
+   MARKET INDICES — multi-source with 4 fallbacks, refresh 30s
+   Sources: Yahoo Finance v8 chart API, Stooq CSV
+   Each index fetched independently so one failure ≠ all fail
    ============================================================ */
 const IDX_CFG = [
-    { id:'spx',  ticker:'^GSPC',  cardId:'card-spx',  fmt:(v)=>v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}) },
-    { id:'ixic', ticker:'^IXIC',  cardId:'card-ixic', fmt:(v)=>v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}) },
-    { id:'set',  ticker:'^SET.BK',cardId:'card-set',  fmt:(v)=>v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}) },
+    { id:'spx',  yahoo:'^GSPC',   stooq:'^spx',    cardId:'card-spx',  fmt:fmtIdx },
+    { id:'ixic', yahoo:'^IXIC',   stooq:'^ndq',    cardId:'card-ixic', fmt:fmtIdx },
+    { id:'set',  yahoo:'^SET.BK', stooq:'^set.th', cardId:'card-set',  fmt:fmtIdx },
 ];
-const IDX_HISTORY = {};   // rolling price buffer for sparklines
-IDX_CFG.forEach(c=>{ IDX_HISTORY[c.id]=[]; });
+const IDX_HISTORY = {};
+const IDX_LAST    = {};   // last known good data per index
+IDX_CFG.forEach(c=>{ IDX_HISTORY[c.id]=[]; IDX_LAST[c.id]=null; });
+
+function fmtIdx(v){ return v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+
+// ── CORS proxy wrappers ──
+const PROXY_A = u => `https://corsproxy.io/?url=${encodeURIComponent(u)}`;
+const PROXY_B = u => `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`;
+const PROXY_C = u => `https://thingproxy.freeboard.io/fetch/${u}`;
+const PROXY_D = u => `https://corsproxy.io/?url=${encodeURIComponent(u)}&t=${Date.now()}`; // cache-bust
+
+async function tryFetch(url, timeout=7000){
+    const r = await fetch(url, {signal:AbortSignal.timeout(timeout)});
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    return r;
+}
+
+// ── Strategy 1: Yahoo Finance v8/chart (most data-rich) ──
+async function fetchYahooChart(cfg){
+    const base = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(cfg.yahoo)}?interval=5m&range=1d&includePrePost=true`;
+    for(const proxy of [PROXY_A,PROXY_B,PROXY_D]){
+        try {
+            const r = await tryFetch(proxy(base));
+            const j = await r.json();
+            const meta   = j?.chart?.result?.[0]?.meta;
+            const closes = j?.chart?.result?.[0]?.indicators?.quote?.[0]?.close?.filter(v=>v!=null) || [];
+            if(!meta?.regularMarketPrice) continue;
+            return {
+                price: meta.regularMarketPrice,
+                prev:  meta.chartPreviousClose ?? meta.previousClose ?? meta.regularMarketPrice,
+                closes,
+                state: meta.currentTradingPeriod ? detectState(meta) : 'unknown',
+                src:   'Yahoo'
+            };
+        } catch { continue; }
+    }
+    return null;
+}
+
+// ── Strategy 2: Yahoo Finance v8/quote (simpler endpoint) ──
+async function fetchYahooQuote(cfg){
+    const base = `https://query2.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(cfg.yahoo)}?interval=1d&range=5d`;
+    for(const proxy of [PROXY_B, PROXY_C]){
+        try {
+            const r = await tryFetch(proxy(base));
+            const j = await r.json();
+            const meta = j?.chart?.result?.[0]?.meta;
+            if(!meta?.regularMarketPrice) continue;
+            return {
+                price: meta.regularMarketPrice,
+                prev:  meta.chartPreviousClose ?? meta.previousClose ?? meta.regularMarketPrice,
+                closes: [],
+                state: 'unknown',
+                src:   'Yahoo2'
+            };
+        } catch { continue; }
+    }
+    return null;
+}
+
+// ── Strategy 3: Stooq CSV (different domain — good fallback) ──
+async function fetchStooq(cfg){
+    const base = `https://stooq.com/q/l/?s=${cfg.stooq}&f=sd2t2ohlcv&h&e=csv`;
+    for(const proxy of [PROXY_A, PROXY_B]){
+        try {
+            const r  = await tryFetch(proxy(base));
+            const txt = await r.text();
+            const lines = txt.trim().split('\n');
+            if(lines.length < 2) continue;
+            const cols = lines[1].split(',');
+            // Format: Symbol,Date,Time,Open,High,Low,Close,Volume
+            const close = parseFloat(cols[6]);
+            const open  = parseFloat(cols[3]);
+            if(isNaN(close)) continue;
+            return {
+                price: close,
+                prev:  open,
+                closes: [],
+                state: 'unknown',
+                src:   'Stooq'
+            };
+        } catch { continue; }
+    }
+    return null;
+}
+
+function detectState(meta){
+    const now = Date.now()/1000;
+    try {
+        const reg = meta.currentTradingPeriod?.regular;
+        if(reg && now >= reg.start && now <= reg.end) return 'regular';
+        const pre = meta.currentTradingPeriod?.pre;
+        if(pre && now >= pre.start && now <= pre.end) return 'pre';
+        const post = meta.currentTradingPeriod?.post;
+        if(post && now >= post.start && now <= post.end) return 'post';
+    } catch {}
+    return 'closed';
+}
 
 function drawSparkline(canvas, prices, isUp){
+    if(!canvas) return;
     const ctx = canvas.getContext('2d');
     const W = canvas.width, H = canvas.height;
     ctx.clearRect(0,0,W,H);
     if(prices.length < 2) return;
-    const mn=Math.min(...prices), mx=Math.max(...prices);
-    const range = mx-mn || 1;
-    const color = isUp ? '#4ade80' : '#f87171';
-    const pts = prices.map((v,i)=>({
-        x: (i/(prices.length-1))*W,
-        y: H - ((v-mn)/range)*(H*0.8) - H*0.1
+    const valid = prices.filter(v=>v!=null&&!isNaN(v));
+    if(valid.length < 2) return;
+    const mn=Math.min(...valid), mx=Math.max(...valid), range=mx-mn||1;
+    const pts = valid.map((v,i)=>({
+        x:(i/(valid.length-1))*W,
+        y:H-((v-mn)/range)*(H*0.78)-H*0.11
     }));
-    // Gradient fill
-    const grad = ctx.createLinearGradient(0,0,0,H);
-    grad.addColorStop(0, isUp ? 'rgba(74,222,128,0.25)' : 'rgba(248,113,113,0.25)');
-    grad.addColorStop(1, 'rgba(0,0,0,0)');
-    ctx.beginPath();
-    ctx.moveTo(pts[0].x, H);
+    const grad=ctx.createLinearGradient(0,0,0,H);
+    grad.addColorStop(0,isUp?'rgba(74,222,128,0.28)':'rgba(248,113,113,0.28)');
+    grad.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.beginPath(); ctx.moveTo(pts[0].x,H);
     pts.forEach(p=>ctx.lineTo(p.x,p.y));
-    ctx.lineTo(pts[pts.length-1].x, H);
-    ctx.closePath();
-    ctx.fillStyle = grad;
-    ctx.fill();
-    // Line
-    ctx.beginPath();
-    pts.forEach((p,i)=>i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 2;
-    ctx.lineJoin = 'round';
-    ctx.stroke();
+    ctx.lineTo(pts[pts.length-1].x,H); ctx.closePath();
+    ctx.fillStyle=grad; ctx.fill();
+    ctx.beginPath(); pts.forEach((p,i)=>i===0?ctx.moveTo(p.x,p.y):ctx.lineTo(p.x,p.y));
+    ctx.strokeStyle=isUp?'#4ade80':'#f87171'; ctx.lineWidth=2; ctx.lineJoin='round'; ctx.stroke();
 }
 
-function renderIdxCard(cfg, q){
-    const card = document.getElementById(cfg.cardId);
-    if(!card) return;
-    const body = card.querySelector('.idx-body');
-    const price = q.regularMarketPrice;
-    const chg   = q.regularMarketChange;
-    const pct   = q.regularMarketChangePercent;
-    const prev  = q.regularMarketPreviousClose;
-    const state = (q.marketState||'CLOSED').toLowerCase();
-    const isUp  = chg >= 0;
-    const hist  = IDX_HISTORY[cfg.id];
-    hist.push(price);
-    if(hist.length > 60) hist.shift();   // keep last 60 data points
-
-    body.innerHTML = `
-        <div class="idx-price">${cfg.fmt(price)}</div>
+function renderIdxCard(cfg, d){
+    const card=document.getElementById(cfg.cardId); if(!card) return;
+    const body=card.querySelector('.idx-body');
+    const chg=d.price-d.prev, pct=(chg/d.prev)*100, isUp=chg>=0;
+    const hist=IDX_HISTORY[cfg.id];
+    if(d.closes.length>1){ IDX_HISTORY[cfg.id]=d.closes.slice(-60); }
+    else { hist.push(d.price); if(hist.length>60)hist.shift(); }
+    const stateLabel={'regular':'🟢 Market Open','pre':'🟡 Pre-Market','post':'🟠 After Hours','closed':'🔴 Closed','unknown':'⚪ --'}[d.state]||'⚪ --';
+    const stateClass={'regular':'regular','pre':'pre','post':'post','closed':'closed','unknown':'closed'}[d.state]||'closed';
+    body.innerHTML=`
+        <div class="idx-price">${cfg.fmt(d.price)}</div>
         <div class="idx-row">
-            <div class="idx-change ${isUp?'up':'dn'}">${isUp?'▲':'▼'} ${Math.abs(chg).toFixed(2)} (${(isUp?'+':'')}${pct.toFixed(2)}%)</div>
-            <div class="idx-prev">Prev ${cfg.fmt(prev)}</div>
+            <div class="idx-change ${isUp?'up':'dn'}">${isUp?'▲':'▼'} ${Math.abs(chg).toFixed(2)} (${isUp?'+':''}${pct.toFixed(2)}%)</div>
+            <div class="idx-prev">Prev ${cfg.fmt(d.prev)}</div>
         </div>
         <div class="idx-spark-wrap">
             <canvas class="idx-spark" id="spark-${cfg.id}" width="300" height="56"></canvas>
         </div>
         <div class="idx-footer">
-            <span class="idx-mktstate ${state}">${state==='regular'?'Market Open':state==='pre'?'Pre-Market':state==='post'?'After Hours':'Closed'}</span>
-            <span class="idx-updated">${new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit'})}</span>
+            <span class="idx-mktstate ${stateClass}">${stateLabel}</span>
+            <span class="idx-updated">${new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit'})} · ${d.src}</span>
         </div>`;
-
-    // Resize canvas to actual rendered width
     requestAnimationFrame(()=>{
-        const cv = document.getElementById('spark-'+cfg.id);
-        if(cv){ cv.width = cv.offsetWidth||300; drawSparkline(cv, hist, isUp); }
+        const cv=document.getElementById('spark-'+cfg.id);
+        if(cv){ cv.width=cv.offsetWidth||300; drawSparkline(cv,IDX_HISTORY[cfg.id],isUp); }
     });
 }
 
-async function fetchIndices(){
-    const tickers = IDX_CFG.map(c=>encodeURIComponent(c.ticker)).join(',');
-    const yUrl = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${IDX_CFG.map(c=>c.ticker).join(',')}`;
-    const PROXIES = [
-        `https://corsproxy.io/?url=${encodeURIComponent(yUrl)}`,
-        `https://api.allorigins.win/raw?url=${encodeURIComponent(yUrl)}`,
-    ];
-    let data = null;
-    for(const url of PROXIES){
-        try {
-            const r = await fetch(url, {signal: AbortSignal.timeout(8000)});
-            if(!r.ok) continue;
-            const j = await r.json();
-            data = j?.quoteResponse?.result;
-            if(data && data.length) break;
-        } catch { continue; }
+async function fetchOneIndex(cfg){
+    const result = await fetchYahooChart(cfg)
+                || await fetchYahooQuote(cfg)
+                || await fetchStooq(cfg);
+    if(result){
+        IDX_LAST[cfg.id]=result;
+        renderIdxCard(cfg,result);
+        return true;
     }
-    if(!data || !data.length){
-        document.getElementById('idx-last-sync').textContent = '⚠ Fetch failed — retrying…';
-        return;
+    // show last known + stale indicator
+    if(IDX_LAST[cfg.id]){
+        const d={...IDX_LAST[cfg.id], src:'cached'};
+        renderIdxCard(cfg,d);
     }
-    data.forEach(q=>{
-        const cfg = IDX_CFG.find(c=>c.ticker===q.symbol);
-        if(cfg) renderIdxCard(cfg, q);
-    });
-    document.getElementById('idx-last-sync').textContent =
-        'Live · ' + new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
+    return false;
 }
 
-// Also load today's intraday history for sparklines on first load
-async function fetchIdxHistory(cfg){
-    const yUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(cfg.ticker)}?interval=5m&range=1d`;
-    const url = `https://corsproxy.io/?url=${encodeURIComponent(yUrl)}`;
-    try {
-        const r = await fetch(url, {signal:AbortSignal.timeout(10000)});
-        if(!r.ok) return;
-        const j = await r.json();
-        const closes = j?.chart?.result?.[0]?.indicators?.quote?.[0]?.close?.filter(v=>v!=null);
-        if(closes && closes.length > 1){
-            IDX_HISTORY[cfg.id] = closes.slice(-60);
-        }
-    } catch {}
+async function fetchAllIndices(){
+    const results = await Promise.allSettled(IDX_CFG.map(c=>fetchOneIndex(c)));
+    const ok = results.filter(r=>r.value===true).length;
+    const lbl = document.getElementById('idx-last-sync');
+    if(lbl) lbl.textContent = ok===IDX_CFG.length
+        ? `Live · ${new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit'})}`
+        : ok>0 ? `⚠ ${ok}/${IDX_CFG.length} loaded · ${new Date().toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',second:'2-digit'})}`
+               : '⚠ All sources failed — retrying…';
 }
 
 (async function initIndices(){
-    // Load intraday history first, then quote
-    await Promise.allSettled(IDX_CFG.map(c=>fetchIdxHistory(c)));
-    await fetchIndices();
-    setInterval(fetchIndices, 30000);
+    await fetchAllIndices();
+    setInterval(fetchAllIndices, 30000);
 })();
 
 /* ============================================================
-   CLAUDE USAGE GAUGES — with manual baseline + real-time tick
+   CLAUDE SESSION TIMERS — fully automatic, no manual input
+   • Session:  counts from page load, 5-hour window
+   • Weekly:   counts from last Thursday 14:00 → next Thursday 14:00
+   Both tick every second automatically.
    ============================================================ */
-const SESSION_MS = 5*60*60*1000;
+const SESSION_MS    = 5 * 60 * 60 * 1000;   // 5 hours
 const SESSION_START = Date.now();
-const GAUGE_C = 2*Math.PI*38;
-const USAGE_BASELINE_KEY = 'claudeUsageBaseline';
+const GAUGE_C       = 2 * Math.PI * 38;
 
 function nextThu14(){
-    const n=new Date(),t=new Date(n);t.setHours(14,0,0,0);
-    const d=(4-n.getDay()+7)%7;t.setDate(t.getDate()+(d===0&&n>=t?7:d));return t;
+    const n=new Date(), t=new Date(n);
+    t.setHours(14,0,0,0);
+    const d = (4 - n.getDay() + 7) % 7;
+    t.setDate(t.getDate() + (d===0 && n>=t ? 7 : d));
+    return t;
 }
-const WK_RESET = nextThu14();
-const WK_TOTAL_MS = WK_RESET.getTime() - (WK_RESET.getTime() - 7*24*3600*1000);
-
-function loadBaseline(){
-    try { return JSON.parse(localStorage.getItem(USAGE_BASELINE_KEY)||'null'); }
-    catch { return null; }
-}
+const WK_RESET    = nextThu14();
+const WK_START_MS = WK_RESET.getTime() - 7*24*3600*1000;
+const WK_TOTAL_MS = 7*24*3600*1000;
 
 function fmtCD(ms){
-    if(ms<=0) return 'Resetting…';
-    const s=Math.floor(ms/1000);
-    const h=Math.floor(s/3600), m=Math.floor((s%3600)/60), sc=s%60;
-    const ss=String(sc).padStart(2,'0'), mm=String(m).padStart(2,'0');
-    return h>0 ? `${h}h ${mm}m ${ss}s remaining` : `${mm}m ${ss}s remaining`;
+    if(ms <= 0) return 'Window expired';
+    const s  = Math.floor(ms/1000);
+    const h  = Math.floor(s/3600);
+    const m  = Math.floor((s%3600)/60);
+    const sc = s % 60;
+    const ss = String(sc).padStart(2,'0');
+    const mm = String(m).padStart(2,'0');
+    return h > 0 ? `${h}h ${mm}m ${ss}s left` : `${mm}m ${ss}s left`;
 }
 
-function setGauge(gId,bId,pId,cId,pct,cd){
-    const c=Math.min(100,Math.max(0,pct));
-    const g=document.getElementById(gId),b=document.getElementById(bId),
-          p=document.getElementById(pId),ct=document.getElementById(cId);
-    if(g){g.style.strokeDashoffset=(GAUGE_C*(1-c/100)).toFixed(2);
-          g.className='gauge-fill'+(c>=80?' hi':c>=50?' med':'');}
-    if(b){b.style.width=c.toFixed(2)+'%';b.className='usage-bar-fill'+(c>=80?' hi':c>=50?' med':'');}
-    if(p) p.textContent=c.toFixed(1)+'%';
-    if(ct) ct.textContent=cd;
+function setGauge(gId, bId, pId, cId, pct, cd){
+    const c = Math.min(100, Math.max(0, pct));
+    const g  = document.getElementById(gId);
+    const b  = document.getElementById(bId);
+    const p  = document.getElementById(pId);
+    const ct = document.getElementById(cId);
+    if(g){ g.style.strokeDashoffset = (GAUGE_C*(1-c/100)).toFixed(2);
+           g.className = 'gauge-fill'+(c>=80?' hi':c>=50?' med':''); }
+    if(b){ b.style.width = c.toFixed(3)+'%';
+           b.className = 'usage-bar-fill'+(c>=80?' hi':c>=50?' med':''); }
+    if(p)  p.textContent = c.toFixed(1)+'%';
+    if(ct) ct.textContent = cd;
 }
 
 function tickUsage(){
     const now = Date.now();
-    const baseline = loadBaseline();
-    let sp, wp;
 
-    if(baseline){
-        // Count up from saved baseline values
-        const elapsed = now - baseline.savedAt;
-        sp = Math.min(100, baseline.sessionPct + (elapsed / SESSION_MS) * 100);
-        wp = Math.min(100, baseline.weeklyPct  + (elapsed / (7*24*3600*1000)) * 100);
-    } else {
-        // No manual data yet — count from page load / week start
-        sp = Math.min(100, ((now - SESSION_START) / SESSION_MS) * 100);
-        const wkStart = WK_RESET.getTime() - 7*24*3600*1000;
-        wp = Math.min(100, ((now - wkStart) / (7*24*3600*1000)) * 100);
-    }
+    // ── Session: elapsed since page load ──
+    const sessionElapsed = now - SESSION_START;
+    const sessionLeft    = Math.max(0, SESSION_MS - sessionElapsed);
+    const sp = Math.min(100, (sessionElapsed / SESSION_MS) * 100);
 
-    const sessionLeft = Math.max(0, SESSION_MS - (now - SESSION_START));
-    const weekLeft    = Math.max(0, WK_RESET.getTime() - now);
-    const weekLabel   = weekLeft > 86400000
-        ? `Resets ${WK_RESET.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})} 14:00`
-        : fmtCD(weekLeft);
+    // ── Weekly: elapsed since last Thursday 14:00 ──
+    const wkElapsed = now - WK_START_MS;
+    const wkLeft    = Math.max(0, WK_RESET.getTime() - now);
+    const wp = Math.min(100, (wkElapsed / WK_TOTAL_MS) * 100);
+
+    const wkLabel = wkLeft > 86400000
+        ? `Resets ${WK_RESET.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})} 14:00  (${fmtCD(wkLeft)})`
+        : fmtCD(wkLeft);
 
     setGauge('session-gauge','session-bar','session-pct','session-countdown', sp, fmtCD(sessionLeft));
-    setGauge('weekly-gauge','weekly-bar','weekly-pct','weekly-countdown',    wp, weekLabel);
-}
+    setGauge('weekly-gauge', 'weekly-bar', 'weekly-pct', 'weekly-countdown',  wp, wkLabel);
 
-/* ── Modal controls ── */
-function openUsageModal(){
-    const now = Date.now();
-    const baseline = loadBaseline();
-    let sp, wp;
-    if(baseline){
-        const elapsed = now - baseline.savedAt;
-        sp = Math.min(100, Math.round(baseline.sessionPct + (elapsed / SESSION_MS) * 100));
-        wp = Math.min(100, Math.round(baseline.weeklyPct  + (elapsed / (7*24*3600*1000)) * 100));
-    } else {
-        sp = Math.min(100, Math.round(((now - SESSION_START) / SESSION_MS) * 100));
-        const wkStart = WK_RESET.getTime() - 7*24*3600*1000;
-        wp = Math.min(100, Math.round(((now - wkStart) / (7*24*3600*1000)) * 100));
+    // update session start label once
+    const lbl = document.getElementById('session-start-lbl');
+    if(lbl && lbl.dataset.set !== '1'){
+        const st = new Date(SESSION_START);
+        lbl.textContent = 'Started ' + st.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+        lbl.dataset.set = '1';
     }
-    document.getElementById('modal-session').value = sp;
-    document.getElementById('modal-weekly').value  = wp;
-    document.getElementById('modal-session-val').textContent = sp + '%';
-    document.getElementById('modal-weekly-val').textContent  = wp + '%';
-    document.getElementById('usage-modal-overlay').classList.add('open');
-}
-
-function closeUsageModal(){
-    document.getElementById('usage-modal-overlay').classList.remove('open');
-}
-
-function saveUsageModal(){
-    const sp = parseInt(document.getElementById('modal-session').value);
-    const wp = parseInt(document.getElementById('modal-weekly').value);
-    localStorage.setItem(USAGE_BASELINE_KEY, JSON.stringify({
-        sessionPct: sp, weeklyPct: wp, savedAt: Date.now()
-    }));
-    closeUsageModal();
-    tickUsage();
 }
 
 setInterval(tickUsage, 1000);
