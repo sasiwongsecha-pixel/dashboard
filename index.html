@@ -219,16 +219,26 @@
         @keyframes aura-pulse { 0%,100%{opacity:0.7} 50%{opacity:1} }
 
         /* Mood animations */
-        .char-svg { animation:idle-float 3.5s ease-in-out infinite; }
+        .char-svg {
+            animation: idle-float 3.5s ease-in-out infinite;
+            filter: drop-shadow(0 4px 16px var(--char-glow, rgba(168,197,255,0.55)))
+                    drop-shadow(0 0 32px var(--char-glow2, rgba(168,197,255,0.25)));
+            transition: filter 90s linear; /* slow smooth colour shift */
+            image-rendering: auto;
+        }
         @keyframes idle-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-6px)} }
         .char-svg.anim-slow { animation:idle-float 5s ease-in-out infinite; }
         .char-svg.anim-bounce { animation:idle-bounce 1s ease-in-out 3; }
         @keyframes idle-bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
         .char-svg.anim-magic { animation:char-magic 0.7s ease-out; }
         @keyframes char-magic {
-            0%  { filter:drop-shadow(0 0 12px rgba(168,197,255,0.9)); transform:scale(1); }
-            50% { filter:drop-shadow(0 0 28px rgba(201,184,255,1)); transform:scale(1.15) rotate(-3deg); }
-            100%{ filter:drop-shadow(0 0 6px rgba(168,197,255,0.3)); transform:scale(1); }
+            0%  { transform:scale(1);      filter:drop-shadow(0 0 14px var(--char-glow,rgba(168,197,255,0.9))); }
+            50% { transform:scale(1.15) rotate(-3deg); filter:drop-shadow(0 0 36px var(--char-glow,rgba(201,184,255,1))); }
+            100%{ transform:scale(1);      filter:drop-shadow(0 0 10px var(--char-glow,rgba(168,197,255,0.4))); }
+        }
+        /* Time-of-day aura ring */
+        .char-aura {
+            transition: background 90s linear, opacity 90s linear;
         }
 
         /* Zzz bubbles */
@@ -638,149 +648,12 @@
             <span class="sparkle">✨</span>
         </div>
 
-        <!-- ===== FRIEREN SVG ===== -->
-        <svg id="char-svg" class="char-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 200" width="100" height="76">
-            <defs>
-                <radialGradient id="skinG" cx="50%" cy="40%" r="55%">
-                    <stop offset="0%" stop-color="#fef0e0"/><stop offset="100%" stop-color="#f5dcc0"/>
-                </radialGradient>
-                <linearGradient id="hairG" x1="0" y1="0" x2="0.5" y2="1">
-                    <stop offset="0%" stop-color="#d8d0ea"/><stop offset="50%" stop-color="#c8bedd"/>
-                    <stop offset="100%" stop-color="#b5aacf"/>
-                </linearGradient>
-                <linearGradient id="robeG" x1="0.1" y1="0" x2="0.9" y2="1">
-                    <stop offset="0%" stop-color="#f0edf5"/><stop offset="100%" stop-color="#ddd8e8"/>
-                </linearGradient>
-            </defs>
-
-            <!-- ROBE / BLANKET -->
-            <path d="M20 148 Q22 130 50 122 Q80 114 130 114 Q180 114 210 124 Q240 134 242 152 Q244 172 220 182 Q180 194 130 194 Q70 194 35 182 Q15 174 20 148 Z" fill="url(#robeG)" stroke="#3a3548" stroke-width="2.2" stroke-linejoin="round"/>
-            <path d="M58 140 Q90 132 125 138" fill="none" stroke="#c4bdd4" stroke-width="1.4" stroke-linecap="round" opacity="0.5"/>
-            <path d="M50 155 Q95 145 145 153" fill="none" stroke="#c4bdd4" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/>
-            <path d="M65 168 Q110 160 165 168" fill="none" stroke="#c4bdd4" stroke-width="1.1" stroke-linecap="round" opacity="0.35"/>
-
-            <!-- LEFT ARM -->
-            <path d="M72 108 Q58 102 48 108 Q38 116 36 128 Q34 136 40 138 Q46 134 50 124 Q54 114 66 110 Z" fill="url(#skinG)" stroke="#3a3548" stroke-width="2" stroke-linejoin="round"/>
-            <path d="M48 108 Q50 96 58 88 Q62 84 66 86 Q62 92 58 100 Q54 108 48 108 Z" fill="url(#skinG)" stroke="#3a3548" stroke-width="1.8" stroke-linejoin="round"/>
-            <ellipse cx="64" cy="82" rx="8" ry="7" fill="url(#skinG)" stroke="#3a3548" stroke-width="2"/>
-
-            <!-- RIGHT HAND -->
-            <path d="M162 108 Q168 104 172 108 Q176 114 172 118 Q166 114 162 108 Z" fill="url(#skinG)" stroke="#3a3548" stroke-width="1.6" stroke-linejoin="round"/>
-
-            <!-- FACE -->
-            <ellipse cx="115" cy="78" rx="40" ry="38" fill="url(#skinG)" stroke="#3a3548" stroke-width="2.2"/>
-
-            <!-- HAIR BACK SIDES -->
-            <path d="M76 60 Q55 68 45 95 Q40 115 45 130 Q48 118 52 102 Q58 82 76 70 Z" fill="url(#hairG)" stroke="#3a3548" stroke-width="2"/>
-            <path d="M154 60 Q175 68 182 95 Q186 118 180 135 Q178 120 174 102 Q168 82 154 70 Z" fill="url(#hairG)" stroke="#3a3548" stroke-width="2"/>
-
-            <!-- HAIR TOP -->
-            <path d="M76 65 Q80 36 115 30 Q150 36 154 65 Q145 48 115 42 Q85 48 76 65 Z" fill="url(#hairG)" stroke="#3a3548" stroke-width="2"/>
-
-            <!-- BANGS -->
-            <path d="M74 65 Q80 50 92 58 Q86 66 82 78" fill="url(#hairG)" stroke="#3a3548" stroke-width="1.8"/>
-            <path d="M92 58 Q100 44 112 56 Q106 64 102 76" fill="url(#hairG)" stroke="#3a3548" stroke-width="1.8"/>
-            <path d="M112 56 Q122 42 134 56 Q128 64 124 74" fill="url(#hairG)" stroke="#3a3548" stroke-width="1.8"/>
-            <path d="M134 56 Q142 48 154 65 Q146 68 140 78" fill="url(#hairG)" stroke="#3a3548" stroke-width="1.8"/>
-            <path d="M88 38 Q92 24 98 36" fill="url(#hairG)" stroke="#3a3548" stroke-width="1.5"/>
-
-            <!-- BLUSH -->
-            <line x1="86" y1="86" x2="94" y2="86" stroke="#e8a090" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
-            <line x1="85" y1="89" x2="95" y2="89" stroke="#e8a090" stroke-width="1.3" stroke-linecap="round" opacity="0.4"/>
-            <line x1="136" y1="86" x2="144" y2="86" stroke="#e8a090" stroke-width="1.5" stroke-linecap="round" opacity="0.55"/>
-            <line x1="135" y1="89" x2="145" y2="89" stroke="#e8a090" stroke-width="1.3" stroke-linecap="round" opacity="0.4"/>
-
-            <!-- === EYES — one group visible at a time === -->
-
-            <!-- SLEEPY eyes (default) -->
-            <g id="eyes-sleepy" class="eye-grp" style="display:block">
-                <path d="M92 80 Q97 84 102 80" fill="none" stroke="#3a3548" stroke-width="2.5" stroke-linecap="round"/>
-                <path d="M126 80 Q131 84 136 80" fill="none" stroke="#3a3548" stroke-width="2.5" stroke-linecap="round"/>
-                <!-- tiny lashes -->
-                <line x1="92" y1="80" x2="90" y2="77" stroke="#3a3548" stroke-width="1.5" stroke-linecap="round"/>
-                <line x1="126" y1="80" x2="124" y2="77" stroke="#3a3548" stroke-width="1.5" stroke-linecap="round"/>
-            </g>
-
-            <!-- AWAKE eyes (morning) -->
-            <g id="eyes-awake" class="eye-grp">
-                <circle cx="97" cy="80" r="7" fill="#f5dcc0" stroke="#3a3548" stroke-width="1.5"/>
-                <circle cx="131" cy="80" r="7" fill="#f5dcc0" stroke="#3a3548" stroke-width="1.5"/>
-                <circle cx="97" cy="80" r="4.5" fill="#4a3870"/>
-                <circle cx="131" cy="80" r="4.5" fill="#4a3870"/>
-                <circle cx="99" cy="78" r="1.5" fill="white" opacity="0.85"/>
-                <circle cx="133" cy="78" r="1.5" fill="white" opacity="0.85"/>
-            </g>
-
-            <!-- HAPPY eyes (^_^) -->
-            <g id="eyes-happy" class="eye-grp">
-                <path d="M90 82 Q97 74 104 82" fill="none" stroke="#3a3548" stroke-width="2.5" stroke-linecap="round"/>
-                <path d="M124 82 Q131 74 138 82" fill="none" stroke="#3a3548" stroke-width="2.5" stroke-linecap="round"/>
-            </g>
-
-            <!-- FOCUSED eyes (half-squint) -->
-            <g id="eyes-focused" class="eye-grp">
-                <path d="M91 80 Q97 77 103 80" fill="none" stroke="#3a3548" stroke-width="2.2" stroke-linecap="round"/>
-                <path d="M125 80 Q131 77 137 80" fill="none" stroke="#3a3548" stroke-width="2.2" stroke-linecap="round"/>
-                <circle cx="97" cy="81" r="2.5" fill="#4a3870" opacity="0.7"/>
-                <circle cx="131" cy="81" r="2.5" fill="#4a3870" opacity="0.7"/>
-            </g>
-
-            <!-- TIRED eyes (heavy lids) -->
-            <g id="eyes-tired" class="eye-grp">
-                <path d="M91 82 Q97 85 103 82" fill="none" stroke="#3a3548" stroke-width="2.2" stroke-linecap="round"/>
-                <path d="M125 82 Q131 85 137 82" fill="none" stroke="#3a3548" stroke-width="2.2" stroke-linecap="round"/>
-                <!-- heavy lids -->
-                <path d="M91 80 Q97 78 103 80" fill="none" stroke="#3a3548" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-                <path d="M125 80 Q131 78 137 80" fill="none" stroke="#3a3548" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
-            </g>
-
-            <!-- WORRIED eyes (open + brow) -->
-            <g id="eyes-worried" class="eye-grp">
-                <circle cx="97" cy="80" r="6.5" fill="#f5dcc0" stroke="#3a3548" stroke-width="1.5"/>
-                <circle cx="131" cy="80" r="6.5" fill="#f5dcc0" stroke="#3a3548" stroke-width="1.5"/>
-                <circle cx="97" cy="80" r="4" fill="#4a3870"/>
-                <circle cx="131" cy="80" r="4" fill="#4a3870"/>
-                <circle cx="99" cy="78" r="1.3" fill="white" opacity="0.8"/>
-                <circle cx="133" cy="78" r="1.3" fill="white" opacity="0.8"/>
-                <!-- worry brows angled inward -->
-                <path d="M90 71 Q96 68 100 72" fill="none" stroke="#3a3548" stroke-width="1.8" stroke-linecap="round"/>
-                <path d="M128 72 Q132 68 138 71" fill="none" stroke="#3a3548" stroke-width="1.8" stroke-linecap="round"/>
-            </g>
-
-            <!-- === MOUTHS — one visible at a time === -->
-
-            <!-- NEUTRAL small frown (sleepy/default) -->
-            <g id="mouth-neutral" class="mouth-grp" style="display:block">
-                <path d="M109 96 Q115 98 121 96" fill="none" stroke="#3a3548" stroke-width="1.6" stroke-linecap="round"/>
-            </g>
-
-            <!-- SMALL SMILE (awake/focused) -->
-            <g id="mouth-smile" class="mouth-grp">
-                <path d="M107 94 Q115 100 123 94" fill="none" stroke="#3a3548" stroke-width="1.8" stroke-linecap="round"/>
-            </g>
-
-            <!-- BIG SMILE (happy) -->
-            <g id="mouth-bigsmile" class="mouth-grp">
-                <path d="M104 92 Q115 104 126 92" fill="none" stroke="#3a3548" stroke-width="2" stroke-linecap="round"/>
-                <path d="M104 92 Q115 104 126 92" fill="rgba(232,160,144,0.25)" stroke="none"/>
-            </g>
-
-            <!-- FROWN (worried/tired) -->
-            <g id="mouth-frown" class="mouth-grp">
-                <path d="M108 100 Q115 95 122 100" fill="none" stroke="#3a3548" stroke-width="1.6" stroke-linecap="round"/>
-            </g>
-
-            <!-- BLUE BOW -->
-            <path d="M100 110 Q115 106 130 110" fill="none" stroke="#6a9cc8" stroke-width="2.5" stroke-linecap="round"/>
-            <path d="M102 110 Q92 116 86 124 Q96 118 104 112 Z" fill="#7aabda" stroke="#3a3548" stroke-width="1.6" stroke-linejoin="round"/>
-            <path d="M128 110 Q138 116 144 124 Q134 118 126 112 Z" fill="#7aabda" stroke="#3a3548" stroke-width="1.6" stroke-linejoin="round"/>
-            <circle cx="115" cy="110" r="3.5" fill="#8cbce4" stroke="#3a3548" stroke-width="1.3"/>
-
-            <!-- SWEAT DROP (worried mode) -->
-            <g id="sweat-drop" style="display:none">
-                <path d="M148 58 Q150 50 152 58 Q150 62 148 58 Z" fill="#a8c5ff" stroke="#3a3548" stroke-width="0.8" opacity="0.8"/>
-            </g>
-        </svg>
+        <!-- ===== CHARACTER IMAGE ===== -->
+        <!-- Save your image as  char.png  in the same folder as index.html -->
+        <img id="char-svg" class="char-svg" src="char.png" width="110" height="110"
+             alt="Character" draggable="false"
+             style="position:relative;z-index:1;display:block;"
+             onerror="this.style.display='none'">
     </div>
 </div>
 
@@ -1208,28 +1081,60 @@ function getMoodFromTime(){
 function applyMood(mood){
     currentMood = mood;
     const widget = document.getElementById('frieren');
-    const svg    = document.getElementById('char-svg');
-    if(!widget||!svg) return;
-
+    const img    = document.getElementById('char-svg');
+    if(!widget) return;
     widget.dataset.mood = mood;
-
-    // Switch eye group
-    document.querySelectorAll('.eye-grp').forEach(g=>g.style.display='none');
-    const eyeEl=document.getElementById(MOOD_EYES[mood]);
-    if(eyeEl) eyeEl.style.display='block';
-
-    // Switch mouth group
-    document.querySelectorAll('.mouth-grp').forEach(g=>g.style.display='none');
-    const mouthEl=document.getElementById(MOOD_MOUTHS[mood]);
-    if(mouthEl) mouthEl.style.display='block';
-
-    // Sweat drop for worried
-    const sd=document.getElementById('sweat-drop');
-    if(sd) sd.style.display=(mood==='worried')?'block':'none';
-
-    // Animation speed
-    svg.className='char-svg '+(MOOD_ANIMS[mood]||'');
+    // Update float/bounce animation speed
+    if(img) img.className = 'char-svg ' + (MOOD_ANIMS[mood]||'');
 }
+
+/* ============================================================
+   TIME-OF-DAY LIGHT EFFECT
+   Smoothly shifts the character's glow colour through the day.
+   Schedule is based on local (Bangkok) time.
+   ============================================================ */
+const TIME_LIGHTS = [
+    // { h, glow (tight), glow2 (wide/soft), aura }
+    { h:  0, glow:'rgba(70,90,220,0.60)',  glow2:'rgba(60,80,200,0.20)',  aura:'rgba(70,90,220,0.18)',  label:'midnight blue' },
+    { h:  5, glow:'rgba(160,90,240,0.65)', glow2:'rgba(140,70,220,0.22)', aura:'rgba(150,80,240,0.20)', label:'pre-dawn violet' },
+    { h:  6, glow:'rgba(255,120,50,0.75)', glow2:'rgba(255,100,30,0.25)', aura:'rgba(255,120,50,0.22)', label:'sunrise orange' },
+    { h:  8, glow:'rgba(255,195,70,0.80)', glow2:'rgba(255,185,60,0.28)', aura:'rgba(255,195,70,0.22)', label:'morning gold' },
+    { h: 11, glow:'rgba(160,215,255,0.82)',glow2:'rgba(140,205,255,0.28)',aura:'rgba(150,210,255,0.22)',label:'midday sky' },
+    { h: 15, glow:'rgba(255,175,70,0.78)', glow2:'rgba(255,165,60,0.26)', aura:'rgba(255,175,70,0.22)', label:'afternoon amber' },
+    { h: 17, glow:'rgba(255,90,55,0.85)',  glow2:'rgba(255,75,40,0.30)',  aura:'rgba(255,90,55,0.25)',  label:'sunset coral' },
+    { h: 19, glow:'rgba(200,80,210,0.78)', glow2:'rgba(180,60,200,0.26)', aura:'rgba(200,80,210,0.22)', label:'dusk magenta' },
+    { h: 21, glow:'rgba(80,120,255,0.65)', glow2:'rgba(60,100,240,0.22)', aura:'rgba(80,120,255,0.18)', label:'night blue' },
+];
+
+function getLightForHour(h){
+    // Find the two surrounding entries and pick the closer one
+    let chosen = TIME_LIGHTS[0];
+    for(let i = TIME_LIGHTS.length - 1; i >= 0; i--){
+        if(h >= TIME_LIGHTS[i].h){ chosen = TIME_LIGHTS[i]; break; }
+    }
+    return chosen;
+}
+
+function updateCharLight(){
+    const h    = new Date().getHours();
+    const cfg  = getLightForHour(h);
+    const img  = document.getElementById('char-svg');
+    const aura = document.querySelector('.char-aura');
+    if(img){
+        img.style.setProperty('--char-glow',  cfg.glow);
+        img.style.setProperty('--char-glow2', cfg.glow2);
+        // Directly set the filter so the CSS var is read immediately
+        img.style.filter =
+            `drop-shadow(0 4px 16px ${cfg.glow}) drop-shadow(0 0 32px ${cfg.glow2})`;
+    }
+    if(aura){
+        aura.style.background =
+            `radial-gradient(circle, ${cfg.aura} 0%, transparent 70%)`;
+    }
+}
+// Run immediately and refresh every 5 min
+updateCharLight();
+setInterval(updateCharLight, 5 * 60 * 1000);
 
 function showSpeech(text){
     const bubble=document.getElementById('speech-bubble');
