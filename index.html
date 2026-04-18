@@ -601,7 +601,7 @@
     </div>
     <div class="drive-card" id="drive-card">
         <div class="drive-header">
-            <span class="drive-header-title">Recent Files (20 most recent)</span>
+            <span class="drive-header-title">Recent Files (latest 10)</span>
             <span id="drive-sync-label" class="drive-sync-label"></span>
             <button class="drive-refresh-btn" onclick="refreshDrive()" title="Refresh now">↻</button>
         </div>
@@ -1679,46 +1679,62 @@ function requestDriveNotifPermission(){
 }
 
 /* --- core connect --- */
-function connectGoogleDrive(){
+// isAuto=true → silent re-auth (no error alerts, uses prompt:'')
+function connectGoogleDrive(isAuto){
     const clientId = getGdriveClientId();
     if(!clientId){ toggleDriveSetup(); return; }
 
-    setDriveBtnState('loading', '⏳ Connecting…');
+    if(!isAuto) setDriveBtnState('loading', '⏳ Connecting…');
 
-    // Lazy-load GIS library on first click
+    // Lazy-load GIS library
     if(typeof google === 'undefined' || !google?.accounts?.oauth2){
         const s = document.createElement('script');
         s.src = 'https://accounts.google.com/gsi/client';
-        s.onload  = () => _initGisAndConnect();
+        s.onload  = () => _initGisAndConnect(isAuto);
         s.onerror = () => {
-            setDriveBtnState('idle', '🔗 Connect Drive');
-            alert('Failed to load Google Identity Services.\nCheck your internet connection and try again.');
+            if(!isAuto){
+                setDriveBtnState('idle', '🔗 Connect Drive');
+                alert('Failed to load Google Identity Services.\nCheck your internet connection and try again.');
+            }
         };
         document.head.appendChild(s);
         return;
     }
-    _initGisAndConnect();
+    _initGisAndConnect(isAuto);
 }
 
-function _initGisAndConnect(){
+function _initGisAndConnect(isAuto){
     const clientId = getGdriveClientId();
     try {
         gisClient = google.accounts.oauth2.initTokenClient({
             client_id: clientId,
             scope: 'https://www.googleapis.com/auth/drive.metadata.readonly',
+            error_callback: (err) => {
+                // popup blocked or user dismissed — silent for auto, warn for manual
+                if(!isAuto){
+                    setDriveBtnState('idle', '🔗 Connect Drive');
+                    if(err.type !== 'popup_closed'){
+                        alert('Google Drive auth error: ' + (err.message || err.type));
+                    }
+                } else {
+                    setDriveBtnState('idle', '🔗 Connect Drive');
+                }
+            },
             callback: async (tokenResponse) => {
                 if(tokenResponse.error){
                     setDriveBtnState('idle', '🔗 Connect Drive');
-                    const desc = tokenResponse.error_description || tokenResponse.error;
-                    if(desc.includes('origin') || desc.includes('authorized')){
-                        alert(
-                            '❌ Origin not authorised.\n\n' +
-                            'In Google Cloud Console → OAuth Client:\n' +
-                            '  Add to Authorized JavaScript origins:\n' +
-                            '  ' + window.location.origin + '\n\nSave and try again.'
-                        );
-                    } else {
-                        alert('Google Drive auth failed:\n' + desc);
+                    if(!isAuto){
+                        const desc = tokenResponse.error_description || tokenResponse.error;
+                        if(desc.includes('origin') || desc.includes('authorized')){
+                            alert(
+                                '❌ Origin not authorised.\n\n' +
+                                'In Google Cloud Console → OAuth Client:\n' +
+                                '  Add to Authorized JavaScript origins:\n' +
+                                '  ' + window.location.origin + '\n\nSave and try again.'
+                            );
+                        } else {
+                            alert('Google Drive auth failed:\n' + desc);
+                        }
                     }
                     return;
                 }
@@ -1741,10 +1757,11 @@ function _initGisAndConnect(){
                 startDrivePoll();
             },
         });
-        gisClient.requestAccessToken();
+        // Auto = silent (no account picker forced); manual = full prompt
+        gisClient.requestAccessToken(isAuto ? { prompt: '' } : undefined);
     } catch(e){
         setDriveBtnState('idle', '🔗 Connect Drive');
-        alert('Could not initialise Google Auth.\nMake sure the Client ID is correct.\n\n' + e.message);
+        if(!isAuto) alert('Could not initialise Google Auth.\nMake sure the Client ID is correct.\n\n' + e.message);
     }
 }
 
@@ -1767,7 +1784,7 @@ async function fetchDriveFiles(isFirstRun){
         const resp = await fetch(
             'https://www.googleapis.com/drive/v3/files?' + new URLSearchParams({
                 orderBy:  'createdTime desc',
-                pageSize: '25',
+                pageSize: '10',
                 fields:   'files(id,name,mimeType,createdTime,webViewLink,owners)',
             }),
             { headers: { Authorization: 'Bearer ' + gdriveToken } }
@@ -1855,12 +1872,15 @@ function refreshDrive(){
     fetchDriveFiles(false);
 }
 
-/* --- init: restore saved client ID in input if present --- */
+/* --- init: auto-connect on load if client ID already saved --- */
 (function initDriveUI(){
     const saved = localStorage.getItem(GDRIVE_CLIENT_KEY);
     if(saved){
         const inp = document.getElementById('drive-client-id-input');
         if(inp) inp.value = saved;
+        // Auto-connect silently (prompt:'') — works without popup if previously authorized
+        setDriveBtnState('loading', '⏳ Connecting…');
+        connectGoogleDrive(true);   // isAuto = true
     }
     if(Notification.permission === 'denied'){
         const el = document.getElementById('drive-notif-denied');
