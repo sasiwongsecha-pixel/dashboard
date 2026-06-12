@@ -1,0 +1,236 @@
+{
+  "meta": {
+    "title": "Nephrology Literature Update",
+    "generated_at": "2026-06-12",
+    "window": "Last 30 days (2026-05-13 to 2026-06-12)",
+    "query": "Clinical nephrology — RCTs, systematic reviews & meta-analyses (humans, English)",
+    "source": "PubMed (NLM). Each entry links to its PubMed record and DOI.",
+    "count": 8,
+    "note": "Summaries and PICO are derived from published abstracts. Criteria marked “not specified” were not stated in the abstract."
+  },
+  "articles": [
+    {
+      "pmid": "42233552",
+      "doi": "10.1016/j.jacc.2026.02.5125",
+      "journal": "J Am Coll Cardiol",
+      "date": "2026-06-02",
+      "authors": "Tuttle KR, Bakris GL, Baeres FMM, Bang CN, Bax WA, et al.",
+      "title": "Kidney and Survival Benefits of Semaglutide in Diabetes With Chronic Kidney Disease: FLOW Trial Cardiovascular Subgroup Analyses",
+      "study_type": "RCT — prespecified subgroup analysis",
+      "topic": "CKD / Diabetes",
+      "summary": "In the FLOW trial, once-weekly semaglutide 1.0 mg reduced the composite kidney outcome and all-cause death in adults with type 2 diabetes and CKD, irrespective of baseline cardiovascular status (ASCVD, heart failure, or high PREVENT risk). Numbers needed to treat over 3 years to prevent one primary kidney outcome were 22 (ASCVD), 13 (heart failure) and 17 (high total CV risk). No significant subgroup interactions were observed.",
+      "pico": {
+        "population": "Adults with type 2 diabetes and CKD (n≈3,533), stratified by baseline ASCVD, heart failure, or high total CV risk (10-yr PREVENT ≥20%).",
+        "intervention": "Semaglutide 1.0 mg subcutaneously once weekly.",
+        "comparison": "Placebo.",
+        "outcome": "Composite of ≥50% eGFR decline, eGFR <15 mL/min/1.73m², dialysis, transplantation, or kidney/CV death; secondary all-cause death."
+      },
+      "inclusion": [
+        "Participants enrolled in the FLOW trial (NCT03819153): type 2 diabetes with CKD.",
+        "Subgroups defined by established ASCVD, heart failure, or high total CV risk (PREVENT ≥20%) without established CVD."
+      ],
+      "exclusion": [
+        "Per parent FLOW trial eligibility; specific exclusions not detailed in this subgroup report."
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42233552/",
+        "doi": "https://doi.org/10.1016/j.jacc.2026.02.5125"
+      }
+    },
+    {
+      "pmid": "42128628",
+      "doi": "10.1080/0886022X.2026.2666454",
+      "journal": "Ren Fail",
+      "date": "2026-05-13",
+      "authors": "Wu X, Meng J, Yang Y, Sheng D, Liu X, et al.",
+      "title": "Comparative efficacy and safety of apixaban and rivaroxaban versus warfarin in atrial fibrillation patients with end-stage renal disease: a systematic review and meta-analysis",
+      "study_type": "Systematic review & meta-analysis (3 RCTs + 8 observational)",
+      "topic": "Dialysis / Anticoagulation",
+      "summary": "Among dialysis patients with atrial fibrillation, apixaban or rivaroxaban were associated with lower major bleeding (RR 0.57), GI bleeding (RR 0.66) and intracranial hemorrhage (RR 0.54) versus vitamin K antagonists, and with lower stroke/systemic embolism (RR 0.57) and all-cause mortality (RR 0.73), though with substantial heterogeneity. RCT-only trends were directionally consistent but did not reach significance. Optimal apixaban dosing in ESRD remains unresolved and warrants dedicated RCTs.",
+      "pico": {
+        "population": "Atrial fibrillation patients with end-stage renal disease undergoing dialysis.",
+        "intervention": "Apixaban or rivaroxaban (DOAC).",
+        "comparison": "Vitamin K antagonists (warfarin).",
+        "outcome": "Stroke/systemic embolism, all-cause mortality, major bleeding, intracranial hemorrhage, GI bleeding."
+      },
+      "inclusion": [
+        "Studies comparing apixaban or rivaroxaban with VKAs in AF patients undergoing dialysis.",
+        "RCTs and observational studies; PubMed, Embase, Cochrane Library."
+      ],
+      "exclusion": [
+        "Non-dialysis populations or studies lacking a VKA comparator (implied; not explicitly stated)."
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42128628/",
+        "doi": "https://doi.org/10.1080/0886022X.2026.2666454"
+      }
+    },
+    {
+      "pmid": "42096677",
+      "doi": "10.1212/WNL.0000000000218031",
+      "journal": "Neurology",
+      "date": "2026-05-07",
+      "authors": "Kelly DM, Kelleher EM, Rothwell PM",
+      "title": "Acute Kidney Injury and Risk of Adverse Neurocognitive Outcomes: A Systematic Review and Meta-Analysis",
+      "study_type": "Systematic review & meta-analysis (49 studies, 11.25M participants)",
+      "topic": "AKI",
+      "summary": "Acute kidney injury was associated with increased risk of stroke (adjusted HR 1.35), delirium (OR 1.76) and dementia (HR 1.64), with a graded increase across AKI stages for stroke. AKI also predicted higher in-hospital and 90-day post-stroke mortality and 90-day disability. The authors suggest AKI may flag patients vulnerable to both acute and chronic brain injury.",
+      "pico": {
+        "population": "Adults, compared by presence vs absence of acute kidney injury.",
+        "intervention": "Acute kidney injury (exposure).",
+        "comparison": "No acute kidney injury.",
+        "outcome": "Stroke, delirium, dementia (adjusted HR/OR); post-stroke mortality and disability."
+      },
+      "inclusion": [
+        "Studies reporting quantitative adjusted estimates with measures of precision for AKI and delirium, stroke or dementia in adults.",
+        "Ovid MEDLINE and Embase from inception to April 2025."
+      ],
+      "exclusion": [
+        "Pediatric populations; studies without adjusted effect estimates or precision (implied)."
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42096677/",
+        "doi": "https://doi.org/10.1212/WNL.0000000000218031"
+      }
+    },
+    {
+      "pmid": "42185739",
+      "doi": "10.1080/0886022X.2026.2665032",
+      "journal": "Ren Fail",
+      "date": "2026-05-25",
+      "authors": "Møller M, Andersen TH, Borg R, Christensen R, Bressendorff I, et al.",
+      "title": "Complication rates of 16- and 18-gauge needles for native kidney biopsies: a systematic review and proportional meta-analysis",
+      "study_type": "Systematic review & proportional meta-analysis (62 studies, 68 series)",
+      "topic": "Procedure / Biopsy",
+      "summary": "Pooled major complication rates for native kidney biopsy were 1.83% with 16-gauge and 1.29% with 18-gauge needles, with no significant difference and similar glomerular yield (18.8 vs 17.5). Higher AKI prevalence, lower mean eGFR and lower hemoglobin were associated with higher complication rates. Most data came from single-arm cohorts, so direct comparative trials are still needed.",
+      "pico": {
+        "population": "Adults undergoing real-time ultrasound-guided native kidney biopsy.",
+        "intervention": "16-gauge biopsy needle.",
+        "comparison": "18-gauge biopsy needle.",
+        "outcome": "Major complications, transfusion, gross hematuria, and diagnostic (glomerular) yield."
+      },
+      "inclusion": [
+        "RCTs and cohort studies (including case series) of real-time ultrasound-guided native kidney biopsy using 16G or 18G needles.",
+        "MEDLINE, Embase and CENTRAL searched through October 2024."
+      ],
+      "exclusion": [
+        "Pediatric or transplant (non-native) kidney biopsies; non-ultrasound-guided biopsies (implied by adult native, ultrasound-guided scope)."
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42185739/",
+        "doi": "https://doi.org/10.1080/0886022X.2026.2665032"
+      }
+    },
+    {
+      "pmid": "42249978",
+      "doi": "10.1007/s10741-026-10641-3",
+      "journal": "Heart Fail Rev",
+      "date": "2026-06-06",
+      "authors": "Costa TA, de Sousa LMT, Nogueira A, Chagas GCL, Abreu M, et al.",
+      "title": "Association between SGLT2 inhibitors and outcomes after heart transplant in patients with type 2 diabetes: A systematic review and meta-analysis",
+      "study_type": "Systematic review & meta-analysis (retrospective observational; n=3,564)",
+      "topic": "Transplant / SGLT2i",
+      "summary": "In heart-transplant recipients with type 2 diabetes, SGLT2 inhibitor use was associated with lower all-cause mortality (adjusted HR 0.69; unadjusted OR 0.43) without an increased risk of urinary tract infection (OR 0.77). Most included studies showed stable or improved eGFR with SGLT2i exposure, suggesting possible renal benefit. All included studies were retrospective observational, so findings are hypothesis-generating.",
+      "pico": {
+        "population": "Heart-transplant recipients with type 2 diabetes.",
+        "intervention": "SGLT2 inhibitor use.",
+        "comparison": "Non-use of SGLT2 inhibitors.",
+        "outcome": "All-cause mortality, urinary tract infection incidence, eGFR change from baseline."
+      },
+      "inclusion": [
+        "Studies of heart-transplant recipients with type 2 diabetes comparing SGLT2i users vs non-users.",
+        "PubMed, Cochrane and Embase."
+      ],
+      "exclusion": [
+        "Non-transplant populations; studies without an SGLT2i vs non-use comparison (implied). Note: all included studies were retrospective observational."
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42249978/",
+        "doi": "https://doi.org/10.1007/s10741-026-10641-3"
+      }
+    },
+    {
+      "pmid": "42185742",
+      "doi": "10.1080/0886022X.2026.2665050",
+      "journal": "Ren Fail",
+      "date": "2026-05-25",
+      "authors": "Tear AA, Fauziah N, Riswari SF, Purba AR, Akhlaq MM, et al.",
+      "title": "Prognostic factors in malaria patients with acute kidney injury: a systematic review and meta-analysis",
+      "study_type": "Systematic review & meta-analysis (16 observational studies, 1,104 patients)",
+      "topic": "AKI / Global health",
+      "summary": "Among malaria patients with acute kidney injury, mortality was most strongly associated with ventilator requirement (OR 30.4), ARDS (OR 18.5), hypotension (OR 18.2), neurological involvement (OR 12.8) and DIC (OR 12.0). Oliguria, jaundice, acidosis, hyperkalemia, hyponatremia and leukocytosis were also significant predictors. The findings support heightened vigilance when these features are present.",
+      "pico": {
+        "population": "Malaria patients with acute kidney injury.",
+        "intervention": "Clinical or laboratory abnormalities (prognostic exposures).",
+        "comparison": "Absence of those abnormalities.",
+        "outcome": "Mortality (odds ratios)."
+      },
+      "inclusion": [
+        "Observational studies reporting the association (as odds ratios) between clinical/laboratory abnormalities and mortality in malaria patients with AKI.",
+        "PubMed, Scopus, Ebsco and ScienceDirect; quality assessed with the Newcastle-Ottawa Scale."
+      ],
+      "exclusion": [
+        "Studies not reporting odds ratios; non-AKI or non-malaria populations (implied)."
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42185742/",
+        "doi": "https://doi.org/10.1080/0886022X.2026.2665050"
+      }
+    },
+    {
+      "pmid": "42150630",
+      "doi": "10.1016/j.diabres.2026.113327",
+      "journal": "Diabetes Res Clin Pract",
+      "date": "2026-05-17",
+      "authors": "Chichelero GM, Pessil LS, Viegas GM, Xavier Junior GF, Dos Reis MA, et al.",
+      "title": "Prevalence of diabetic kidney disease in Brazil: A systematic review with meta-analysis",
+      "study_type": "Systematic review & meta-analysis (46 studies, n=24,893)",
+      "topic": "Epidemiology / Diabetes",
+      "summary": "The pooled prevalence of diabetic kidney disease among Brazilian adults was 27.1%, rising to 33.3% in those with ≥10 years of diabetes versus 24.3% with shorter duration. Prevalence varied by diagnostic criterion (albuminuria only 32.3%, eGFR only 17.7%, combined 30.7%) and region (South 41.0%). High heterogeneity highlights the need for standardized definitions and multicenter surveillance.",
+      "pico": {
+        "population": "Brazilian adults with diabetes (type 1 or type 2).",
+        "intervention": "Diabetes (exposure of interest for prevalence).",
+        "comparison": "Subgroups by duration, diabetes type, diagnostic criteria and region.",
+        "outcome": "Pooled prevalence of diabetic kidney disease."
+      },
+      "inclusion": [
+        "Studies reporting prevalence of diabetic kidney disease in Brazil.",
+        "PubMed, EMBASE and LILACS through December 2025; PRISMA-guided, PROSPERO-registered."
+      ],
+      "exclusion": [
+        "Non-Brazilian populations; studies without extractable prevalence data (implied)."
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42150630/",
+        "doi": "https://doi.org/10.1016/j.diabres.2026.113327"
+      }
+    },
+    {
+      "pmid": "42249648",
+      "doi": "10.14814/phy2.70940",
+      "journal": "Physiol Rep",
+      "date": "2026-06-01",
+      "authors": "Asmar A, Akram M, Sorensen CM, Andresen JK, Jensen BL",
+      "title": "Acute GLP-1 infusion in male adults lowers circulating angiotensin II without changing angiotensinogen, ACE, ACE2, or angiotensin-(1-7) concentrations",
+      "study_type": "RCT — randomized placebo-controlled crossover (post-hoc analysis; n=8)",
+      "topic": "RAAS physiology / GLP-1",
+      "summary": "In a randomized placebo-controlled crossover study of 8 healthy men, acute GLP-1 infusion increased urinary sodium excretion and lowered plasma angiotensin II, but did not change angiotensinogen, ACE, ACE2 or angiotensin-(1-7) concentrations. The acute angiotensin II-lowering effect of GLP-1 therefore does not appear to depend on circulating concentrations of these RAAS components. Changes in enzyme activity independent of concentration cannot be excluded.",
+      "pico": {
+        "population": "8 healthy male adults on a 4-day sodium-standardized diet (steady state).",
+        "intervention": "3-hour GLP-1 infusion (1.5 pmol/kg/min) with IV saline volume expansion.",
+        "comparison": "Vehicle (placebo) with IV saline.",
+        "outcome": "Plasma angiotensin II, angiotensinogen, ACE, ACE2, Ang-(1-7); urinary sodium excretion."
+      },
+      "inclusion": [
+        "Healthy male adults on a sodium-standardized diet to steady state (from the parent randomized crossover study)."
+      ],
+      "exclusion": [
+        "Female participants; further exclusions not specified. Note: small mechanistic sample (n=8) and post-hoc/secondary analysis."
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42249648/",
+        "doi": "https://doi.org/10.14814/phy2.70940"
+      }
+    }
+  ]
+}

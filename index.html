@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>⚡ Nongjoe Dashboard</title>
     <!-- no external auth library needed — pure PKCE OAuth below -->
+    <script>
+    /* Apply saved/system theme before paint to avoid a flash. */
+    (function(){
+        try {
+            var t = localStorage.getItem('theme');
+            if(t !== 'light' && t !== 'dark'){
+                t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            }
+            document.documentElement.setAttribute('data-theme', t);
+        } catch(e){ document.documentElement.setAttribute('data-theme','dark'); }
+    })();
+    </script>
     <style>
         :root {
             --bg-base:   #05080f;
@@ -335,6 +347,174 @@
             .usage-card{flex-direction:column;text-align:center;}
             .frieren-widget{bottom:14px;right:14px;}
         }
+
+        /* ============================================================
+           THEME TOGGLE + TAB NAV + LIGHT THEME  (added upgrade)
+           ============================================================ */
+        html { color-scheme: dark; }
+        html[data-theme="light"] { color-scheme: light; }
+
+        /* ── Theme toggle button ── */
+        .theme-toggle {
+            background:rgba(168,197,255,0.08); border:1px solid var(--border);
+            color:var(--text-sec); width:34px; height:34px; border-radius:9px;
+            cursor:pointer; font-size:15px; line-height:1; display:inline-flex;
+            align-items:center; justify-content:center; transition:all .2s var(--ease);
+        }
+        .theme-toggle:hover { background:rgba(168,197,255,0.16); color:var(--text-pri); border-color:var(--border-hi); transform:translateY(-1px); }
+        .theme-toggle:focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
+
+        /* ── Tab navigation ── */
+        .tabnav {
+            position:sticky; top:46px; z-index:90;
+            display:flex; gap:6px; flex-wrap:wrap; margin:0 0 22px;
+            padding:8px; border-radius:var(--r-md);
+            background:var(--bg-card); border:1px solid var(--border);
+            backdrop-filter:blur(16px);
+        }
+        .tab-btn {
+            display:inline-flex; align-items:center; gap:7px;
+            background:transparent; border:1px solid transparent; color:var(--text-sec);
+            font-family:inherit; font-size:13px; font-weight:600;
+            padding:8px 15px; border-radius:9px; cursor:pointer;
+            transition:color .18s var(--ease), background .18s var(--ease), border-color .18s var(--ease);
+        }
+        .tab-btn:hover { color:var(--text-pri); background:rgba(168,197,255,0.07); }
+        .tab-btn.active { color:var(--text-pri); background:rgba(168,197,255,0.13); border-color:var(--border-hi); }
+        .tab-btn:focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
+        .tab-btn .tab-emoji { font-size:15px; }
+        .tab-btn .tab-count { font-size:10px; font-weight:700; padding:1px 6px; border-radius:20px; background:rgba(168,197,255,0.14); color:var(--text-sec); }
+
+        /* ── Tab panels ── */
+        .tab-panel { animation:panel-in .32s var(--ease); }
+        @keyframes panel-in { from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none} }
+        @media (prefers-reduced-motion: reduce){ .tab-panel{ animation:none; } }
+        .tab-panel > .section-title:first-child { margin-top:6px; }
+
+        /* ── Nephrology tab ── */
+        .nephro-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:var(--gap); }
+        .nephro-loading, .nephro-empty { padding:40px 20px; text-align:center; color:var(--text-mute); font-size:13px; }
+        .np-card {
+            background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-lg);
+            padding:18px; backdrop-filter:blur(16px);
+            display:flex; flex-direction:column; gap:13px;
+            transition:border-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
+        }
+        .np-card:hover { border-color:var(--border-hi); transform:translateY(-3px); box-shadow:0 10px 36px rgba(0,0,0,0.35); }
+        .np-top { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+        .np-topic { font-size:9.5px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; padding:3px 9px; border-radius:20px; background:rgba(168,197,255,0.12); border:1px solid var(--border-hi); color:var(--blue); }
+        .np-type { font-size:10px; color:var(--text-mute); font-weight:600; }
+        .np-title { font-size:15px; font-weight:700; line-height:1.34; color:var(--text-pri); text-wrap:balance; }
+        .np-meta { font-size:11px; color:var(--text-sec); display:flex; gap:6px; flex-wrap:wrap; align-items:baseline; }
+        .np-journal { color:var(--blue); font-weight:700; }
+        .np-authors { font-size:11px; color:var(--text-mute); font-style:italic; line-height:1.4; }
+        .np-summary { font-size:12.5px; line-height:1.6; color:var(--text-pri); }
+        .np-section-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--text-sec); margin-bottom:6px; }
+        .np-pico { display:grid; grid-template-columns:repeat(2,1fr); gap:7px; }
+        .np-pico-cell { background:rgba(168,197,255,0.05); border:1px solid var(--border); border-radius:var(--r-sm); padding:8px 10px; }
+        .np-pico-key { font-size:9.5px; font-weight:800; letter-spacing:0.8px; text-transform:uppercase; color:var(--purple); margin-bottom:3px; }
+        .np-pico-val { font-size:11.5px; line-height:1.45; color:var(--text-pri); }
+        .np-criteria { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+        @media(max-width:520px){ .np-criteria{ grid-template-columns:1fr; } .np-pico{ grid-template-columns:1fr; } }
+        .np-list { list-style:none; display:flex; flex-direction:column; gap:5px; }
+        .np-list li { font-size:11.5px; line-height:1.45; color:var(--text-sec); padding-left:16px; position:relative; }
+        .np-list.incl li::before { content:'＋'; position:absolute; left:0; color:var(--green); font-weight:700; }
+        .np-list.excl li::before { content:'－'; position:absolute; left:0; color:var(--red); font-weight:700; }
+        .np-links { display:flex; gap:8px; margin-top:2px; padding-top:12px; border-top:1px solid var(--border); }
+        .np-link { font-size:11px; font-weight:600; color:var(--blue); text-decoration:none; display:inline-flex; align-items:center; gap:5px; padding:5px 11px; border-radius:8px; background:rgba(168,197,255,0.08); border:1px solid var(--border); transition:all .18s; }
+        .np-link:hover { background:rgba(168,197,255,0.16); border-color:var(--border-hi); }
+        .np-attrib { grid-column:1/-1; font-size:10.5px; color:var(--text-mute); text-align:center; padding-top:6px; }
+
+        /* ============================================================
+           LIGHT THEME  (cool-neutral; market widgets stay dark "islands")
+           ============================================================ */
+        html[data-theme="light"] {
+            --bg-base:   #eaeef6;
+            --bg-layer:  #e0e6f1;
+            --bg-card:   rgba(255,255,255,0.86);
+            --bg-card-h: rgba(255,255,255,0.98);
+            --text-pri:  #1b2336;
+            --text-sec:  #44506a;
+            --text-mute: #5d6781;
+            --border:    rgba(27,45,90,0.13);
+            --border-hi: rgba(27,45,90,0.26);
+            --blue:  #2563c9; --purple:#7c4fd6; --cyan:#0b7d93;
+            --gold:  #a86f12; --green:#178a4c; --red:#d23b3b;
+            --green-glow: rgba(23,138,76,0.14);
+            --red-glow:   rgba(210,59,59,0.14);
+        }
+        html[data-theme="light"] body { background:var(--bg-base); }
+        html[data-theme="light"] body::before {
+            background:
+                radial-gradient(ellipse 55% 45% at 18% 65%, rgba(37,99,201,0.05) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 50% at 82% 18%, rgba(124,79,214,0.04) 0%, transparent 60%);
+        }
+        html[data-theme="light"] #bg-canvas { opacity:0.4; }
+        html[data-theme="light"] .header {
+            background:linear-gradient(135deg, rgba(255,255,255,0.95), rgba(232,238,248,0.9));
+            box-shadow:0 4px 24px rgba(27,45,90,0.07), inset 0 1px 0 rgba(255,255,255,0.6);
+        }
+        html[data-theme="light"] .tabnav,
+        html[data-theme="light"] .cal-card,
+        html[data-theme="light"] .drive-card,
+        html[data-theme="light"] .np-card,
+        html[data-theme="light"] .notif-card { box-shadow:0 2px 14px rgba(27,45,90,0.05); }
+
+        /* Dark "islands": market data cards + ticker keep the night palette so the
+           transparent dark-themed TradingView widgets stay legible. */
+        html[data-theme="light"] .ticker-wrap,
+        html[data-theme="light"] .asset-card {
+            --bg-card:   rgba(13,19,34,0.94);
+            --bg-card-h: rgba(20,28,50,0.98);
+            --text-pri:  #e8e4f3;
+            --text-sec:  #9aa0c0;
+            --text-mute: #6f6a88;
+            --border:    rgba(168,197,255,0.12);
+            --border-hi: rgba(168,197,255,0.28);
+            --blue:  #a8c5ff; --purple:#c9b8ff; --cyan:#7df3ff;
+            --gold:  #f0cc55; --green:#4ade80; --red:#f87171;
+            color:var(--text-pri);
+        }
+        html[data-theme="light"] .ticker-wrap { background:rgba(5,8,15,0.96); }
+
+        /* Calendar event chips → readable on a light surface */
+        html[data-theme="light"] .day-event.event   { background:rgba(37,99,201,0.12);  color:#1d4ed8; border-left-color:#2563c9; }
+        html[data-theme="light"] .day-event.task    { background:rgba(124,79,214,0.12);  color:#6b34c9; border-left-color:#7c4fd6; }
+        html[data-theme="light"] .day-event.flight  { background:rgba(11,125,147,0.12);  color:#0b6d80; border-left-color:#0b7d93; }
+        html[data-theme="light"] .day-event.work    { background:rgba(23,138,76,0.12);   color:#0f6b3a; border-left-color:#178a4c; }
+        html[data-theme="light"] .day-event.holiday { background:rgba(168,111,18,0.13);  color:#8a5a0c; border-left-color:#a86f12; }
+        html[data-theme="light"] .day-event.outlook { background:rgba(214,108,40,0.14);  color:#b3531a; border-left-color:#d66c28; }
+
+        /* Setup banners + connect buttons → readable in light mode */
+        html[data-theme="light"] .outlook-setup-banner { background:rgba(214,108,40,0.07); border-color:rgba(214,108,40,0.22); }
+        html[data-theme="light"] .outlook-setup-banner code,
+        html[data-theme="light"] .outlook-setup-banner a,
+        html[data-theme="light"] .outlook-setup-banner strong { color:#a8480f; }
+        html[data-theme="light"] .outlook-btn { background:rgba(214,108,40,0.1); border-color:rgba(214,108,40,0.35); color:#a8480f; }
+        html[data-theme="light"] .outlook-btn:hover { background:rgba(214,108,40,0.18); }
+        html[data-theme="light"] .outlook-btn.connected { background:rgba(23,138,76,0.1); border-color:rgba(23,138,76,0.35); color:#0f6b3a; }
+        html[data-theme="light"] .drive-setup-banner { background:rgba(37,99,201,0.06); border-color:rgba(37,99,201,0.18); }
+        html[data-theme="light"] .drive-setup-banner code,
+        html[data-theme="light"] .drive-setup-banner a,
+        html[data-theme="light"] .drive-setup-banner strong { color:#1d4ed8; }
+        html[data-theme="light"] .drive-btn { background:rgba(37,99,201,0.1); border-color:rgba(37,99,201,0.3); color:#1d4ed8; }
+        html[data-theme="light"] .drive-btn:hover { background:rgba(37,99,201,0.18); }
+        html[data-theme="light"] .drive-btn.connected { background:rgba(23,138,76,0.1); border-color:rgba(23,138,76,0.35); color:#0f6b3a; }
+        html[data-theme="light"] .cal-btn { background:rgba(37,99,201,0.06); }
+        html[data-theme="light"] .gcal-btn { background:rgba(37,99,201,0.1); border-color:rgba(37,99,201,0.3); color:#1d4ed8; }
+
+        /* Google Calendar connect button (matches outlook-btn footprint) */
+        .gcal-btn {
+            display:inline-flex; align-items:center; gap:6px;
+            background:rgba(74,222,128,0.1); border:1px solid rgba(74,222,128,0.3);
+            color:#a0ffc8; font-size:11px; font-weight:600;
+            padding:5px 12px; border-radius:8px; cursor:pointer;
+            transition:all 0.2s; white-space:nowrap;
+        }
+        .gcal-btn:hover { background:rgba(74,222,128,0.2); border-color:rgba(74,222,128,0.55); }
+        .gcal-btn.connected { background:rgba(74,222,128,0.14); border-color:rgba(74,222,128,0.4); color:#a0ffc8; cursor:default; }
+        .day-event.gcal { background:rgba(125,243,255,0.12); color:#9ff6ff; border-left:2px solid var(--cyan); }
+        html[data-theme="light"] .day-event.gcal { background:rgba(11,125,147,0.1); color:#0b6d80; border-left-color:#0b7d93; }
     </style>
 </head>
 <body>
@@ -377,10 +557,22 @@
             </div>
         </div>
         <div class="header-right">
+            <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle light / dark" aria-label="Toggle light or dark theme">🌙</button>
             <div class="clock" id="clock">--:--:--</div>
             <div class="clock-date" id="clock-date">--</div>
         </div>
     </header>
+
+    <!-- ===== TAB NAVIGATION ===== -->
+    <nav class="tabnav" id="tabnav" role="tablist" aria-label="Dashboard sections">
+        <button class="tab-btn" data-tab="markets"  role="tab" onclick="showTab('markets')"><span class="tab-emoji">📊</span> Markets</button>
+        <button class="tab-btn" data-tab="calendar" role="tab" onclick="showTab('calendar')"><span class="tab-emoji">📅</span> Calendar</button>
+        <button class="tab-btn" data-tab="nephro"   role="tab" onclick="showTab('nephro')"><span class="tab-emoji">🩺</span> Nephrology</button>
+        <button class="tab-btn" data-tab="drive"    role="tab" onclick="showTab('drive')"><span class="tab-emoji">📁</span> Drive</button>
+    </nav>
+
+    <!-- ===== MARKETS TAB ===== -->
+    <section class="tab-panel" data-tab="markets" id="panel-markets" role="tabpanel" style="display:block">
 
     <!-- Market status -->
     <div class="mkt-row">
@@ -388,9 +580,6 @@
         <div class="mkt-badge"><span class="dot" id="th-dot"></span><span id="th-label">SET Thailand</span></div>
         <div class="mkt-badge"><span class="dot open"></span><span>Crypto 24/7</span></div>
     </div>
-
-    <!-- Notifications -->
-    <div id="notif-container"></div>
 
     <!-- ===== CRYPTO ===== -->
     <h2 class="section-title">🔐 Cryptocurrency</h2>
@@ -542,11 +731,20 @@
     </div>
 
 
+    </section><!-- /markets -->
+
+    <!-- ===== CALENDAR TAB ===== -->
+    <section class="tab-panel" data-tab="calendar" id="panel-calendar" role="tabpanel" style="display:none">
+
+    <!-- Notifications (tomorrow's events) -->
+    <div id="notif-container"></div>
+
     <!-- ===== CALENDAR ===== -->
     <h2 class="section-title">📅 Calendar
         <span style="font-size:10px;color:var(--text-mute);font-weight:400;text-transform:none;letter-spacing:0;margin-left:6px;">
             sasiwongse.cha@gmail.com
         </span>
+        <span id="gcal-status-label" style="font-size:10px;color:var(--green);font-weight:600;text-transform:none;letter-spacing:0;margin-left:4px;display:none;">● live</span>
         <span id="outlook-status-label" style="font-size:10px;color:var(--text-mute);font-weight:400;text-transform:none;letter-spacing:0;margin-left:4px;display:none;">
             + kangaroo_chat@hotmail.com
         </span>
@@ -571,6 +769,7 @@
                 <button class="cal-btn" onclick="calPrev()">← Prev</button>
                 <button class="cal-btn" onclick="calToday()">Today</button>
                 <button class="cal-btn" onclick="calNext()">Next →</button>
+                <button class="gcal-btn" id="gcal-connect-btn" onclick="connectGoogleCalendar()" title="Live-sync your Google calendar">📅 Connect Google</button>
                 <button class="outlook-btn" id="outlook-connect-btn" onclick="toggleOutlookSetup()">📧 Connect Outlook</button>
             </div>
         </div>
@@ -586,6 +785,19 @@
         </div>
     </div>
 
+
+    </section><!-- /calendar -->
+
+    <!-- ===== NEPHROLOGY TAB ===== -->
+    <section class="tab-panel" data-tab="nephro" id="panel-nephro" role="tabpanel" style="display:none">
+        <h2 class="section-title">🩺 Nephrology Updates
+            <span id="nephro-meta" style="font-size:10px;color:var(--text-mute);font-weight:400;text-transform:none;letter-spacing:0;margin-left:8px;">loading…</span>
+        </h2>
+        <div id="nephro-list" class="nephro-grid"><div class="nephro-loading">⏳ Loading the latest nephrology literature…</div></div>
+    </section><!-- /nephro -->
+
+    <!-- ===== DRIVE TAB ===== -->
+    <section class="tab-panel" data-tab="drive" id="panel-drive" role="tabpanel" style="display:none">
 
     <!-- ===== GOOGLE DRIVE MONITOR ===== -->
     <h2 class="section-title">📁 Drive Monitor
@@ -625,6 +837,8 @@
             ⚠️ Browser notifications are blocked. Enable them in your browser settings to receive Drive alerts.
         </div>
     </div>
+
+    </section><!-- /drive -->
 
 </div><!-- /main -->
 
@@ -914,65 +1128,22 @@ async function fetchAllIndices(){
 
 
 /* ============================================================
-   CALENDAR EVENTS — sasiwongse.cha@gmail.com + Thai Holidays
-   Last synced: 2026-04-16
+   CALENDAR EVENTS — Thai public holidays only.
+   Personal shifts/tasks now load LIVE from Google Calendar
+   (Connect Google) and Outlook (Connect Outlook).
    ============================================================ */
 const EVENTS=[
-    /* ── March 2026 ── */
-    {date:'2026-03-01',summary:'Trip รุ่น',type:'event',time:'16:00',source:'gcal'},
-    {date:'2026-03-03',summary:'วันมาฆบูชา',type:'holiday',source:'holiday'},
-    {date:'2026-03-04',summary:'OPD200',type:'work',source:'gcal'},
-    {date:'2026-03-05',summary:'OPD200',type:'work',source:'gcal'},
-    {date:'2026-03-06',summary:'ผอ',type:'task',source:'gcal'},
-    {date:'2026-03-13',summary:'ผอ',type:'task',source:'gcal'},
-    {date:'2026-03-18',summary:'Rcpt',type:'event',time:'16:00',source:'gcal'},
-    {date:'2026-03-20',summary:'ผอ',type:'task',source:'gcal'},
-    {date:'2026-03-27',summary:'ผอ',type:'task',source:'gcal'},
-    /* ── April 2026 ── */
-    {date:'2026-04-03',summary:'ผอ',type:'task',source:'gcal'},
+    {date:'2026-03-03',summary:'วันมาฆบูชา 🙏',type:'holiday',source:'holiday'},
     {date:'2026-04-06',summary:'วันจักรี 🎌',type:'holiday',source:'holiday'},
-    {date:'2026-04-06',summary:'ผอ',type:'task',source:'gcal'},
-    {date:'2026-04-06',summary:'1653',type:'work',source:'gcal'},
-    {date:'2026-04-07',summary:'1653 ในเวลา',type:'work',source:'gcal'},
-    {date:'2026-04-09',summary:'1653',type:'work',source:'gcal'},
-    {date:'2026-04-10',summary:'ผอ',type:'task',source:'gcal'},
-    {date:'2026-04-12',summary:'ผอ',type:'task',source:'gcal'},
     {date:'2026-04-13',summary:'วันสงกรานต์ 💦',type:'holiday',source:'holiday'},
     {date:'2026-04-14',summary:'วันสงกรานต์ 💦',type:'holiday',source:'holiday'},
     {date:'2026-04-15',summary:'วันสงกรานต์ 💦',type:'holiday',source:'holiday'},
-    {date:'2026-04-17',summary:'ผอ',type:'task',source:'gcal'},
-    {date:'2026-04-18',summary:'1653',type:'work',source:'gcal'},
-    {date:'2026-04-21',summary:'1653 ในเวลา',type:'work',source:'gcal'},
-    {date:'2026-04-22',summary:'1653',type:'work',source:'gcal'},
-    {date:'2026-04-24',summary:'ผอ',type:'task',source:'gcal'},
-    {date:'2026-04-24',summary:'1653 ในเวลา',type:'work',source:'gcal'},
-    {date:'2026-04-30',summary:'2500',type:'work',source:'gcal'},
-    /* ── May 2026 ── */
     {date:'2026-05-01',summary:'วันแรงงาน 🎉',type:'holiday',source:'holiday'},
-    {date:'2026-05-01',summary:'ผอ',type:'task',source:'gcal'},
     {date:'2026-05-04',summary:'วันฉัตรมงคล 🎌',type:'holiday',source:'holiday'},
-    {date:'2026-05-04',summary:'1666',type:'work',source:'gcal'},
-    {date:'2026-05-07',summary:'✈ Flight → Surat Thani (FD3239)',type:'flight',time:'11:30',loc:'Bangkok DMK',source:'gcal'},
-    {date:'2026-05-08',summary:'ผอ',type:'task',source:'gcal'},
-    {date:'2026-05-08',summary:'✈ Flight → Bangkok (FD3332)',type:'flight',time:'19:05',loc:'Surat Thani URT',source:'gcal'},
     {date:'2026-05-11',summary:'วันพืชมงคล 🌾',type:'holiday',source:'holiday'},
-    {date:'2026-05-11',summary:'ผอ',type:'task',source:'gcal'},
-    {date:'2026-05-14',summary:'1666',type:'work',source:'gcal'},
-    {date:'2026-05-15',summary:'ผอ',type:'task',source:'gcal'},
-    {date:'2026-05-17',summary:'1667MR',type:'work',source:'gcal'},
-    {date:'2026-05-20',summary:'ผอ',type:'task',source:'gcal'},
-    {date:'2026-05-22',summary:'ผอ',type:'task',source:'gcal'},
-    {date:'2026-05-24',summary:'1666',type:'work',source:'gcal'},
-    {date:'2026-05-27',summary:'ผอ',type:'task',source:'gcal'},
-    {date:'2026-05-29',summary:'ผอ',type:'task',source:'gcal'},
     {date:'2026-05-31',summary:'วันวิสาขบูชา 🙏',type:'holiday',source:'holiday'},
-    /* ── June 2026 ── */
     {date:'2026-06-01',summary:'หยุดชดเชย วิสาขบูชา',type:'holiday',source:'holiday'},
     {date:'2026-06-03',summary:'วันพระราชินี 🎌',type:'holiday',source:'holiday'},
-    {date:'2026-06-10',summary:'OPD200',type:'work',source:'gcal'},
-    {date:'2026-06-17',summary:'OPD200',type:'work',source:'gcal'},
-    {date:'2026-06-26',summary:'OPD200',type:'work',source:'gcal'},
-    /* ── July–August 2026 ── */
     {date:'2026-07-28',summary:'วันเฉลิมพระชนมพรรษา ร.10 🎌',type:'holiday',source:'holiday'},
     {date:'2026-07-29',summary:'วันอาสาฬหบูชา 🙏',type:'holiday',source:'holiday'},
     {date:'2026-08-12',summary:'วันแม่แห่งชาติ 💛',type:'holiday',source:'holiday'},
@@ -1396,6 +1567,35 @@ async function connectOutlookOAuth(){
     }, 500);
 }
 
+// ── Silent token refresh using the stored refresh_token.
+//    Fixes the bug where Outlook events vanished ~1h after connecting
+//    because the saved refresh_token was never used. ──
+async function refreshOutlookToken(){
+    let d; try { d = JSON.parse(localStorage.getItem(OUTLOOK_TOKEN_KEY) || 'null'); } catch { d = null; }
+    if(!d || !d.refresh_token) return null;
+    try {
+        const r = await fetch('https://login.microsoftonline.com/consumers/oauth2/v2.0/token', {
+            method:'POST',
+            headers:{ 'Content-Type':'application/x-www-form-urlencoded' },
+            body:new URLSearchParams({
+                client_id:     getOutlookClientId(),
+                grant_type:    'refresh_token',
+                refresh_token: d.refresh_token,
+                scope:         'Calendars.Read User.Read offline_access',
+            })
+        });
+        if(!r.ok) return null;
+        const td = await r.json();
+        if(!td.access_token) return null;
+        localStorage.setItem(OUTLOOK_TOKEN_KEY, JSON.stringify({
+            token:         td.access_token,
+            refresh_token: td.refresh_token || d.refresh_token,
+            expires:       Date.now() + (td.expires_in - 60) * 1000,
+        }));
+        return td.access_token;
+    } catch { return null; }
+}
+
 async function fetchOutlookCalendar(token){
     try {
         const now   = new Date();
@@ -1408,6 +1608,9 @@ async function fetchOutlookCalendar(token){
         );
         if(!resp.ok){
             if(resp.status === 401){
+                // Try a silent refresh before giving up.
+                const nt = await refreshOutlookToken();
+                if(nt){ return fetchOutlookCalendar(nt); }
                 localStorage.removeItem(OUTLOOK_TOKEN_KEY);
                 setOutlookBtnState('idle', '📧 Connect Outlook');
                 alert('Outlook session expired. Please connect again.');
@@ -1465,11 +1668,14 @@ function updateOutlookUI(email){
     if(banner) banner.style.display = 'none';
 }
 
-// Auto-reconnect on load if a valid cached token exists
+// Auto-reconnect on load: use the cached token, or silently refresh it.
 (async function autoReconnectOutlook(){
-    const token = tryLoadStoredToken();
+    let token = tryLoadStoredToken();
+    if(!token) token = await refreshOutlookToken();
     if(!token) return;
-    try { await fetchOutlookCalendar(token); } catch { /* silent */ }
+    setOutlookBtnState('loading', '⏳ Connecting…');
+    try { await fetchOutlookCalendar(token); }
+    catch { setOutlookBtnState('idle', '📧 Connect Outlook'); }
 })();
 
 /* ============================================================
@@ -1791,6 +1997,225 @@ function refreshDrive(){
         const el = document.getElementById('drive-notif-denied');
         if(el) el.style.display = '';
     }
+})();
+
+/* ============================================================
+   THEME TOGGLE  (light / dark)
+   ============================================================ */
+function applyThemeIcon(){
+    const t = document.documentElement.getAttribute('data-theme');
+    const b = document.getElementById('theme-toggle');
+    if(b) b.textContent = (t === 'light') ? '☀️' : '🌙';
+}
+function toggleTheme(){
+    const cur  = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    const next = cur === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+    applyThemeIcon();
+}
+applyThemeIcon();
+
+/* ============================================================
+   TAB NAVIGATION
+   Markets stays visible at parse so the TradingView widgets
+   inside it initialise with a real width; we only switch away
+   after load (deep-link / restored tab) once they've rendered.
+   ============================================================ */
+const TABS = ['markets','calendar','nephro','drive'];
+function showTab(t, opts){
+    opts = opts || {};
+    if(!TABS.includes(t)) t = 'markets';
+    document.querySelectorAll('.tab-panel').forEach(p => { p.style.display = (p.dataset.tab === t) ? 'block' : 'none'; });
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === t));
+    try { localStorage.setItem('activeTab', t); } catch(e){}
+    if(opts.hash !== false){
+        history.replaceState(null, '', t === 'markets' ? (location.pathname + location.search) : '#' + t);
+    }
+    if(t === 'nephro') loadNephro();
+}
+(function initTabs(){
+    let target = (location.hash || '').replace('#','') || (function(){ try{return localStorage.getItem('activeTab');}catch(e){return null;} })() || 'markets';
+    if(!TABS.includes(target)) target = 'markets';
+    if(target === 'markets'){
+        showTab('markets', {hash:false});
+    } else {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === 'markets'));
+        window.addEventListener('load', () => setTimeout(() => showTab(target, {hash:false}), 1200));
+    }
+    window.addEventListener('hashchange', () => {
+        const h = (location.hash || '').replace('#','');
+        if(TABS.includes(h)) showTab(h, {hash:false});
+    });
+})();
+
+/* ============================================================
+   NEPHROLOGY UPDATES  (reads nephro.json, refreshed by a daily job)
+   ============================================================ */
+let nephroLoaded = false;
+async function loadNephro(){
+    if(nephroLoaded) return;
+    nephroLoaded = true;
+    const list = document.getElementById('nephro-list');
+    try {
+        const r = await fetch('nephro.json', {cache:'no-cache'});
+        if(!r.ok) throw new Error('HTTP ' + r.status);
+        renderNephro(await r.json());
+    } catch(e){
+        nephroLoaded = false;
+        if(list) list.innerHTML = `<div class="nephro-empty">Couldn’t load the feed (${escHtml(e.message)}).<br><button class="cal-btn" style="margin-top:10px" onclick="loadNephro()">Retry</button></div>`;
+    }
+}
+function renderNephro(data){
+    const list = document.getElementById('nephro-list');
+    const meta = document.getElementById('nephro-meta');
+    const arts = data.articles || [];
+    if(meta) meta.textContent = data.meta ? `${data.meta.window || ''} · ${arts.length} articles` : `${arts.length} articles`;
+    if(!arts.length){ list.innerHTML = '<div class="nephro-empty">No articles in the latest update.</div>'; return; }
+    const cell = (k,v) => v ? `<div class="np-pico-cell"><div class="np-pico-key">${k}</div><div class="np-pico-val">${escHtml(v)}</div></div>` : '';
+    const li   = (arr) => (arr || []).map(x => `<li>${escHtml(x)}</li>`).join('');
+    list.innerHTML = arts.map(a => {
+        const p = a.pico || {}, L = a.links || {};
+        return `<article class="np-card">
+            <div class="np-top">
+                ${a.topic ? `<span class="np-topic">${escHtml(a.topic)}</span>` : ''}
+                <span class="np-type">${escHtml(a.study_type || '')}</span>
+            </div>
+            <div class="np-title">${escHtml(a.title || '')}</div>
+            <div class="np-meta"><span class="np-journal">${escHtml(a.journal || '')}</span><span>·</span><span>${escHtml(a.date || '')}</span></div>
+            <div class="np-authors">${escHtml(a.authors || '')}</div>
+            <div class="np-summary">${escHtml(a.summary || '')}</div>
+            <div>
+                <div class="np-section-label">PICO</div>
+                <div class="np-pico">
+                    ${cell('Population', p.population)}
+                    ${cell('Intervention', p.intervention)}
+                    ${cell('Comparison', p.comparison)}
+                    ${cell('Outcome', p.outcome)}
+                </div>
+            </div>
+            <div class="np-criteria">
+                <div><div class="np-section-label">Inclusion</div><ul class="np-list incl">${li(a.inclusion)}</ul></div>
+                <div><div class="np-section-label">Exclusion</div><ul class="np-list excl">${li(a.exclusion)}</ul></div>
+            </div>
+            <div class="np-links">
+                ${L.pubmed ? `<a class="np-link" href="${escHtml(L.pubmed)}" target="_blank" rel="noopener noreferrer">PubMed ↗</a>` : ''}
+                ${L.doi ? `<a class="np-link" href="${escHtml(L.doi)}" target="_blank" rel="noopener noreferrer">DOI ↗</a>` : ''}
+            </div>
+        </article>`;
+    }).join('') + `<div class="np-attrib">Source: ${escHtml((data.meta && data.meta.source) || 'PubMed (NLM)')} · Updated ${escHtml((data.meta && data.meta.generated_at) || '')}</div>`;
+}
+
+/* ============================================================
+   GOOGLE CALENDAR — live read (mirrors the Drive integration)
+   Uses the same Google OAuth client ID saved by Connect Drive,
+   plus the calendar.readonly scope. Replaces the old hardcoded
+   shift list so the dashboard always matches your real calendar.
+   ============================================================ */
+let gcalClient = null;
+function setGcalBtn(state, text){
+    const b = document.getElementById('gcal-connect-btn');
+    if(!b) return;
+    b.textContent = text;
+    b.disabled = (state === 'loading');
+    b.classList.toggle('connected', state === 'connected');
+    b.style.opacity = state === 'loading' ? '0.6' : '1';
+}
+function classifyGcal(summary){
+    const t = summary || '', lo = t.toLowerCase();
+    if(/✈|flight|บิน/.test(t)) return 'flight';
+    if(/opd|ward|\bmr\b|on[- ]?call|round|รับปรึกษา|เวร|ประชุม|1\d{3}|2\d{3}/.test(lo)) return 'work';
+    if(/ผอ/.test(t)) return 'task';
+    return 'event';
+}
+function loadGis(cb){
+    if(typeof google !== 'undefined' && google.accounts && google.accounts.oauth2) return cb();
+    const existing = document.querySelector('script[src="https://accounts.google.com/gsi/client"]');
+    if(existing){ existing.addEventListener('load', cb, {once:true}); return; }
+    const s = document.createElement('script');
+    s.src = 'https://accounts.google.com/gsi/client';
+    s.onload = cb; s.onerror = () => {};
+    document.head.appendChild(s);
+}
+function connectGoogleCalendar(isAuto){
+    const clientId = (localStorage.getItem(GDRIVE_CLIENT_KEY) || '').trim()
+                  || (document.getElementById('drive-client-id-input')?.value.trim() || '');
+    if(!clientId){
+        if(!isAuto) alert('First connect Google Drive (Drive tab) so your Google Client ID is saved — the calendar uses the same Google project.\n\nThen, in Google Cloud Console, enable the “Google Calendar API” for that project and click Connect Google again.');
+        return;
+    }
+    if(!isAuto) setGcalBtn('loading', '⏳ Connecting…');
+    loadGis(() => {
+        try {
+            gcalClient = google.accounts.oauth2.initTokenClient({
+                client_id: clientId,
+                scope: 'https://www.googleapis.com/auth/calendar.readonly',
+                error_callback: (err) => {
+                    setGcalBtn('idle', '📅 Connect Google');
+                    if(!isAuto && err && err.type !== 'popup_closed'){
+                        const m = err.message || err.type || '';
+                        if(/origin|authorized/i.test(m)) alert('❌ Origin not authorised.\n\nIn Google Cloud Console → OAuth Client, add to Authorized JavaScript origins:\n  ' + window.location.origin + '\n\nSave and try again.');
+                        else alert('Google Calendar auth error: ' + m);
+                    }
+                },
+                callback: async (tr) => {
+                    if(tr.error){ setGcalBtn('idle', '📅 Connect Google'); return; }
+                    await fetchGoogleCalendar(tr.access_token, isAuto);
+                },
+            });
+            gcalClient.requestAccessToken(isAuto ? {prompt:''} : undefined);
+        } catch(e){
+            setGcalBtn('idle', '📅 Connect Google');
+            if(!isAuto) alert('Could not initialise Google auth:\n' + e.message);
+        }
+    });
+}
+async function fetchGoogleCalendar(token, isAuto){
+    try {
+        const now = new Date();
+        const timeMin = new Date(now.getFullYear(), now.getMonth() - 1, 1).toISOString();
+        const timeMax = new Date(now.getFullYear(), now.getMonth() + 4, 0).toISOString();
+        const url = 'https://www.googleapis.com/calendar/v3/calendars/primary/events?' + new URLSearchParams({
+            timeMin, timeMax, singleEvents:'true', orderBy:'startTime', maxResults:'250',
+        });
+        const r = await fetch(url, { headers:{ Authorization:'Bearer ' + token } });
+        if(!r.ok){
+            setGcalBtn('idle', '📅 Connect Google');
+            if(r.status === 403 && !isAuto) alert('Google Calendar API returned 403.\nEnable the “Google Calendar API” for your project in Google Cloud Console, then try again.');
+            else if(!isAuto) alert('Google Calendar error ' + r.status);
+            return;
+        }
+        const data = await r.json();
+        const incoming = (data.items || [])
+            .filter(e => e.status !== 'cancelled' && (e.start?.date || e.start?.dateTime))
+            .map(e => {
+                const allDay = !!e.start.date;
+                const date = allDay ? e.start.date
+                    : new Date(e.start.dateTime).toLocaleDateString('sv-SE', { timeZone:'Asia/Bangkok' });
+                const time = allDay ? null
+                    : new Date(e.start.dateTime).toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit', timeZone:'Asia/Bangkok' });
+                return { date, summary: e.summary || '(No title)', type: classifyGcal(e.summary), time, loc: e.location || '', source: 'gcal' };
+            });
+        for(let i = EVENTS.length - 1; i >= 0; i--){ if(EVENTS[i].source === 'gcal') EVENTS.splice(i, 1); }
+        EVENTS.push(...incoming);
+        EVENTS.sort((a,b) => a.date.localeCompare(b.date));
+        setGcalBtn('connected', '✅ Google Synced');
+        const lab = document.getElementById('gcal-status-label'); if(lab) lab.style.display = 'inline';
+        try { localStorage.setItem('gcalConnected', '1'); } catch(e){}
+        renderCal(); renderNotifs();
+    } catch(e){
+        setGcalBtn('idle', '📅 Connect Google');
+        if(!isAuto) alert('Could not load Google calendar:\n' + e.message);
+    }
+}
+// Auto-connect on load if previously connected and a client ID is saved.
+(function initGcal(){
+    try {
+        if(localStorage.getItem('gcalConnected') === '1' && localStorage.getItem(GDRIVE_CLIENT_KEY)){
+            connectGoogleCalendar(true);
+            setInterval(() => { if(gcalClient) gcalClient.requestAccessToken({prompt:''}); }, 15 * 60 * 1000);
+        }
+    } catch(e){}
 })();
 </script>
 </body>
