@@ -426,7 +426,7 @@
         .np-attrib { grid-column:1/-1; font-size:10.5px; color:var(--text-mute); text-align:center; padding-top:6px; }
 
         /* ============================================================
-           LIGHT THEME  (cool-neutral; market widgets stay dark "islands")
+           LIGHT THEME  (cool-neutral; TradingView widgets re-theme to match)
            ============================================================ */
         html[data-theme="light"] {
             --bg-base:   #eaeef6;
@@ -460,22 +460,9 @@
         html[data-theme="light"] .np-card,
         html[data-theme="light"] .notif-card { box-shadow:0 2px 14px rgba(27,45,90,0.05); }
 
-        /* Dark "islands": market data cards + ticker keep the night palette so the
-           transparent dark-themed TradingView widgets stay legible. */
-        html[data-theme="light"] .ticker-wrap,
-        html[data-theme="light"] .asset-card {
-            --bg-card:   rgba(13,19,34,0.94);
-            --bg-card-h: rgba(20,28,50,0.98);
-            --text-pri:  #e8e4f3;
-            --text-sec:  #9aa0c0;
-            --text-mute: #6f6a88;
-            --border:    rgba(168,197,255,0.12);
-            --border-hi: rgba(168,197,255,0.28);
-            --blue:  #a8c5ff; --purple:#c9b8ff; --cyan:#7df3ff;
-            --gold:  #f0cc55; --green:#4ade80; --red:#f87171;
-            color:var(--text-pri);
-        }
-        html[data-theme="light"] .ticker-wrap { background:rgba(5,8,15,0.96); }
+        /* Ticker bar follows the theme (light bar in light mode) so the
+           TradingView widgets match the dashboard instead of inverting. */
+        html[data-theme="light"] .ticker-wrap { background:rgba(247,249,252,0.94); border-bottom-color:var(--border); }
 
         /* Calendar event chips → readable on a light surface */
         html[data-theme="light"] .day-event.event   { background:rgba(37,99,201,0.12);  color:#1d4ed8; border-left-color:#2563c9; }
@@ -522,22 +509,8 @@
 
 <!-- ===== TRADINGVIEW TICKER TAPE ===== -->
 <div class="ticker-wrap">
-    <div class="tradingview-widget-container" style="height:46px">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
-        {"symbols":[
-            {"proName":"BINANCE:BTCUSDT","title":"BTC/USD"},
-            {"proName":"BINANCE:ETHUSDT","title":"ETH/USD"},
-            {"proName":"NASDAQ:AMD","title":"AMD"},
-            {"proName":"NASDAQ:NVDA","title":"NVDA"},
-            {"proName":"NASDAQ:COIN","title":"COIN"},
-            {"proName":"COMEX:GC1!","title":"Gold"},
-            {"proName":"SP:SPX","title":"S&P 500"},
-            {"proName":"NASDAQ:IXIC","title":"NASDAQ"},
-            {"proName":"SET:SET","title":"SET Thailand"}
-        ],"showSymbolLogo":true,"colorTheme":"dark","isTransparent":true,"displayMode":"adaptive","locale":"en"}
-        </script>
-    </div>
+    <!-- Mounted by mountTicker() with the active theme's colorTheme -->
+    <div class="tradingview-widget-container" id="tv-ticker" style="height:46px"></div>
 </div>
 
 <!-- ===== MAIN ===== -->
@@ -592,12 +565,7 @@
                 <span class="card-badge">CRYPTO</span>
             </div>
             <div class="tv-widget-wrap">
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                    {"symbol":"BINANCE:BTCUSDT","width":"100%","height":175,"locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"largeChartUrl":""}
-                    </script>
-                </div>
+                <div class="tradingview-widget-container" data-tv-symbol="BINANCE:BTCUSDT"></div>
             </div>
         </div>
 
@@ -608,12 +576,7 @@
                 <span class="card-badge">CRYPTO</span>
             </div>
             <div class="tv-widget-wrap">
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                    {"symbol":"BINANCE:ETHUSDT","width":"100%","height":175,"locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"largeChartUrl":""}
-                    </script>
-                </div>
+                <div class="tradingview-widget-container" data-tv-symbol="BINANCE:ETHUSDT"></div>
             </div>
         </div>
 
@@ -630,12 +593,7 @@
                 <span class="card-badge">STOCK</span>
             </div>
             <div class="tv-widget-wrap">
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                    {"symbol":"NASDAQ:AMD","width":"100%","height":175,"locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"largeChartUrl":""}
-                    </script>
-                </div>
+                <div class="tradingview-widget-container" data-tv-symbol="NASDAQ:AMD"></div>
             </div>
         </div>
 
@@ -646,12 +604,7 @@
                 <span class="card-badge">STOCK</span>
             </div>
             <div class="tv-widget-wrap">
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                    {"symbol":"NASDAQ:NVDA","width":"100%","height":175,"locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"largeChartUrl":""}
-                    </script>
-                </div>
+                <div class="tradingview-widget-container" data-tv-symbol="NASDAQ:NVDA"></div>
             </div>
         </div>
 
@@ -662,12 +615,7 @@
                 <span class="card-badge">STOCK</span>
             </div>
             <div class="tv-widget-wrap">
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                    {"symbol":"NASDAQ:COIN","width":"100%","height":175,"locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"largeChartUrl":""}
-                    </script>
-                </div>
+                <div class="tradingview-widget-container" data-tv-symbol="NASDAQ:COIN"></div>
             </div>
         </div>
 
@@ -678,12 +626,7 @@
                 <span class="card-badge">COMMODITY</span>
             </div>
             <div class="tv-widget-wrap">
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js" async>
-                    {"symbol":"OANDA:XAUUSD","width":"100%","height":175,"locale":"en","dateRange":"1D","colorTheme":"dark","isTransparent":true,"largeChartUrl":""}
-                    </script>
-                </div>
+                <div class="tradingview-widget-container" data-tv-symbol="OANDA:XAUUSD"></div>
             </div>
         </div>
 
@@ -2000,6 +1943,43 @@ function refreshDrive(){
 })();
 
 /* ============================================================
+   TRADINGVIEW WIDGETS — re-themed to match the dashboard.
+   The embeds bake colorTheme at load, so we (re)mount them when the
+   theme changes. Minis live in the Markets tab; we only mount them
+   while that tab is visible (a hidden 0-width container renders blank).
+   ============================================================ */
+const TV_MINI_SRC   = 'https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js';
+const TV_TICKER_SRC = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+const TV_TICKER_SYMBOLS = [
+    {proName:'BINANCE:BTCUSDT',title:'BTC/USD'},{proName:'BINANCE:ETHUSDT',title:'ETH/USD'},
+    {proName:'NASDAQ:AMD',title:'AMD'},{proName:'NASDAQ:NVDA',title:'NVDA'},{proName:'NASDAQ:COIN',title:'COIN'},
+    {proName:'COMEX:GC1!',title:'Gold'},{proName:'SP:SPX',title:'S&P 500'},{proName:'NASDAQ:IXIC',title:'NASDAQ'},
+    {proName:'SET:SET',title:'SET Thailand'},
+];
+let tvMiniTheme = null;   // colorTheme the mini charts are currently mounted with
+function currentTheme(){ return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark'; }
+function mountTV(container, config, src){
+    container.innerHTML = '';
+    const w = document.createElement('div'); w.className = 'tradingview-widget-container__widget'; container.appendChild(w);
+    const s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = src;
+    s.text = JSON.stringify(config); container.appendChild(s);
+}
+function mountTicker(theme){
+    const c = document.getElementById('tv-ticker'); if(!c) return;
+    mountTV(c, { symbols:TV_TICKER_SYMBOLS, showSymbolLogo:true, colorTheme:theme, isTransparent:true, displayMode:'adaptive', locale:'en' }, TV_TICKER_SRC);
+}
+function mountMinis(theme){
+    const panel = document.getElementById('panel-markets');
+    if(!panel || panel.style.display === 'none') return;   // hidden → would render blank
+    if(tvMiniTheme === theme) return;                       // already mounted at this theme
+    document.querySelectorAll('[data-tv-symbol]').forEach(c => {
+        mountTV(c, { symbol:c.dataset.tvSymbol, width:'100%', height:175, locale:'en', dateRange:'1D', colorTheme:theme, isTransparent:true, largeChartUrl:'' }, TV_MINI_SRC);
+    });
+    tvMiniTheme = theme;
+}
+function rethemeTradingView(){ const t = currentTheme(); mountTicker(t); mountMinis(t); }
+
+/* ============================================================
    THEME TOGGLE  (light / dark)
    ============================================================ */
 function applyThemeIcon(){
@@ -2013,6 +1993,7 @@ function toggleTheme(){
     document.documentElement.setAttribute('data-theme', next);
     try { localStorage.setItem('theme', next); } catch(e){}
     applyThemeIcon();
+    rethemeTradingView();
 }
 applyThemeIcon();
 
@@ -2033,6 +2014,7 @@ function showTab(t, opts){
         history.replaceState(null, '', t === 'markets' ? (location.pathname + location.search) : '#' + t);
     }
     if(t === 'nephro') loadNephro();
+    if(t === 'markets') mountMinis(currentTheme());
 }
 (function initTabs(){
     let target = (location.hash || '').replace('#','') || (function(){ try{return localStorage.getItem('activeTab');}catch(e){return null;} })() || 'markets';
@@ -2217,6 +2199,10 @@ async function fetchGoogleCalendar(token, isAuto){
         }
     } catch(e){}
 })();
+
+/* Mount the TradingView widgets in the active theme on first load. */
+mountTicker(currentTheme());
+mountMinis(currentTheme());
 </script>
 </body>
 </html>
