@@ -386,36 +386,48 @@
         .tab-panel > .section-title:first-child { margin-top:6px; }
 
         /* ── Nephrology tab ── */
-        .nephro-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:var(--gap); }
+        .nephro-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:var(--gap); }
         .nephro-loading, .nephro-empty { padding:40px 20px; text-align:center; color:var(--text-mute); font-size:13px; }
         .np-card {
             background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-lg);
-            padding:18px; backdrop-filter:blur(16px);
-            display:flex; flex-direction:column; gap:13px;
+            padding:20px 20px 18px; backdrop-filter:blur(16px);
+            display:flex; flex-direction:column; gap:15px;
             transition:border-color .25s var(--ease), transform .25s var(--ease), box-shadow .25s var(--ease);
         }
         .np-card:hover { border-color:var(--border-hi); transform:translateY(-3px); box-shadow:0 10px 36px rgba(0,0,0,0.35); }
         .np-top { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-        .np-topic { font-size:9.5px; font-weight:700; letter-spacing:0.6px; text-transform:uppercase; padding:3px 9px; border-radius:20px; background:rgba(168,197,255,0.12); border:1px solid var(--border-hi); color:var(--blue); }
-        .np-type { font-size:10px; color:var(--text-mute); font-weight:600; }
-        .np-title { font-size:15px; font-weight:700; line-height:1.34; color:var(--text-pri); text-wrap:balance; }
-        .np-meta { font-size:11px; color:var(--text-sec); display:flex; gap:6px; flex-wrap:wrap; align-items:baseline; }
-        .np-journal { color:var(--blue); font-weight:700; }
-        .np-authors { font-size:11px; color:var(--text-mute); font-style:italic; line-height:1.4; }
-        .np-summary { font-size:12.5px; line-height:1.6; color:var(--text-pri); }
-        .np-section-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--text-sec); margin-bottom:6px; }
-        .np-pico { display:grid; grid-template-columns:repeat(2,1fr); gap:7px; }
-        .np-pico-cell { background:rgba(168,197,255,0.05); border:1px solid var(--border); border-radius:var(--r-sm); padding:8px 10px; }
-        .np-pico-key { font-size:9.5px; font-weight:800; letter-spacing:0.8px; text-transform:uppercase; color:var(--purple); margin-bottom:3px; }
-        .np-pico-val { font-size:11.5px; line-height:1.45; color:var(--text-pri); }
-        .np-criteria { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+        .np-topic { font-size:10px; font-weight:800; letter-spacing:0.7px; text-transform:uppercase; padding:3px 10px; border-radius:20px; background:rgba(168,197,255,0.14); border:1px solid var(--border-hi); color:var(--blue); }
+        .np-type { font-size:10.5px; color:var(--text-mute); font-weight:600; }
+        /* Title — top of the hierarchy: largest + heaviest. */
+        .np-title { font-size:17px; font-weight:700; line-height:1.4; letter-spacing:-0.01em; color:var(--text-pri); text-wrap:balance; }
+        .np-meta { font-size:11.5px; color:var(--text-sec); display:flex; gap:7px; flex-wrap:wrap; align-items:baseline; }
+        .np-journal { color:var(--gold); font-weight:800; letter-spacing:0.2px; }
+        .np-authors { font-size:11px; color:var(--text-mute); font-style:italic; line-height:1.45; }
+        /* Summary — the read. Bigger, airier line-height, full-contrast ink. */
+        .np-summary { font-size:13.5px; line-height:1.72; color:var(--text-pri); }
+        /* Colour-coded section labels for fast scanning. */
+        .np-section-label { font-size:10px; font-weight:800; text-transform:uppercase; letter-spacing:1.2px; color:var(--text-sec); margin-bottom:7px; }
+        .np-section-label.sum  { color:var(--cyan); }
+        .np-section-label.pico { color:var(--purple); }
+        .np-section-label.incl { color:var(--green); }
+        .np-section-label.excl { color:var(--red); }
+        /* Highlighted effect sizes (HR/OR/RR/CI/p) so the numbers that matter pop. */
+        .np-stat { font-weight:800; color:#bdecff; background:rgba(125,243,255,0.13); padding:0 4px; border-radius:4px; font-variant-numeric:tabular-nums; white-space:nowrap; }
+        html[data-theme="light"] .np-stat { color:#0a6173; background:rgba(11,125,147,0.13); }
+        /* Hairline-separated blocks build rhythm + hierarchy. */
+        .np-block { border-top:1px solid var(--border); padding-top:14px; }
+        .np-pico { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
+        .np-pico-cell { background:rgba(168,197,255,0.06); border:1px solid var(--border); border-radius:var(--r-sm); padding:9px 11px; }
+        .np-pico-key { font-size:9.5px; font-weight:800; letter-spacing:0.8px; text-transform:uppercase; color:var(--purple); margin-bottom:4px; }
+        .np-pico-val { font-size:12px; line-height:1.5; color:var(--text-pri); }
+        .np-criteria { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
         @media(max-width:520px){ .np-criteria{ grid-template-columns:1fr; } .np-pico{ grid-template-columns:1fr; } }
-        .np-list { list-style:none; display:flex; flex-direction:column; gap:5px; }
-        .np-list li { font-size:11.5px; line-height:1.45; color:var(--text-sec); padding-left:16px; position:relative; }
-        .np-list.incl li::before { content:'＋'; position:absolute; left:0; color:var(--green); font-weight:700; }
-        .np-list.excl li::before { content:'－'; position:absolute; left:0; color:var(--red); font-weight:700; }
-        .np-links { display:flex; gap:8px; margin-top:2px; padding-top:12px; border-top:1px solid var(--border); }
-        .np-link { font-size:11px; font-weight:600; color:var(--blue); text-decoration:none; display:inline-flex; align-items:center; gap:5px; padding:5px 11px; border-radius:8px; background:rgba(168,197,255,0.08); border:1px solid var(--border); transition:all .18s; }
+        .np-list { list-style:none; display:flex; flex-direction:column; gap:6px; }
+        .np-list li { font-size:12px; line-height:1.5; color:var(--text-sec); padding-left:17px; position:relative; }
+        .np-list.incl li::before { content:'＋'; position:absolute; left:0; color:var(--green); font-weight:800; }
+        .np-list.excl li::before { content:'－'; position:absolute; left:0; color:var(--red); font-weight:800; }
+        .np-links { display:flex; gap:8px; margin-top:2px; padding-top:14px; border-top:1px solid var(--border); }
+        .np-link { font-size:11.5px; font-weight:700; color:var(--blue); text-decoration:none; display:inline-flex; align-items:center; gap:5px; padding:6px 12px; border-radius:8px; background:rgba(168,197,255,0.08); border:1px solid var(--border); transition:all .18s; }
         .np-link:hover { background:rgba(168,197,255,0.16); border-color:var(--border-hi); }
         .np-attrib { grid-column:1/-1; font-size:10.5px; color:var(--text-mute); text-align:center; padding-top:6px; }
 
@@ -2107,7 +2119,7 @@ function maybeShowNephroPopup(){
         ${a.topic ? `<span class="np-topic">${escHtml(a.topic)}</span>` : ''}
         <h3 class="np-pop-title">${escHtml(a.title || '')}</h3>
         <div class="np-pop-meta">${escHtml(a.journal || '')} · ${escHtml(a.date || '')} · ${escHtml(a.study_type || '')}</div>
-        <p class="np-pop-summary">${escHtml(a.summary || '')}</p>
+        <p class="np-pop-summary">${highlightStats(escHtml(a.summary || ''))}</p>
         <div class="np-pop-actions">
             ${L.pubmed ? `<a class="np-link" href="${escHtml(L.pubmed)}" target="_blank" rel="noopener noreferrer">Read on PubMed ↗</a>` : ''}
             ${L.doi ? `<a class="np-link" href="${escHtml(L.doi)}" target="_blank" rel="noopener noreferrer">DOI ↗</a>` : ''}
@@ -2117,6 +2129,14 @@ function maybeShowNephroPopup(){
     try { localStorage.setItem('nephroPopupDay', today); } catch(e){}
 }
 function closeNephroPopup(){ const o = document.getElementById('np-pop-overlay'); if(o) o.classList.remove('show'); }
+/* Wrap key statistics (HR/OR/RR/MD, 95% CI, p-values) in a highlight chip.
+   Input is already HTML-escaped, so < / > appear as &lt; / &gt;. */
+function highlightStats(s){
+    return s
+        .replace(/\b(a?HR|a?OR|RR|MD|SMD|WMD)\s*[:=]?\s*[-−]?\d+(?:\.\d+)?%?/g, '<mark class="np-stat">$&</mark>')
+        .replace(/95% CI[:\s]*[-−]?\d+(?:\.\d+)?(?:\s*(?:to|[-–—−])\s*[-−]?\d+(?:\.\d+)?)?%?/g, '<mark class="np-stat">$&</mark>')
+        .replace(/\b[Pp]\s*(?:&lt;|&gt;|=|<|>)\s*0?\.\d+/g, '<mark class="np-stat">$&</mark>');
+}
 function renderNephro(data){
     const list = document.getElementById('nephro-list');
     const meta = document.getElementById('nephro-meta');
@@ -2135,9 +2155,12 @@ function renderNephro(data){
             <div class="np-title">${escHtml(a.title || '')}</div>
             <div class="np-meta"><span class="np-journal">${escHtml(a.journal || '')}</span><span>·</span><span>${escHtml(a.date || '')}</span></div>
             <div class="np-authors">${escHtml(a.authors || '')}</div>
-            <div class="np-summary">${escHtml(a.summary || '')}</div>
             <div>
-                <div class="np-section-label">PICO</div>
+                <div class="np-section-label sum">Summary</div>
+                <div class="np-summary">${highlightStats(escHtml(a.summary || ''))}</div>
+            </div>
+            <div class="np-block">
+                <div class="np-section-label pico">PICO</div>
                 <div class="np-pico">
                     ${cell('Population', p.population)}
                     ${cell('Intervention', p.intervention)}
@@ -2145,9 +2168,9 @@ function renderNephro(data){
                     ${cell('Outcome', p.outcome)}
                 </div>
             </div>
-            <div class="np-criteria">
-                <div><div class="np-section-label">Inclusion</div><ul class="np-list incl">${li(a.inclusion)}</ul></div>
-                <div><div class="np-section-label">Exclusion</div><ul class="np-list excl">${li(a.exclusion)}</ul></div>
+            <div class="np-criteria np-block">
+                <div><div class="np-section-label incl">Inclusion</div><ul class="np-list incl">${li(a.inclusion)}</ul></div>
+                <div><div class="np-section-label excl">Exclusion</div><ul class="np-list excl">${li(a.exclusion)}</ul></div>
             </div>
             <div class="np-links">
                 ${L.pubmed ? `<a class="np-link" href="${escHtml(L.pubmed)}" target="_blank" rel="noopener noreferrer">PubMed ↗</a>` : ''}
