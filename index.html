@@ -1999,7 +1999,7 @@ function mountTV(container, config, src){
 }
 function mountTicker(theme){
     const c = document.getElementById('tv-ticker'); if(!c) return;
-    mountTV(c, { symbols:TV_TICKER_SYMBOLS, showSymbolLogo:true, colorTheme:theme, isTransparent:true, displayMode:'adaptive', locale:'en' }, TV_TICKER_SRC);
+    mountTV(c, { symbols:TV_TICKER_SYMBOLS, showSymbolLogo:true, colorTheme:theme, isTransparent:false, displayMode:'adaptive', locale:'en' }, TV_TICKER_SRC);
 }
 function mountMinis(theme){
     const panel = document.getElementById('panel-markets');
