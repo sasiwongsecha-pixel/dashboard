@@ -2006,7 +2006,9 @@ function mountMinis(theme){
     if(!panel || panel.style.display === 'none') return;   // hidden → would render blank
     if(tvMiniTheme === theme) return;                       // already mounted at this theme
     document.querySelectorAll('[data-tv-symbol]').forEach(c => {
-        mountTV(c, { symbol:c.dataset.tvSymbol, width:'100%', height:175, locale:'en', dateRange:'1D', colorTheme:theme, isTransparent:true, largeChartUrl:'' }, TV_MINI_SRC);
+        // isTransparent:false → the widget paints its own solid themed background.
+        // (With true, some symbols render a white chart area instead of showing the dark card.)
+        mountTV(c, { symbol:c.dataset.tvSymbol, width:'100%', height:175, locale:'en', dateRange:'1D', colorTheme:theme, isTransparent:false, largeChartUrl:'' }, TV_MINI_SRC);
     });
     tvMiniTheme = theme;
 }
