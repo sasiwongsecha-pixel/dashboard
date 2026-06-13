@@ -10,160 +10,25 @@
   },
   "articles": [
     {
-      "pmid": "42233552",
-      "doi": "10.1016/j.jacc.2026.02.5125",
-      "journal": "J Am Coll Cardiol.",
-      "date": "2026-06-02",
-      "authors": "Tuttle KR, Bakris GL, Baeres FMM, Bang CN, Bax WA, et al.",
-      "title": "Kidney and Survival Benefits of Semaglutide in Diabetes With Chronic Kidney Disease: FLOW Trial Cardiovascular Subgroup Analyses.",
-      "study_type": "Randomized controlled trial (subgroup analysis)",
-      "topic": "Diabetes / CKD",
-      "summary": "Semaglutide reduced primary outcome risk in subgroups with ASCVD (HR: 0.80; 95% CI: 0.63-1.02) and heart failure (HR: 0.67; 95% CI: 0.49-0.93). All-cause death risk was also reduced in those without heart failure (HR: 0.81; 95% CI: 0.66-0.99) and those with high CV risk (HR: 0.71; 95% CI: 0.52-0.95).",
-      "pico": {
-        "population": "Participants with type 2 diabetes and CKD",
-        "intervention": "Once-weekly subcutaneous semaglutide 1.0 mg",
-        "comparison": "Placebo",
-        "outcome": ">=50% eGFR decline, eGFR <15 mL/min/1.73 m2, dialysis, transplantation, and kidney or cardiovascular death"
-      },
-      "inclusion": [
-        "type 2 diabetes",
-        "chronic kidney disease"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42233552/",
-        "doi": "https://doi.org/10.1016/j.jacc.2026.02.5125"
-      }
-    },
-    {
-      "pmid": "42128628",
-      "doi": "10.1080/0886022X.2026.2666454",
-      "journal": "Ren Fail.",
-      "date": "2026-12-01",
-      "authors": "Wu X, Meng J, Yang Y, Sheng D, Liu X, et al.",
-      "title": "Comparative efficacy and safety of apixaban and rivaroxaban versus warfarin in atrial fibrillation patients with end-stage renal disease: a systematic review and meta-analysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "ESRD / Atrial Fibrillation",
-      "summary": "Apixaban and rivaroxaban were associated with lower risks of major bleeding (RR 0.57, 95% CI: 0.51-0.63) and stroke/systemic embolism (RR 0.57, 95% CI: 0.46-0.72) compared with VKAs. All-cause mortality was also reduced (RR 0.73, 95% CI: 0.63-0.83).",
-      "pico": {
-        "population": "patients with atrial fibrillation (AF) undergoing dialysis",
-        "intervention": "apixaban or rivaroxaban",
-        "comparison": "vitamin K antagonists (VKAs)",
-        "outcome": "stroke/systemic embolism (SSE), all-cause mortality, and major bleeding"
-      },
-      "inclusion": [
-        "studies comparing apixaban or rivaroxaban with VKAs in patients with atrial fibrillation (AF) undergoing dialysis"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42128628/",
-        "doi": "https://doi.org/10.1080/0886022X.2026.2666454"
-      }
-    },
-    {
-      "pmid": "42096677",
-      "doi": "10.1212/WNL.0000000000218031",
-      "journal": "Neurology.",
-      "date": "2026-06-09",
-      "authors": "Kelly DM, Kelleher EM, Rothwell PM.",
-      "title": "Acute Kidney Injury and Risk of Adverse Neurocognitive Outcomes: A Systematic Review and Meta-Analysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "AKI / Neurocognition",
-      "summary": "AKI was associated with increased risks of stroke (pooled adjusted HR 1.35, 95% CI 1.20-1.52), delirium (pooled adjusted OR 1.76; 1.42-2.17), and dementia (pooled adjusted HR 1.64, 1.41-1.89). Risk of stroke increased with AKI stage, reaching an HR of 1.57 (1.35-1.81) for combined stages 2 and 3.",
-      "pico": {
-        "population": "adult populations",
-        "intervention": "acute kidney injury (AKI)",
-        "comparison": "no AKI",
-        "outcome": "stroke, delirium, and dementia"
-      },
-      "inclusion": [
-        "studies reporting quantitative estimates for the association between AKI and delirium, stroke, or dementia in adult populations"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42096677/",
-        "doi": "https://doi.org/10.1212/WNL.0000000000218031"
-      }
-    },
-    {
-      "pmid": "42185739",
-      "doi": "10.1080/0886022X.2026.2665032",
-      "journal": "Ren Fail.",
-      "date": "2026-12-01",
-      "authors": "Møller M, Andersen TH, Borg R, Christensen R, Bressendorff I, et al.",
-      "title": "Complication rates of 16- and 18-gauge needles for native kidney biopsies: a systematic review and proportional meta-analysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "Kidney Biopsy",
-      "summary": "Pooled major complication rates were 1.83% (95% CI: 1.20-2.79) for 16 G needles and 1.29% (95% CI: 0.78-2.13) for 18 G needles, with no significant difference. Mean glomerular yield was similar between 16 G (18.8) and 18 G (17.5) needles.",
-      "pico": {
-        "population": "adults undergoing native kidney biopsy",
-        "intervention": "16-gauge (16 G) needles",
-        "comparison": "18-gauge (18 G) needles",
-        "outcome": "major complication rate and diagnostic yield"
-      },
-      "inclusion": [
-        "randomized trials and cohort studies of real-time ultrasound-guided biopsies",
-        "studies of adult native kidney biopsy using 16-gauge (16 G) or 18-gauge (18 G) needles"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42185739/",
-        "doi": "https://doi.org/10.1080/0886022X.2026.2665032"
-      }
-    },
-    {
-      "pmid": "42249978",
-      "doi": "10.1007/s10741-026-10641-3",
-      "journal": "Heart Fail Rev.",
-      "date": "2026-06-06",
-      "authors": "Costa TA, de Sousa LMT, Nogueira A, Chagas GCL, Abreu M, et al.",
-      "title": "Association between SGLT2 inhibitors and outcomes after heart transplant in patients with type 2 diabetes: A systematic review and meta-analysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "Heart Transplant / SGLT2i",
-      "summary": "SGLT2i use was associated with lower all-cause mortality in adjusted analyses (aHR 0.69; 95% CI 0.51-0.93; p = 0.02) compared to non-use. UTI risk was not significantly increased (OR 0.77; 95% CI 0.14-4.05; p = 0.75).",
-      "pico": {
-        "population": "heart transplant (HTX) recipients with T2D",
-        "intervention": "SGLT2 inhibitors (SGLT2i)",
-        "comparison": "non-users",
-        "outcome": "all-cause mortality, urinary tract infection (UTI), and eGFR change"
-      },
-      "inclusion": [
-        "studies of HTX recipients with T2D comparing outcomes in SGLT2i users vs. non-users"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42249978/",
-        "doi": "https://doi.org/10.1007/s10741-026-10641-3"
-      }
-    },
-    {
       "pmid": "42185742",
       "doi": "10.1080/0886022X.2026.2665050",
-      "journal": "Ren Fail.",
+      "journal": "Ren Fail",
       "date": "2026-12-01",
       "authors": "Tear AA, Fauziah N, Riswari SF, Purba AR, Akhlaq MM, et al.",
       "title": "Prognostic factors in malaria patients with acute kidney injury: a systematic review and meta analysis.",
       "study_type": "Systematic review and meta-analysis",
-      "topic": "Malaria / AKI",
-      "summary": "Mortality in malaria patients with AKI was strongly associated with ventilator requirement (OR: 30.35, p < 0.001) and respiratory distress syndrome (OR: 18.50, p < 0.001). Other significant factors included hypotension (OR: 18.23) and neurological involvement (OR: 12.83).",
+      "topic": "AKI / Malaria",
+      "summary": "The study identified several factors significantly associated with mortality in malaria-associated AKI, including respiratory distress syndrome (OR: 18.50, p < 0.001) and hypotension (OR: 18.23, p < 0.001). Other predictors included oliguria (OR: 3.41), hyperkalemia (OR: 3.99), and acidosis (OR: 4.88).",
       "pico": {
-        "population": "malaria patients with AKI",
-        "intervention": "clinical or laboratory abnormalities",
-        "comparison": "not specified",
-        "outcome": "mortality"
+        "population": "Malaria patients with acute kidney injury",
+        "intervention": "Presence of clinical or laboratory abnormalities",
+        "comparison": "Absence of clinical or laboratory abnormalities",
+        "outcome": "Mortality reported in odds ratio"
       },
       "inclusion": [
-        "observational studies showing the association between clinical or laboratory abnormalities and mortality in malaria patients with AKI"
+        "observational studies",
+        "studies showing the association between clinical or laboratory abnormalities and mortality",
+        "results reported in odds ratio"
       ],
       "exclusion": [
         "not specified"
@@ -174,23 +39,84 @@
       }
     },
     {
+      "pmid": "42185739",
+      "doi": "10.1080/0886022X.2026.2665032",
+      "journal": "Ren Fail",
+      "date": "2026-12-01",
+      "authors": "Møller M, Andersen TH, Borg R, Christensen R, Bressendorff I, et al.",
+      "title": "Complication rates of 16- and 18-gauge needles for native kidney biopsies: a systematic review and proportional meta-analysis.",
+      "study_type": "Systematic review and proportional meta-analysis",
+      "topic": "Biopsy / Complications",
+      "summary": "Pooled major complication rates were 1.83% (95% CI: 1.20-2.79) for 16G needles and 1.29% (95% CI: 0.78-2.13) for 18G needles, with no statistically significant difference between them. Mean glomerular yield was similar at 18.8 for 16G and 17.5 for 18G needles.",
+      "pico": {
+        "population": "Adults undergoing native kidney biopsy",
+        "intervention": "16-gauge (16 G) needles",
+        "comparison": "18-gauge (18 G) needles",
+        "outcome": "Major complication rates and diagnostic yield"
+      },
+      "inclusion": [
+        "randomized trials",
+        "cohort studies",
+        "case series",
+        "real-time ultrasound-guided biopsies"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42185739/",
+        "doi": "https://doi.org/10.1080/0886022X.2026.2665032"
+      }
+    },
+    {
+      "pmid": "42167310",
+      "doi": "10.1080/0886022X.2026.2667611",
+      "journal": "Ren Fail",
+      "date": "2026-12-01",
+      "authors": "Hu D, Chen L, Mai R, Gao T, Guan B.",
+      "title": "Bibliometric analysis of SGLT2 inhibitor treatment for diabetic kidney disease.",
+      "study_type": "Bibliometric analysis",
+      "topic": "DKD / SGLT2i",
+      "summary": "Analysis of 2,415 articles from 2013-2025 demonstrated exponential growth in research regarding SGLT2 inhibitors and diabetic kidney disease. The research focus has evolved from clinical trial design to cardiorenal protective mechanisms and precision disease management.",
+      "pico": {
+        "population": "Published articles regarding SGLT2 inhibitors and diabetic kidney disease",
+        "intervention": "Bibliometric analysis using CiteSpace and VOSviewer",
+        "comparison": "not specified",
+        "outcome": "Identification of research trends, key institutions, and core directions"
+      },
+      "inclusion": [
+        "articles from Web of Science Core Collection",
+        "published between 2013-2025",
+        "relevant to SGLT2 inhibitor treatment for diabetic kidney disease"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42167310/",
+        "doi": "https://doi.org/10.1080/0886022X.2026.2667611"
+      }
+    },
+    {
       "pmid": "42150630",
       "doi": "10.1016/j.diabres.2026.113327",
-      "journal": "Diabetes Res Clin Pract.",
+      "journal": "Diabetes Res Clin Pract",
       "date": "2026-07-01",
       "authors": "Chichelero GM, Pessil LS, Viegas GM, Xavier Junior GF, Dos Reis MA, et al.",
       "title": "Prevalence of diabetic kidney disease in Brazil: A systematic review with meta-analysis.",
-      "study_type": "Systematic review and meta-analysis",
+      "study_type": "Systematic review with meta-analysis",
       "topic": "DKD / Epidemiology",
-      "summary": "The pooled prevalence of DKD among Brazilian adults was 27.06% (95% CI 22.40-32.29). Prevalence was higher in patients with diabetes duration >=10 years (33.28%) and varied significantly by diagnostic criteria used.",
+      "summary": "The pooled prevalence of DKD among Brazilian adults was 27.06% (95% CI 22.40-32.29). Longer diabetes duration (≥10 years) was associated with a higher prevalence of 33.28% compared to 24.32% for those with shorter durations.",
       "pico": {
         "population": "Brazilian adults with diabetes",
         "intervention": "not specified",
         "comparison": "not specified",
-        "outcome": "prevalence of diabetic kidney disease (DKD)"
+        "outcome": "Pooled prevalence of diabetic kidney disease"
       },
       "inclusion": [
-        "studies assessing prevalence of DKD in Brazil up to and including December 2025"
+        "studies published in PubMed, EMBASE, and LILACS",
+        "studies up to and including December 2025",
+        "reporting prevalence of DKD in Brazil"
       ],
       "exclusion": [
         "not specified"
@@ -201,31 +127,122 @@
       }
     },
     {
-      "pmid": "42249648",
-      "doi": "10.14814/phy2.70940",
-      "journal": "Physiol Rep.",
-      "date": "2026-06-01",
-      "authors": "Asmar A, Akram M, Sorensen CM, Andresen JK, Jensen BL.",
-      "title": "Acute GLP-1 infusion in male adults lowers circulating angiotensin II without changing angiotensinogen, ACE, ACE2, or angiotensin-(1-7) concentrations.",
-      "study_type": "Randomized, placebo-controlled cross-over study",
-      "topic": "Physiology / GLP-1",
-      "summary": "GLP-1 infusion significantly decreased plasma ANGII concentrations, while plasma angiotensinogen and ACE concentrations decreased similarly during both GLP-1 and vehicle infusions. Plasma ACE2 and Ang-(1-7) concentrations remained unchanged by GLP-1.",
+      "pmid": "42096677",
+      "doi": "10.1212/WNL.0000000000218031",
+      "journal": "Neurology",
+      "date": "2026-06-09",
+      "authors": "Kelly DM, Kelleher EM, Rothwell PM.",
+      "title": "Acute Kidney Injury and Risk of Adverse Neurocognitive Outcomes: A Systematic Review and Meta-Analysis.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "AKI / Outcomes",
+      "summary": "AKI was consistently associated with increased risk of stroke (pooled adjusted HR 1.35, 95% CI 1.20-1.52), delirium (pooled adjusted OR 1.76; 1.42-2.17), and dementia (pooled adjusted HR 1.64, 1.41-1.89). Furthermore, AKI was linked to higher in-hospital mortality (pooled HR 2.13) and 90-day mortality (pooled HR 4.81) following stroke.",
       "pico": {
-        "population": "healthy male adults",
-        "intervention": "3-h infusion of GLP-1 (1.5 pmol/kg/min)",
-        "comparison": "vehicle (0.9% NaCl)",
-        "outcome": "circulating concentrations of ANGII, angiotensinogen, ACE, ACE2, and Ang-(1-7)"
+        "population": "Adult populations with a history of acute kidney injury",
+        "intervention": "Exposure to AKI",
+        "comparison": "No exposure to AKI",
+        "outcome": "Risk of stroke, delirium, and dementia"
       },
       "inclusion": [
-        "healthy male adults",
-        "sodium-standardized diet for 4 days"
+        "quantitative estimates with measures of precision",
+        "association between AKI and delirium, stroke, or dementia",
+        "adult populations"
       ],
       "exclusion": [
         "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42249648/",
-        "doi": "https://doi.org/10.14814/phy2.70940"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42096677/",
+        "doi": "https://doi.org/10.1212/WNL.0000000000218031"
+      }
+    },
+    {
+      "pmid": "42249978",
+      "doi": "10.1007/s10741-026-10641-3",
+      "journal": "Heart Fail Rev",
+      "date": "2026-06-06",
+      "authors": "Costa TA, de Sousa LMT, Nogueira A, Chagas GCL, Abreu M, et al.",
+      "title": "Association between SGLT2 inhibitors and outcomes after heart transplant in patients with type 2 diabetes: A systematic review and meta-analysis.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "CKD / SGLT2i",
+      "summary": "SGLT2 inhibitor use in heart transplant recipients with T2D was associated with a lower risk of all-cause mortality (aHR 0.69; 95% CI 0.51-0.93) compared with non-use. No increased risk of urinary tract infection was observed (OR 0.77; 95% CI 0.14-4.05), and data suggested stable or increased eGFR.",
+      "pico": {
+        "population": "Heart transplant recipients with type 2 diabetes",
+        "intervention": "SGLT2 inhibitor use",
+        "comparison": "SGLT2 inhibitor non-use",
+        "outcome": "All-cause mortality, urinary tract infection (UTI), and eGFR change"
+      },
+      "inclusion": [
+        "studies of HTX recipients with T2D",
+        "comparing SGLT2i users vs. non-users",
+        "reported outcomes including mortality, UTI, or eGFR change"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42249978/",
+        "doi": "https://doi.org/10.1007/s10741-026-10641-3"
+      }
+    },
+    {
+      "pmid": "42260845",
+      "doi": "10.1097/MD.0000000000049135",
+      "journal": "Medicine (Baltimore)",
+      "date": "2026-06-05",
+      "authors": "Gou Y, Huang W, Liang M.",
+      "title": "Efficacy and safety of traditional Chinese medicine in treating pediatric IgA vasculitis nephritis: A systematic review and meta-analysis of randomized controlled trials.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "Glomerulonephritis / Pediatrics",
+      "summary": "TCM interventions significantly improved the overall clinical effective rate (RR = 1.20, 95% CI [1.15-1.25]) and reduced 24-hour urinary protein excretion (SMD = -0.83) compared with Western medicine alone. There was no significant difference in the incidence of adverse events between the two groups (RR = 0.92).",
+      "pico": {
+        "population": "Children with IgA vasculitis nephritis (IgAVN)",
+        "intervention": "Traditional Chinese medicine (TCM) interventions (alone or combined)",
+        "comparison": "Western medicine alone",
+        "outcome": "Overall clinical effective rate and 24-hour urinary protein excretion"
+      },
+      "inclusion": [
+        "randomized controlled trials",
+        "comparing TCM with Western medicine alone",
+        "children with IgAVN",
+        "studies from eight databases searched until March 2025"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42260845/",
+        "doi": "https://doi.org/10.1097/MD.0000000000049135"
+      }
+    },
+    {
+      "pmid": "42014363",
+      "doi": "10.1093/joneph/aajaf002",
+      "journal": "J Nephrol",
+      "date": "2026-06-04",
+      "authors": "Dos Santos Borges R, Lara Santos R, Haikal de Paula L, Borges Martins JM, Machado Gomes de Sousa PA, et al.",
+      "title": "Efficacy, safety, and biomarker changes of B-cell activating factor and A proliferation-inducing ligand-targeted therapies in IgA nephropathy: a systematic review and meta-analysis of randomized controlled trials.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "Glomerulonephritis / IgAN",
+      "summary": "Targeted therapies against BAFF or APRIL significantly reduced 24-hour UPCR by a mean difference of -38.94% (95% CI -58.98 to -18.90) and improved eGFR by 7.05 mL/min/1.73m². These treatments also led to significant reductions in serum Gd-IgA1, IgG, IgA, and IgM levels.",
+      "pico": {
+        "population": "Adults with IgA nephropathy (IgAN)",
+        "intervention": "BAFF- or APRIL-targeted drugs",
+        "comparison": "Placebo",
+        "outcome": "Mean percent change in 24-hour UPCR and mean change in eGFR"
+      },
+      "inclusion": [
+        "randomized controlled trials",
+        "comparing BAFF- or APRIL-targeted drugs with placebo",
+        "adults with IgAN",
+        "published up to December 2024",
+        "written in English"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42014363/",
+        "doi": "https://doi.org/10.1093/joneph/aajaf002"
       }
     }
   ]
