@@ -386,7 +386,9 @@
         .tab-panel > .section-title:first-child { margin-top:6px; }
 
         /* ── Nephrology tab ── */
-        .nephro-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:var(--gap); }
+        .nephro-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap); }
+        @media(max-width:1100px){ .nephro-grid{ grid-template-columns:repeat(2,1fr); } }
+        @media(max-width:720px){ .nephro-grid{ grid-template-columns:1fr; } }
         .nephro-loading, .nephro-empty { padding:40px 20px; text-align:center; color:var(--text-mute); font-size:13px; }
         .np-card {
             background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-lg);
@@ -411,6 +413,14 @@
         .np-section-label.pico { color:var(--purple); }
         .np-section-label.incl { color:var(--green); }
         .np-section-label.excl { color:var(--red); }
+        .np-section-label.appr { color:var(--blue); }
+        /* Expert appraisal callout — visually distinct from the article's own data. */
+        .np-appraise { border:1px solid var(--border-hi); border-radius:var(--r-md); padding:14px 15px; background:rgba(168,197,255,0.05); display:flex; flex-direction:column; gap:9px; }
+        .np-appr-row { font-size:12px; line-height:1.58; color:var(--text-pri); }
+        .np-appr-tag { display:inline-block; font-size:9px; font-weight:800; text-transform:uppercase; letter-spacing:0.6px; padding:2px 7px; border-radius:5px; margin-right:7px; }
+        .np-appr-tag.bl  { background:rgba(125,243,255,0.16); color:var(--cyan); }
+        .np-appr-tag.rel { background:rgba(74,222,128,0.16); color:var(--green); }
+        .np-appr-tag.cav { background:rgba(240,204,85,0.16); color:var(--gold); }
         /* Highlighted effect sizes (HR/OR/RR/CI/p) so the numbers that matter pop. */
         .np-stat { font-weight:800; color:#bdecff; background:rgba(125,243,255,0.13); padding:0 4px; border-radius:4px; font-variant-numeric:tabular-nums; white-space:nowrap; }
         html[data-theme="light"] .np-stat { color:#0a6173; background:rgba(11,125,147,0.13); }
@@ -2172,6 +2182,12 @@ function renderNephro(data){
                 <div><div class="np-section-label incl">Inclusion</div><ul class="np-list incl">${li(a.inclusion)}</ul></div>
                 <div><div class="np-section-label excl">Exclusion</div><ul class="np-list excl">${li(a.exclusion)}</ul></div>
             </div>
+            ${a.appraisal ? `<div class="np-appraise">
+                <div class="np-section-label appr">🩺 Clinical appraisal</div>
+                ${a.appraisal.bottom_line ? `<div class="np-appr-row"><span class="np-appr-tag bl">Bottom line</span>${highlightStats(escHtml(a.appraisal.bottom_line))}</div>` : ''}
+                ${a.appraisal.relevance ? `<div class="np-appr-row"><span class="np-appr-tag rel">Relevance</span>${highlightStats(escHtml(a.appraisal.relevance))}</div>` : ''}
+                ${a.appraisal.caveat ? `<div class="np-appr-row"><span class="np-appr-tag cav">Caveat</span>${highlightStats(escHtml(a.appraisal.caveat))}</div>` : ''}
+            </div>` : ''}
             <div class="np-links">
                 ${L.pubmed ? `<a class="np-link" href="${escHtml(L.pubmed)}" target="_blank" rel="noopener noreferrer">PubMed ↗</a>` : ''}
                 ${L.doi ? `<a class="np-link" href="${escHtml(L.doi)}" target="_blank" rel="noopener noreferrer">DOI ↗</a>` : ''}
