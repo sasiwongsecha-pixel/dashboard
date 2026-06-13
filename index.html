@@ -6,15 +6,9 @@
     <title>⚡ Nongjoe Dashboard</title>
     <!-- no external auth library needed — pure PKCE OAuth below -->
     <script>
-    /* Apply saved/system theme before paint to avoid a flash. */
+    /* Always open in dark; the in-page toggle still switches during the visit. */
     (function(){
-        try {
-            var t = localStorage.getItem('theme');
-            if(t !== 'light' && t !== 'dark'){
-                t = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-            }
-            document.documentElement.setAttribute('data-theme', t);
-        } catch(e){ document.documentElement.setAttribute('data-theme','dark'); }
+        try { document.documentElement.setAttribute('data-theme','dark'); } catch(e){}
     })();
     </script>
     <style>
@@ -502,6 +496,37 @@
         .gcal-btn.connected { background:rgba(74,222,128,0.14); border-color:rgba(74,222,128,0.4); color:#a0ffc8; cursor:default; }
         .day-event.gcal { background:rgba(125,243,255,0.12); color:#9ff6ff; border-left:2px solid var(--cyan); }
         html[data-theme="light"] .day-event.gcal { background:rgba(11,125,147,0.1); color:#0b6d80; border-left-color:#0b7d93; }
+
+        /* ── Nephrology daily highlight pop-up ── */
+        .np-pop-overlay {
+            position:fixed; inset:0; z-index:300; display:none;
+            align-items:center; justify-content:center; padding:20px;
+            background:rgba(3,6,12,0.66); backdrop-filter:blur(4px);
+            animation:np-fade .2s var(--ease);
+        }
+        .np-pop-overlay.show { display:flex; }
+        @keyframes np-fade { from{opacity:0} to{opacity:1} }
+        .np-pop {
+            position:relative; max-width:520px; width:100%;
+            background:var(--bg-card-h); border:1px solid var(--border-hi);
+            border-radius:var(--r-lg); padding:24px 24px 20px;
+            box-shadow:0 24px 70px rgba(0,0,0,0.55); backdrop-filter:blur(20px);
+            animation:np-pop-in .28s var(--ease);
+        }
+        @keyframes np-pop-in { from{opacity:0; transform:translateY(10px) scale(.98)} to{opacity:1; transform:none} }
+        @media (prefers-reduced-motion: reduce){ .np-pop-overlay, .np-pop { animation:none; } }
+        .np-pop-x {
+            position:absolute; top:12px; right:12px; width:30px; height:30px; border-radius:8px; cursor:pointer;
+            background:rgba(168,197,255,0.08); border:1px solid var(--border); color:var(--text-sec); font-size:13px; line-height:1;
+        }
+        .np-pop-x:hover { background:rgba(168,197,255,0.16); color:var(--text-pri); }
+        .np-pop-eyebrow { font-size:11px; font-weight:700; letter-spacing:.5px; color:var(--gold); margin-bottom:10px; }
+        .np-pop .np-topic { display:inline-block; margin-bottom:8px; }
+        .np-pop-title { font-size:18px; font-weight:700; line-height:1.32; color:var(--text-pri); margin:4px 0 6px; text-wrap:balance; }
+        .np-pop-meta { font-size:11.5px; color:var(--text-sec); margin-bottom:12px; }
+        .np-pop-summary { font-size:13px; line-height:1.6; color:var(--text-pri); margin-bottom:16px; }
+        .np-pop-actions { display:flex; gap:8px; flex-wrap:wrap; }
+        .np-pop-dismiss { cursor:pointer; font-family:inherit; }
     </style>
 </head>
 <body>
@@ -538,14 +563,14 @@
 
     <!-- ===== TAB NAVIGATION ===== -->
     <nav class="tabnav" id="tabnav" role="tablist" aria-label="Dashboard sections">
-        <button class="tab-btn" data-tab="markets"  role="tab" onclick="showTab('markets')"><span class="tab-emoji">📊</span> Markets</button>
         <button class="tab-btn" data-tab="calendar" role="tab" onclick="showTab('calendar')"><span class="tab-emoji">📅</span> Calendar</button>
+        <button class="tab-btn" data-tab="markets"  role="tab" onclick="showTab('markets')"><span class="tab-emoji">📊</span> Markets</button>
         <button class="tab-btn" data-tab="nephro"   role="tab" onclick="showTab('nephro')"><span class="tab-emoji">🩺</span> Nephrology</button>
         <button class="tab-btn" data-tab="drive"    role="tab" onclick="showTab('drive')"><span class="tab-emoji">📁</span> Drive</button>
     </nav>
 
     <!-- ===== MARKETS TAB ===== -->
-    <section class="tab-panel" data-tab="markets" id="panel-markets" role="tabpanel" style="display:block">
+    <section class="tab-panel" data-tab="markets" id="panel-markets" role="tabpanel" style="display:none">
 
     <!-- Market status -->
     <div class="mkt-row">
@@ -677,7 +702,7 @@
     </section><!-- /markets -->
 
     <!-- ===== CALENDAR TAB ===== -->
-    <section class="tab-panel" data-tab="calendar" id="panel-calendar" role="tabpanel" style="display:none">
+    <section class="tab-panel" data-tab="calendar" id="panel-calendar" role="tabpanel" style="display:block">
 
     <!-- Notifications (tomorrow's events) -->
     <div id="notif-container"></div>
@@ -784,6 +809,14 @@
     </section><!-- /drive -->
 
 </div><!-- /main -->
+
+<!-- Nephrology daily highlight pop-up -->
+<div class="np-pop-overlay" id="np-pop-overlay" role="dialog" aria-modal="true" aria-label="Latest nephrology update" onclick="if(event.target===this)closeNephroPopup()">
+    <div class="np-pop">
+        <button class="np-pop-x" onclick="closeNephroPopup()" aria-label="Close">✕</button>
+        <div id="np-pop-body"></div>
+    </div>
+</div>
 
 <!-- ===== FRIEREN CHARACTER ===== -->
 <div class="frieren-widget" id="frieren" data-mood="sleepy">
@@ -2003,28 +2036,24 @@ applyThemeIcon();
    inside it initialise with a real width; we only switch away
    after load (deep-link / restored tab) once they've rendered.
    ============================================================ */
-const TABS = ['markets','calendar','nephro','drive'];
+const TABS = ['calendar','markets','nephro','drive'];
+const DEFAULT_TAB = 'calendar';
 function showTab(t, opts){
     opts = opts || {};
-    if(!TABS.includes(t)) t = 'markets';
+    if(!TABS.includes(t)) t = DEFAULT_TAB;
     document.querySelectorAll('.tab-panel').forEach(p => { p.style.display = (p.dataset.tab === t) ? 'block' : 'none'; });
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === t));
-    try { localStorage.setItem('activeTab', t); } catch(e){}
     if(opts.hash !== false){
-        history.replaceState(null, '', t === 'markets' ? (location.pathname + location.search) : '#' + t);
+        history.replaceState(null, '', t === DEFAULT_TAB ? (location.pathname + location.search) : '#' + t);
     }
-    if(t === 'nephro') loadNephro();
-    if(t === 'markets') mountMinis(currentTheme());
+    if(t === 'nephro') loadNephro().then(maybeShowNephroPopup);
+    if(t === 'markets') mountMinis(currentTheme());   // TradingView minis mount on first open
 }
 (function initTabs(){
-    let target = (location.hash || '').replace('#','') || (function(){ try{return localStorage.getItem('activeTab');}catch(e){return null;} })() || 'markets';
-    if(!TABS.includes(target)) target = 'markets';
-    if(target === 'markets'){
-        showTab('markets', {hash:false});
-    } else {
-        document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === 'markets'));
-        window.addEventListener('load', () => setTimeout(() => showTab(target, {hash:false}), 1200));
-    }
+    // Always open on the first tab (Calendar). An explicit #hash deep-link still wins.
+    let target = (location.hash || '').replace('#','');
+    if(!TABS.includes(target)) target = DEFAULT_TAB;
+    showTab(target, {hash:false});
     window.addEventListener('hashchange', () => {
         const h = (location.hash || '').replace('#','');
         if(TABS.includes(h)) showTab(h, {hash:false});
@@ -2035,6 +2064,7 @@ function showTab(t, opts){
    NEPHROLOGY UPDATES  (reads nephro.json, refreshed by a daily job)
    ============================================================ */
 let nephroLoaded = false;
+let nephroArticles = null;
 async function loadNephro(){
     if(nephroLoaded) return;
     nephroLoaded = true;
@@ -2042,12 +2072,49 @@ async function loadNephro(){
     try {
         const r = await fetch('nephro.json', {cache:'no-cache'});
         if(!r.ok) throw new Error('HTTP ' + r.status);
-        renderNephro(await r.json());
+        const data = await r.json();
+        nephroArticles = data.articles || [];
+        renderNephro(data);
     } catch(e){
         nephroLoaded = false;
         if(list) list.innerHTML = `<div class="nephro-empty">Couldn’t load the feed (${escHtml(e.message)}).<br><button class="cal-btn" style="margin-top:10px" onclick="loadNephro()">Retry</button></div>`;
     }
 }
+
+/* Daily highlight pop-up — features the highest-impact latest article. */
+function pickFeatured(arts){
+    const RANK = [['n engl j med',100],['lancet',96],['jama',92],['ann intern med',88],['bmj',84],
+        ['j am coll cardiol',82],['circulation',80],['nature',80],['j am soc nephrol',76],['jasn',76],
+        ['clin j am soc nephrol',72],['cjasn',72],['kidney int',72],['am j kidney dis',66],['nephrol dial transplant',60]];
+    const score = a => { const j = (a.journal||'').toLowerCase(); let s=0; for(const [k,v] of RANK) if(j.includes(k)) s=Math.max(s,v); return s; };
+    return arts.reduce((best,a) => {
+        const sa=score(a), sb=score(best);
+        return (sa>sb || (sa===sb && (a.date||'')>(best.date||''))) ? a : best;
+    }, arts[0]);
+}
+function maybeShowNephroPopup(){
+    if(!nephroArticles || !nephroArticles.length) return;
+    const today = new Date().toLocaleDateString('en-CA');   // YYYY-MM-DD, local
+    let seen = null; try { seen = localStorage.getItem('nephroPopupDay'); } catch(e){}
+    if(seen === today) return;
+    const a = pickFeatured(nephroArticles), L = a.links || {};
+    const body = document.getElementById('np-pop-body');
+    if(!body) return;
+    body.innerHTML = `
+        <div class="np-pop-eyebrow">🩺 Latest high-impact nephrology update</div>
+        ${a.topic ? `<span class="np-topic">${escHtml(a.topic)}</span>` : ''}
+        <h3 class="np-pop-title">${escHtml(a.title || '')}</h3>
+        <div class="np-pop-meta">${escHtml(a.journal || '')} · ${escHtml(a.date || '')} · ${escHtml(a.study_type || '')}</div>
+        <p class="np-pop-summary">${escHtml(a.summary || '')}</p>
+        <div class="np-pop-actions">
+            ${L.pubmed ? `<a class="np-link" href="${escHtml(L.pubmed)}" target="_blank" rel="noopener noreferrer">Read on PubMed ↗</a>` : ''}
+            ${L.doi ? `<a class="np-link" href="${escHtml(L.doi)}" target="_blank" rel="noopener noreferrer">DOI ↗</a>` : ''}
+            <button class="np-link np-pop-dismiss" onclick="closeNephroPopup()">See all updates</button>
+        </div>`;
+    document.getElementById('np-pop-overlay').classList.add('show');
+    try { localStorage.setItem('nephroPopupDay', today); } catch(e){}
+}
+function closeNephroPopup(){ const o = document.getElementById('np-pop-overlay'); if(o) o.classList.remove('show'); }
 function renderNephro(data){
     const list = document.getElementById('nephro-list');
     const meta = document.getElementById('nephro-meta');
