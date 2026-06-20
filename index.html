@@ -390,6 +390,13 @@
         @media(max-width:1100px){ .nephro-grid{ grid-template-columns:repeat(2,1fr); } }
         @media(max-width:720px){ .nephro-grid{ grid-template-columns:1fr; } }
         .nephro-loading, .nephro-empty { padding:40px 20px; text-align:center; color:var(--text-mute); font-size:13px; }
+        .tab-btn.nephro-stale::after{ content:''; display:inline-block; width:7px; height:7px; border-radius:50%;
+            background:var(--red); margin-left:6px; vertical-align:middle;
+            box-shadow:0 0 0 2px color-mix(in srgb, var(--red) 25%, transparent); }
+        .nephro-stale-banner{ margin:0 0 14px; padding:10px 14px; border-radius:10px;
+            background:color-mix(in srgb, var(--red) 12%, transparent);
+            border:1px solid color-mix(in srgb, var(--red) 40%, transparent);
+            color:var(--text-pri); font-size:12.5px; line-height:1.5; }
         .np-card {
             background:var(--bg-card); border:1px solid var(--border); border-radius:var(--r-lg);
             padding:20px 20px 18px; backdrop-filter:blur(16px);
@@ -783,6 +790,7 @@
         <h2 class="section-title">🩺 Nephrology Updates
             <span id="nephro-meta" style="font-size:10px;color:var(--text-mute);font-weight:400;text-transform:none;letter-spacing:0;margin-left:8px;">loading…</span>
         </h2>
+        <div id="nephro-stale-banner" class="nephro-stale-banner" style="display:none"></div>
         <div id="nephro-list" class="nephro-grid"><div class="nephro-loading">⏳ Loading the latest nephrology literature…</div></div>
     </section><!-- /nephro -->
 
@@ -2089,14 +2097,36 @@ function showTab(t, opts){
    ============================================================ */
 let nephroLoaded = false;
 let nephroArticles = null;
+const NEPHRO_STALE_DAYS = 8;
+let nephroData = null, nephroStaleDays = null;
+async function fetchNephroData(){            // fetch once, reused by the tab and the freshness check
+    if(nephroData) return nephroData;
+    const r = await fetch('nephro.json', {cache:'no-cache'});
+    if(!r.ok) throw new Error('HTTP ' + r.status);
+    nephroData = await r.json();
+    return nephroData;
+}
+function nephroDaysOld(data){
+    const g = data && data.meta && data.meta.generated_at; if(!g) return null;
+    const gen = new Date(g + 'T00:00:00'); if(isNaN(gen)) return null;
+    const today = new Date(new Date().toLocaleDateString('en-CA') + 'T00:00:00');
+    return Math.floor((today - gen) / 86400000);
+}
+async function checkNephroFreshness(){       // runs at load on any tab, so the alarm shows from Calendar too
+    let data; try { data = await fetchNephroData(); } catch(e){ return; }
+    const d = nephroDaysOld(data);
+    const stale = (d !== null && d >= NEPHRO_STALE_DAYS);
+    const btn = document.querySelector('.tab-btn[data-tab="nephro"]');
+    if(btn) btn.classList.toggle('nephro-stale', stale);
+    if(stale){ nephroStaleDays = d; maybeShowNephroPopup(); }
+}
+window.addEventListener('load', checkNephroFreshness);
 async function loadNephro(){
     if(nephroLoaded) return;
     nephroLoaded = true;
     const list = document.getElementById('nephro-list');
     try {
-        const r = await fetch('nephro.json', {cache:'no-cache'});
-        if(!r.ok) throw new Error('HTTP ' + r.status);
-        const data = await r.json();
+        const data = await fetchNephroData();
         nephroArticles = data.articles || [];
         renderNephro(data);
     } catch(e){
@@ -2117,13 +2147,23 @@ function pickFeatured(arts){
     }, arts[0]);
 }
 function maybeShowNephroPopup(){
-    if(!nephroArticles || !nephroArticles.length) return;
     const today = new Date().toLocaleDateString('en-CA');   // YYYY-MM-DD, local
     let seen = null; try { seen = localStorage.getItem('nephroPopupDay'); } catch(e){}
     if(seen === today) return;
-    const a = pickFeatured(nephroArticles), L = a.links || {};
     const body = document.getElementById('np-pop-body');
     if(!body) return;
+    if(nephroStaleDays !== null && nephroStaleDays >= NEPHRO_STALE_DAYS){   // stale takes precedence over the featured article
+        body.innerHTML = `
+            <div class="np-pop-eyebrow" style="color:var(--red)">⚠ Nephrology feed is ${nephroStaleDays} days old</div>
+            <h3 class="np-pop-title">The weekly update hasn’t run</h3>
+            <p class="np-pop-summary">The NotebookLM session has most likely expired. Double-click <b>“Reconnect NotebookLM”</b> on your Desktop and sign in — the daily task then catches up within a day.</p>
+            <div class="np-pop-actions"><button class="np-link np-pop-dismiss" onclick="closeNephroPopup()">Got it</button></div>`;
+        document.getElementById('np-pop-overlay').classList.add('show');
+        try { localStorage.setItem('nephroPopupDay', today); } catch(e){}
+        return;
+    }
+    if(!nephroArticles || !nephroArticles.length) return;
+    const a = pickFeatured(nephroArticles), L = a.links || {};
     body.innerHTML = `
         <div class="np-pop-eyebrow">🩺 Latest high-impact nephrology update</div>
         ${a.topic ? `<span class="np-topic">${escHtml(a.topic)}</span>` : ''}
@@ -2152,6 +2192,14 @@ function renderNephro(data){
     const meta = document.getElementById('nephro-meta');
     const arts = data.articles || [];
     if(meta) meta.textContent = data.meta ? `${data.meta.window || ''} · ${arts.length} articles` : `${arts.length} articles`;
+    const banner = document.getElementById('nephro-stale-banner');
+    const dOld = nephroDaysOld(data);
+    if(banner){
+        if(dOld !== null && dOld >= NEPHRO_STALE_DAYS){
+            banner.innerHTML = `⚠ This feed is <b>${dOld} days old</b> — the weekly update hasn’t run. Double-click “Reconnect NotebookLM” on your Desktop and sign in; it catches up within a day.`;
+            banner.style.display = 'block';
+        } else { banner.style.display = 'none'; }
+    }
     if(!arts.length){ list.innerHTML = '<div class="nephro-empty">No articles in the latest update.</div>'; return; }
     const cell = (k,v) => v ? `<div class="np-pico-cell"><div class="np-pico-key">${k}</div><div class="np-pico-val">${escHtml(v)}</div></div>` : '';
     const li   = (arr) => (arr || []).map(x => `<li>${escHtml(x)}</li>`).join('');
