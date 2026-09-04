@@ -1,0 +1,66 @@
+name: Weekly nephrology update
+
+# Gathers the week's newly-indexed PubMed nephrology trials and opens a draft PR
+# carrying a NotebookLM "sources pack". The summarising step stays manual
+# (NotebookLM has no public API): paste the pack into NotebookLM, fill the blanks
+# in nephro.json on the PR branch, then merge to publish.
+#
+# The PR is a DRAFT on purpose: nephro.json on the branch has EMPTY summaries
+# until you fill them, so merging early would blank the dashboard.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # Mondays 06:00 UTC
+  workflow_dispatch:       # allow running on demand from the Actions tab
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  gather:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Gather this week's PubMed nephrology trials
+        id: fetch
+        run: python scripts/fetch_nephro.py
+
+      # A truncated or half-pasted fetch_nephro.py still parses as valid Python:
+      # it defines functions, never calls main(), exits 0 and sets no output.
+      # Without this guard the PR step is silently skipped and the run looks green.
+      - name: Verify the gatherer actually ran
+        env:
+          COUNT: ${{ steps.fetch.outputs.count }}
+        run: |
+          if [ -z "$COUNT" ]; then
+            echo "::error::fetch_nephro.py set no 'count' output, so it did not run to completion. The most likely cause is an incomplete copy-paste of the script - re-upload the full file."
+            exit 1
+          fi
+          echo "Gatherer reported $COUNT article(s)."
+
+      - name: Open draft PR with the NotebookLM sources pack
+        if: steps.fetch.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          DATE="$(date -u +%Y-%m-%d)"
+          BRANCH="nephro-update-${DATE}-${{ github.run_number }}"
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add nephro.json
+          git commit -m "chore: weekly nephrology scaffold (${DATE})"
+          git push -u origin "$BRANCH"
+          gh pr create \
+            --draft \
+            --base "${{ github.event.repository.default_branch }}" \
+            --head "$BRANCH" \
+            --title "Weekly nephrology update — ${DATE}" \
+            --body-file nephro_sources.md
