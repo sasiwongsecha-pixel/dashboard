@@ -88,8 +88,16 @@ SCHEMA = {
 }
 
 
+class Retryable(RuntimeError):
+    """Transient: rate limit or capacity. Worth another model or another go."""
+
+
 def post(url, payload=None, method="GET", retries=3):
+    """One model, a few attempts. Raises Retryable so the caller can try the
+    next model - a capacity spike on the newest Flash says nothing about the
+    older ones, which are far less contended."""
     body = json.dumps(payload).encode() if payload is not None else None
+    backoff = (5, 15, 30)
     last = None
     for attempt in range(retries):
         req = urllib.request.Request(url, data=body, method=method)
@@ -100,24 +108,32 @@ def post(url, payload=None, method="GET", retries=3):
             with urllib.request.urlopen(req, timeout=180) as r:
                 return json.loads(r.read())
         except urllib.error.HTTPError as e:
-            detail = e.read().decode("utf-8", "replace")[:400]
-            # 429 = free-tier rate limit, 5xx = transient; both worth retrying.
-            if e.code in (429, 500, 502, 503, 504) and attempt < retries - 1:
-                time.sleep(5 * (attempt + 1))
+            detail = e.read().decode("utf-8", "replace")[:300]
+            if e.code in (429, 500, 502, 503, 504):
                 last = f"HTTP {e.code}: {detail}"
-                continue
+                if attempt < retries - 1:
+                    time.sleep(backoff[min(attempt, len(backoff) - 1)])
+                    continue
+                raise Retryable(last) from None
+            # 400/401/403/404 are our fault, not Google's - fail immediately.
             raise RuntimeError(f"Gemini API HTTP {e.code}: {detail}") from None
-        except Exception as e:  # noqa: BLE001
+        except Exception as e:  # noqa: BLE001 - network blips
             last = e
-            time.sleep(5 * (attempt + 1))
-    raise RuntimeError(f"Gemini API unreachable after {retries} tries: {last}")
+            if attempt < retries - 1:
+                time.sleep(backoff[min(attempt, len(backoff) - 1)])
+                continue
+            raise Retryable(f"unreachable: {last}") from None
+    raise Retryable(str(last))
 
 
-def pick_model():
-    """Use GEMINI_MODEL if set, else discover a Flash model that still exists."""
+def candidate_models():
+    """Ordered models to try. GEMINI_MODEL pins one; otherwise discovered Flash
+    models first, then known IDs, so an overloaded or renamed model is survivable."""
     pinned = os.environ.get("GEMINI_MODEL", "").strip()
     if pinned:
-        return pinned
+        return [pinned]
+
+    discovered = []
     try:
         data = post(f"{API_ROOT}/models")
         names = [
@@ -125,17 +141,22 @@ def pick_model():
             for m in data.get("models", [])
             if "generateContent" in (m.get("supportedGenerationMethods") or [])
         ]
-        for want in MODEL_PREFERENCE:
+        for want in MODEL_PREFERENCE:            # non-lite first
             for n in names:
-                if want in n and "lite" not in n:
-                    return n
-        for want in MODEL_PREFERENCE:
+                if want in n and "lite" not in n and n not in discovered:
+                    discovered.append(n)
+        for want in MODEL_PREFERENCE:            # then anything Flash
             for n in names:
-                if want in n:
-                    return n
+                if want in n and n not in discovered:
+                    discovered.append(n)
     except Exception as e:  # noqa: BLE001 - discovery is best-effort
-        print(f"Model discovery failed ({e}); falling back to a known ID.")
-    return FALLBACK_MODELS[0]
+        print(f"Model discovery failed ({e}); using known IDs.")
+
+    out = []
+    for m in discovered + list(FALLBACK_MODELS):
+        if m not in out:
+            out.append(m)
+    return out
 
 
 def build_prompt(articles, abstracts):
@@ -158,8 +179,6 @@ def build_prompt(articles, abstracts):
 
 
 def summarise(articles, abstracts):
-    model = pick_model()
-    print(f"Using model: {model}")
     payload = {
         "systemInstruction": {"parts": [{"text": SYSTEM}]},
         "contents": [{"parts": [{"text": build_prompt(articles, abstracts)}]}],
@@ -169,23 +188,39 @@ def summarise(articles, abstracts):
             "temperature": 0.2,
         },
     }
-    data = post(f"{API_ROOT}/models/{model}:generateContent", payload, method="POST")
 
-    feedback = data.get("promptFeedback") or {}
-    if feedback.get("blockReason"):
-        raise RuntimeError(f"Request blocked by Gemini: {feedback['blockReason']}")
+    models = candidate_models()
+    print(f"Models to try, in order: {', '.join(models)}")
+    problems = []
+    for model in models:
+        print(f"Trying {model} ...")
+        try:
+            data = post(f"{API_ROOT}/models/{model}:generateContent",
+                        payload, method="POST")
+        except Retryable as e:
+            print(f"  {model} unavailable ({e}); falling back to the next model.")
+            problems.append(f"{model}: {e}")
+            continue
 
-    candidates = data.get("candidates") or []
-    if not candidates:
-        raise RuntimeError(f"No candidates returned: {json.dumps(data)[:300]}")
-    cand = candidates[0]
-    if cand.get("finishReason") not in (None, "STOP"):
-        raise RuntimeError(f"Generation stopped early: {cand.get('finishReason')}")
+        feedback = data.get("promptFeedback") or {}
+        if feedback.get("blockReason"):
+            raise RuntimeError(f"Request blocked by Gemini: {feedback['blockReason']}")
+        candidates = data.get("candidates") or []
+        if not candidates:
+            raise RuntimeError(f"No candidates returned: {json.dumps(data)[:300]}")
+        cand = candidates[0]
+        if cand.get("finishReason") not in (None, "STOP"):
+            raise RuntimeError(f"Generation stopped early: {cand.get('finishReason')}")
+        chunks = [p["text"] for p in cand["content"]["parts"] if "text" in p]
+        if not chunks:
+            raise RuntimeError("No text part in the response.")
+        print(f"  {model} succeeded.")
+        return json.loads("".join(chunks))["analyses"]
 
-    chunks = [p["text"] for p in cand["content"]["parts"] if "text" in p]
-    if not chunks:
-        raise RuntimeError("No text part in the response.")
-    return json.loads("".join(chunks))["analyses"]
+    raise RuntimeError(
+        "Every candidate model was unavailable. Google capacity is usually "
+        "temporary - re-run the workflow shortly. Details: " + " | ".join(problems)
+    )
 
 
 def main():
