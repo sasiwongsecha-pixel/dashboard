@@ -268,6 +268,12 @@ def write_outputs(articles, today):
     with open("nephro_sources.md", "w", encoding="utf-8") as f:
         f.write(sources_pack(articles, meta))
 
+    # Abstracts kept separately (never published) so summarize_nephro.py can fill
+    # the scaffold without re-querying PubMed.
+    with open("nephro_abstracts.json", "w", encoding="utf-8") as f:
+        json.dump({a["pmid"]: a["_abstract"] for a in articles},
+                  f, ensure_ascii=False, indent=2)
+
 
 def sources_pack(articles, meta):
     schema = json.dumps({
@@ -354,7 +360,7 @@ def main():
 
     write_outputs(articles, today)
     set_output("count", str(len(articles)))
-    print("Wrote nephro.json (scaffold) and nephro_sources.md (NotebookLM pack).")
+    print("Wrote nephro.json (scaffold), nephro_sources.md and nephro_abstracts.json.")
     return 0
 
 
