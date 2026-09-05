@@ -1,12 +1,12 @@
 name: Weekly nephrology update
 
-# Gathers the week's newly-indexed PubMed nephrology trials and opens a draft PR
-# carrying a NotebookLM "sources pack". The summarising step stays manual
-# (NotebookLM has no public API): paste the pack into NotebookLM, fill the blanks
-# in nephro.json on the PR branch, then merge to publish.
+# Fully automatic weekly refresh of the dashboard's Nephrology tab:
+#   1. fetch_nephro.py     - query PubMed for the week's newly-indexed trials
+#   2. summarize_nephro.py - Gemini writes summary / PICO / appraisal per article
+#   3. commit nephro.json  - GitHub Pages serves it, so the tab updates itself
 #
-# The PR is a DRAFT on purpose: nephro.json on the branch has EMPTY summaries
-# until you fill them, so merging early would blank the dashboard.
+# No human step, no cost: one request a week sits far inside Gemini's free tier.
+# Requires the repository secret GEMINI_API_KEY.
 
 on:
   schedule:
@@ -15,10 +15,9 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
-  gather:
+  update:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -33,34 +32,38 @@ jobs:
 
       # A truncated or half-pasted fetch_nephro.py still parses as valid Python:
       # it defines functions, never calls main(), exits 0 and sets no output.
-      # Without this guard the PR step is silently skipped and the run looks green.
+      # Without this guard the later steps are silently skipped and the run looks green.
       - name: Verify the gatherer actually ran
         env:
           COUNT: ${{ steps.fetch.outputs.count }}
         run: |
           if [ -z "$COUNT" ]; then
-            echo "::error::fetch_nephro.py set no 'count' output, so it did not run to completion. The most likely cause is an incomplete copy-paste of the script - re-upload the full file."
+            echo "::error::fetch_nephro.py set no 'count' output, so it did not run to completion. The most likely cause is an incomplete copy of the script - re-upload the full file."
             exit 1
           fi
           echo "Gatherer reported $COUNT article(s)."
 
-      - name: Open draft PR with the NotebookLM sources pack
+      - name: Write summaries and appraisals
         if: steps.fetch.outputs.count != '0'
         env:
-          GH_TOKEN: ${{ github.token }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          if [ -z "${GEMINI_API_KEY:-}" ]; then
+            echo "::error::GEMINI_API_KEY secret is not set. Add it under Settings - Secrets and variables - Actions."
+            exit 1
+          fi
+          python scripts/summarize_nephro.py
+
+      - name: Publish the updated feed
+        if: steps.fetch.outputs.count != '0'
         run: |
           set -euo pipefail
-          DATE="$(date -u +%Y-%m-%d)"
-          BRANCH="nephro-update-${DATE}-${{ github.run_number }}"
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git checkout -b "$BRANCH"
           git add nephro.json
-          git commit -m "chore: weekly nephrology scaffold (${DATE})"
-          git push -u origin "$BRANCH"
-          gh pr create \
-            --draft \
-            --base "${{ github.event.repository.default_branch }}" \
-            --head "$BRANCH" \
-            --title "Weekly nephrology update — ${DATE}" \
-            --body-file nephro_sources.md
+          if git diff --cached --quiet; then
+            echo "nephro.json unchanged - nothing to publish."
+            exit 0
+          fi
+          git commit -m "chore: weekly nephrology update ($(date -u +%Y-%m-%d))"
+          git push
