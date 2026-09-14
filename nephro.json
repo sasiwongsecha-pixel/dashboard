@@ -1,301 +1,180 @@
 {
   "meta": {
     "title": "Nephrology Literature Update",
-    "generated_at": "2026-09-07",
-    "window": "New to PubMed 2026-08-31 to 2026-09-07",
+    "generated_at": "2026-09-14",
+    "window": "New to PubMed 2026-09-07 to 2026-09-14",
     "query": "Clinical nephrology — RCTs, systematic reviews & meta-analyses (humans, English)",
     "source": "PubMed (NLM) abstracts; summaries and appraisals generated automatically from those abstracts. Each entry links to its PubMed record and DOI.",
-    "count": 13,
+    "count": 6,
     "note": "Summaries and PICO are machine analyses of the source abstracts; criteria marked “not specified” were not stated. Read the source before acting clinically.",
     "appraisal_source": "Automated critical appraisal (clinical bottom-line, relevance, caveat)."
   },
   "articles": [
     {
-      "pmid": "42693098",
-      "doi": "10.1080/0886022X.2026.2719195",
-      "journal": "Ren Fail",
-      "date": "2026-09-03",
-      "authors": "Pei X, Gao H, Zhang L",
-      "title": "Diagnostic and prognostic value of fibroblast growth factor 23 in acute kidney injury: systematic review and meta-analysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "AKI",
-      "summary": "A systematic review and meta-analysis of 23 studies (17 diagnostic, 6 prognostic) evaluating circulating iFGF23 or cFGF23 in AKI. For AKI diagnosis, the pooled sensitivity was 0.79 (95% CI 0.73-0.86), specificity was 0.82 (95% CI 0.75-0.89), PLR was 4.40 (95% CI 2.59-6.21), NLR was 0.25 (95% CI 0.16-0.34), DOR was 17.49 (95% CI 8.67-35.16), and SROC AUC was 0.87 (95% CI 0.81-0.92). For AKI mortality, pooled sensitivity was 0.77 (95% CI 0.69-0.84), specificity was 0.76 (95% CI 0.70-0.82), DOR was 10.89 (95% CI 6.86-17.30), and SROC AUC was 0.77 (95% CI 0.70-0.83).",
-      "pico": {
-        "population": "Patients at risk of or with acute kidney injury (AKI)",
-        "intervention": "Measurement of circulating intact FGF23 (iFGF23) or C-terminal FGF23 (cFGF23)",
-        "comparison": "Standard diagnostic/prognostic methods or no FGF23 measurement",
-        "outcome": "AKI diagnosis (sensitivity, specificity, SROC AUC) and AKI mortality"
-      },
-      "inclusion": [
-        "Studies evaluating circulating intact FGF23 (iFGF23) or C-terminal FGF23 (cFGF23) for AKI diagnosis or prognosis"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42693098/",
-        "doi": "https://doi.org/10.1080/0886022X.2026.2719195"
-      },
-      "appraisal": {
-        "bottom_line": "Circulating FGF23 exhibits moderate-to-high diagnostic performance (SROC AUC 0.87) and moderate prognostic performance for mortality (SROC AUC 0.77) in patients with AKI, with iFGF23 showing higher diagnostic accuracy than cFGF23.",
-        "relevance": "FGF23 could serve as a valuable complementary biomarker for early AKI detection and risk stratification in clinical settings.",
-        "caveat": "The analysis is limited by substantial heterogeneity among the included studies (I2 = 67% for diagnosis, and up to 86.2% for mortality sensitivity) and a lack of standardized measurement protocols."
-      }
-    },
-    {
-      "pmid": "42684113",
-      "doi": "10.1080/03014460.2026.2723114",
-      "journal": "Ann Hum Biol",
-      "date": "2026-09-02",
-      "authors": "Thomas SM, Anilkumar AS, Veerabathiran R",
-      "title": "Protective association of the ELMO1 rs741301 variant against diabetes mellitus and diabetic nephropathy: a systematic meta-analysis of case-control studies.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "Diabetic Nephropathy",
-      "summary": "A systematic meta-analysis of 9 case-control studies (880 individuals with DM and 1008 with DN) evaluating the association between the ELMO1 rs741301 polymorphism and DN. The pooled analysis demonstrated a significant protective association under the allelic model (OR = 0.77, 95% CI: 0.67-0.88), recessive model (OR = 0.74, 95% CI: 0.61-0.90), and dominant model (OR = 0.68, 95% CI: 0.53-0.88).",
-      "pico": {
-        "population": "Individuals with diabetes mellitus (DM) and diabetic nephropathy (DN)",
-        "intervention": "ELMO1 rs741301 polymorphism",
-        "comparison": "Wild-type or alternative genotypes",
-        "outcome": "Susceptibility to diabetic nephropathy (odds ratio)"
-      },
-      "inclusion": [
-        "Case-control studies investigating the association between ELMO1 rs741301 and DN among individuals with DM published between 2014 and 2024"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42684113/",
-        "doi": "https://doi.org/10.1080/03014460.2026.2723114"
-      },
-      "appraisal": {
-        "bottom_line": "The ELMO1 rs741301 polymorphism is significantly associated with reduced susceptibility to diabetic nephropathy among individuals with diabetes under allelic, recessive, and dominant genetic models.",
-        "relevance": "Identifying genetic protective factors like ELMO1 rs741301 may help risk-stratify diabetic patients and improve our understanding of the genetic architecture of diabetic kidney disease.",
-        "caveat": "This meta-analysis is based entirely on observational case-control studies, which cannot establish causality, and the total sample size across the 9 included studies is relatively small."
-      }
-    },
-    {
-      "pmid": "42675918",
-      "doi": "10.1080/0886022X.2025.2534019",
-      "journal": "Ren Fail",
-      "date": "2026-08-31",
-      "authors": "Ma J, Liu B, Pang J, Wang P, Li Y et al.",
-      "title": "Efficacy and safety of ferric citrate tablets in Chinese patients with hyperphosphatemia undergoing maintenance hemodialysis: a multicenter, randomized, open-label, active-controlled, phase III trial.",
+      "pmid": "42726135",
+      "doi": "10.1590/1980-220X-REEUSP-2026-0010en",
+      "journal": "Rev Esc Enferm USP",
+      "date": "2026-09-11",
+      "authors": "Köse E, Gün M",
+      "title": "Effects of intradialytic nutrition on dialysis adequacy and fatigue in hemodialysis patients: a randomized crossover study.",
       "study_type": "Randomized controlled trial",
-      "topic": "CKD-MBD",
-      "summary": "A multicenter, randomized, open-label, phase III trial of 239 Chinese patients with hyperphosphatemia on maintenance hemodialysis randomized to ferric citrate (n=119) or sevelamer carbonate (n=120) for 12 weeks. The mean change in serum phosphorus was -0.70 +/- 0.50 mmol/L in the ferric citrate group and -0.61 +/- 0.59 mmol/L in the sevelamer group (least squares mean difference, -0.09 mmol/L; 95% CI, -0.24 to 0.05 mmol/L), demonstrating non-inferiority within the 0.32 mmol/L margin.",
+      "topic": "Hemodialysis / Nutrition",
+      "summary": "A randomized, two-period, two-sequence, self-controlled crossover trial in 36 maintenance hemodialysis patients in Türkiye (32 completed) comparing standardized intradialytic nutrition to no food intake. No significant differences were found in dialysis adequacy (URR, spKt/V) or fatigue scores (Piper Fatigue Scale). Intradialytic nutrition was associated with greater reductions in systolic and diastolic blood pressure, especially during the second hour.",
       "pico": {
-        "population": "Chinese patients with hyperphosphatemia undergoing maintenance hemodialysis (MHD)",
-        "intervention": "Ferric citrate tablets",
-        "comparison": "Sevelamer carbonate tablets",
-        "outcome": "Change in serum phosphorus levels from baseline to week 12"
+        "population": "Maintenance hemodialysis patients in two outpatient centers in Türkiye (n=36 randomized, 32 completed)",
+        "intervention": "Standardized intradialytic nutrition during one period",
+        "comparison": "No food intake (control period)",
+        "outcome": "Dialysis adequacy (urea reduction ratio and single-pool Kt/V), fatigue severity (Piper Fatigue Scale), intradialytic blood pressure, and adverse events"
       },
       "inclusion": [
-        "Patients with hyperphosphatemia on maintenance hemodialysis"
+        "Maintenance hemodialysis patients from two outpatient hemodialysis centers in Türkiye"
       ],
       "exclusion": [
         "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42675918/",
-        "doi": "https://doi.org/10.1080/0886022X.2025.2534019"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42726135/",
+        "doi": "https://doi.org/10.1590/1980-220X-REEUSP-2026-0010en"
       },
       "appraisal": {
-        "bottom_line": "Ferric citrate tablets are non-inferior to sevelamer carbonate in lowering serum phosphorus levels in Chinese hemodialysis patients over 12 weeks, while also improving iron-related parameters and hemoglobin.",
-        "relevance": "Ferric citrate provides a useful dual-action therapeutic option to manage both hyperphosphatemia and renal anemia simultaneously, potentially reducing pill burden.",
-        "caveat": "The trial was open-label and limited to a relatively short duration of 12 weeks, which may not capture long-term safety, adherence, or potential iron overload issues."
+        "bottom_line": "Intradialytic nutrition did not significantly alter dialysis adequacy or fatigue scores compared to fasting, but it was associated with greater reductions in systolic and diastolic blood pressure, particularly during the second hour of dialysis.",
+        "relevance": "Nephrologists managing hemodialysis patients must balance nutritional support with hemodynamic stability, as intradialytic feeding may exacerbate intradialytic hypotension.",
+        "caveat": "The study has a very small sample size (36 randomized, 32 completed) and a short duration (crossover design, exact period lengths not specified), limiting its power to detect small differences in fatigue or adequacy, and it does not report long-term nutritional or cardiovascular outcomes."
       }
     },
     {
-      "pmid": "42701904",
-      "doi": "10.1007/s00383-026-06622-0",
-      "journal": "Pediatr Surg Int",
-      "date": "2026-09-06",
-      "authors": "Yan Z, Yu C, Zhang J, Wu M, Liu X et al.",
-      "title": "Outcomes and learning curve of single-kidney transplantation from small pediatric donors in children: a retrospective cohort study with meta-analysis.",
-      "study_type": "Meta-analysis",
-      "topic": "Transplantation",
-      "summary": "A retrospective cohort study of 77 children (26 small-donor vs 51 large-donor) and meta-analysis of 7 studies (527 patients). In the cohort, the small-donor group had lower 1-year graft survival (73.1% vs 100%, P < 0.001) and higher acute rejection (19.2% vs 2.0%, P = 0.026). Meta-analysis showed 1-year patient survival of 98%, graft survival of 91%, and pooled thrombosis, DGF, and acute rejection rates of 5%, 13%, and 10%, respectively.",
-      "pico": {
-        "population": "Pediatric kidney transplant recipients",
-        "intervention": "Single-kidney transplantation from small pediatric donors (weight ≤ 15 kg or age ≤ 3 years)",
-        "comparison": "Single-kidney transplantation from large pediatric donors",
-        "outcome": "1-year graft and patient survival, acute rejection, thrombosis, delayed graft function (DGF), eGFR, and operative learning curve"
-      },
-      "inclusion": [
-        "Pediatric patients undergoing single-kidney transplantation from small pediatric donors (weight ≤ 15 kg or age ≤ 3 years) or large pediatric donors"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42701904/",
-        "doi": "https://doi.org/10.1007/s00383-026-06622-0"
-      },
-      "appraisal": {
-        "bottom_line": "Single-kidney transplantation from small pediatric donors is associated with lower 1-year graft survival (73.1% vs 100%) and higher acute rejection (19.2% vs 2.0%) compared to larger donors, though outcomes improve after a learning curve of approximately 15 cases.",
-        "relevance": "Utilizing small pediatric donors can expand the donor pool for children, but centers must be prepared for higher early graft loss and a distinct technical learning curve.",
-        "caveat": "The cohort study was retrospective, single-center, and small (n=77), and the meta-analysis is limited by the observational nature of the included studies."
-      }
-    },
-    {
-      "pmid": "42700010",
-      "doi": "10.1097/MD.0000000000050522",
-      "journal": "Medicine (Baltimore)",
-      "date": "2026-09-04",
-      "authors": "Mojtahedi SY, Sedighiyan M, Pourpashang P",
-      "title": "Association between vitamin D deficiency and chronic kidney disease progression: A GRADE-based dose-response systematic review and meta-analysis.",
+      "pmid": "42716681",
+      "doi": "10.1136/bmjopen-2026-121587",
+      "journal": "BMJ Open",
+      "date": "2026-09-09",
+      "authors": "Xiao Z, Fu C, Li W",
+      "title": "Effect of intradialytic exercise on cardiovascular structural and functional parameters in maintenance haemodialysis: a systematic review and meta-analysis.",
       "study_type": "Systematic review and meta-analysis",
-      "topic": "CKD",
-      "summary": "A systematic review and dose-response meta-analysis of 11 observational/cohort studies. Vitamin D deficiency was associated with 33% higher odds of CKD progression (OR = 1.33, 95% CI: 1.06-1.67; P = 0.019; I2 = 98.2%). Dose-response analysis of 10 studies suggested higher odds of CKD progression per 10 ng/mL lower 25(OH)D concentration (OR = 1.18, 95% CI: 1.09-1.25).",
+      "topic": "Hemodialysis / Exercise",
+      "summary": "A systematic review and meta-analysis of 14 RCTs (934 participants) evaluating the impact of intradialytic exercise (IDE) versus usual care or non-exercise controls. IDE significantly increased left ventricular end-diastolic volume (MD 14.15 mL, 95% CI 2.06 to 26.24; p=0.022), improved left ventricular ejection fraction (MD 2.21%, 95% CI 0.28 to 4.15; p=0.025), reduced pulse wave velocity (MD -1.36 m/s, 95% CI -2.58 to -0.13; p=0.031), increased peak oxygen uptake (MD 2.76 mL/kg/min, 95% CI 0.08 to 5.43; p=0.044), and reduced diastolic blood pressure (MD -4.54 mmHg, 95% CI -7.57 to -1.51; p=0.003). No significant differences were observed for left ventricular mass index (MD -1.19 g/m², 95% CI -5.63 to 3.24; p=0.597) or systolic blood pressure (MD -8.76 mmHg, 95% CI -20.38 to 2.86; p=0.139).",
       "pico": {
-        "population": "Patients with chronic kidney disease (CKD)",
-        "intervention": "Low serum vitamin D levels (deficiency or lower 25(OH)D concentration)",
-        "comparison": "Normal or higher serum vitamin D levels",
-        "outcome": "CKD progression (pooled odds ratio)"
+        "population": "Adults receiving maintenance haemodialysis",
+        "intervention": "Structured intradialytic exercise (IDE)",
+        "comparison": "Usual care or non-exercise controls",
+        "outcome": "Cardiovascular structural and functional parameters (LVEDV, LVEF, PWV, Peak VO2, DBP, SBP, LVMI)"
       },
       "inclusion": [
-        "Observational and cohort studies published between 1990 and 2024 reporting baseline vitamin D levels and CKD progression outcomes"
+        "Randomised controlled trials involving adults receiving maintenance haemodialysis who underwent structured IDE versus usual care or non-exercise controls and reported cardiac, vascular or cardiorespiratory outcomes"
       ],
       "exclusion": [
         "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42700010/",
-        "doi": "https://doi.org/10.1097/MD.0000000000050522"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42716681/",
+        "doi": "https://doi.org/10.1136/bmjopen-2026-121587"
       },
       "appraisal": {
-        "bottom_line": "Lower serum 25(OH)D levels are associated with increased odds of CKD progression (OR 1.33 for deficiency; OR 1.18 per 10 ng/mL lower level), but the certainty of evidence is very low.",
-        "relevance": "While vitamin D deficiency correlates with worse renal outcomes, this observational data does not prove that vitamin D supplementation prevents CKD progression.",
-        "caveat": "The analysis is based entirely on observational studies with massive heterogeneity (I2 = 98.2%), and the dose-response analysis relied on reconstructed category-level exposure values."
+        "bottom_line": "Intradialytic exercise significantly improved left ventricular ejection fraction (MD 2.21%, p=0.025), reduced pulse wave velocity (MD -1.36 m/s, p=0.031), and lowered diastolic blood pressure (MD -4.54 mmHg, p=0.003), though it did not significantly affect left ventricular mass index or systolic blood pressure.",
+        "relevance": "Incorporating structured exercise during hemodialysis sessions may offer a practical way to improve cardiovascular function and arterial stiffness in a highly sedentary population.",
+        "caveat": "The findings are limited by low-to-moderate certainty of evidence, substantial heterogeneity for peak VO2 (I²=90.07%) and SBP (I²=73.20%), and high risk of bias in individual contributing trials."
       }
     },
     {
-      "pmid": "42697907",
-      "doi": "10.1038/s41598-026-67044-5",
-      "journal": "Sci Rep",
-      "date": "2026-09-04",
-      "authors": "Saleh SE, Elnagar SSE, Fouda MA, Sayed-Ahmed N",
-      "title": "Effects of probiotic supplementation on disease progression in patients with moderate to severe chronic kidney disease: a randomized controlled trial.",
-      "study_type": "Randomized controlled trial",
-      "topic": "CKD",
-      "summary": "A double-blind, randomized, placebo-controlled trial of 72 patients with CKD stages 3 or 4 receiving Lactobacillus plantarum (10^10 CFU daily) or placebo for six months. The probiotic group demonstrated a significant increase in eGFR compared to a significant decline in the placebo group. No probiotic participants experienced CKD progression compared to 8.6% in the placebo group.",
+      "pmid": "42714768",
+      "doi": "10.1007/s12020-026-04771-9",
+      "journal": "Endocrine",
+      "date": "2026-09-09",
+      "authors": "Câmara LC, da Costa Viana DP, de Sousa Monte Alto L, Mattoso SO, Junior NC et al.",
+      "title": "Effects of nandrolone decanoate on lean body mass and anemia in adults with chronic kidney disease: a systematic review and meta-analysis.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "CKD / Sarcopenia & Anemia",
+      "summary": "A systematic review and meta-analysis of 15 RCTs (published 1974-2021, n=312 total across analyzed subsets) evaluating intramuscular nandrolone decanoate in adults with CKD. Nandrolone decanoate was associated with increased lean body mass (4 trials, n=125, MD 2.63 kg, 95% CI 1.60-3.65). Pooled estimates for hemoglobin (6 trials, n=239, MD 0.81 g/dL) and hematocrit (7 trials, n=198, MD 3.12%) also favored nandrolone, but were limited by substantial heterogeneity and very low certainty of evidence.",
       "pico": {
-        "population": "Patients with CKD stages 3 or 4",
-        "intervention": "Lactobacillus plantarum (10^10 CFU daily) for six months",
-        "comparison": "Placebo",
-        "outcome": "Change in estimated glomerular filtration rate (eGFR), urinary indoxyl sulfate levels, and CKD progression rate"
+        "population": "Adults with chronic kidney disease",
+        "intervention": "Intramuscular nandrolone decanoate",
+        "comparison": "Control (not specified, likely placebo or standard care)",
+        "outcome": "Lean body mass, hemoglobin, hematocrit, quality of life, and safety"
       },
       "inclusion": [
-        "Patients with CKD stages 3 or 4"
+        "Randomized controlled trials of intramuscular nandrolone decanoate in adults with CKD"
       ],
       "exclusion": [
         "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42697907/",
-        "doi": "https://doi.org/10.1038/s41598-026-67044-5"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42714768/",
+        "doi": "https://doi.org/10.1007/s12020-026-04771-9"
       },
       "appraisal": {
-        "bottom_line": "Supplementation with Lactobacillus plantarum for 6 months significantly improved eGFR and prevented CKD progression compared to placebo, independent of changes in urinary indoxyl sulfate.",
-        "relevance": "Targeting the gut-kidney axis with specific probiotics may represent a novel, low-risk therapeutic strategy to slow CKD progression.",
-        "caveat": "The study had a very small sample size (n=72) and a short follow-up duration (6 months), and the exact mechanism of eGFR improvement remains unclear since indoxyl sulfate levels did not change."
+        "bottom_line": "Nandrolone decanoate was associated with an increase in lean body mass (MD 2.63 kg, 95% CI 1.60-3.65), but benefits for hemoglobin and hematocrit remain highly uncertain due to substantial heterogeneity and very low certainty of evidence.",
+        "relevance": "While anabolic steroids could theoretically address protein-energy wasting and anemia in CKD, the current evidence is outdated and insufficient to support routine clinical use.",
+        "caveat": "The included trials are largely historical (ranging from 1974 to 2021), have very small sample sizes, lack long-term safety data, and exhibit substantial heterogeneity, rendering the hematologic findings highly uncertain."
       }
     },
     {
-      "pmid": "42678025",
-      "doi": "10.1111/jorc.70079",
+      "pmid": "42703894",
+      "doi": "10.1111/jorc.70081",
       "journal": "J Ren Care",
       "date": "2026-09-01",
-      "authors": "Zhang Q, Gong T, Ye Y",
-      "title": "The Impact of Educational or Behavioural Interventions on Fatigue in Adults Receiving Haemodialysis: A Systematic Review and Meta-Analysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "Hemodialysis",
-      "summary": "A systematic review and meta-analysis of 30 studies evaluating non-pharmacological interventions for fatigue in adults receiving hemodialysis. Self-management education significantly reduced fatigue (SMD = 0.98, 95% CI [0.69, 1.28], p < 0.001), as did exercise training (SMD = 0.82, 95% CI [0.44, 1.20], p < 0.001). Cognitive behavioral therapy did not show a significant effect (SMD = 1.45, 95% CI [-0.46, 3.37], p = 0.137).",
-      "pico": {
-        "population": "Adults receiving hemodialysis",
-        "intervention": "Self-management education, exercise training, or cognitive behavioral therapy (CBT)",
-        "comparison": "Standard care or control interventions",
-        "outcome": "Fatigue (standardised mean differences based on change scores)"
-      },
-      "inclusion": [
-        "Randomised controlled trials and quasi-experimental studies evaluating educational or behavioural interventions on fatigue in adults receiving haemodialysis, searched from database inception to January 27, 2026"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42678025/",
-        "doi": "https://doi.org/10.1111/jorc.70079"
-      },
-      "appraisal": {
-        "bottom_line": "Self-management education (SMD 0.98) and exercise training (SMD 0.82) significantly reduce fatigue in hemodialysis patients, whereas cognitive behavioral therapy does not show a statistically significant effect.",
-        "relevance": "Incorporating structured self-management education and exercise programs into dialysis care plans can help address the highly prevalent and debilitating symptom of fatigue.",
-        "caveat": "The meta-analysis included quasi-experimental studies alongside RCTs, and the certainty of evidence was low for exercise and very low for CBT, indicating potential bias and heterogeneity."
-      }
-    },
-    {
-      "pmid": "42701857",
-      "doi": "10.69097/43-04-2026-09",
-      "journal": "G Ital Nefrol",
-      "date": "2026-08-31",
-      "authors": "Jothi P, Murugesan RP, Dhakshinamoorthy J, M AK",
-      "title": "Renal Rehabilitation and Its Relationship with Anemia, Nutritional Status, and Activities of Daily Living in Patients Undergoing Maintenance Hemodialysis: A Systematic Review.",
-      "study_type": "Systematic review",
-      "topic": "Hemodialysis",
-      "summary": "A qualitative systematic review of 42 studies published between 2015 and 2025 evaluating the effects of renal rehabilitation (structured exercise, nutritional support, and multidisciplinary interventions) on adults undergoing maintenance hemodialysis. Renal rehabilitation was associated with modest improvements in hemoglobin levels, ESA responsiveness, and nutritional parameters, with consistent benefits in functional outcomes (exercise capacity, muscle strength, frailty, and activities of daily living).",
-      "pico": {
-        "population": "Adults undergoing maintenance hemodialysis",
-        "intervention": "Renal rehabilitation (structured exercise, nutritional support, and multidisciplinary interventions)",
-        "comparison": "Standard care or no rehabilitation",
-        "outcome": "Anemia (hemoglobin, ESA responsiveness), nutritional status, and activities of daily living (exercise capacity, muscle strength, frailty)"
-      },
-      "inclusion": [
-        "Studies published between 2015 and 2025 evaluating the effects of renal rehabilitation on anemia, nutritional status, and activities of daily living in adults undergoing maintenance hemodialysis"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42701857/",
-        "doi": "https://doi.org/10.69097/43-04-2026-09"
-      },
-      "appraisal": {
-        "bottom_line": "Renal rehabilitation is associated with modest improvements in hemoglobin and nutritional parameters, with its most consistent benefits seen in functional outcomes like exercise capacity, muscle strength, and activities of daily living.",
-        "relevance": "Implementing structured exercise and multidisciplinary rehabilitation can help combat frailty and improve the functional independence of maintenance hemodialysis patients.",
-        "caveat": "This is a qualitative systematic review of highly heterogeneous interventions and study designs, lacking a quantitative meta-analysis to provide pooled effect sizes."
-      }
-    },
-    {
-      "pmid": "42675694",
-      "doi": "10.1097/MD.0000000000050384",
-      "journal": "Medicine (Baltimore)",
-      "date": "2026-08-28",
-      "authors": "Wang D, Wang Z, Wang D, Lei W, Lu Y et al.",
-      "title": "Effects of flurbiprofen axetil on postoperative renal function in patients undergoing percutaneous nephrolithotomy: A prospective, randomized, double-blind, controlled clinical study.",
+      "authors": "Hmida M, Abouzida MA, Bardiaa Y, Abed KE",
+      "title": "Acute Haemodynamic and Perceptual Responses to Graded Intradialytic Exercise in Patients on Maintenance Haemodialysis: A Randomised Crossover Trial.",
       "study_type": "Randomized controlled trial",
-      "topic": "AKI",
-      "summary": "A prospective, randomized, double-blind, controlled study of 120 patients undergoing PCNL randomized to postoperative flurbiprofen axetil (100 mg IV, n=60) or saline (n=60). AKI occurred in 5 cases in the control group vs 1 case in the flurbiprofen group (P = 0.207). At 6 hours postoperatively, NGAL levels were significantly lower in the flurbiprofen group (184.84 +/- 43.14 vs 216.35 +/- 63.39, P = 0.002).",
+      "topic": "Hemodialysis / Exercise",
+      "summary": "A randomized crossover trial in 48 stable maintenance hemodialysis patients comparing graded lower-limb resistance exercise (targeting Borg CR10 ratings of 3, 5, and 7) to a seated control. Graded exercise produced dose-dependent increases in hemodynamic parameters. Compared with control, higher perceived intensity increased systolic blood pressure by 14.9 mmHg (95% CI 12.7-17.0), diastolic blood pressure by 8.4 mmHg (6.8-10.0), mean arterial pressure by 10.6 mmHg (9.2-12.0), and heart rate by 15.5 bpm (12.9-18.1). No serious adverse events occurred.",
       "pico": {
-        "population": "Patients undergoing percutaneous nephrolithotomy (PCNL) under general anesthesia",
-        "intervention": "Postoperative intravenous flurbiprofen axetil (100 mg)",
-        "comparison": "Intravenous normal saline (10 ml)",
-        "outcome": "Incidence of perioperative acute kidney injury (AKI), and postoperative levels of serum creatinine, GFR, cystatin C, and NGAL"
+        "population": "Clinically stable adults receiving maintenance haemodialysis (n=48)",
+        "intervention": "Graded lower-limb resistance exercise targeting Borg category-ratio 10 ratings of 3, 5, and 7",
+        "comparison": "Seated control condition",
+        "outcome": "Systolic and diastolic blood pressure, mean arterial pressure, heart rate, peripheral oxygen saturation, rating of perceived exertion, acute fatigue, and adverse events"
       },
       "inclusion": [
-        "Patients undergoing PCNL under general anesthesia between February and July 2025"
+        "Clinically stable adults receiving maintenance haemodialysis"
       ],
       "exclusion": [
         "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42675694/",
-        "doi": "https://doi.org/10.1097/MD.0000000000050384"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42703894/",
+        "doi": "https://doi.org/10.1111/jorc.70081"
       },
       "appraisal": {
-        "bottom_line": "Postoperative administration of 100 mg flurbiprofen axetil did not significantly reduce the incidence of clinical AKI (1 case vs 5 cases, P=0.207), though it was associated with lower NGAL levels at 6 hours postoperatively.",
-        "relevance": "NSAIDs like flurbiprofen axetil are often avoided postoperatively due to nephrotoxicity concerns; this study suggests low-dose use might not worsen, and could potentially mitigate, early subclinical tubular injury markers.",
-        "caveat": "The study was underpowered to detect a difference in clinical AKI (only 6 total cases occurred), and the primary positive finding was a transient difference in a surrogate biomarker (NGAL at 6 hours) with no differences in creatinine or cystatin C at other time points."
+        "bottom_line": "Graded intradialytic resistance exercise led to dose-dependent increases in blood pressure (SBP +14.9 mmHg, DBP +8.4 mmHg) and heart rate (+15.5 bpm) without causing serious adverse events or oxygen desaturation below 90%.",
+        "relevance": "This study provides physiological reassurance that graded resistance exercise is acutely tolerated during dialysis, though it transiently increases hemodynamic load.",
+        "caveat": "The trial only assessed acute, single-session physiological and perceptual responses; it does not establish the long-term safety, adherence, or clinical efficacy of sustained high-intensity intradialytic training."
+      }
+    },
+    {
+      "pmid": "42728702",
+      "doi": "10.6002/ect.2026.0080",
+      "journal": "Exp Clin Transplant",
+      "date": "2026-08-01",
+      "authors": "Sharma R, Khan N",
+      "title": "Surgical Considerations for Kidney Transplant in Simultaneous Versus Sequential Heart-Kidney Transplant: A Systematic Review.",
+      "study_type": "Systematic review",
+      "topic": "Transplantation",
+      "summary": "A systematic review of 35 full-text records examining surgical timing for kidney transplantation in simultaneous heart-kidney transplant (SHKT). SHKT was most supported in dialysis-dependent recipients and those with severe, irreversible renal dysfunction. Kidney delayed graft function (DGF) occurred in 1/4 to 1/3 of SHKT recipients and was associated with worse survival. Sequential kidney-after-heart transplant (SKAHT) was suggested as a reasonable strategy when renal reversibility is uncertain or the post-surgery heart transplant environment is hostile to renal graft perfusion.",
+      "pico": {
+        "population": "Adults undergoing or considered for heart-kidney transplantation",
+        "intervention": "Simultaneous heart-kidney transplant (immediate or staged kidney implantation)",
+        "comparison": "Sequential kidney-after-heart transplant (SKAHT)",
+        "outcome": "Kidney delayed graft function (DGF), patient survival, kidney graft survival, primary nonfunction, early kidney graft loss, and renal allograft futility"
+      },
+      "inclusion": [
+        "English language",
+        "Human studies",
+        "Adult (19+ years) recipients",
+        "MEDLINE/Embase/Cochrane records from January 1, 2006, through March 21, 2026",
+        "Organ Procurement and Transplant Network policy reports"
+      ],
+      "exclusion": [
+        "Non-English",
+        "Non-human",
+        "Pediatric studies (<19 years)",
+        "Studies outside the specified date range"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42728702/",
+        "doi": "https://doi.org/10.6002/ect.2026.0080"
+      },
+      "appraisal": {
+        "bottom_line": "Simultaneous heart-kidney transplant is most supported for dialysis-dependent or severe irreversible renal failure, but sequential kidney-after-heart transplant is a viable alternative when renal reversibility is uncertain or hemodynamic instability threatens early graft perfusion.",
+        "relevance": "Distinguishing simultaneous allocation from simultaneous implantation allows transplant teams to optimize organ stewardship and patient outcomes by delaying kidney implantation in hemodynamically unstable recipients.",
+        "caveat": "This is a qualitative systematic review of largely retrospective, observational data and policy reports, meaning it cannot establish causal superiority of one surgical timing strategy over another, and is subject to selection bias."
       }
     },
     {
@@ -306,16 +185,16 @@
       "authors": "Aziz A, Abbas S, Aftab A, Naqvi R",
       "title": "Poisons causing acute kidney injury in Indo-Pak region: A meta-analysis.",
       "study_type": "Systematic review and meta-analysis",
-      "topic": "AKI",
-      "summary": "A systematic review and meta-analysis of 19 studies (12 from India, 7 from Pakistan; total population 3,769) on poisoning-induced AKI. Ten studies focused on paraphenylene diamine (PPD) poisoning. The pooled mortality was 20-23%, with fixed-effect and random-effect model estimates of 0.23 (95% CI: 0.22-0.25) and 0.20 (95% CI: 0.12-0.28), respectively, with high heterogeneity (I2 = 90%).",
+      "topic": "Acute Kidney Injury",
+      "summary": "A systematic review and meta-analysis of 19 studies (12 from India, 7 from Pakistan, n=3,769 total patients) evaluating acute kidney injury caused by exposure to different poisons. Paraphenylene diamine (PPD) poisoning was the sole focus of 10 studies (52.6%). The pooled mortality rate was 20% to 23%, with fixed and random-effect model estimates being 0.23 (95% CI: 0.22-0.25) and 0.20 (95% CI: 0.12-0.28), respectively. High heterogeneity (I² = 90%) and publication bias were observed.",
       "pico": {
-        "population": "Patients with acute kidney injury due to poisoning in India and Pakistan",
+        "population": "Patients with poisoning-induced acute kidney injury in India and Pakistan (n=3,769 across 19 studies)",
         "intervention": "Exposure to various poisons (e.g., paraphenylene diamine, paraquat, organophosphate, copper sulphate, methyl alcohol, rodenticides)",
-        "comparison": "Not applicable (epidemiological meta-analysis of exposure outcomes)",
-        "outcome": "All-group mortality and sub-group mortality for paraphenylene diamine poisoning"
+        "comparison": "None (descriptive/epidemiological meta-analysis of observational cohorts)",
+        "outcome": "All-group mortality and subgroup mortality for paraphenylene diamine poisoning"
       },
       "inclusion": [
-        "Studies from India and Pakistan reporting on acute kidney injury resulting from exposure to different poisons"
+        "Studies from India and Pakistan addressing acute kidney injury resulting from exposure to different poisons"
       ],
       "exclusion": [
         "Duplicates and irrelevant articles"
@@ -325,105 +204,9 @@
         "doi": "https://doi.org/10.47391/JPMA.40474"
       },
       "appraisal": {
-        "bottom_line": "Poisoning-induced AKI in the Indo-Pak region is associated with a high pooled mortality rate of 20% to 23%, with paraphenylene diamine (PPD) being the most frequently studied offending agent.",
-        "relevance": "Understanding the local epidemiology of nephrotoxic poisons is critical for clinicians in South Asia to ensure rapid recognition and targeted management.",
-        "caveat": "The meta-analysis is limited by extreme heterogeneity (I2 = 90%) and significant publication bias among the included observational studies, which varied widely in the types of poisons and clinical settings."
-      }
-    },
-    {
-      "pmid": "42679373",
-      "doi": "10.61882/ijkd.20.4.9579",
-      "journal": "Iran J Kidney Dis",
-      "date": "2026-07-31",
-      "authors": "Pourrezagholi F, Amini H, Omid Moradi, Mahdavi B, Nadiri Niri A et al.",
-      "title": "Effect of Melatonin Supplementation on Glycemic and Lipid Profiles in Kidney Transplant Recipients: A Clinical Trial.",
-      "study_type": "Randomized controlled trial",
-      "topic": "Transplantation",
-      "summary": "A randomized, double-blind, placebo-controlled trial of 84 kidney transplant recipients randomized to 6 mg/day melatonin (n=42) or placebo (n=42) for three months. Melatonin significantly decreased FBS (median -6.5 mg/dL, P < 0.001) and HbA1c (-0.25 units, P < 0.001) from baseline. The adjusted between-group effect favored melatonin for HbA1c (beta = -0.30%; 95% CI: -0.59 to -0.01; P < 0.001) and triglycerides (adjusted beta = -23.77 mg/dL; 95% CI: -45.50 to -2.04; P = 0.032), but not for FBS (beta = -2.61 mg/dL; 95% CI: -17.93 to 12.71; P = 0.283).",
-      "pico": {
-        "population": "Adult kidney transplant recipients (≥6 months post-transplant)",
-        "intervention": "Melatonin supplementation (6 mg/day) for three months",
-        "comparison": "Placebo",
-        "outcome": "Changes in fasting blood sugar (FBS), HbA1c, blood pressure, and lipid profile parameters (triglycerides)"
-      },
-      "inclusion": [
-        "Adult kidney transplant recipients (≥6 months post-transplant)"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42679373/",
-        "doi": "https://doi.org/10.61882/ijkd.20.4.9579"
-      },
-      "appraisal": {
-        "bottom_line": "Melatonin supplementation (6 mg/day) for 3 months modestly improved glycemic control (HbA1c beta = -0.30%) and lowered triglycerides (beta = -23.77 mg/dL) in kidney transplant recipients, without affecting blood pressure or kidney function.",
-        "relevance": "Melatonin may serve as a safe, low-cost adjuvant therapy to manage post-transplant metabolic complications like dyslipidemia and hyperglycemia.",
-        "caveat": "The study had a small sample size (n=84) and a short duration (3 months), and the primary glycemic endpoint of fasting blood sugar did not show a statistically significant difference between groups in the adjusted analysis."
-      }
-    },
-    {
-      "pmid": "42679368",
-      "doi": "10.61882/ijkd.20.4.9534",
-      "journal": "Iran J Kidney Dis",
-      "date": "2026-07-31",
-      "authors": "Shadravan S, Khezri R, Zarei Venovel M, Mahami-Oskouei M, Hooman N",
-      "title": "Impact of Dapagliflozin on Kidney Function Decline in Chronic Kidney Disease Patients: A Systematic Review.",
-      "study_type": "Systematic review",
-      "topic": "CKD",
-      "summary": "A systematic review of 15 publications evaluating dapagliflozin in CKD. After excluding 11 overlapping publications from the DAPA-CKD trial, 4 unique independent trials were analyzed. The mean difference in eGFR decline ranged from -6.60 mL/min/1.73m² to +0.93 mL/min/1.73m². Substantial heterogeneity (I2 = 93.7%) precluded meta-analysis.",
-      "pico": {
-        "population": "Patients with chronic kidney disease (CKD)",
-        "intervention": "Dapagliflozin therapy",
-        "comparison": "Placebo or standard care",
-        "outcome": "Estimated glomerular filtration rate (eGFR) decline and composite renal outcomes"
-      },
-      "inclusion": [
-        "Randomized controlled trials (RCTs) concerning dapagliflozin in individuals with CKD, searched up to January 10, 2025"
-      ],
-      "exclusion": [
-        "Publications with overlapping populations (e.g., secondary analyses of the DAPA-CKD parent trial)"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42679368/",
-        "doi": "https://doi.org/10.61882/ijkd.20.4.9534"
-      },
-      "appraisal": {
-        "bottom_line": "The impact of dapagliflozin on eGFR decline was highly variable across four unique trials (ranging from -6.60 to +0.93 mL/min/1.73m²), and extreme heterogeneity (I2 = 93.7%) prevented a quantitative meta-analysis.",
-        "relevance": "While the landmark DAPA-CKD trial established clear clinical benefits, this review highlights that smaller, independent trials show highly variable short-term eGFR changes.",
-        "caveat": "The systematic review was severely limited by the lack of independent large-scale RCTs, as 11 of the 15 identified papers were redundant publications from the single DAPA-CKD trial."
-      }
-    },
-    {
-      "pmid": "42669711",
-      "doi": "10.1038/s41467-026-76083-5",
-      "journal": "Nat Commun",
-      "date": "2026-07-30",
-      "authors": "Liu PY, Shih CK, Hsieh MH, Lin CC, Liu CY et al.",
-      "title": "Cardiovascular outcome of glucagon-like peptide-1 receptor agonists vs dipeptidyl peptidase-4 inhibitor on end-stage kidney disease patients with heart failure: an emulated target trial in patients with diabetes.",
-      "study_type": "Randomized controlled trial",
-      "topic": "ESKD",
-      "summary": "An emulated target trial using the TriNetX network comparing GLP-1RAs vs DPP-4is in diabetic ESKD patients with HF on maintenance dialysis. GLP-1RA use was associated with a lower risk of the primary composite ischemic cardiovascular events plus HF exacerbations (31.7% vs 41.4%; HR 0.72, 95% CI 0.64-0.82, P < 0.0001), lower ischemic events (HR 0.74), lower HF exacerbations (HR 0.76), and lower all-cause mortality (HR 0.68).",
-      "pico": {
-        "population": "Diabetic end-stage kidney disease (ESKD) patients with heart failure (HF) undergoing maintenance dialysis",
-        "intervention": "Initiation of glucagon-like peptide-1 receptor agonists (GLP-1RAs)",
-        "comparison": "Initiation of dipeptidyl peptidase-4 inhibitors (DPP-4is)",
-        "outcome": "Primary composite of ischemic cardiovascular events plus HF exacerbations, individual components, and all-cause mortality"
-      },
-      "inclusion": [
-        "Diabetic ESKD patients with HF undergoing maintenance dialysis (identified via TriNetX federated electronic health record network)"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42669711/",
-        "doi": "https://doi.org/10.1038/s41467-026-76083-5"
-      },
-      "appraisal": {
-        "bottom_line": "In diabetic ESKD patients with heart failure on dialysis, initiation of GLP-1RAs was associated with a 28% lower risk of composite cardiovascular events/HF exacerbations (HR 0.72, 95% CI 0.64-0.82) and a 32% lower risk of all-cause mortality (HR 0.68) compared to DPP-4is.",
-        "relevance": "This study provides much-needed real-world evidence for a high-risk population (dialysis patients with HF) that is typically excluded from large cardiovascular outcome trials of GLP-1RAs.",
-        "caveat": "Although labeled as a 'Randomized controlled trial' in PubMed publication types, this is actually an observational target trial emulation using electronic health records, which is subject to residual confounding despite propensity score matching."
+        "bottom_line": "Poisoning-induced acute kidney injury in the Indo-Pak region—frequently caused by paraphenylene diamine—is associated with a high pooled mortality rate of 20% to 23% (random-effects estimate: 0.20, 95% CI 0.12-0.28).",
+        "relevance": "Understanding the local epidemiology of nephrotoxic poisons is critical for clinicians in South Asia to prompt early recognition, supportive care, and potential extracorporeal therapies.",
+        "caveat": "The analysis is limited by extreme heterogeneity (I² = 90%) and significant publication bias among the included observational studies, which mostly represent single-center retrospective cohorts with varying clinical protocols."
       }
     }
   ]
