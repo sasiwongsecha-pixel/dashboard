@@ -1,212 +1,173 @@
 {
   "meta": {
     "title": "Nephrology Literature Update",
-    "generated_at": "2026-09-14",
-    "window": "New to PubMed 2026-09-07 to 2026-09-14",
+    "generated_at": "2026-09-21",
+    "window": "New to PubMed 2026-09-14 to 2026-09-21",
     "query": "Clinical nephrology — RCTs, systematic reviews & meta-analyses (humans, English)",
     "source": "PubMed (NLM) abstracts; summaries and appraisals generated automatically from those abstracts. Each entry links to its PubMed record and DOI.",
-    "count": 6,
+    "count": 5,
     "note": "Summaries and PICO are machine analyses of the source abstracts; criteria marked “not specified” were not stated. Read the source before acting clinically.",
     "appraisal_source": "Automated critical appraisal (clinical bottom-line, relevance, caveat)."
   },
   "articles": [
     {
-      "pmid": "42726135",
-      "doi": "10.1590/1980-220X-REEUSP-2026-0010en",
-      "journal": "Rev Esc Enferm USP",
-      "date": "2026-09-11",
-      "authors": "Köse E, Gün M",
-      "title": "Effects of intradialytic nutrition on dialysis adequacy and fatigue in hemodialysis patients: a randomized crossover study.",
-      "study_type": "Randomized controlled trial",
-      "topic": "Hemodialysis / Nutrition",
-      "summary": "A randomized, two-period, two-sequence, self-controlled crossover trial in 36 maintenance hemodialysis patients in Türkiye (32 completed) comparing standardized intradialytic nutrition to no food intake. No significant differences were found in dialysis adequacy (URR, spKt/V) or fatigue scores (Piper Fatigue Scale). Intradialytic nutrition was associated with greater reductions in systolic and diastolic blood pressure, especially during the second hour.",
-      "pico": {
-        "population": "Maintenance hemodialysis patients in two outpatient centers in Türkiye (n=36 randomized, 32 completed)",
-        "intervention": "Standardized intradialytic nutrition during one period",
-        "comparison": "No food intake (control period)",
-        "outcome": "Dialysis adequacy (urea reduction ratio and single-pool Kt/V), fatigue severity (Piper Fatigue Scale), intradialytic blood pressure, and adverse events"
-      },
-      "inclusion": [
-        "Maintenance hemodialysis patients from two outpatient hemodialysis centers in Türkiye"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42726135/",
-        "doi": "https://doi.org/10.1590/1980-220X-REEUSP-2026-0010en"
-      },
-      "appraisal": {
-        "bottom_line": "Intradialytic nutrition did not significantly alter dialysis adequacy or fatigue scores compared to fasting, but it was associated with greater reductions in systolic and diastolic blood pressure, particularly during the second hour of dialysis.",
-        "relevance": "Nephrologists managing hemodialysis patients must balance nutritional support with hemodynamic stability, as intradialytic feeding may exacerbate intradialytic hypotension.",
-        "caveat": "The study has a very small sample size (36 randomized, 32 completed) and a short duration (crossover design, exact period lengths not specified), limiting its power to detect small differences in fatigue or adequacy, and it does not report long-term nutritional or cardiovascular outcomes."
-      }
-    },
-    {
-      "pmid": "42716681",
-      "doi": "10.1136/bmjopen-2026-121587",
-      "journal": "BMJ Open",
-      "date": "2026-09-09",
-      "authors": "Xiao Z, Fu C, Li W",
-      "title": "Effect of intradialytic exercise on cardiovascular structural and functional parameters in maintenance haemodialysis: a systematic review and meta-analysis.",
+      "pmid": "42760401",
+      "doi": "10.1007/s00431-026-07419-y",
+      "journal": "Eur J Pediatr",
+      "date": "2026-09-19",
+      "authors": "Cai W, Wang D, Zhu L, Liu X",
+      "title": "Risk factors for acute kidney injury after pediatric liver transplantation: a systematic review and meta-analysis.",
       "study_type": "Systematic review and meta-analysis",
-      "topic": "Hemodialysis / Exercise",
-      "summary": "A systematic review and meta-analysis of 14 RCTs (934 participants) evaluating the impact of intradialytic exercise (IDE) versus usual care or non-exercise controls. IDE significantly increased left ventricular end-diastolic volume (MD 14.15 mL, 95% CI 2.06 to 26.24; p=0.022), improved left ventricular ejection fraction (MD 2.21%, 95% CI 0.28 to 4.15; p=0.025), reduced pulse wave velocity (MD -1.36 m/s, 95% CI -2.58 to -0.13; p=0.031), increased peak oxygen uptake (MD 2.76 mL/kg/min, 95% CI 0.08 to 5.43; p=0.044), and reduced diastolic blood pressure (MD -4.54 mmHg, 95% CI -7.57 to -1.51; p=0.003). No significant differences were observed for left ventricular mass index (MD -1.19 g/m², 95% CI -5.63 to 3.24; p=0.597) or systolic blood pressure (MD -8.76 mmHg, 95% CI -20.38 to 2.86; p=0.139).",
-      "pico": {
-        "population": "Adults receiving maintenance haemodialysis",
-        "intervention": "Structured intradialytic exercise (IDE)",
-        "comparison": "Usual care or non-exercise controls",
-        "outcome": "Cardiovascular structural and functional parameters (LVEDV, LVEF, PWV, Peak VO2, DBP, SBP, LVMI)"
-      },
-      "inclusion": [
-        "Randomised controlled trials involving adults receiving maintenance haemodialysis who underwent structured IDE versus usual care or non-exercise controls and reported cardiac, vascular or cardiorespiratory outcomes"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42716681/",
-        "doi": "https://doi.org/10.1136/bmjopen-2026-121587"
-      },
-      "appraisal": {
-        "bottom_line": "Intradialytic exercise significantly improved left ventricular ejection fraction (MD 2.21%, p=0.025), reduced pulse wave velocity (MD -1.36 m/s, p=0.031), and lowered diastolic blood pressure (MD -4.54 mmHg, p=0.003), though it did not significantly affect left ventricular mass index or systolic blood pressure.",
-        "relevance": "Incorporating structured exercise during hemodialysis sessions may offer a practical way to improve cardiovascular function and arterial stiffness in a highly sedentary population.",
-        "caveat": "The findings are limited by low-to-moderate certainty of evidence, substantial heterogeneity for peak VO2 (I²=90.07%) and SBP (I²=73.20%), and high risk of bias in individual contributing trials."
-      }
-    },
-    {
-      "pmid": "42714768",
-      "doi": "10.1007/s12020-026-04771-9",
-      "journal": "Endocrine",
-      "date": "2026-09-09",
-      "authors": "Câmara LC, da Costa Viana DP, de Sousa Monte Alto L, Mattoso SO, Junior NC et al.",
-      "title": "Effects of nandrolone decanoate on lean body mass and anemia in adults with chronic kidney disease: a systematic review and meta-analysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "CKD / Sarcopenia & Anemia",
-      "summary": "A systematic review and meta-analysis of 15 RCTs (published 1974-2021, n=312 total across analyzed subsets) evaluating intramuscular nandrolone decanoate in adults with CKD. Nandrolone decanoate was associated with increased lean body mass (4 trials, n=125, MD 2.63 kg, 95% CI 1.60-3.65). Pooled estimates for hemoglobin (6 trials, n=239, MD 0.81 g/dL) and hematocrit (7 trials, n=198, MD 3.12%) also favored nandrolone, but were limited by substantial heterogeneity and very low certainty of evidence.",
-      "pico": {
-        "population": "Adults with chronic kidney disease",
-        "intervention": "Intramuscular nandrolone decanoate",
-        "comparison": "Control (not specified, likely placebo or standard care)",
-        "outcome": "Lean body mass, hemoglobin, hematocrit, quality of life, and safety"
-      },
-      "inclusion": [
-        "Randomized controlled trials of intramuscular nandrolone decanoate in adults with CKD"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42714768/",
-        "doi": "https://doi.org/10.1007/s12020-026-04771-9"
-      },
-      "appraisal": {
-        "bottom_line": "Nandrolone decanoate was associated with an increase in lean body mass (MD 2.63 kg, 95% CI 1.60-3.65), but benefits for hemoglobin and hematocrit remain highly uncertain due to substantial heterogeneity and very low certainty of evidence.",
-        "relevance": "While anabolic steroids could theoretically address protein-energy wasting and anemia in CKD, the current evidence is outdated and insufficient to support routine clinical use.",
-        "caveat": "The included trials are largely historical (ranging from 1974 to 2021), have very small sample sizes, lack long-term safety data, and exhibit substantial heterogeneity, rendering the hematologic findings highly uncertain."
-      }
-    },
-    {
-      "pmid": "42703894",
-      "doi": "10.1111/jorc.70081",
-      "journal": "J Ren Care",
-      "date": "2026-09-01",
-      "authors": "Hmida M, Abouzida MA, Bardiaa Y, Abed KE",
-      "title": "Acute Haemodynamic and Perceptual Responses to Graded Intradialytic Exercise in Patients on Maintenance Haemodialysis: A Randomised Crossover Trial.",
-      "study_type": "Randomized controlled trial",
-      "topic": "Hemodialysis / Exercise",
-      "summary": "A randomized crossover trial in 48 stable maintenance hemodialysis patients comparing graded lower-limb resistance exercise (targeting Borg CR10 ratings of 3, 5, and 7) to a seated control. Graded exercise produced dose-dependent increases in hemodynamic parameters. Compared with control, higher perceived intensity increased systolic blood pressure by 14.9 mmHg (95% CI 12.7-17.0), diastolic blood pressure by 8.4 mmHg (6.8-10.0), mean arterial pressure by 10.6 mmHg (9.2-12.0), and heart rate by 15.5 bpm (12.9-18.1). No serious adverse events occurred.",
-      "pico": {
-        "population": "Clinically stable adults receiving maintenance haemodialysis (n=48)",
-        "intervention": "Graded lower-limb resistance exercise targeting Borg category-ratio 10 ratings of 3, 5, and 7",
-        "comparison": "Seated control condition",
-        "outcome": "Systolic and diastolic blood pressure, mean arterial pressure, heart rate, peripheral oxygen saturation, rating of perceived exertion, acute fatigue, and adverse events"
-      },
-      "inclusion": [
-        "Clinically stable adults receiving maintenance haemodialysis"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42703894/",
-        "doi": "https://doi.org/10.1111/jorc.70081"
-      },
-      "appraisal": {
-        "bottom_line": "Graded intradialytic resistance exercise led to dose-dependent increases in blood pressure (SBP +14.9 mmHg, DBP +8.4 mmHg) and heart rate (+15.5 bpm) without causing serious adverse events or oxygen desaturation below 90%.",
-        "relevance": "This study provides physiological reassurance that graded resistance exercise is acutely tolerated during dialysis, though it transiently increases hemodynamic load.",
-        "caveat": "The trial only assessed acute, single-session physiological and perceptual responses; it does not establish the long-term safety, adherence, or clinical efficacy of sustained high-intensity intradialytic training."
-      }
-    },
-    {
-      "pmid": "42728702",
-      "doi": "10.6002/ect.2026.0080",
-      "journal": "Exp Clin Transplant",
-      "date": "2026-08-01",
-      "authors": "Sharma R, Khan N",
-      "title": "Surgical Considerations for Kidney Transplant in Simultaneous Versus Sequential Heart-Kidney Transplant: A Systematic Review.",
-      "study_type": "Systematic review",
       "topic": "Transplantation",
-      "summary": "A systematic review of 35 full-text records examining surgical timing for kidney transplantation in simultaneous heart-kidney transplant (SHKT). SHKT was most supported in dialysis-dependent recipients and those with severe, irreversible renal dysfunction. Kidney delayed graft function (DGF) occurred in 1/4 to 1/3 of SHKT recipients and was associated with worse survival. Sequential kidney-after-heart transplant (SKAHT) was suggested as a reasonable strategy when renal reversibility is uncertain or the post-surgery heart transplant environment is hostile to renal graft perfusion.",
+      "summary": "A systematic review and meta-analysis of 17 retrospective cohort studies involving 2,986 pediatric liver transplant recipients to evaluate the incidence and risk factors of acute kidney injury (AKI) following pediatric liver transplantation (PLT).",
       "pico": {
-        "population": "Adults undergoing or considered for heart-kidney transplantation",
-        "intervention": "Simultaneous heart-kidney transplant (immediate or staged kidney implantation)",
-        "comparison": "Sequential kidney-after-heart transplant (SKAHT)",
-        "outcome": "Kidney delayed graft function (DGF), patient survival, kidney graft survival, primary nonfunction, early kidney graft loss, and renal allograft futility"
+        "population": "Pediatric liver transplant recipients",
+        "intervention": "Perioperative and patient-related risk factors (e.g., preoperative hepatic impairment, coagulation abnormalities, inadequate nutrition and oxygen delivery, intraoperative blood loss, transfusion burden, ischemia-reperfusion injury, and postoperative organ support)",
+        "comparison": "Absence of these risk factors",
+        "outcome": "Incidence of postoperative acute kidney injury (AKI)"
       },
       "inclusion": [
-        "English language",
-        "Human studies",
-        "Adult (19+ years) recipients",
-        "MEDLINE/Embase/Cochrane records from January 1, 2006, through March 21, 2026",
-        "Organ Procurement and Transplant Network policy reports"
+        "Observational studies on risk factors for AKI following pediatric liver transplantation published from database inception to September 2025"
       ],
       "exclusion": [
-        "Non-English",
-        "Non-human",
-        "Pediatric studies (<19 years)",
-        "Studies outside the specified date range"
+        "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42728702/",
-        "doi": "https://doi.org/10.6002/ect.2026.0080"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42760401/",
+        "doi": "https://doi.org/10.1007/s00431-026-07419-y"
       },
       "appraisal": {
-        "bottom_line": "Simultaneous heart-kidney transplant is most supported for dialysis-dependent or severe irreversible renal failure, but sequential kidney-after-heart transplant is a viable alternative when renal reversibility is uncertain or hemodynamic instability threatens early graft perfusion.",
-        "relevance": "Distinguishing simultaneous allocation from simultaneous implantation allows transplant teams to optimize organ stewardship and patient outcomes by delaying kidney implantation in hemodynamically unstable recipients.",
-        "caveat": "This is a qualitative systematic review of largely retrospective, observational data and policy reports, meaning it cannot establish causal superiority of one surgical timing strategy over another, and is subject to selection bias."
+        "bottom_line": "The pooled incidence rate of AKI following pediatric liver transplantation is high at 30.7% (95% CI: 25.0% to 36.3%). While multiple perioperative and patient-related factors are associated with postoperative AKI, many of these associations are based on a small number of studies and require cautious interpretation.",
+        "relevance": "Enables pediatric nephrologists and transplant surgeons to identify high-risk pediatric liver transplant recipients early and implement targeted perioperative management strategies to mitigate AKI risk.",
+        "caveat": "The analysis is entirely based on retrospective cohort studies, which limits the ability to establish causal relationships. Furthermore, many individual risk factors were evaluated in only a small number of studies, and the authors note a critical need for large-scale prospective validation."
       }
     },
     {
-      "pmid": "42703125",
-      "doi": "10.47391/JPMA.40474",
-      "journal": "J Pak Med Assoc",
-      "date": "2026-08-01",
-      "authors": "Aziz A, Abbas S, Aftab A, Naqvi R",
-      "title": "Poisons causing acute kidney injury in Indo-Pak region: A meta-analysis.",
+      "pmid": "42757634",
+      "doi": "10.1002/14651858.CD016155.pub2",
+      "journal": "Cochrane Database Syst Rev",
+      "date": "2026-09-18",
+      "authors": "Beresford L, Burgess LC, Dewhurst S, Hutchison A, Pandyan AD et al.",
+      "title": "Lower-limb neuromuscular electrical stimulation (NMES) for adults with kidney failure undergoing dialysis.",
       "study_type": "Systematic review and meta-analysis",
-      "topic": "Acute Kidney Injury",
-      "summary": "A systematic review and meta-analysis of 19 studies (12 from India, 7 from Pakistan, n=3,769 total patients) evaluating acute kidney injury caused by exposure to different poisons. Paraphenylene diamine (PPD) poisoning was the sole focus of 10 studies (52.6%). The pooled mortality rate was 20% to 23%, with fixed and random-effect model estimates being 0.23 (95% CI: 0.22-0.25) and 0.20 (95% CI: 0.12-0.28), respectively. High heterogeneity (I² = 90%) and publication bias were observed.",
+      "topic": "Dialysis",
+      "summary": "A Cochrane systematic review and meta-analysis of 12 RCTs (348 eligible participants, 299 analyzed) evaluating the efficacy and safety of lower-limb neuromuscular electrical stimulation (NMES) in adults with kidney failure undergoing dialysis.",
       "pico": {
-        "population": "Patients with poisoning-induced acute kidney injury in India and Pakistan (n=3,769 across 19 studies)",
-        "intervention": "Exposure to various poisons (e.g., paraphenylene diamine, paraquat, organophosphate, copper sulphate, methyl alcohol, rodenticides)",
-        "comparison": "None (descriptive/epidemiological meta-analysis of observational cohorts)",
-        "outcome": "All-group mortality and subgroup mortality for paraphenylene diamine poisoning"
+        "population": "Adults (aged 18 years or older) with kidney failure receiving hemodialysis or peritoneal dialysis",
+        "intervention": "Lower-limb neuromuscular electrical stimulation (NMES) training programmes delivered via surface electrodes",
+        "comparison": "No NMES (usual care, sham NMES, or exercise with a usual care control)",
+        "outcome": "Critical outcomes (life participation, cardiovascular outcomes [blood pressure, resting heart rate], death, fatigue, pain, infection, vascular access problems) and important outcomes (muscle function, functional performance, muscle structure, quality of life, biochemical/hormonal markers, treatment experience)"
       },
       "inclusion": [
-        "Studies from India and Pakistan addressing acute kidney injury resulting from exposure to different poisons"
+        "Randomised controlled trials (RCTs) and cluster RCTs evaluating lower-limb NMES interventions delivered via surface electrodes in adults with kidney failure receiving hemodialysis or peritoneal dialysis"
       ],
       "exclusion": [
-        "Duplicates and irrelevant articles"
+        "Studies using single-session NMES, NMES in transient acute dialysis samples, combining NMES with concurrent exercise without a control group, or conducted in non-dialysis chronic kidney disease populations"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42703125/",
-        "doi": "https://doi.org/10.47391/JPMA.40474"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42757634/",
+        "doi": "https://doi.org/10.1002/14651858.CD016155.pub2"
       },
       "appraisal": {
-        "bottom_line": "Poisoning-induced acute kidney injury in the Indo-Pak region—frequently caused by paraphenylene diamine—is associated with a high pooled mortality rate of 20% to 23% (random-effects estimate: 0.20, 95% CI 0.12-0.28).",
-        "relevance": "Understanding the local epidemiology of nephrotoxic poisons is critical for clinicians in South Asia to prompt early recognition, supportive care, and potential extracorporeal therapies.",
-        "caveat": "The analysis is limited by extreme heterogeneity (I² = 90%) and significant publication bias among the included observational studies, which mostly represent single-center retrospective cohorts with varying clinical protocols."
+        "bottom_line": "The evidence is highly uncertain regarding the effect of NMES on life participation (MD 1.00, 95% CI -3.85 to 5.85) and death (RR 0.24, 95% CI 0.01 to 5.26). Low-certainty evidence suggests NMES may result in little to no difference in diastolic blood pressure (MD 2.72, 95% CI -2.85 to 8.29), systolic blood pressure (MD 5.54, 95% CI -4.02 to 15.09), or resting heart rate (MD 4.58, 95% CI -2.67 to 11.82).",
+        "relevance": "While NMES is proposed as an alternative or adjunct to exercise for dialysis patients with muscle wasting, current evidence does not support a clear clinical benefit on critical cardiovascular or patient-centered outcomes.",
+        "caveat": "The certainty of the evidence is low to very low, severely limited by small sample sizes, risk of bias, and imprecision. No studies evaluated peritoneal dialysis patients, and key patient-centered outcomes such as fatigue, pain, and vascular access problems were completely unreported."
+      }
+    },
+    {
+      "pmid": "42752720",
+      "doi": "10.11606/s1518-8787.2026060007308",
+      "journal": "Rev Saude Publica",
+      "date": "2026-09-14",
+      "authors": "Bittencourt JAS, Figueredo AS, Melo NAC, Pereira CL, Moraes YAC et al.",
+      "title": "Applications of artificial intelligence in chronic kidney disease: a systematic review.",
+      "study_type": "Systematic review",
+      "topic": "CKD",
+      "summary": "A systematic review of 26 studies published between 2019 and 2025 evaluating the applications of artificial intelligence (AI) in the early diagnosis, prediction, and management of chronic kidney disease (CKD).",
+      "pico": {
+        "population": "Patients at risk for or diagnosed with chronic kidney disease",
+        "intervention": "Artificial intelligence tools (supervised learning and deep learning algorithms)",
+        "comparison": "Standard clinical care or no AI tool",
+        "outcome": "Early detection, disease management, and model performance metrics (accuracy, sensitivity, specificity)"
+      },
+      "inclusion": [
+        "Studies published between 2019 and 2025 in PubMed and Scopus considering patients at risk for or diagnosed with CKD, AI tools as interventions, and outcomes related to early detection and disease management"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42752720/",
+        "doi": "https://doi.org/10.11606/s1518-8787.2026060007308"
+      },
+      "appraisal": {
+        "bottom_line": "Supervised and deep learning AI models demonstrate high accuracy, sensitivity, and specificity in identifying CKD and its stages. However, methodological weaknesses—particularly the lack of external validation, poor control of confounding factors, and non-standardized datasets—limit their current clinical generalizability.",
+        "relevance": "AI represents a promising strategic tool for early CKD detection and individualized management, but current models are not yet ready for reliable integration into real-world clinical practice.",
+        "caveat": "This is a systematic review of highly heterogeneous, mostly retrospective model-development studies. The lack of external validation and prospective clinical trials means the reported high accuracies may not translate to actual patient care settings."
+      }
+    },
+    {
+      "pmid": "42745384",
+      "doi": "10.1002/nop2.70832",
+      "journal": "Nurs Open",
+      "date": "2026-09-01",
+      "authors": "Cho MK, Cho YH",
+      "title": "Effectiveness of Nursing and Non-Pharmacological Interventions in Reducing Intradialytic Hypotension Among Haemodialysis Patients: A Systematic Review and Meta-Analysis.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "Dialysis",
+      "summary": "A systematic review and meta-analysis of 16 studies evaluating the effectiveness of non-pharmacological and nursing interventions in reducing intradialytic hypotension among adult hemodialysis patients.",
+      "pico": {
+        "population": "Adult patients undergoing haemodialysis",
+        "intervention": "Non-pharmacological interventions (including dialysis technology-based and nurse-led interventions)",
+        "comparison": "Standard care or alternative interventions",
+        "outcome": "Systolic blood pressure during haemodialysis and incidence of intradialytic hypotension"
+      },
+      "inclusion": [
+        "Randomized controlled trials and quasi-experimental studies evaluating non-pharmacological interventions published between January 2000 and July 2025"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42745384/",
+        "doi": "https://doi.org/10.1002/nop2.70832"
+      },
+      "appraisal": {
+        "bottom_line": "Non-pharmacological interventions, particularly dialysis technology-based approaches, are associated with modest improvements in systolic blood pressure during hemodialysis. However, the overall certainty of the evidence is very low.",
+        "relevance": "Intradialytic hypotension is a common and distressing complication of hemodialysis; non-pharmacological and nurse-led strategies may offer supportive hemodynamic benefits, though clinical efficacy remains unproven.",
+        "caveat": "The primary outcome evaluated was systolic blood pressure, which is a surrogate hemodynamic marker and does not necessarily equate to a reduction in actual clinical events of intradialytic hypotension. The inclusion of quasi-experimental studies and very low certainty of evidence limit the strength of these findings."
+      }
+    },
+    {
+      "pmid": "42760898",
+      "doi": "10.12688/f1000research.178438.2",
+      "journal": "F1000Res",
+      "date": "2026-08-28",
+      "authors": "Ismail A, Sauriasari R, Yanuar A, Sudiana D, Cokro F",
+      "title": "Improving Medication Safety in Chronic Kidney Disease Using Rule-Based and Artificial Intelligence-Based Clinical Decision Support Systems: A Systematic Review of Randomized Controlled Trials.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "CKD",
+      "summary": "A systematic review and meta-analysis of 20 RCTs (6 contributing meta-analytic data) evaluating the impact of rule-based and AI/ML-based clinical decision support systems (CDSS) on medication safety in adults with CKD.",
+      "pico": {
+        "population": "Adults with CKD or at risk of CKD-related prescribing errors",
+        "intervention": "Rule-based or AI/ML-based Clinical Decision Support Systems (CDSS)",
+        "comparison": "Usual care comparators",
+        "outcome": "Medication safety endpoints (appropriate renal dosing, potentially inappropriate prescribing, medication errors) and EHR documentation of CKD"
+      },
+      "inclusion": [
+        "Randomized controlled trials (RCTs) comparing rule-based or AI/ML CDSS with usual care among adults with CKD or at risk of CKD-related prescribing errors"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42760898/",
+        "doi": "https://doi.org/10.12688/f1000research.178438.2"
+      },
+      "appraisal": {
+        "bottom_line": "CDSS improved appropriate renal dosing (RR 1.76; 95% CI 1.13-2.74) and EHR documentation of CKD (RR 1.19; 95% CI 1.07-1.32). However, extreme heterogeneity (I2 = 97%) and a wide 95% prediction interval (0.75-4.14) crossing the null indicate that the dosing benefit is highly context-dependent and not guaranteed in new settings. Clinician compliance was low, ranging from 17% to 74%.",
+        "relevance": "CDSS can assist in reducing prescribing errors and improving CKD documentation, but its real-world effectiveness is hampered by low clinician compliance due to alert fatigue and workflow barriers.",
+        "caveat": "The meta-analysis is limited by extreme statistical heterogeneity (I2 = 97%) and a prediction interval that crosses the null, meaning the intervention's effect is highly variable. Most interventions were interruptive order-entry alerts, which suffer from high override rates."
       }
     }
   ]
