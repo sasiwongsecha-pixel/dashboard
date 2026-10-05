@@ -1,173 +1,429 @@
 {
   "meta": {
     "title": "Nephrology Literature Update",
-    "generated_at": "2026-09-21",
-    "window": "New to PubMed 2026-09-14 to 2026-09-21",
+    "generated_at": "2026-10-05",
+    "window": "New to PubMed 2026-09-28 to 2026-10-05",
     "query": "Clinical nephrology — RCTs, systematic reviews & meta-analyses (humans, English)",
     "source": "PubMed (NLM) abstracts; summaries and appraisals generated automatically from those abstracts. Each entry links to its PubMed record and DOI.",
-    "count": 5,
+    "count": 13,
     "note": "Summaries and PICO are machine analyses of the source abstracts; criteria marked “not specified” were not stated. Read the source before acting clinically.",
     "appraisal_source": "Automated critical appraisal (clinical bottom-line, relevance, caveat)."
   },
   "articles": [
     {
-      "pmid": "42760401",
-      "doi": "10.1007/s00431-026-07419-y",
-      "journal": "Eur J Pediatr",
-      "date": "2026-09-19",
-      "authors": "Cai W, Wang D, Zhu L, Liu X",
-      "title": "Risk factors for acute kidney injury after pediatric liver transplantation: a systematic review and meta-analysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "Transplantation",
-      "summary": "A systematic review and meta-analysis of 17 retrospective cohort studies involving 2,986 pediatric liver transplant recipients to evaluate the incidence and risk factors of acute kidney injury (AKI) following pediatric liver transplantation (PLT).",
-      "pico": {
-        "population": "Pediatric liver transplant recipients",
-        "intervention": "Perioperative and patient-related risk factors (e.g., preoperative hepatic impairment, coagulation abnormalities, inadequate nutrition and oxygen delivery, intraoperative blood loss, transfusion burden, ischemia-reperfusion injury, and postoperative organ support)",
-        "comparison": "Absence of these risk factors",
-        "outcome": "Incidence of postoperative acute kidney injury (AKI)"
-      },
-      "inclusion": [
-        "Observational studies on risk factors for AKI following pediatric liver transplantation published from database inception to September 2025"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42760401/",
-        "doi": "https://doi.org/10.1007/s00431-026-07419-y"
-      },
-      "appraisal": {
-        "bottom_line": "The pooled incidence rate of AKI following pediatric liver transplantation is high at 30.7% (95% CI: 25.0% to 36.3%). While multiple perioperative and patient-related factors are associated with postoperative AKI, many of these associations are based on a small number of studies and require cautious interpretation.",
-        "relevance": "Enables pediatric nephrologists and transplant surgeons to identify high-risk pediatric liver transplant recipients early and implement targeted perioperative management strategies to mitigate AKI risk.",
-        "caveat": "The analysis is entirely based on retrospective cohort studies, which limits the ability to establish causal relationships. Furthermore, many individual risk factors were evaluated in only a small number of studies, and the authors note a critical need for large-scale prospective validation."
-      }
-    },
-    {
-      "pmid": "42757634",
-      "doi": "10.1002/14651858.CD016155.pub2",
-      "journal": "Cochrane Database Syst Rev",
-      "date": "2026-09-18",
-      "authors": "Beresford L, Burgess LC, Dewhurst S, Hutchison A, Pandyan AD et al.",
-      "title": "Lower-limb neuromuscular electrical stimulation (NMES) for adults with kidney failure undergoing dialysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "Dialysis",
-      "summary": "A Cochrane systematic review and meta-analysis of 12 RCTs (348 eligible participants, 299 analyzed) evaluating the efficacy and safety of lower-limb neuromuscular electrical stimulation (NMES) in adults with kidney failure undergoing dialysis.",
-      "pico": {
-        "population": "Adults (aged 18 years or older) with kidney failure receiving hemodialysis or peritoneal dialysis",
-        "intervention": "Lower-limb neuromuscular electrical stimulation (NMES) training programmes delivered via surface electrodes",
-        "comparison": "No NMES (usual care, sham NMES, or exercise with a usual care control)",
-        "outcome": "Critical outcomes (life participation, cardiovascular outcomes [blood pressure, resting heart rate], death, fatigue, pain, infection, vascular access problems) and important outcomes (muscle function, functional performance, muscle structure, quality of life, biochemical/hormonal markers, treatment experience)"
-      },
-      "inclusion": [
-        "Randomised controlled trials (RCTs) and cluster RCTs evaluating lower-limb NMES interventions delivered via surface electrodes in adults with kidney failure receiving hemodialysis or peritoneal dialysis"
-      ],
-      "exclusion": [
-        "Studies using single-session NMES, NMES in transient acute dialysis samples, combining NMES with concurrent exercise without a control group, or conducted in non-dialysis chronic kidney disease populations"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42757634/",
-        "doi": "https://doi.org/10.1002/14651858.CD016155.pub2"
-      },
-      "appraisal": {
-        "bottom_line": "The evidence is highly uncertain regarding the effect of NMES on life participation (MD 1.00, 95% CI -3.85 to 5.85) and death (RR 0.24, 95% CI 0.01 to 5.26). Low-certainty evidence suggests NMES may result in little to no difference in diastolic blood pressure (MD 2.72, 95% CI -2.85 to 8.29), systolic blood pressure (MD 5.54, 95% CI -4.02 to 15.09), or resting heart rate (MD 4.58, 95% CI -2.67 to 11.82).",
-        "relevance": "While NMES is proposed as an alternative or adjunct to exercise for dialysis patients with muscle wasting, current evidence does not support a clear clinical benefit on critical cardiovascular or patient-centered outcomes.",
-        "caveat": "The certainty of the evidence is low to very low, severely limited by small sample sizes, risk of bias, and imprecision. No studies evaluated peritoneal dialysis patients, and key patient-centered outcomes such as fatigue, pain, and vascular access problems were completely unreported."
-      }
-    },
-    {
-      "pmid": "42752720",
-      "doi": "10.11606/s1518-8787.2026060007308",
-      "journal": "Rev Saude Publica",
-      "date": "2026-09-14",
-      "authors": "Bittencourt JAS, Figueredo AS, Melo NAC, Pereira CL, Moraes YAC et al.",
-      "title": "Applications of artificial intelligence in chronic kidney disease: a systematic review.",
+      "pmid": "42820648",
+      "doi": "10.1111/jorc.70085",
+      "journal": "J Ren Care",
+      "date": "2026-12-01",
+      "authors": "Faravan A, Ghafourifard M, Ghahramanian A, Rahmani A, Areshtanab HN et al.",
+      "title": "Facilitators of Peer Support Among Patients With Chronic Kidney Disease: A Systematic Review and Qualitative Meta-Synthesis.",
       "study_type": "Systematic review",
       "topic": "CKD",
-      "summary": "A systematic review of 26 studies published between 2019 and 2025 evaluating the applications of artificial intelligence (AI) in the early diagnosis, prediction, and management of chronic kidney disease (CKD).",
+      "summary": "A systematic review and qualitative meta-synthesis of 15 studies identifying facilitators of peer support in CKD. The analysis identified three main themes: cultivating a supportive culture, weaving deep connections/rapport, and engaged/motivated supporters and recipients.",
       "pico": {
-        "population": "Patients at risk for or diagnosed with chronic kidney disease",
-        "intervention": "Artificial intelligence tools (supervised learning and deep learning algorithms)",
-        "comparison": "Standard clinical care or no AI tool",
-        "outcome": "Early detection, disease management, and model performance metrics (accuracy, sensitivity, specificity)"
+        "population": "Patients with chronic kidney disease",
+        "intervention": "Peer support programs",
+        "comparison": "Not specified",
+        "outcome": "Facilitators of peer support"
       },
       "inclusion": [
-        "Studies published between 2019 and 2025 in PubMed and Scopus considering patients at risk for or diagnosed with CKD, AI tools as interventions, and outcomes related to early detection and disease management"
+        "Qualitative studies on peer support among patients with chronic kidney disease"
       ],
       "exclusion": [
-        "not specified"
+        "Not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42752720/",
-        "doi": "https://doi.org/10.11606/s1518-8787.2026060007308"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42820648/",
+        "doi": "https://doi.org/10.1111/jorc.70085"
       },
       "appraisal": {
-        "bottom_line": "Supervised and deep learning AI models demonstrate high accuracy, sensitivity, and specificity in identifying CKD and its stages. However, methodological weaknesses—particularly the lack of external validation, poor control of confounding factors, and non-standardized datasets—limit their current clinical generalizability.",
-        "relevance": "AI represents a promising strategic tool for early CKD detection and individualized management, but current models are not yet ready for reliable integration into real-world clinical practice.",
-        "caveat": "This is a systematic review of highly heterogeneous, mostly retrospective model-development studies. The lack of external validation and prospective clinical trials means the reported high accuracies may not translate to actual patient care settings."
+        "bottom_line": "Successful implementation of peer support programs in CKD depends on the interaction of organizational support, meaningful peer relationships, and active participant engagement.",
+        "relevance": "Helps clinicians and program designers structure effective peer support systems to improve psychosocial outcomes in CKD.",
+        "caveat": "This is a qualitative meta-synthesis of subjective experiences, which cannot establish quantitative clinical efficacy or direct causal links to hard clinical outcomes."
       }
     },
     {
-      "pmid": "42745384",
-      "doi": "10.1002/nop2.70832",
-      "journal": "Nurs Open",
-      "date": "2026-09-01",
-      "authors": "Cho MK, Cho YH",
-      "title": "Effectiveness of Nursing and Non-Pharmacological Interventions in Reducing Intradialytic Hypotension Among Haemodialysis Patients: A Systematic Review and Meta-Analysis.",
+      "pmid": "42825520",
+      "doi": "10.1111/bcpt.70293",
+      "journal": "Basic Clin Pharmacol Toxicol",
+      "date": "2026-11-01",
+      "authors": "Kafa HS, Hauge SC, Hansen D",
+      "title": "Bone Anabolic Treatment in Patients With Chronic Kidney Disease: A Systematic Review.",
+      "study_type": "Systematic review",
+      "topic": "CKD-MBD",
+      "summary": "A systematic review of RCTs evaluating anabolic PTH treatment in CKD Stages 4-5D. Only 2 RCTs were included. In a subgroup of CKD Stage 4 (n=5), teriparatide improved BMD at the lumbar spine and femoral neck. In CKD Stage 5D (n=61), teriparatide significantly improved BMD at the total hip compared to control, but adverse events were more frequent.",
+      "pico": {
+        "population": "Adult patients with CKD Stages 4-5D, including kidney transplant recipients",
+        "intervention": "Anabolic parathyroid hormone treatment (teriparatide, natpara, or abaloparatide)",
+        "comparison": "Control group",
+        "outcome": "Change in bone mineral density (BMD) at the lumbar spine, femoral neck, and total hip"
+      },
+      "inclusion": [
+        "Randomized controlled trials investigating teriparatide, natpara, or abaloparatide in adult patients with CKD Stages 4-5D, including kidney transplant recipients"
+      ],
+      "exclusion": [
+        "Not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42825520/",
+        "doi": "https://doi.org/10.1111/bcpt.70293"
+      },
+      "appraisal": {
+        "bottom_line": "Teriparatide appears to improve bone mineral density in patients with CKD Stages 4-5D, but the evidence is extremely limited and associated with a higher frequency of adverse events.",
+        "relevance": "Provides insight into potential bone anabolic therapies for advanced CKD patients who are at high risk for fractures.",
+        "caveat": "The review is severely limited by a tiny sample size (only 2 RCTs; one subgroup of n=5 and one trial of n=61), making the safety and efficacy estimates highly imprecise."
+      }
+    },
+    {
+      "pmid": "42826278",
+      "doi": "10.1097/MD.0000000000050957",
+      "journal": "Medicine (Baltimore)",
+      "date": "2026-10-02",
+      "authors": "Shi X, Fu K, Hu M, Li R, Li H et al.",
+      "title": "Renoprotective effects and safety of sodium-glucose cotransporter 2 inhibitors in diabetic chronic kidney disease: A systematic review and meta-analysis.",
       "study_type": "Systematic review and meta-analysis",
-      "topic": "Dialysis",
-      "summary": "A systematic review and meta-analysis of 16 studies evaluating the effectiveness of non-pharmacological and nursing interventions in reducing intradialytic hypotension among adult hemodialysis patients.",
+      "topic": "Diabetic Nephropathy",
+      "summary": "A meta-analysis of 17 RCTs involving 29,192 participants evaluating SGLT2 inhibitors in diabetic CKD. SGLT2 inhibitors significantly reduced HbA1c (MD = -0.40%, 95% CI: -0.44 to -0.36), body weight (MD = -1.36 kg, 95% CI: -1.55 to -1.18), and systolic blood pressure (MD = -2.98 mm Hg, 95% CI: -3.44 to -2.52). No significant differences were observed in eGFR (MD = 0.25 mL/min/1.73 m2, 95% CI: -0.08 to 0.57) or UACR (MD = -31.55 mg/g, 95% CI: -137.21 to 74.12). SGLT2 inhibitors did not significantly increase UTI risk (RR = 1.20, 95% CI: 0.94 to 1.54) but significantly increased volume depletion risk (RR = 1.36, 95% CI: 1.16-1.59).",
       "pico": {
-        "population": "Adult patients undergoing haemodialysis",
-        "intervention": "Non-pharmacological interventions (including dialysis technology-based and nurse-led interventions)",
-        "comparison": "Standard care or alternative interventions",
-        "outcome": "Systolic blood pressure during haemodialysis and incidence of intradialytic hypotension"
+        "population": "Patients with diabetic chronic kidney disease",
+        "intervention": "SGLT2 inhibitors",
+        "comparison": "Control",
+        "outcome": "Primary renal surrogate markers (eGFR and UACR), secondary metabolic/hemodynamic outcomes, and safety outcomes"
       },
       "inclusion": [
-        "Randomized controlled trials and quasi-experimental studies evaluating non-pharmacological interventions published between January 2000 and July 2025"
+        "Randomized controlled trials evaluating SGLT2 inhibitors in patients with diabetic CKD"
       ],
       "exclusion": [
-        "not specified"
+        "Not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42745384/",
-        "doi": "https://doi.org/10.1002/nop2.70832"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42826278/",
+        "doi": "https://doi.org/10.1097/MD.0000000000050957"
       },
       "appraisal": {
-        "bottom_line": "Non-pharmacological interventions, particularly dialysis technology-based approaches, are associated with modest improvements in systolic blood pressure during hemodialysis. However, the overall certainty of the evidence is very low.",
-        "relevance": "Intradialytic hypotension is a common and distressing complication of hemodialysis; non-pharmacological and nurse-led strategies may offer supportive hemodynamic benefits, though clinical efficacy remains unproven.",
-        "caveat": "The primary outcome evaluated was systolic blood pressure, which is a surrogate hemodynamic marker and does not necessarily equate to a reduction in actual clinical events of intradialytic hypotension. The inclusion of quasi-experimental studies and very low certainty of evidence limit the strength of these findings."
+        "bottom_line": "SGLT2 inhibitors in diabetic CKD significantly reduce HbA1c, body weight, and SBP, with neutral short-to-medium term effects on eGFR and UACR, but increase volume depletion risk (RR = 1.36, 95% CI: 1.16-1.59).",
+        "relevance": "Reinforces the metabolic and hemodynamic benefits of SGLT2i in diabetic CKD while highlighting the need to monitor for volume depletion.",
+        "caveat": "The neutral short-to-medium term effects on eGFR and UACR contrast with long-term hard outcome trials, likely due to the initial eGFR dip and limited follow-up in some included studies."
       }
     },
     {
-      "pmid": "42760898",
-      "doi": "10.12688/f1000research.178438.2",
-      "journal": "F1000Res",
-      "date": "2026-08-28",
-      "authors": "Ismail A, Sauriasari R, Yanuar A, Sudiana D, Cokro F",
-      "title": "Improving Medication Safety in Chronic Kidney Disease Using Rule-Based and Artificial Intelligence-Based Clinical Decision Support Systems: A Systematic Review of Randomized Controlled Trials.",
+      "pmid": "42806593",
+      "doi": "10.1111/cts.70730",
+      "journal": "Clin Transl Sci",
+      "date": "2026-10-01",
+      "authors": "Wang X, Liang S, Sun X, Wang F, Tang G et al.",
+      "title": "Rituximab as Rescue or Add-On Therapy for Relapsing or Refractory Lupus Nephritis: A Systematic Review and Meta-Analysis.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "Glomerular Disease",
+      "summary": "A meta-analysis of 19 studies involving 445 patients evaluating rituximab as rescue or add-on therapy for relapsing or refractory lupus nephritis. Pooled complete renal response (CRR) rates were 0.33 (95% CI 0.21-0.46), 0.41 (95% CI 0.28-0.54), and 0.42 (95% CI 0.26-0.60) at 6, 12, and 24 months, respectively. Corresponding overall renal response (ORR) rates were 0.67 (95% CI 0.52-0.80), 0.70 (95% CI 0.51-0.86), and 0.66 (95% CI 0.43-0.86). Proteinuria decreased by -2.69 g/day-equivalent (95% CI -3.23 to -2.16), and serum creatinine decreased by -11.79 µmol/L (95% CI -19.86 to -3.72).",
+      "pico": {
+        "population": "Patients with relapsing or refractory lupus nephritis",
+        "intervention": "Rituximab-based rescue or add-on therapy",
+        "comparison": "Not specified",
+        "outcome": "Complete, partial, and overall renal response rates at 6, 12, and 24 months; changes in proteinuria and serum creatinine"
+      },
+      "inclusion": [
+        "Studies of RTX-based therapy in relapsing or refractory LN reporting renal outcomes"
+      ],
+      "exclusion": [
+        "Not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42806593/",
+        "doi": "https://doi.org/10.1111/cts.70730"
+      },
+      "appraisal": {
+        "bottom_line": "Rituximab-based rescue or add-on therapy was associated with moderate overall renal response rates (~66-70% across 6-24 months) and reductions in proteinuria and serum creatinine in patients with relapsing or refractory lupus nephritis.",
+        "relevance": "Provides quantitative support for using rituximab in patients with difficult-to-treat, relapsing, or refractory lupus nephritis.",
+        "caveat": "The analysis is limited by the lack of a control group in the pooled estimates (likely reflecting observational or single-arm studies), and the small total sample size (445 patients across 19 studies)."
+      }
+    },
+    {
+      "pmid": "42816092",
+      "doi": "10.1136/bmjopen-2025-114454",
+      "journal": "BMJ Open",
+      "date": "2026-09-30",
+      "authors": "Balasubramaniam G, Almond M, Harnett P, Turner D, Scales J et al.",
+      "title": "Anakinra versus intramuscular methylprednisolone acetate for gout flares in people with chronic kidney disease (ASGARD): a UK randomised multicentre, double-blind, double-dummy controlled feasibility study with economic, qualitative and safety assessment.",
+      "study_type": "Randomized controlled trial",
+      "topic": "CKD",
+      "summary": "A feasibility RCT comparing subcutaneous anakinra (100 mg daily for 5 days) versus IM methylprednisolone acetate (120 mg) for gout flares in CKD (eGFR < 60 mL/min/1.73 m2). The trial did not meet its overall feasibility criteria due to under-recruitment, randomizing only 21 participants (mean age 72 years, mean eGFR 44 mL/min/1.73 m2) out of a target of 32. Mean reduction in pain after 7 days was 46.8 from baseline by 100 mm visual analogue score. Anakinra appeared to have a shorter time to pain reduction, but this requires confirmation.",
+      "pico": {
+        "population": "People with gout and chronic kidney disease (eGFR < 60 mL/min/1.73 m2)",
+        "intervention": "Subcutaneous anakinra 100 mg daily for 5 days",
+        "comparison": "Intramuscular methylprednisolone acetate 120 mg",
+        "outcome": "Feasibility criteria (recruitment, enrolment, crossover/failure, pain assessment completion) and secondary clinical outcomes"
+      },
+      "inclusion": [
+        "People with gout and chronic kidney disease (estimated glomerular filtration rate (eGFR) <60 mL/min/1.73 m2)"
+      ],
+      "exclusion": [
+        "Not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42816092/",
+        "doi": "https://doi.org/10.1136/bmjopen-2025-114454"
+      },
+      "appraisal": {
+        "bottom_line": "This feasibility trial failed to meet its overall success criteria due to under-recruitment (21 randomized vs 32 planned), though procedural feasibility for data completion and low crossover was demonstrated.",
+        "relevance": "Highlights the challenges of conducting trials for acute gout flares in CKD, a population with limited safe treatment options.",
+        "caveat": "The study was severely underpowered and did not meet its recruitment target, meaning no definitive conclusions about the comparative efficacy or safety of anakinra can be drawn."
+      }
+    },
+    {
+      "pmid": "42804277",
+      "doi": "10.2196/102331",
+      "journal": "J Med Internet Res",
+      "date": "2026-09-28",
+      "authors": "Deng J, Liu W, Wang X, Hu J, Zhang H et al.",
+      "title": "Effectiveness and Safety of Virtual Reality Interventions for Symptom Management in Adults Undergoing Hemodialysis: Systematic Review and Meta-Analysis of Randomized Controlled Trials.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "Hemodialysis",
+      "summary": "A meta-analysis of 19 RCTs involving 1228 participants evaluating virtual reality (VR) interventions for symptom management in adults undergoing hemodialysis. Compared with usual care or no VR, VR significantly reduced pain during AVF cannulation (MD -2.44, 95% CI -2.91 to -1.97; P<.001), improved gait speed (SMD 0.46, 95% CI 0.11-0.81; P=.01), increased 6-minute walk distance (MD 74.77, 95% CI 40.55-108.99; P<.001), and reduced depressive symptoms (MD -3.48, 95% CI -6.77 to -0.18; P=.04). No serious VR-related adverse events were reported.",
+      "pico": {
+        "population": "Adults undergoing hemodialysis",
+        "intervention": "Virtual reality (VR)-based interventions",
+        "comparison": "Usual care or no VR intervention",
+        "outcome": "Symptom-related outcomes (pain, gait speed, 6-minute walk distance, depressive symptoms, anxiety) and safety"
+      },
+      "inclusion": [
+        "Randomized controlled trials evaluating VR-based interventions for symptom-related outcomes in adult patients receiving hemodialysis"
+      ],
+      "exclusion": [
+        "Not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42804277/",
+        "doi": "https://doi.org/10.2196/102331"
+      },
+      "appraisal": {
+        "bottom_line": "Virtual reality interventions during hemodialysis significantly reduced AVF cannulation pain, improved physical function (gait speed and 6-minute walk distance), and reduced depressive symptoms without serious adverse events.",
+        "relevance": "Offers a novel, non-pharmacological, and safe method to alleviate the high symptom burden (pain, depression, physical deconditioning) in hemodialysis patients.",
+        "caveat": "There was substantial heterogeneity in the pain outcome (I²=66%) and anxiety outcome (I²=61%), and the long-term sustainability and cost-effectiveness of VR in busy dialysis units remain unproven."
+      }
+    },
+    {
+      "pmid": "42803944",
+      "doi": "10.1007/s00240-026-02067-1",
+      "journal": "Urolithiasis",
+      "date": "2026-09-28",
+      "authors": "Talyshinskii A, Frascheri MF, Tzelves L, Skolarikos A, Geraghty R et al.",
+      "title": "Changes in renal function in patients with chronic kidney disease after ureteroscopy: a systematic review and meta-analysis from EAU endourology.",
       "study_type": "Systematic review and meta-analysis",
       "topic": "CKD",
-      "summary": "A systematic review and meta-analysis of 20 RCTs (6 contributing meta-analytic data) evaluating the impact of rule-based and AI/ML-based clinical decision support systems (CDSS) on medication safety in adults with CKD.",
+      "summary": "A meta-analysis of 7 studies involving 742 patients evaluating eGFR changes after ureteroscopy (URS) or retrograde intrarenal surgery (RIRS) in patients with pre-existing CKD. The pooled mean difference in eGFR was +2.8 mL/min/1.73 m2 (95% CI -2.8 to +8.4; p = 0.27), indicating no significant overall change in renal function, with substantial heterogeneity (I2 = 89.6%). No study reported progression to dialysis.",
       "pico": {
-        "population": "Adults with CKD or at risk of CKD-related prescribing errors",
-        "intervention": "Rule-based or AI/ML-based Clinical Decision Support Systems (CDSS)",
-        "comparison": "Usual care comparators",
-        "outcome": "Medication safety endpoints (appropriate renal dosing, potentially inappropriate prescribing, medication errors) and EHR documentation of CKD"
+        "population": "Patients with pre-existing chronic kidney disease (CKD)",
+        "intervention": "Ureteroscopy (URS) or retrograde intrarenal surgery (RIRS)",
+        "comparison": "Preoperative renal function",
+        "outcome": "Postoperative estimated glomerular filtration rate (eGFR) and progression to dialysis"
       },
       "inclusion": [
-        "Randomized controlled trials (RCTs) comparing rule-based or AI/ML CDSS with usual care among adults with CKD or at risk of CKD-related prescribing errors"
+        "Studies reporting pre- and postoperative eGFR in patients with established CKD or cohorts including patients with reduced baseline renal function undergoing standard URS or RIRS"
       ],
       "exclusion": [
-        "not specified"
+        "Not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42760898/",
-        "doi": "https://doi.org/10.12688/f1000research.178438.2"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42803944/",
+        "doi": "https://doi.org/10.1007/s00240-026-02067-1"
       },
       "appraisal": {
-        "bottom_line": "CDSS improved appropriate renal dosing (RR 1.76; 95% CI 1.13-2.74) and EHR documentation of CKD (RR 1.19; 95% CI 1.07-1.32). However, extreme heterogeneity (I2 = 97%) and a wide 95% prediction interval (0.75-4.14) crossing the null indicate that the dosing benefit is highly context-dependent and not guaranteed in new settings. Clinician compliance was low, ranging from 17% to 74%.",
-        "relevance": "CDSS can assist in reducing prescribing errors and improving CKD documentation, but its real-world effectiveness is hampered by low clinician compliance due to alert fatigue and workflow barriers.",
-        "caveat": "The meta-analysis is limited by extreme statistical heterogeneity (I2 = 97%) and a prediction interval that crosses the null, meaning the intervention's effect is highly variable. Most interventions were interruptive order-entry alerts, which suffer from high override rates."
+        "bottom_line": "Ureteroscopy or retrograde intrarenal surgery in patients with pre-existing CKD does not lead to a statistically significant change in overall eGFR (MD +2.8 mL/min/1.73 m2, 95% CI -2.8 to +8.4, p=0.27), and no cases of progression to dialysis were reported.",
+        "relevance": "Reassures clinicians that endoscopic stone management is generally safe for renal function in patients with CKD.",
+        "caveat": "The evidence is of very low certainty, characterized by extreme heterogeneity (I² = 89.6%) and a lack of standardized long-term follow-up across the included observational studies."
+      }
+    },
+    {
+      "pmid": "42806327",
+      "doi": "10.1186/s12882-026-05379-x",
+      "journal": "BMC Nephrol",
+      "date": "2026-09-15",
+      "authors": "Lin K, Li L, Gao J, Zhang Y, Tan H",
+      "title": "Prevalence and associated factors of chronic kidney disease-associated pruritus in maintenance hemodialysis patients: a systematic review and meta-analysis.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "Hemodialysis",
+      "summary": "A meta-analysis of 25 observational studies involving 8,955 participants evaluating the prevalence and associated factors of CKD-associated pruritus (CKD-aP) in maintenance hemodialysis (MHD) patients. The pooled prevalence of any pruritus was 60.0% (95% CI: 57.0-63.0%). Serum phosphorus was positively associated with pruritus in both continuous (OR = 2.03, 95% CI: 1.44-2.87) and dichotomised analyses (OR = 2.93, 95% CI: 1.83-4.69). Diabetes was associated with higher odds of pruritus (OR = 2.64, 95% CI: 1.69-4.14), whereas high-flux hemodialysis showed an inverse association (OR = 0.31, 95% CI: 0.17-0.56).",
+      "pico": {
+        "population": "Adult maintenance hemodialysis (MHD) patients",
+        "intervention": "Risk factors/associated factors (e.g., serum phosphorus, diabetes, high-flux hemodialysis)",
+        "comparison": "Absence of these factors",
+        "outcome": "Prevalence and odds of chronic kidney disease-associated pruritus (CKD-aP)"
+      },
+      "inclusion": [
+        "Observational studies reporting prevalence and/or associated factors of pruritus in adult MHD patients, including only multivariable-adjusted odds ratios for associated factors"
+      ],
+      "exclusion": [
+        "Not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42806327/",
+        "doi": "https://doi.org/10.1186/s12882-026-05379-x"
+      },
+      "appraisal": {
+        "bottom_line": "Approximately 60% of maintenance hemodialysis patients experience pruritus, which is consistently associated with higher serum phosphorus (OR = 2.03) and diabetes (OR = 2.64), while high-flux hemodialysis is associated with lower odds (OR = 0.31).",
+        "relevance": "Highlights the massive burden of CKD-aP and reinforces the clinical importance of phosphorus control and dialysis modality optimization in managing this symptom.",
+        "caveat": "As this is a meta-analysis of observational studies, the identified associations are not necessarily causal, and there was substantial heterogeneity and variation in exposure definitions across studies."
+      }
+    },
+    {
+      "pmid": "42807230",
+      "doi": "10.3389/fendo.2026.1854549",
+      "journal": "Front Endocrinol (Lausanne)",
+      "date": "2026-09-14",
+      "authors": "Huang M, Wu S, Shen ZH, Zhang SJ, Fu YS et al.",
+      "title": "Prediction models for sepsis-associated acute kidney injury: a systematic review and meta-analysis.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "Acute Kidney Injury",
+      "summary": "A meta-analysis of 15 studies involving 46,490 patients evaluating the predictive performance of risk models for sepsis-associated acute kidney injury (SA-AKI). The pooled C-statistic was 0.817 (95% CI: 0.781-0.847), indicating moderate-to-good discriminative ability, though substantial heterogeneity was observed (I2 = 92.8%). Studies with a low risk of bias yielded superior predictive performance compared to those at high risk (0.847 vs 0.762; P for interaction = 0.010).",
+      "pico": {
+        "population": "Patients at risk of sepsis-associated acute kidney injury (SA-AKI)",
+        "intervention": "SA-AKI prediction models",
+        "comparison": "Actual occurrence of SA-AKI",
+        "outcome": "Predictive performance (pooled C-statistic)"
+      },
+      "inclusion": [
+        "Cohort studies focusing on the development and validation of SA-AKI prediction models"
+      ],
+      "exclusion": [
+        "Not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42807230/",
+        "doi": "https://doi.org/10.3389/fendo.2026.1854549"
+      },
+      "appraisal": {
+        "bottom_line": "Existing prediction models for sepsis-associated AKI show moderate-to-good discriminative ability with a pooled C-statistic of 0.817 (95% CI: 0.781-0.847), though performance is highly heterogeneous.",
+        "relevance": "Accurate prediction of SA-AKI could allow for early preventive strategies and closer monitoring in the ICU.",
+        "caveat": "The meta-analysis is limited by high heterogeneity (I² = 92.8%) and a high risk of bias in several included studies; additionally, the external validation subgroup had a very wide confidence interval, indicating high uncertainty."
+      }
+    },
+    {
+      "pmid": "42805961",
+      "doi": "10.1177/03000605261491505",
+      "journal": "J Int Med Res",
+      "date": "2026-09-28",
+      "authors": "Cao C, Song H, Shan W, Huang W",
+      "title": "Pharmacological interventions for vascular calcification in chronic kidney disease: A systematic review and meta-analysis of randomized controlled trials.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "CKD-MBD",
+      "summary": "A meta-analysis of 28 RCTs involving 6330 participants evaluating pharmacological interventions for vascular calcification in CKD. Pharmacological interventions did not significantly reduce coronary artery calcification Agatston score, progression, volume, abdominal aortic calcification progression, arterial stiffness, or all-cause mortality. Significant effects were observed for left carotid IMT (MD -0.06 mm, 95% CI: -0.10 to -0.02), common carotid IMT (MD -0.07 mm, 95% CI: -0.14 to -0.00), T50 change (MD 50.25 min, 95% CI: 34.68-65.82), and dp-ucMGP (MD -504.97 pmol/L, 95% CI: -789.72 to -220.22).",
+      "pico": {
+        "population": "Patients with chronic kidney disease",
+        "intervention": "Pharmacological interventions for vascular calcification",
+        "comparison": "Placebo, standard care, or other controls",
+        "outcome": "Primary: imaging-defined measures of vascular calcification (Agatston score, progression, volume, abdominal aortic calcification). Secondary: carotid IMT, T50, arterial stiffness, biomarkers, mineral metabolism, and all-cause mortality"
+      },
+      "inclusion": [
+        "Randomized controlled trials comparing pharmacological interventions with placebo, standard care, or other controls in patients with chronic kidney disease"
+      ],
+      "exclusion": [
+        "Not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42805961/",
+        "doi": "https://doi.org/10.1177/03000605261491505"
+      },
+      "appraisal": {
+        "bottom_line": "Pharmacological interventions do not significantly reduce imaging-defined structural vascular calcification or all-cause mortality in CKD, despite improving intermediate biomarkers like T50 (MD 50.25 min) and dp-ucMGP (MD -504.97 pmol/L).",
+        "relevance": "Suggests that targeting early biological pathways (calcification propensity) may not easily translate into reversing or halting established structural vascular calcification.",
+        "caveat": "The review pools highly diverse pharmacological strategies (heterogeneity), and the follow-up duration of the included RCTs may have been too short to detect changes in structural calcification or mortality."
+      }
+    },
+    {
+      "pmid": "42811306",
+      "doi": "10.1186/s12882-026-05251-y",
+      "journal": "BMC Nephrol",
+      "date": "2026-08-12",
+      "authors": "Qing J, Wei W, Wu J",
+      "title": "Targeted-release Budesonide (Nefecon) versus systemic glucocorticoids for IgA nephropathy: a placebo-anchored indirect treatment comparison of randomized controlled trials.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "Glomerular Disease",
+      "summary": "A placebo-anchored indirect comparison of 3 RCTs evaluating Nefecon (16 mg/day) versus systemic methylprednisolone for IgA nephropathy. Nefecon improved annualized eGFR trajectory by 2.95 mL/min/1.73 m2 per year vs placebo (95% CI, 1.68-4.58), while methylprednisolone improved it by 2.46 (95% CI, 0.94-3.99). The indirect comparison showed no significant difference in eGFR preservation (MD 0.49 mL/min/1.73 m2 per year; 95% CI, -1.62 to 2.59; Pindirect = 0.651). For annualized absolute proteinuria reduction, the indirect comparison favored systemic methylprednisolone (MD 0.43 g/g per year; 95% CI, 0.13-0.73; Pindirect = 0.004). Serious infections were not significantly different (RR 0.55; 95% CI, 0.04-7.16; Pindirect = 0.650).",
+      "pico": {
+        "population": "Adults with IgA nephropathy (IgAN)",
+        "intervention": "Targeted-release budesonide (Nefecon, 16 mg/day)",
+        "comparison": "Systemic glucocorticoids (methylprednisolone)",
+        "outcome": "Annualized preservation of eGFR, annualized proteinuria reduction, and serious infections"
+      },
+      "inclusion": [
+        "Randomized controlled trials evaluating Nefecon (16 mg/day), systemic glucocorticoids, or placebo in adults with IgAN"
+      ],
+      "exclusion": [
+        "Not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42811306/",
+        "doi": "https://doi.org/10.1186/s12882-026-05251-y"
+      },
+      "appraisal": {
+        "bottom_line": "Indirect comparison suggests no significant difference between Nefecon and systemic methylprednisolone in eGFR preservation, though systemic methylprednisolone was associated with greater proteinuria reduction (MD 0.43 g/g per year, p=0.004).",
+        "relevance": "Helps clinicians weigh the trade-offs between localized gut-targeted therapy (Nefecon) and traditional systemic steroids in IgAN.",
+        "caveat": "This is an indirect comparison based on only 3 trials, and the proteinuria and safety findings require cautious interpretation due to differences in measurement methods and follow-up durations."
+      }
+    },
+    {
+      "pmid": "42816838",
+      "doi": "10.1186/s12882-026-05216-1",
+      "journal": "BMC Nephrol",
+      "date": "2026-07-29",
+      "authors": "Li ZL, Li ZY, Pan MM, Liu BC",
+      "title": "Efficacy and safety of anrikefon in the treatment of diabetic hemodialysis patients with pruritus: a post hoc analysis.",
+      "study_type": "Randomized controlled trial",
+      "topic": "Hemodialysis",
+      "summary": "A post hoc analysis of the phase 3 anrikefon-302 study evaluating the selective peripherally restricted kappa-opioid receptor agonist anrikefon (n=67) versus placebo (n=79) in diabetic hemodialysis patients with pruritus. Significantly more patients achieved a >=4-point (29.9% vs 15.2%; p=0.033) and >=3-point (41.8% vs 20.3%; p=0.012) reduction in WI-NRS score at week 12 with anrikefon. The change in WI-NRS score was significantly greater with anrikefon than placebo (-2.86 vs -1.63; p=0.001). Skindex-10 and 5-D itch scores also significantly improved.",
+      "pico": {
+        "population": "Diabetic hemodialysis patients with pruritus",
+        "intervention": "Anrikefon",
+        "comparison": "Placebo",
+        "outcome": "Percentage of patients achieving >=4-point or >=3-point reduction in weekly mean 24h worst itching intensity numerical rating scale (WI-NRS) score at week 12; changes in Skindex-10 and 5-D itch scales; adverse events"
+      },
+      "inclusion": [
+        "Diabetic hemodialysis patients with pruritus from the phase 3 anrikefon-302 study"
+      ],
+      "exclusion": [
+        "Not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42816838/",
+        "doi": "https://doi.org/10.1186/s12882-026-05216-1"
+      },
+      "appraisal": {
+        "bottom_line": "In diabetic hemodialysis patients, the kappa-opioid receptor agonist anrikefon significantly reduced pruritus intensity (WI-NRS reduction of -2.86 vs -1.63, p=0.001) and improved itch-related quality of life compared to placebo.",
+        "relevance": "Pruritus is highly prevalent and distressing in diabetic HD patients; anrikefon offers a targeted, effective, and well-tolerated therapeutic option.",
+        "caveat": "This is a post hoc subgroup analysis of a phase 3 trial, which limits its statistical power and increases the risk of type I error compared to a pre-specified primary analysis."
+      }
+    },
+    {
+      "pmid": "42813035",
+      "doi": "10.2147/DDDT.S611432",
+      "journal": "Drug Des Devel Ther",
+      "date": "2026-06-16",
+      "authors": "Han M, Sun D, Lu D, Huang X, Kang F et al.",
+      "title": "Efficacy of Remimazolam for Anesthesia in Patients Undergoing Renal Allograft Transplantation: A Randomized Controlled Trial.",
+      "study_type": "Randomized controlled trial",
+      "topic": "Transplantation",
+      "summary": "An RCT of 60 patients scheduled for elective living-related renal transplantation randomized to propofol (Group P, n=30) or remimazolam (Group R, n=30) for anesthesia induction and maintenance. Compared with propofol, remimazolam had a longer onset time but provided better hemodynamic stability, more rapid metabolism, negligible injection pain, and no significant impact on hepatic or renal function.",
+      "pico": {
+        "population": "Patients scheduled for elective living-related renal transplantation",
+        "intervention": "Remimazolam for anesthesia induction and maintenance",
+        "comparison": "Propofol",
+        "outcome": "Incidence of hypotension during induction, hemodynamic parameters, postoperative recovery, adverse reactions, and pharmacokinetics"
+      },
+      "inclusion": [
+        "Patients scheduled for elective living-related renal transplantation"
+      ],
+      "exclusion": [
+        "Not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42813035/",
+        "doi": "https://doi.org/10.2147/DDDT.S611432"
+      },
+      "appraisal": {
+        "bottom_line": "Compared to propofol, remimazolam for anesthesia induction and maintenance in renal transplant recipients provides superior hemodynamic stability and less injection pain, despite a longer onset time.",
+        "relevance": "Hemodynamic stability during induction is crucial in renal transplantation to maintain graft perfusion; remimazolam may be a safer anesthetic alternative to propofol.",
+        "caveat": "The study is small (n=60 total) and the abstract does not report the exact quantitative rates of hypotension or statistical significance (p-values) for the primary endpoint."
       }
     }
   ]
