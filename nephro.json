@@ -1,276 +1,245 @@
 {
   "meta": {
     "title": "Nephrology Literature Update",
-    "generated_at": "2026-10-12",
-    "window": "New to PubMed 2026-10-05 to 2026-10-12",
+    "generated_at": "2026-10-19",
+    "window": "New to PubMed 2026-10-12 to 2026-10-19",
     "query": "Clinical nephrology — RCTs, systematic reviews & meta-analyses (humans, English)",
     "source": "PubMed (NLM) abstracts; summaries and appraisals generated automatically from those abstracts. Each entry links to its PubMed record and DOI.",
-    "count": 8,
+    "count": 7,
     "note": "Summaries and PICO are machine analyses of the source abstracts; criteria marked “not specified” were not stated. Read the source before acting clinically.",
     "appraisal_source": "Automated critical appraisal (clinical bottom-line, relevance, caveat)."
   },
   "articles": [
     {
-      "pmid": "42838512",
-      "doi": "10.1080/0886022X.2026.2729643",
-      "journal": "Ren Fail",
-      "date": "2026-10-06",
-      "authors": "Tong M, Jiang Y, Zhu R, Ding Z, Ma D et al.",
-      "title": "Artificial intelligence-powered renal pathology for glomerular disease classification: a systematic review and meta-analysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "Glomerular Disease",
-      "summary": "A systematic review and meta-analysis of 15 studies (39,536 validation units) evaluating AI models for glomerular disease classification. AI demonstrated high diagnostic performance across major subtypes, including membranous nephropathy (AUC 0.98), IgA nephropathy (AUC 0.96), and minimal change disease (AUC 1.00).",
+      "pmid": "42888640",
+      "doi": "10.1097/MD.0000000000051202",
+      "journal": "Medicine (Baltimore)",
+      "date": "2026-10-16",
+      "authors": "Tang W, Jiang W, Wang Z, Zhang C, Li T et al.",
+      "title": "Peritoneal catheter fixation versus nonfixation in open surgery: A meta-analysis.",
+      "study_type": "Meta-analysis",
+      "topic": "Peritoneal Dialysis",
+      "summary": "A meta-analysis of 13 studies (1,275 patients) comparing peritoneal dialysis (PD) catheter fixation versus nonfixation during open surgical placement.",
       "pico": {
-        "population": "Pathology images of glomerular disease",
-        "intervention": "Artificial intelligence-powered classification models",
-        "comparison": "Pathologists (senior and junior)",
-        "outcome": "Diagnostic performance (sensitivity, precision, accuracy, F1 score, AUC)"
+        "population": "Patients undergoing open surgery for peritoneal dialysis catheter placement.",
+        "intervention": "PD catheter fixation.",
+        "comparison": "PD catheter nonfixation.",
+        "outcome": "Catheter displacement, catheter malfunction, infection, bleeding, operating time."
       },
       "inclusion": [
-        "Studies using pathology images and pathology diagnosis as the reference standard"
+        "Studies comparing PD catheter fixation with nonfixation in open surgery.",
+        "Available in PubMed, Embase, Cochrane Library, CNKI, or Wanfang databases."
       ],
       "exclusion": [
-        "not specified"
+        "Not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42838512/",
-        "doi": "https://doi.org/10.1080/0886022X.2026.2729643"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42888640/",
+        "doi": "https://doi.org/10.1097/MD.0000000000051202"
       },
       "appraisal": {
-        "bottom_line": "AI models achieve high diagnostic accuracy for classifying membranous nephropathy, IgA nephropathy, and minimal change disease, with performance metrics (AUC 0.96-1.00) suggesting potential superiority over senior pathologists in some datasets.",
-        "relevance": "AI-powered pathology could standardize glomerular disease diagnosis and assist pathologists, particularly in centers with limited subspecialty expertise.",
-        "caveat": "Most studies were retrospective and used 'validation sample units' rather than unique patients; substantial heterogeneity existed in imaging modalities and model architectures."
+        "bottom_line": "Fixing the PD catheter during open surgery significantly reduces the risk of catheter displacement (OR 0.08, 95% CI 0.04-0.16; P < 0.00001) at the cost of a slightly longer operating time (mean difference 4.18 minutes, 95% CI 1.42-6.94; P = 0.003).",
+        "relevance": "Catheter migration is a common cause of PD failure; this study provides evidence that a simple surgical fixation step can mitigate this risk without increasing complications like infection or bleeding.",
+        "caveat": "The analysis is limited to open surgery; results may not generalize to laparoscopic or percutaneous placement techniques. Heterogeneity between studies was not explicitly detailed for all outcomes."
       }
     },
     {
-      "pmid": "42838123",
-      "doi": "10.1080/0886022X.2026.2717490",
-      "journal": "Ren Fail",
-      "date": "2026-10-06",
-      "authors": "Zhou Y, Liao J, Huang W, Xiong Y",
-      "title": "Efficacy and safety of roxadustat for the treatment of renal anemia in patients undergoing peritoneal dialysis: a systematic review and meta-analysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "Anemia",
-      "summary": "A meta-analysis of 19 randomized controlled trials involving 1,636 patients on peritoneal dialysis (PD) comparing roxadustat to erythropoiesis-stimulating agents (ESAs). Roxadustat was associated with higher post-treatment hemoglobin levels (MD 7.30 g/L, 95% CI 5.43-9.16) and a lower reported adverse event rate (RR 0.45, 95% CI 0.27-0.74).",
-      "pico": {
-        "population": "Adults undergoing peritoneal dialysis with renal anemia",
-        "intervention": "Roxadustat-based regimens",
-        "comparison": "ESA-based regimens",
-        "outcome": "Post-treatment hemoglobin levels and adverse event rates"
-      },
-      "inclusion": [
-        "Randomized controlled studies comparing roxadustat-based to ESA-based regimens in adults receiving PD"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42838123/",
-        "doi": "https://doi.org/10.1080/0886022X.2026.2717490"
-      },
-      "appraisal": {
-        "bottom_line": "In patients on peritoneal dialysis, roxadustat significantly increased hemoglobin levels compared to ESAs (MD 7.30 g/L, 95% CI 5.43-9.16), though the certainty of evidence for most outcomes is low to very low.",
-        "relevance": "Provides PD-specific data for HIF-PHIs, confirming efficacy in a population often grouped with hemodialysis patients.",
-        "caveat": "Comparator ESA regimens were heterogeneous, and the lack of standardized reporting for hemoglobin target attainment and long-term safety limits definitive conclusions on clinical superiority."
-      }
-    },
-    {
-      "pmid": "42857576",
-      "doi": "10.3389/fimmu.2026.1939149",
-      "journal": "Front Immunol",
-      "date": "2026-09-25",
-      "authors": "Hu Y, Li H, Deng W, Diao S, Zeng L et al.",
-      "title": "Time-stratified prognostic factors for poor renal outcomes in childhood-onset lupus nephritis: a systematic review and meta-analysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "Lupus Nephritis",
-      "summary": "A meta-analysis of 47 studies identifying prognostic factors for poor renal outcomes in childhood-onset lupus nephritis (cLN). Key factors associated with progression included male sex, dialysis at onset, eGFR <60, hypertension, and renal non-remission at 6 or 12 months.",
-      "pico": {
-        "population": "Children with childhood-onset lupus nephritis",
-        "intervention": "Prognostic factors (demographic, clinical, and laboratory)",
-        "comparison": "N/A",
-        "outcome": "Poor renal outcomes (CKD, ESRD, mortality)"
-      },
-      "inclusion": [
-        "Studies identifying prognostic factors independently associated with poor renal outcomes in cLN based on multivariable analyses"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42857576/",
-        "doi": "https://doi.org/10.3389/fimmu.2026.1939149"
-      },
-      "appraisal": {
-        "bottom_line": "Male sex, low baseline eGFR, hypertension, and failure to achieve renal remission within 12 months are robust independent predictors of poor renal outcomes in pediatric lupus nephritis.",
-        "relevance": "These factors allow for early risk stratification and potentially more aggressive management in high-risk pediatric patients.",
-        "caveat": "Nearly half of the included studies (23/47) were at high risk of bias, and the association of proteinuria with outcomes was not robust in sensitivity analyses."
-      }
-    },
-    {
-      "pmid": "42857346",
-      "doi": "10.3389/fendo.2026.1908356",
-      "journal": "Front Endocrinol (Lausanne)",
-      "date": "2026-09-24",
-      "authors": "Fountoulakis N, Pavlou P, Gnudi L, Maltese G, Panagiotou A et al.",
-      "title": "The effects of ursodeoxycholic acid on albuminuria in people with type 1 diabetes and diabetic kidney disease: a proof-of-concept study.",
-      "study_type": "Randomized controlled trial",
-      "topic": "Diabetic Kidney Disease",
-      "summary": "A single-center, double-blind, placebo-controlled crossover trial of 31 participants with type 1 diabetes and DKD. Ursodeoxycholic acid (UDCA) 500 mg BID for 24 weeks did not significantly reduce the urine albumin excretion rate (UAER) compared to placebo (p=0.4).",
-      "pico": {
-        "population": "Patients with type 1 diabetes and DKD (UACR >3 mg/mmol, eGFR >=30, stable RAS blockade)",
-        "intervention": "Ursodeoxycholic acid (500 mg BID) for 24 weeks",
-        "comparison": "Placebo for 24 weeks",
-        "outcome": "Change in urine albumin excretion rate (UAER)"
-      },
-      "inclusion": [
-        "Type 1 diabetes",
-        "DKD with residual albuminuria (UACR >3 mg/mmol)",
-        "Stable maximum tolerated RAS blockade",
-        "eGFR >=30 ml/min"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42857346/",
-        "doi": "https://doi.org/10.3389/fendo.2026.1908356"
-      },
-      "appraisal": {
-        "bottom_line": "Ursodeoxycholic acid failed to reduce albuminuria in patients with type 1 diabetes and DKD over a 24-week treatment period (p=0.4).",
-        "relevance": "Despite promising preclinical data, UDCA does not appear to provide short-term renoprotection in this human population.",
-        "caveat": "The study was a small (n=31) proof-of-concept trial, which may be underpowered to detect modest effects or long-term benefits."
-      }
-    },
-    {
-      "pmid": "42846119",
-      "doi": "10.3389/ti.2026.16702",
-      "journal": "Transpl Int",
-      "date": "2026-09-23",
-      "authors": "Snanoudj R, Marquant F, Renaudin K, Dubois V, Koenig A et al.",
-      "title": "Bortezomib in combination with standard-of-care for late active antibody-mediated rejection with de novo donor-specific antibodies after kidney transplantation: a multicenter randomized trial.",
-      "study_type": "Randomized controlled trial",
-      "topic": "Transplantation",
-      "summary": "A multicenter randomized trial of 60 kidney transplant recipients with late active antibody-mediated rejection (AMR) and de novo donor-specific antibodies (dnDSA). Adding bortezomib to standard care did not improve the primary composite endpoint (RR 1.20, 95% CI 0.61-2.34, p=0.59) and increased serious adverse events (76.7% vs 46.7%, p=0.017).",
-      "pico": {
-        "population": "Adult kidney transplant recipients with late active AMR and de novo DSA",
-        "intervention": "Bortezomib (two cycles) plus standard-of-care (steroids, PLEX, IVIG)",
-        "comparison": "Standard-of-care alone",
-        "outcome": "Composite of >50% reduction in DSA MFI and biopsy stabilization/improvement at 12 months"
-      },
-      "inclusion": [
-        "Adult kidney transplant recipients",
-        "Late active AMR",
-        "De novo donor-specific antibodies"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42846119/",
-        "doi": "https://doi.org/10.3389/ti.2026.16702"
-      },
-      "appraisal": {
-        "bottom_line": "Bortezomib does not provide clinical or histologic benefit in late active AMR and is associated with a significantly higher burden of serious adverse events.",
-        "relevance": "This trial argues against the use of bortezomib for late AMR, highlighting the need for safer and more effective therapies in this difficult-to-treat population.",
-        "caveat": "The study was terminated early, enrolling only 60 of the planned 100 patients, which limits its statistical power."
-      }
-    },
-    {
-      "pmid": "42855667",
-      "doi": "10.1186/s12882-026-05256-7",
+      "pmid": "42875751",
+      "doi": "10.1186/s12882-026-05446-3",
       "journal": "BMC Nephrol",
-      "date": "2026-08-06",
-      "authors": "Huang M, Zhang X, Kang Y, Lv H, Gao J et al.",
-      "title": "The Physical ACtivity Enhancement Scheme (PACES) improves physical activity level and well-being in persons with hemodialysis: a randomized controlled trial.",
+      "date": "2026-10-12",
+      "authors": "Wang H, Zhou W, Jiang Y",
+      "title": "Sustained potassium control and recurrent hyperkalemia during individualized potassium-guided sodium zirconium cyclosilicate titration in maintenance hemodialysis: a post hoc analysis of a randomized trial.",
       "study_type": "Randomized controlled trial",
       "topic": "Hemodialysis",
-      "summary": "A randomized controlled trial of 53 hemodialysis patients evaluating the Physical ACtivity Enhancement Scheme (PACES). The intervention group showed significant improvements in daily step counts and health-related quality of life (physical and mental components) compared to routine care.",
+      "summary": "A post hoc analysis of a randomized trial evaluating the efficacy of individualized sodium zirconium cyclosilicate (SZC) titration for sustained potassium control in maintenance hemodialysis patients.",
       "pico": {
-        "population": "Hemodialysis patients",
-        "intervention": "Physical ACtivity Enhancement Scheme (PACES) for 3 months",
-        "comparison": "Routine care",
-        "outcome": "Daily step count and well-being scores"
+        "population": "116 maintenance hemodialysis patients with chronic hyperkalemia.",
+        "intervention": "Individualized potassium-guided SZC therapy on non-dialysis days.",
+        "comparison": "Control group (usual care).",
+        "outcome": "Sustained response (at least 3 of 4 predialysis potassium values between 4.0-5.0 mmol/L during months 3-6)."
       },
       "inclusion": [
-        "Hemodialysis patients"
+        "Maintenance hemodialysis patients.",
+        "Chronic hyperkalemia.",
+        "Participants in the original randomized trial."
       ],
       "exclusion": [
-        "not specified"
+        "Not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42855667/",
-        "doi": "https://doi.org/10.1186/s12882-026-05256-7"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42875751/",
+        "doi": "https://doi.org/10.1186/s12882-026-05446-3"
       },
       "appraisal": {
-        "bottom_line": "The PACES intervention effectively increases physical activity levels and improves well-being in patients undergoing hemodialysis.",
-        "relevance": "Structured physical activity programs can address the high burden of sedentary behavior and poor quality of life in the dialysis population.",
-        "caveat": "The study was small (n=53), single-center, and the trial was registered retrospectively; specific effect sizes for the primary outcome were not reported in the abstract."
+        "bottom_line": "SZC treatment resulted in a significantly higher probability of sustained potassium control (43.1% vs 13.8%; aRR 3.02, 95% CI 1.49-6.14) and fewer recurrent hyperkalemic excursions (potassium ≥ 5.5 mmol/L; aRR 0.31, 95% CI 0.18-0.55).",
+        "relevance": "Managing the 'long-gap' interdialytic potassium rise is a major challenge in HD; SZC provides a pharmacological tool for more consistent control.",
+        "caveat": "This is a post hoc analysis of a single-center, open-label trial with a small sample size; clinical outcomes (e.g., mortality or cardiovascular events) were not assessed."
       }
     },
     {
-      "pmid": "42845083",
-      "doi": "",
-      "journal": "Acta Med Indones",
-      "date": "2026-07-01",
-      "authors": "Sulaiman AS, Nugroho P, Bestari MB, Afiatin A, Akil F et al.",
-      "title": "Sofosbuvir/Daclatasvir versus Grazoprevir/Elbasvir in Patients with Chronic Hepatitis C on Haemodialysis: A Multicentre, Single-Blind, Randomised Controlled Trial.",
+      "pmid": "42862833",
+      "doi": "10.1371/journal.pone.0360475",
+      "journal": "PLoS One",
+      "date": "2026-10-12",
+      "authors": "Chu D, Liu B, Soh KL, Saidi HI, Japar S",
+      "title": "Effectiveness of a self-management intervention on clinical outcomes among patients with type 2 diabetes at high risk for Diabetic Kidney Disease: A Randomised Controlled Trial.",
       "study_type": "Randomized controlled trial",
-      "topic": "Hepatitis C",
-      "summary": "A multicenter, single-blind RCT of 120 treatment-naive HCV-infected hemodialysis patients comparing sofosbuvir/daclatasvir (SOF/DAC) to grazoprevir/elbasvir (GZR/EBR). Both regimens achieved 100% sustained virologic response at 12 weeks (SVR12).",
+      "topic": "Diabetic Kidney Disease",
+      "summary": "A randomized controlled trial evaluating a 12-week structured self-management intervention for type 2 diabetes (T2DM) patients at high risk for diabetic kidney disease (DKD).",
       "pico": {
-        "population": "Treatment-naive, HCV-infected hemodialysis patients (fibrosis <F4 for randomization)",
-        "intervention": "Sofosbuvir/Daclatasvir",
-        "comparison": "Grazoprevir/Elbasvir",
-        "outcome": "SVR12 and treatment-related adverse events"
+        "population": "134 patients with T2DM at high risk of DKD (based on a validated prediction model).",
+        "intervention": "12-week structured self-management program followed by 12-week follow-up.",
+        "comparison": "Usual care.",
+        "outcome": "HbA1c, eGFR, SBP, LDL-C, UACR, BMI, and waist circumference."
       },
       "inclusion": [
-        "Treatment-naive HCV-infected hemodialysis patients"
+        "Type 2 diabetes mellitus.",
+        "Classified as high risk for DKD using a validated prediction model."
       ],
       "exclusion": [
-        "Patients with cirrhosis (F4) were not randomized but assigned to SOF/DAC"
+        "Not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42845083/",
-        "doi": ""
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42862833/",
+        "doi": "https://doi.org/10.1371/journal.pone.0360475"
       },
       "appraisal": {
-        "bottom_line": "Sofosbuvir/daclatasvir is as effective as grazoprevir/elbasvir for treating hepatitis C in hemodialysis patients, with both achieving 100% SVR12.",
-        "relevance": "Supports the use of sofosbuvir-based therapy in dialysis, which is often more cost-effective and has broader pangenotypic activity.",
-        "caveat": "The study was single-blind, and the exclusion of cirrhotic patients from randomization limits the comparative safety and efficacy data in that specific subgroup."
+        "bottom_line": "A 12-week self-management program significantly improved HbA1c, eGFR, systolic blood pressure, and LDL-C compared to usual care, though no significant differences were found for UACR or BMI.",
+        "relevance": "Early intervention in high-risk diabetic patients may slow the progression to overt DKD by optimizing modifiable risk factors.",
+        "caveat": "The follow-up period was short (24 weeks), and the improvement in eGFR over such a brief interval should be interpreted cautiously as a surrogate for long-term renal protection. The study was conducted at a single tertiary hospital."
       }
     },
     {
-      "pmid": "42847350",
-      "doi": "10.1093/abm/kaaf101",
-      "journal": "Ann Behav Med",
-      "date": "2026-01-07",
-      "authors": "Nair RG, Mavathur R, Manjunath NK, Manjunath J",
-      "title": "Efficacy of yoga and its probable mechanism of action on lifestyle-related chronic kidney disease: a randomized clinical trial.",
-      "study_type": "Randomized controlled trial",
-      "topic": "CKD",
-      "summary": "A randomized clinical trial of 81 patients with stage 3-4 CKD evaluating a 12-week yoga intervention. The yoga group showed significant improvements in serum creatinine (MD -0.42 mg/dL, p=0.013), eGFR (MD 6.94 mL/min/1.73m2, p=0.030), and UACR (MD -464.2 mg/g, p=0.029).",
+      "pmid": "42878273",
+      "doi": "10.1002/cbdv.71837",
+      "journal": "Chem Biodivers",
+      "date": "2026-10-01",
+      "authors": "Wang S, Li X",
+      "title": "A Review of Detection Probes for Vanin-1: Development and Biological Applications in Various Inflammatory Diseases.",
+      "study_type": "Systematic review",
+      "topic": "Biomarkers",
+      "summary": "A systematic review of the development and biological applications of detection probes for Vascular non-inflammatory molecule-1 (Vanin-1) in inflammatory diseases, including AKI.",
       "pico": {
-        "population": "Patients with stage 3 and 4 CKD (diabetic or hypertensive etiology, aged 35-60)",
-        "intervention": "Yoga (12 weeks, 5 hours/week) plus usual care",
-        "comparison": "Usual care alone",
-        "outcome": "Kidney function parameters (creatinine, eGFR, UACR) and TGF-beta1"
+        "population": "Patients or models of inflammatory diseases (AKI, IBD, liver injury, RA).",
+        "intervention": "Vanin-1 detection probes (fluorescent, chemiluminescent, etc.).",
+        "comparison": "Not applicable.",
+        "outcome": "Probe performance (sensitivity, specificity) and biological application."
       },
       "inclusion": [
-        "CKD stages 3 and 4",
-        "Diabetic or hypertensive etiology",
-        "Aged 35-60"
+        "Studies on Vanin-1 probes developed in recent years."
       ],
       "exclusion": [
-        "not specified"
+        "Not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42847350/",
-        "doi": "https://doi.org/10.1093/abm/kaaf101"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42878273/",
+        "doi": "https://doi.org/10.1002/cbdv.71837"
       },
       "appraisal": {
-        "bottom_line": "A 12-week yoga program significantly improved eGFR and reduced albuminuria in patients with stage 3-4 CKD, potentially mediated by reductions in TGF-beta1 and oxidative stress.",
-        "relevance": "Yoga may serve as a low-cost, non-pharmacological adjunct to standard CKD care to slow disease progression.",
-        "caveat": "The reported eGFR improvement (nearly 7 mL/min/1.73m2) is remarkably high for a 12-week lifestyle intervention; the small sample size (n=81) necessitates larger confirmatory trials."
+        "bottom_line": "Vanin-1 is an emerging biomarker for early diagnosis of AKI and other inflammatory states; various highly sensitive probes are being developed to facilitate its clinical translation.",
+        "relevance": "Early detection of AKI remains a 'holy grail' in nephrology; Vanin-1 probes may offer a more specific diagnostic tool than current standards.",
+        "caveat": "This is a technical review of probe chemistry and early biological applications; it does not provide clinical diagnostic accuracy data (e.g., sensitivity/specificity in human cohorts)."
+      }
+    },
+    {
+      "pmid": "42877023",
+      "doi": "10.3389/fimmu.2026.1940769",
+      "journal": "Front Immunol",
+      "date": "2026-09-30",
+      "authors": "Li SG, Yu R, Zhang Y, Zhang L, Zhang J et al.",
+      "title": "Complement-amplified thrombotic microangiopathy in systemic lupus erythematosus and lupus nephritis: a systematic review of 78 reported patients.",
+      "study_type": "Systematic review",
+      "topic": "Lupus Nephritis",
+      "summary": "A systematic review of 78 patients with complement-amplified thrombotic microangiopathy (TMA) occurring in the context of SLE and lupus nephritis.",
+      "pico": {
+        "population": "78 patients with SLE/LN and associated TMA.",
+        "intervention": "Complement inhibitors (reported in 76.9% of cases).",
+        "comparison": "Not applicable (descriptive analysis).",
+        "outcome": "Renal and hematologic improvement."
+      },
+      "inclusion": [
+        "Patient-level reports of SLE/LN-associated TMA.",
+        "Full-text sources or citable abstracts with extractable data."
+      ],
+      "exclusion": [
+        "China National Knowledge Infrastructure (CNKI) sources (due to lack of verifiable search record)."
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42877023/",
+        "doi": "https://doi.org/10.3389/fimmu.2026.1940769"
+      },
+      "appraisal": {
+        "bottom_line": "TMA in SLE/LN is highly heterogeneous; while 62.8% of patients showed renal improvement following various treatments (including complement inhibitors), the evidence is limited to case reports.",
+        "relevance": "Recognizing TMA in lupus nephritis is critical as it may require therapies beyond standard immunosuppression, such as complement blockade.",
+        "caveat": "The evidence is of very low certainty due to reliance on selectively published case reports and abstracts. The review also noted protocol deviations, including single-reviewer screening and extraction."
+      }
+    },
+    {
+      "pmid": "42865697",
+      "doi": "10.3389/fpubh.2026.1919741",
+      "journal": "Front Public Health",
+      "date": "2026-09-28",
+      "authors": "Liu M, Chen H, Liu Y, Xi Y, Su J et al.",
+      "title": "A systematic review and meta-analysis of the effects of non-pharmacological interventions in improving psychological status and sleep quality among hemodialysis patients.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "Hemodialysis",
+      "summary": "A systematic review and meta-analysis of 14 RCTs (871 participants) evaluating non-pharmacological interventions for psychological status and sleep quality in hemodialysis patients.",
+      "pico": {
+        "population": "Maintenance hemodialysis (MHD) patients.",
+        "intervention": "Non-pharmacological interventions.",
+        "comparison": "Usual care.",
+        "outcome": "Depression, anxiety, and sleep quality."
+      },
+      "inclusion": [
+        "Randomized controlled trials (RCTs).",
+        "English language.",
+        "Published between January 2000 and February 2026."
+      ],
+      "exclusion": [
+        "Not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42865697/",
+        "doi": "https://doi.org/10.3389/fpubh.2026.1919741"
+      },
+      "appraisal": {
+        "bottom_line": "Non-pharmacological interventions significantly improved depression (SMD -0.62, 95% CI -0.87 to -0.37), anxiety (SMD -0.86, 95% CI -1.23 to -0.49), and sleep quality (SMD -0.94, 95% CI -1.33 to -0.55) in MHD patients.",
+        "relevance": "Psychological distress and poor sleep are highly prevalent in dialysis patients; these findings support the use of non-drug therapies to improve quality of life.",
+        "caveat": "There was high heterogeneity for anxiety (I2=79%) and sleep quality (I2=87%), and the certainty of evidence was low for these outcomes. Potential publication bias was noted for depression scores."
+      }
+    },
+    {
+      "pmid": "42885700",
+      "doi": "10.6002/ect.2026.0122",
+      "journal": "Exp Clin Transplant",
+      "date": "2026-09-01",
+      "authors": "Navratil P, Princlova H, Izmaylov O, Tranova MN",
+      "title": "Robot-Assisted Radical Prostatectomy in Kidney Transplant Recipients: an Updated Systematic Review and Surgical Perspective>.",
+      "study_type": "Systematic review",
+      "topic": "Transplantation",
+      "summary": "A cross-sectional study of 135 kidney transplant recipients investigating the relationship between parathyroid hormone (PTH), vitamin D, and bone mineral density (BMD).",
+      "pico": {
+        "population": "135 kidney transplant recipients (mean 71.4 months post-transplant) in Vietnam.",
+        "intervention": "Serum intact PTH levels.",
+        "comparison": "Not applicable (observational).",
+        "outcome": "Bone mineral density (T-score) at three skeletal sites."
+      },
+      "inclusion": [
+        "Kidney transplant recipients.",
+        "Underwent simultaneous measurement of PTH, 1,25-dihydroxyvitamin D, and DXA."
+      ],
+      "exclusion": [
+        "Not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42885700/",
+        "doi": "https://doi.org/10.6002/ect.2026.0122"
+      },
+      "appraisal": {
+        "bottom_line": "PTH levels above 65 pg/mL were inversely associated with BMD (T-score decrement of 0.37 per 100 pg/mL PTH increase; P < 0.001). The PTH-to-vitamin D ratio was a slightly better predictor of bone loss than PTH alone.",
+        "relevance": "Post-transplant bone disease is common (76.3% in this cohort); maintaining PTH within the KDIGO-recommended range may be vital for skeletal health.",
+        "caveat": "The title provided ('Robot-Assisted Radical Prostatectomy...') completely contradicts the abstract content (PTH and BMD), suggesting a metadata error. The study is cross-sectional and cannot establish a causal link between PTH and bone loss."
       }
     }
   ]
