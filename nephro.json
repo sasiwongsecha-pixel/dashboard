@@ -1,245 +1,269 @@
 {
   "meta": {
     "title": "Nephrology Literature Update",
-    "generated_at": "2026-10-19",
-    "window": "New to PubMed 2026-10-12 to 2026-10-19",
+    "generated_at": "2026-10-26",
+    "window": "New to PubMed 2026-10-19 to 2026-10-26",
     "query": "Clinical nephrology — RCTs, systematic reviews & meta-analyses (humans, English)",
     "source": "PubMed (NLM) abstracts; summaries and appraisals generated automatically from those abstracts. Each entry links to its PubMed record and DOI.",
-    "count": 7,
+    "count": 8,
     "note": "Summaries and PICO are machine analyses of the source abstracts; criteria marked “not specified” were not stated. Read the source before acting clinically.",
     "appraisal_source": "Automated critical appraisal (clinical bottom-line, relevance, caveat)."
   },
   "articles": [
     {
-      "pmid": "42888640",
-      "doi": "10.1097/MD.0000000000051202",
-      "journal": "Medicine (Baltimore)",
-      "date": "2026-10-16",
-      "authors": "Tang W, Jiang W, Wang Z, Zhang C, Li T et al.",
-      "title": "Peritoneal catheter fixation versus nonfixation in open surgery: A meta-analysis.",
-      "study_type": "Meta-analysis",
-      "topic": "Peritoneal Dialysis",
-      "summary": "A meta-analysis of 13 studies (1,275 patients) comparing peritoneal dialysis (PD) catheter fixation versus nonfixation during open surgical placement.",
-      "pico": {
-        "population": "Patients undergoing open surgery for peritoneal dialysis catheter placement.",
-        "intervention": "PD catheter fixation.",
-        "comparison": "PD catheter nonfixation.",
-        "outcome": "Catheter displacement, catheter malfunction, infection, bleeding, operating time."
-      },
-      "inclusion": [
-        "Studies comparing PD catheter fixation with nonfixation in open surgery.",
-        "Available in PubMed, Embase, Cochrane Library, CNKI, or Wanfang databases."
-      ],
-      "exclusion": [
-        "Not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42888640/",
-        "doi": "https://doi.org/10.1097/MD.0000000000051202"
-      },
-      "appraisal": {
-        "bottom_line": "Fixing the PD catheter during open surgery significantly reduces the risk of catheter displacement (OR 0.08, 95% CI 0.04-0.16; P < 0.00001) at the cost of a slightly longer operating time (mean difference 4.18 minutes, 95% CI 1.42-6.94; P = 0.003).",
-        "relevance": "Catheter migration is a common cause of PD failure; this study provides evidence that a simple surgical fixation step can mitigate this risk without increasing complications like infection or bleeding.",
-        "caveat": "The analysis is limited to open surgery; results may not generalize to laparoscopic or percutaneous placement techniques. Heterogeneity between studies was not explicitly detailed for all outcomes."
-      }
-    },
-    {
-      "pmid": "42875751",
-      "doi": "10.1186/s12882-026-05446-3",
-      "journal": "BMC Nephrol",
-      "date": "2026-10-12",
-      "authors": "Wang H, Zhou W, Jiang Y",
-      "title": "Sustained potassium control and recurrent hyperkalemia during individualized potassium-guided sodium zirconium cyclosilicate titration in maintenance hemodialysis: a post hoc analysis of a randomized trial.",
+      "pmid": "42921780",
+      "doi": "10.3791/74457",
+      "journal": "J Vis Exp",
+      "date": "2026-10-23",
+      "authors": "Zhang Y, Xing J, Wang GX, Chen YB, Mao DD",
+      "title": "Effects of E-Coach-Based Chronic Disease Management on Self-Management, Quality of Life, and Mental Health in Maintenance Hemodialysis Patients.",
       "study_type": "Randomized controlled trial",
       "topic": "Hemodialysis",
-      "summary": "A post hoc analysis of a randomized trial evaluating the efficacy of individualized sodium zirconium cyclosilicate (SZC) titration for sustained potassium control in maintenance hemodialysis patients.",
+      "summary": "In an RCT of 96 maintenance hemodialysis patients, adding a 6-month WeChat-based E-Coach intervention to usual care significantly improved self-management behavior scores compared with usual care alone (ANCOVA F(1, 93) = 6.3, p = 0.014, partial η2 = 0.06; mean difference +11.6, 95% CI: 9.7 to 13.6, p < 0.001). The E-Coach group showed a between-group difference in change of +13.3 points (95% CI: 9.9 to 16.5), as well as improvements in KDQOL-SF, reductions in SDS and SAS scores, and lower serum potassium and phosphorus levels at 6 months.",
       "pico": {
-        "population": "116 maintenance hemodialysis patients with chronic hyperkalemia.",
-        "intervention": "Individualized potassium-guided SZC therapy on non-dialysis days.",
-        "comparison": "Control group (usual care).",
-        "outcome": "Sustained response (at least 3 of 4 predialysis potassium values between 4.0-5.0 mmol/L during months 3-6)."
+        "population": "Maintenance hemodialysis (MHD) patients (n = 96)",
+        "intervention": "Usual care plus WeChat-based E-Coach mini-application providing education, dietary/exercise guidance, medication reminders, and online counseling",
+        "comparison": "Usual care (UC) alone",
+        "outcome": "Self-management behavior score at 6 months (primary); secondary outcomes included Kidney Disease Quality of Life-Short Form (KDQOL-SF), Self-Rating Depression Scale (SDS), Self-Rating Anxiety Scale (SAS), and serum potassium and phosphorus levels"
       },
       "inclusion": [
-        "Maintenance hemodialysis patients.",
-        "Chronic hyperkalemia.",
-        "Participants in the original randomized trial."
+        "Patients receiving regular maintenance hemodialysis"
       ],
       "exclusion": [
-        "Not specified"
+        "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42875751/",
-        "doi": "https://doi.org/10.1186/s12882-026-05446-3"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42921780/",
+        "doi": "https://doi.org/10.3791/74457"
       },
       "appraisal": {
-        "bottom_line": "SZC treatment resulted in a significantly higher probability of sustained potassium control (43.1% vs 13.8%; aRR 3.02, 95% CI 1.49-6.14) and fewer recurrent hyperkalemic excursions (potassium ≥ 5.5 mmol/L; aRR 0.31, 95% CI 0.18-0.55).",
-        "relevance": "Managing the 'long-gap' interdialytic potassium rise is a major challenge in HD; SZC provides a pharmacological tool for more consistent control.",
-        "caveat": "This is a post hoc analysis of a single-center, open-label trial with a small sample size; clinical outcomes (e.g., mortality or cardiovascular events) were not assessed."
+        "bottom_line": "A WeChat-based E-Coach intervention added to usual care improved self-management behavior scores by a mean difference of +11.6 points (95% CI: 9.7 to 13.6; p < 0.001) over 6 months compared with usual care alone, alongside improvements in reported quality of life, anxiety, depression, and lower serum potassium and phosphorus levels.",
+        "relevance": "Digital health tools delivered through mobile applications may offer a practical, low-cost approach to enhance patient self-management, dietary compliance, and psychological well-being in maintenance hemodialysis patients.",
+        "caveat": "The small sample size (n = 96) from a single region limits generalizability, and blinding of participants to digital health coaching is impossible, introducing potential performance and reporting bias for subjective questionnaire outcomes."
       }
     },
     {
-      "pmid": "42862833",
-      "doi": "10.1371/journal.pone.0360475",
-      "journal": "PLoS One",
-      "date": "2026-10-12",
-      "authors": "Chu D, Liu B, Soh KL, Saidi HI, Japar S",
-      "title": "Effectiveness of a self-management intervention on clinical outcomes among patients with type 2 diabetes at high risk for Diabetic Kidney Disease: A Randomised Controlled Trial.",
-      "study_type": "Randomized controlled trial",
-      "topic": "Diabetic Kidney Disease",
-      "summary": "A randomized controlled trial evaluating a 12-week structured self-management intervention for type 2 diabetes (T2DM) patients at high risk for diabetic kidney disease (DKD).",
-      "pico": {
-        "population": "134 patients with T2DM at high risk of DKD (based on a validated prediction model).",
-        "intervention": "12-week structured self-management program followed by 12-week follow-up.",
-        "comparison": "Usual care.",
-        "outcome": "HbA1c, eGFR, SBP, LDL-C, UACR, BMI, and waist circumference."
-      },
-      "inclusion": [
-        "Type 2 diabetes mellitus.",
-        "Classified as high risk for DKD using a validated prediction model."
-      ],
-      "exclusion": [
-        "Not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42862833/",
-        "doi": "https://doi.org/10.1371/journal.pone.0360475"
-      },
-      "appraisal": {
-        "bottom_line": "A 12-week self-management program significantly improved HbA1c, eGFR, systolic blood pressure, and LDL-C compared to usual care, though no significant differences were found for UACR or BMI.",
-        "relevance": "Early intervention in high-risk diabetic patients may slow the progression to overt DKD by optimizing modifiable risk factors.",
-        "caveat": "The follow-up period was short (24 weeks), and the improvement in eGFR over such a brief interval should be interpreted cautiously as a surrogate for long-term renal protection. The study was conducted at a single tertiary hospital."
-      }
-    },
-    {
-      "pmid": "42878273",
-      "doi": "10.1002/cbdv.71837",
-      "journal": "Chem Biodivers",
-      "date": "2026-10-01",
-      "authors": "Wang S, Li X",
-      "title": "A Review of Detection Probes for Vanin-1: Development and Biological Applications in Various Inflammatory Diseases.",
+      "pmid": "42911313",
+      "doi": "10.1007/s13668-026-00811-y",
+      "journal": "Curr Nutr Rep",
+      "date": "2026-10-22",
+      "authors": "Vázquez-Lorente H, Plaza-Diaz J, Pérez-Acosta JA, Díaz-López A, Salas-Salvadó J",
+      "title": "Nut Consumption, Kidney Function, Chronic Kidney Disease and Mortality: A Systematic Review.",
       "study_type": "Systematic review",
-      "topic": "Biomarkers",
-      "summary": "A systematic review of the development and biological applications of detection probes for Vascular non-inflammatory molecule-1 (Vanin-1) in inflammatory diseases, including AKI.",
+      "topic": "CKD Nutrition",
+      "summary": "This systematic review of observational studies evaluated the association between nut consumption and kidney health. Higher nut intake and replacing red and processed meats with nuts were associated with lower CKD risk or prevalence in certain populations. Findings for eGFR and albuminuria were inconsistent, evidence in established CKD populations was limited, and study heterogeneity prevented meta-analytic pooling.",
       "pico": {
-        "population": "Patients or models of inflammatory diseases (AKI, IBD, liver injury, RA).",
-        "intervention": "Vanin-1 detection probes (fluorescent, chemiluminescent, etc.).",
-        "comparison": "Not applicable.",
-        "outcome": "Probe performance (sensitivity, specificity) and biological application."
+        "population": "General populations and individuals evaluated for kidney health outcomes or CKD",
+        "intervention": "Higher nut intake or substitution of red and processed meats with nuts",
+        "comparison": "Lower nut intake or non-substitution of red/processed meat",
+        "outcome": "CKD incidence and prevalence, mortality, eGFR, and albuminuria"
       },
       "inclusion": [
-        "Studies on Vanin-1 probes developed in recent years."
+        "Observational studies and cohort analyses evaluating nut intake and kidney health outcomes"
       ],
       "exclusion": [
-        "Not specified"
+        "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42878273/",
-        "doi": "https://doi.org/10.1002/cbdv.71837"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42911313/",
+        "doi": "https://doi.org/10.1007/s13668-026-00811-y"
       },
       "appraisal": {
-        "bottom_line": "Vanin-1 is an emerging biomarker for early diagnosis of AKI and other inflammatory states; various highly sensitive probes are being developed to facilitate its clinical translation.",
-        "relevance": "Early detection of AKI remains a 'holy grail' in nephrology; Vanin-1 probes may offer a more specific diagnostic tool than current standards.",
-        "caveat": "This is a technical review of probe chemistry and early biological applications; it does not provide clinical diagnostic accuracy data (e.g., sensitivity/specificity in human cohorts)."
+        "bottom_line": "Higher nut intake and replacing red or processed meats with nuts are observational correlates of lower CKD risk in some cohorts, but effects on specific markers like eGFR and albuminuria are inconsistent.",
+        "relevance": "Plant-focused dietary strategies that substitute nuts for processed red meats align with broader cardiorenal disease management guidelines, though specific target intakes for CKD patients remain unproven.",
+        "caveat": "The underlying literature consists entirely of observational studies with substantial heterogeneity in exposure definitions and population characteristics; observational associations must not be interpreted as causal proof that nut consumption prevents CKD progression."
       }
     },
     {
-      "pmid": "42877023",
-      "doi": "10.3389/fimmu.2026.1940769",
-      "journal": "Front Immunol",
-      "date": "2026-09-30",
-      "authors": "Li SG, Yu R, Zhang Y, Zhang L, Zhang J et al.",
-      "title": "Complement-amplified thrombotic microangiopathy in systemic lupus erythematosus and lupus nephritis: a systematic review of 78 reported patients.",
-      "study_type": "Systematic review",
-      "topic": "Lupus Nephritis",
-      "summary": "A systematic review of 78 patients with complement-amplified thrombotic microangiopathy (TMA) occurring in the context of SLE and lupus nephritis.",
-      "pico": {
-        "population": "78 patients with SLE/LN and associated TMA.",
-        "intervention": "Complement inhibitors (reported in 76.9% of cases).",
-        "comparison": "Not applicable (descriptive analysis).",
-        "outcome": "Renal and hematologic improvement."
-      },
-      "inclusion": [
-        "Patient-level reports of SLE/LN-associated TMA.",
-        "Full-text sources or citable abstracts with extractable data."
-      ],
-      "exclusion": [
-        "China National Knowledge Infrastructure (CNKI) sources (due to lack of verifiable search record)."
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42877023/",
-        "doi": "https://doi.org/10.3389/fimmu.2026.1940769"
-      },
-      "appraisal": {
-        "bottom_line": "TMA in SLE/LN is highly heterogeneous; while 62.8% of patients showed renal improvement following various treatments (including complement inhibitors), the evidence is limited to case reports.",
-        "relevance": "Recognizing TMA in lupus nephritis is critical as it may require therapies beyond standard immunosuppression, such as complement blockade.",
-        "caveat": "The evidence is of very low certainty due to reliance on selectively published case reports and abstracts. The review also noted protocol deviations, including single-reviewer screening and extraction."
-      }
-    },
-    {
-      "pmid": "42865697",
-      "doi": "10.3389/fpubh.2026.1919741",
-      "journal": "Front Public Health",
-      "date": "2026-09-28",
-      "authors": "Liu M, Chen H, Liu Y, Xi Y, Su J et al.",
-      "title": "A systematic review and meta-analysis of the effects of non-pharmacological interventions in improving psychological status and sleep quality among hemodialysis patients.",
+      "pmid": "42919415",
+      "doi": "10.1186/s13054-026-06380-4",
+      "journal": "Crit Care",
+      "date": "2026-10-15",
+      "authors": "Lasa-Berasain P, Torrecilla Ugarte A, Juárez-Vela R, Ibánez-Beróiz B, Ansotegui Hernández A et al.",
+      "title": "Clinical prediction models in cardiac surgery-associated acute kidney injury: a systematic review and meta-analysis.",
       "study_type": "Systematic review and meta-analysis",
-      "topic": "Hemodialysis",
-      "summary": "A systematic review and meta-analysis of 14 RCTs (871 participants) evaluating non-pharmacological interventions for psychological status and sleep quality in hemodialysis patients.",
+      "topic": "Acute Kidney Injury",
+      "summary": "A systematic review and meta-analysis of clinical prediction models (CPMs) for cardiac surgery-associated AKI (CSA-AKI) in adults undergoing cardiopulmonary bypass found a pooled CSA-AKI incidence of 26.3% (95% CI: 26.0-26.4%) and a CSA-AKI requiring RRT (CSA-AKI RRT) rate of 2.2% (95% CI: 2.1-2.2%). The Thakar 2005 model demonstrated the best predictive performance for CSA-AKI RRT with a pooled AUC of 0.80 (95% CI: 0.77-0.82), sensitivity 0.87, and specificity 0.49 at threshold >=3, though calibration showed risk underestimation.",
       "pico": {
-        "population": "Maintenance hemodialysis (MHD) patients.",
-        "intervention": "Non-pharmacological interventions.",
-        "comparison": "Usual care.",
-        "outcome": "Depression, anxiety, and sleep quality."
+        "population": "Adult patients undergoing cardiac surgery with cardiopulmonary bypass",
+        "intervention": "Clinical prediction models (CPMs) for CSA-AKI (e.g., Thakar 2005, Mehta 2006, Wijeysundera 2007, Demirjian 2022)",
+        "comparison": "Observed clinical incidence of CSA-AKI or CSA-AKI requiring dialysis",
+        "outcome": "Model discrimination (AUC, sensitivity, specificity) and calibration for CSA-AKI and CSA-AKI requiring RRT"
       },
       "inclusion": [
-        "Randomized controlled trials (RCTs).",
-        "English language.",
-        "Published between January 2000 and February 2026."
+        "Studies developing or validating clinical prediction models for CSA-AKI in adult patients undergoing cardiac surgery with cardiopulmonary bypass"
       ],
       "exclusion": [
-        "Not specified"
+        "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42865697/",
-        "doi": "https://doi.org/10.3389/fpubh.2026.1919741"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42919415/",
+        "doi": "https://doi.org/10.1186/s13054-026-06380-4"
       },
       "appraisal": {
-        "bottom_line": "Non-pharmacological interventions significantly improved depression (SMD -0.62, 95% CI -0.87 to -0.37), anxiety (SMD -0.86, 95% CI -1.23 to -0.49), and sleep quality (SMD -0.94, 95% CI -1.33 to -0.55) in MHD patients.",
-        "relevance": "Psychological distress and poor sleep are highly prevalent in dialysis patients; these findings support the use of non-drug therapies to improve quality of life.",
-        "caveat": "There was high heterogeneity for anxiety (I2=79%) and sleep quality (I2=87%), and the certainty of evidence was low for these outcomes. Potential publication bias was noted for depression scores."
+        "bottom_line": "Existing clinical prediction models, particularly the Thakar 2005 model (pooled AUC 0.80, 95% CI: 0.77-0.82), perform reasonably well for discriminating patients at risk for CSA-AKI requiring dialysis, though performance for milder stages of AKI remains poorer and calibration frequently underestimates risk.",
+        "relevance": "Risk stratification tools can assist clinicians in identifying high-risk cardiac surgery candidates who might benefit from targeted perioperative renal protection pathways.",
+        "caveat": "Most older models lack discrimination for milder stage 1-2 AKI and consistently suffer from calibration drift (underestimating risk) when applied across contemporary surgical cohorts."
       }
     },
     {
-      "pmid": "42885700",
-      "doi": "10.6002/ect.2026.0122",
-      "journal": "Exp Clin Transplant",
-      "date": "2026-09-01",
-      "authors": "Navratil P, Princlova H, Izmaylov O, Tranova MN",
-      "title": "Robot-Assisted Radical Prostatectomy in Kidney Transplant Recipients: an Updated Systematic Review and Surgical Perspective>.",
+      "pmid": "42896045",
+      "doi": "10.1590/2175-8239-JBN-2026-0061en",
+      "journal": "J Bras Nefrol",
+      "date": "2026-01-01",
+      "authors": "Caetano AFP, Oliveira JA, Silva AWD, Cabral Junior CR, Cavalcante MJO et al.",
+      "title": "Effects of muscle strength training with blood flow restriction on glomerular function in people with stage 3 chronic kidney disease.",
+      "study_type": "Randomized controlled trial",
+      "topic": "CKD Exercise",
+      "summary": "In a 12-week randomized trial of 40 patients with stage 3 CKD, low-load muscle strength training combined with blood flow restriction (MST+BFR, G4) was compared to control (G1), low-load MST (G2), and high-load MST (G3). G4 demonstrated a significant increase in albuminuria (p = 0.048) and significant differences in serum creatinine compared with G1 (p = 0.032) and G2 (p = 0.036), as well as eGFR-Cr compared with G2 (p = 0.032).",
+      "pico": {
+        "population": "Patients with stage 3 chronic kidney disease (n = 40)",
+        "intervention": "Low-load muscle strength training combined with blood flow restriction (MST+BFR; Group 4)",
+        "comparison": "Control (G1), low-load MST alone (G2), and high-load MST alone (G3)",
+        "outcome": "Glomerular function markers including serum creatinine, cystatin C, eGFR-Cr, and urinary microalbuminuria over 12 weeks"
+      },
+      "inclusion": [
+        "Individuals with stage 3 chronic kidney disease"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42896045/",
+        "doi": "https://doi.org/10.1590/2175-8239-JBN-2026-0061en"
+      },
+      "appraisal": {
+        "bottom_line": "Combining blood flow restriction with low-load resistance training in stage 3 CKD patients resulted in a statistically significant increase in albuminuria (p = 0.048) and changes in serum creatinine compared to controls without acute major renal toxicity.",
+        "relevance": "Blood flow restriction training is gaining interest in rehabilitation, but its acute hemodynamic effects may transiently worsen albuminuria in patients with pre-existing impaired renal function.",
+        "caveat": "The trial is severely limited by a very small sample size (10 patients per arm across 4 groups), making it underpowered for clinical endpoints and prone to baseline imbalances or false-positive findings."
+      }
+    },
+    {
+      "pmid": "42895056",
+      "doi": "10.1111/1753-0407.70271",
+      "journal": "J Diabetes",
+      "date": "2026-10-01",
+      "authors": "Otabir SAG, Tegegne TK, Nderitu P, Wang J, Shaw JE et al.",
+      "title": "Detection and Risk Prediction of Diabetes Related Kidney Disease Using Retinal Images: A Systematic Review and Meta-Analysis.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "Diabetic Kidney Disease",
+      "summary": "A systematic review and meta-analysis of deep learning models for detecting and predicting diabetes-related kidney disease (DRKD) using retinal images included 6 studies. A meta-analysis of 3 cross-sectional hybrid model studies showed a pooled AUC of 0.88, sensitivity of 0.80, and specificity of 0.81, though heterogeneity was high (I2 = 93.7%-99.8%). Hybrid models combining retinal images and clinical data outperformed retinal-image-only models (delta AUC 0.03-0.11).",
+      "pico": {
+        "population": "Patients with diabetes mellitus evaluated for diabetes-related kidney disease (DRKD)",
+        "intervention": "Deep learning models utilizing 2D retinal images alone or hybrid models combining retinal images with clinical data",
+        "comparison": "Clinical-data-only prediction models or retinal-image-only models",
+        "outcome": "Model diagnostic and predictive performance (AUC, sensitivity, specificity)"
+      },
+      "inclusion": [
+        "Cross-sectional and longitudinal studies evaluating deep learning models for DRKD detection or prediction using retinal images alone, clinical data alone, or hybrid models"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42895056/",
+        "doi": "https://doi.org/10.1111/1753-0407.70271"
+      },
+      "appraisal": {
+        "bottom_line": "Deep learning hybrid models incorporating retinal images and clinical data detect DRKD with an overall pooled AUC of 0.88 (sensitivity 0.80, specificity 0.81), outperforming retinal images alone by a delta AUC of 0.03 to 0.11.",
+        "relevance": "Ophthalmologic screening programs for diabetic retinopathy could theoretically dual-screen for early diabetic kidney disease without requiring extra patient procedures.",
+        "caveat": "Only 6 studies met inclusion criteria with massive statistical heterogeneity (I2 > 93%), and only a single longitudinal study evaluated future risk prediction (5-year AUC 0.81), limiting generalizability."
+      }
+    },
+    {
+      "pmid": "42907905",
+      "doi": "10.1186/s40359-026-05233-7",
+      "journal": "BMC Psychol",
+      "date": "2026-07-27",
+      "authors": "Neo HLM, Naidu KNC, Tang IJH, Tiong HY, Goh SYS et al.",
+      "title": "Psychological factors associated with medication non-adherence after kidney transplant: a systematic review.",
       "study_type": "Systematic review",
       "topic": "Transplantation",
-      "summary": "A cross-sectional study of 135 kidney transplant recipients investigating the relationship between parathyroid hormone (PTH), vitamin D, and bone mineral density (BMD).",
+      "summary": "A systematic review of 44 quantitative and qualitative studies comprising 11,180 adult kidney transplant recipients found self-reported medication non-adherence prevalence ranging from 12.0% to 89.2%. Depressive symptoms and low social support were the most consistent psychological correlates, alongside qualitative barriers such as emotional burden, stigma, and regimen complexity.",
       "pico": {
-        "population": "135 kidney transplant recipients (mean 71.4 months post-transplant) in Vietnam.",
-        "intervention": "Serum intact PTH levels.",
-        "comparison": "Not applicable (observational).",
-        "outcome": "Bone mineral density (T-score) at three skeletal sites."
+        "population": "Adult kidney transplant recipients (n = 11,180 across 44 studies)",
+        "intervention": "Presence of psychological factors (depressive symptoms, low social support, emotional distress, stigma)",
+        "comparison": "Absence or lower severity of adverse psychological factors",
+        "outcome": "Self-reported immunosuppressive medication non-adherence"
       },
       "inclusion": [
-        "Kidney transplant recipients.",
-        "Underwent simultaneous measurement of PTH, 1,25-dihydroxyvitamin D, and DXA."
+        "Quantitative and qualitative studies involving adult kidney transplant recipients evaluating psychological factors associated with self-reported medication non-adherence"
       ],
       "exclusion": [
-        "Not specified"
+        "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42885700/",
-        "doi": "https://doi.org/10.6002/ect.2026.0122"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42907905/",
+        "doi": "https://doi.org/10.1186/s40359-026-05233-7"
       },
       "appraisal": {
-        "bottom_line": "PTH levels above 65 pg/mL were inversely associated with BMD (T-score decrement of 0.37 per 100 pg/mL PTH increase; P < 0.001). The PTH-to-vitamin D ratio was a slightly better predictor of bone loss than PTH alone.",
-        "relevance": "Post-transplant bone disease is common (76.3% in this cohort); maintaining PTH within the KDIGO-recommended range may be vital for skeletal health.",
-        "caveat": "The title provided ('Robot-Assisted Radical Prostatectomy...') completely contradicts the abstract content (PTH and BMD), suggesting a metadata error. The study is cross-sectional and cannot establish a causal link between PTH and bone loss."
+        "bottom_line": "Across 44 studies, self-reported non-adherence ranged wildly from 12.0% to 89.2%, with depressive symptoms and lack of social support identified as the strongest and most consistent correlates.",
+        "relevance": "Post-transplant medication adherence is critical for graft survival; identifying depressive symptoms and weak social support systems offers actionable targets for clinical intervention.",
+        "caveat": "The wide variance in non-adherence prevalence (12% to 89%) reflects significant heterogeneity in self-reported measurement tools, which are inherently prone to recall and social desirability biases."
+      }
+    },
+    {
+      "pmid": "42907738",
+      "doi": "10.1186/s12882-026-05212-5",
+      "journal": "BMC Nephrol",
+      "date": "2026-07-25",
+      "authors": "Karimi R, Riahi R, Mortazavi M, Sindarreh S, Aminorroaya A et al.",
+      "title": "Association between prediabetes and nephropathy: a comprehensive systematic review and meta-analysis.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "CKD Epidemiology",
+      "summary": "A systematic review and meta-analysis of 26 studies (350,546 normal glucose tolerance controls, 146,547 prediabetes subjects) evaluated the association between prediabetes and nephropathy. Prediabetes was associated with increased CKD risk (19 studies: RR 1.53, 95% CI: 1.30-1.81, p < 0.001), a reduction in eGFR across 31 observations (MD: -2.85 mL/min/1.73m2, 95% CI: -4.57 to -1.13, p = 0.001), and higher UACR across 21 observations (MD: 0.87, 95% CI: 0.19-1.55, p = 0.012).",
+      "pico": {
+        "population": "Individuals with prediabetes versus normal glucose tolerance (total n = 497,093)",
+        "intervention": "Prediabetes (exposure)",
+        "comparison": "Normal glucose tolerance",
+        "outcome": "Incident or prevalent chronic kidney disease risk (RR), mean difference in eGFR, and mean difference in urinary albumin-to-creatinine ratio (UACR)"
+      },
+      "inclusion": [
+        "Cohort and cross-sectional studies published before November 2024 evaluating prediabetes and nephropathy outcomes compared to normal glucose tolerance"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42907738/",
+        "doi": "https://doi.org/10.1186/s12882-026-05212-5"
+      },
+      "appraisal": {
+        "bottom_line": "Prediabetes is significantly associated with increased risk of chronic kidney disease (RR 1.53, 95% CI: 1.30-1.81, p < 0.001), a modest lower mean eGFR (-2.85 mL/min/1.73m2), and higher UACR (+0.87).",
+        "relevance": "Renal microvascular end-organ damage begins before clinical diagnostic thresholds for overt type 2 diabetes mellitus are crossed, reinforcing the importance of metabolic control in prediabetes.",
+        "caveat": "The meta-analysis combines cross-sectional and prospective cohort designs, meaning the observed associations cannot establish direct causality or rule out residual confounding by hypertension and metabolic syndrome."
+      }
+    },
+    {
+      "pmid": "42897643",
+      "doi": "10.1186/s12944-026-03018-w",
+      "journal": "Lipids Health Dis",
+      "date": "2026-07-24",
+      "authors": "Bellos I, Marinaki S, Benetou V",
+      "title": "Lipoprotein(a) and adverse cardiovascular outcomes in dialysis patients: a systematic review and meta-analysis.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "Dialysis Cardiovascular Disease",
+      "summary": "A systematic review and meta-analysis of 15 reports (14 cohorts, 6,380 maintenance dialysis patients) evaluated circulating Lipoprotein(a) [Lp(a)] levels and outcomes. Exploratory meta-analyses showed elevated Lp(a) levels were associated with higher all-cause mortality (HR: 1.58, 95% CI: 1.24-2.02), cardiovascular mortality (HR: 2.07, 95% CI: 1.22-3.50), and MACE (HR: 1.56, 95% CI: 1.28-1.90), though certainty of evidence was rated low to very low.",
+      "pico": {
+        "population": "Maintenance hemodialysis or peritoneal dialysis patients (n = 6,380 across 14 cohorts)",
+        "intervention": "Elevated circulating Lipoprotein(a) [Lp(a)] levels (exposure)",
+        "comparison": "Lower circulating Lipoprotein(a) levels",
+        "outcome": "All-cause mortality, cardiovascular mortality, and major adverse cardiovascular events (MACE)"
+      },
+      "inclusion": [
+        "Observational cohort studies evaluating circulating Lp(a) levels and adverse CV outcomes in maintenance dialysis patients"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42897643/",
+        "doi": "https://doi.org/10.1186/s12944-026-03018-w"
+      },
+      "appraisal": {
+        "bottom_line": "Elevated Lp(a) in maintenance dialysis patients is associated with increased all-cause mortality (HR 1.58, 95% CI: 1.24-2.02), CV mortality (HR 2.07, 95% CI: 1.22-3.50), and MACE (HR 1.56, 95% CI: 1.28-1.90), but evidence certainty is low to very low.",
+        "relevance": "Lp(a) represents a potential novel non-traditional cardiovascular biomarker in ESRD, where traditional risk factors fail to fully explain high cardiovascular event rates.",
+        "caveat": "The observational pooled estimates are considered exploratory due to low sample sizes, lack of assay standardization across studies, undefined clinical cutoff thresholds, and low certainty of evidence."
       }
     }
   ]
