@@ -1,410 +1,333 @@
 {
   "meta": {
     "title": "Nephrology Literature Update",
-    "generated_at": "2026-11-02",
-    "window": "New to PubMed 2026-10-26 to 2026-11-02",
+    "generated_at": "2026-11-09",
+    "window": "New to PubMed 2026-11-02 to 2026-11-09",
     "query": "Clinical nephrology — RCTs, systematic reviews & meta-analyses (humans, English)",
     "source": "PubMed (NLM) abstracts; summaries and appraisals generated automatically from those abstracts. Each entry links to its PubMed record and DOI.",
-    "count": 12,
+    "count": 10,
     "note": "Summaries and PICO are machine analyses of the source abstracts; criteria marked “not specified” were not stated. Read the source before acting clinically.",
     "appraisal_source": "Automated critical appraisal (clinical bottom-line, relevance, caveat)."
   },
   "articles": [
     {
-      "pmid": "42963345",
-      "doi": "10.1002/nop2.70651",
-      "journal": "Nurs Open",
-      "date": "2026-11-01",
-      "authors": "Cai G, Zhang L, Zhang Y, Zhang J, Zhou J et al.",
-      "title": "Effects of a Nurse-Led Multicomponent Exercise Intervention for Haemodialysis Patients With Possible or Confirmed Sarcopenia: A Cluster Randomised Trial.",
+      "pmid": "42978535",
+      "doi": "10.1080/0886022X.2026.2755136",
+      "journal": "Ren Fail",
+      "date": "2026-11-04",
+      "authors": "Chen S, Gao Y, Liang Z, Zhang Y, Wang C et al.",
+      "title": "Effect of Kunxian capsule, a novel Tripterygium wilfordii preparation, on reducing proteinuria and slowing renal function decline in diabetic kidney disease: a 48-week randomized controlled trial.",
       "study_type": "Randomized controlled trial",
-      "topic": "Dialysis / Sarcopenia",
-      "summary": "A cluster randomized trial evaluating a 12-week nurse-led multicomponent exercise program for hemodialysis patients with sarcopenia.",
+      "topic": "Diabetic Kidney Disease",
+      "summary": "In an RCT of 80 DKD patients receiving irbesartan, adding Kunxian capsule increased 48-week proteinuria remission (57.50% vs. 25.00%) and reduced renal composite hard endpoints (10.00% vs. 32.50%) with a shorter median time to remission (5 months vs. not reached) and no difference in adverse events.",
       "pico": {
-        "population": "Hemodialysis patients with possible or confirmed sarcopenia (n=56)",
-        "intervention": "12-week nurse-led multicomponent exercise intervention plus standard care",
-        "comparison": "Standard care",
-        "outcome": "Skeletal muscle mass index (SMI), handgrip strength, gait speed, and Short Physical Performance Battery (SPPB) scores"
+        "population": "Patients with diabetic kidney disease (N=80)",
+        "intervention": "Kunxian capsule plus standard therapy with irbesartan for 48 weeks",
+        "comparison": "Standard therapy with irbesartan alone for 48 weeks",
+        "outcome": "Proteinuria remission rate, degree of proteinuria reduction, median time to remission, slope of eGFR decline, incidence of renal composite hard endpoint, adverse events, and inflammatory markers"
       },
       "inclusion": [
-        "Hemodialysis patients",
-        "Possible or confirmed sarcopenia"
+        "Patients with diabetic kidney disease"
       ],
       "exclusion": [
         "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42963345/",
-        "doi": "https://doi.org/10.1002/nop2.70651"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42978535/",
+        "doi": "https://doi.org/10.1080/0886022X.2026.2755136"
       },
       "appraisal": {
-        "bottom_line": "The 12-week nurse-led exercise intervention showed favorable trends in muscle strength and physical function with moderate-to-large effect sizes, but no primary outcomes reached statistical significance after Bonferroni correction.",
-        "relevance": "Sarcopenia is a major contributor to morbidity in dialysis; while this nurse-led model is feasible and safe, its efficacy remains unproven in this small cohort.",
-        "caveat": "The study was likely underpowered (n=56) to detect differences after adjusting for multiple comparisons, and the cluster design may introduce bias if not properly accounted for."
+        "bottom_line": "Adding Kunxian capsule to irbesartan increased 48-week proteinuria remission (57.50% vs. 25.00%) and lowered the incidence of a renal composite hard endpoint (10.00% vs. 32.50%) without increasing adverse events in 80 DKD patients.",
+        "relevance": "Provides preliminary clinical evidence for an herbal preparation (Tripterygium wilfordii derivative) as an adjunctive therapy to RAS blockade for reducing proteinuria and eGFR decline in DKD.",
+        "caveat": "Small sample size (N=80), lack of reporting of exact 95% confidence intervals, p-values, eGFR slope estimates, or detailed hard endpoint definitions in the abstract."
       }
     },
     {
-      "pmid": "42932910",
-      "doi": "10.1152/ajprenal.00079.2026",
-      "journal": "Am J Physiol Renal Physiol",
-      "date": "2026-10-07",
-      "authors": "Brashear SE, Mohamed Sulthan A, Chan D, Rao V, Begue G et al.",
-      "title": "Skeletal muscle adaptation to home-based exercise in chronic kidney disease.",
-      "study_type": "Randomized controlled trial",
-      "topic": "CKD / Exercise",
-      "summary": "A randomized trial examining skeletal muscle biopsies before and after a 12-week home-based exercise program in patients with CKD stages 3-5.",
+      "pmid": "42974671",
+      "doi": "10.1080/0886022X.2026.2741985",
+      "journal": "Ren Fail",
+      "date": "2026-11-03",
+      "authors": "Liu J, Wan JF, Chen J, Zhang WW, Peng CX et al.",
+      "title": "Risk factors for cognitive impairment in patients undergoing hemodialysis: an umbrella review and meta-analysis.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "Hemodialysis / Cognitive Impairment",
+      "summary": "An umbrella review of 5 meta-analyses (97 associations) identified multiple factors associated with cognitive impairment and frailty in hemodialysis patients, including higher education protective against cognitive impairment (OR = 0.21, 95% CI: 0.13-0.34) and depression (OR = 4.66, 95% CI: 2.98-7.27), low-flux HD (OR = 4.16, 95% CI: 1.97-8.79), stroke (OR = 2.94, 95% CI: 1.72-5.03), interdialytic hypotension (OR = 2.42, 95% CI: 1.53-4.21), and longer HD duration (OR = 2.30, 95% CI: 1.49-3.53) linked to cognitive frailty.",
       "pico": {
-        "population": "Patients with CKD stages 3-5 (n=25)",
-        "intervention": "12-week home-based, video-monitored exercise program (HIIT, power walking, and strength training)",
-        "comparison": "Usual care",
-        "outcome": "Muscle fiber size, satellite cell count, capillarization, and fibroadipogenic progenitors"
+        "population": "Adults undergoing maintenance hemodialysis",
+        "intervention": "Risk factors including depression, stroke history, longer dialysis duration, low-flux hemodialysis, interdialytic hypotension, and demographic/clinical traits",
+        "comparison": "Absence of risk factors or protective factors such as higher educational attainment and higher serum albumin",
+        "outcome": "Cognitive impairment and cognitive frailty"
       },
       "inclusion": [
-        "CKD stages 3-5"
+        "Meta-analyses evaluating factors associated with cognitive impairment or cognitive frailty in adult hemodialysis patients"
       ],
       "exclusion": [
         "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42932910/",
-        "doi": "https://doi.org/10.1152/ajprenal.00079.2026"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42974671/",
+        "doi": "https://doi.org/10.1080/0886022X.2026.2741985"
       },
       "appraisal": {
-        "bottom_line": "A 12-week home-based exercise program increased muscle capillarization and decreased fibroadipogenic progenitors, although it did not significantly alter muscle fiber size or satellite cell numbers.",
-        "relevance": "Demonstrates that even home-based, endurance-focused exercise can induce favorable physiological remodeling in the skeletal muscle of CKD patients.",
-        "caveat": "The sample size was very small (n=25 total, with only 6 in the control group), limiting the generalizability and statistical power of the findings."
+        "bottom_line": "Multiple demographic, clinical, and dialysis-related factors are associated with cognitive impairment and frailty in maintenance hemodialysis patients, though the certainty of evidence for nearly all associations is low or very low.",
+        "relevance": "Identifies potentially modifiable dialysis prescriptions (such as low-flux dialyzers and interdialytic hypotension) and patient sub-populations for cognitive screening in HD units.",
+        "caveat": "Umbrella synthesis of observational evidence where association does not establish causality; only 2 of 97 evaluated associations possessed moderate-certainty evidence."
       }
     },
     {
-      "pmid": "42961706",
-      "doi": "10.1007/s12020-026-04844-9",
-      "journal": "Endocrine",
-      "date": "2026-10-30",
-      "authors": "Ferrario L, Foglia E",
-      "title": "Rethinking glycemic monitoring: a HTA of glycated albumin for type 2 diabetes with stage IV-V CKD.",
+      "pmid": "42980842",
+      "doi": "10.1007/s00520-026-11435-x",
+      "journal": "Support Care Cancer",
+      "date": "2026-11-04",
+      "authors": "Pakkhesal S, Mohammadi P, Rezagholizadeh A, Koochaki Z, Ramezani MA et al.",
+      "title": "Proton pump inhibitors in prevention of cisplatin-induced nephrotoxicity: a systematic review.",
       "study_type": "Systematic review",
-      "topic": "CKD / Diabetes",
-      "summary": "A Health Technology Assessment (HTA) evaluating the clinical and economic impact of using glycated albumin (GA) versus HbA1c in patients with T2DM and advanced CKD.",
+      "topic": "Acute Kidney Injury / Nephrotoxicity",
+      "summary": "A systematic review of 8 studies (n=1062; 2 RCTs, 6 observational) found conflicting evidence on PPI co-administration during cisplatin chemotherapy, ranging from one RCT showing a non-significant trend toward protection (0% vs. 25% nephrotoxicity, p=0.078) to a cohort study showing increased AKI risk (OR = 2.78, p=0.010).",
       "pico": {
-        "population": "Patients with type 2 diabetes and stage IV-V CKD",
-        "intervention": "Glycated albumin (GA) monitoring",
-        "comparison": "Glycated hemoglobin (HbA1c) monitoring",
-        "outcome": "Accuracy of identifying poor glycemic control, adverse events, and cost-effectiveness"
+        "population": "Patients receiving cisplatin chemotherapy",
+        "intervention": "Cisplatin therapy with proton pump inhibitor (PPI) co-administration",
+        "comparison": "Cisplatin therapy without PPI co-administration",
+        "outcome": "Cisplatin-induced nephrotoxicity, AKI incidence, post-treatment eGFR, and renal injury biomarkers"
       },
       "inclusion": [
-        "Type 2 diabetes mellitus",
-        "Stage IV-V chronic kidney disease"
+        "RCTs and observational studies comparing cisplatin with PPI co-administration versus cisplatin without PPIs reporting renal outcomes"
       ],
       "exclusion": [
         "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42961706/",
-        "doi": "https://doi.org/10.1007/s12020-026-04844-9"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42980842/",
+        "doi": "https://doi.org/10.1007/s00520-026-11435-x"
       },
       "appraisal": {
-        "bottom_line": "Glycated albumin identified poor glycemic control more accurately than HbA1c (52% vs. 19.2%) and was estimated to be cost-saving (2.02% annual saving) for the Italian healthcare system.",
-        "relevance": "HbA1c is often unreliable in advanced CKD due to altered red cell turnover; GA provides a more accurate glycemic marker in this specific population.",
-        "caveat": "The study is a Health Technology Assessment combining a systematic review with economic modeling and stakeholder surveys, rather than a primary clinical trial."
+        "bottom_line": "Current evidence regarding PPI co-administration for preventing cisplatin nephrotoxicity is conflicting across 8 heterogeneous studies, yielding signals that range from modest protective trends to a significant risk of AKI (OR = 2.78, p=0.010).",
+        "relevance": "Cautions nephrologists and oncologists against using PPIs as a nephroprotective strategy during cisplatin treatment, given the potential signal for renal harm.",
+        "caveat": "High clinical and methodological heterogeneity precluded quantitative meta-analysis; included studies were predominantly small observational cohorts subject to residual confounding."
       }
     },
     {
-      "pmid": "42929381",
-      "doi": "10.1002/14651858.CD016139.pub2",
-      "journal": "Cochrane Database Syst Rev",
-      "date": "2026-10-26",
-      "authors": "Nishiwaki H, Levack WM, Hasegawa T, Ota E, Noma H et al.",
-      "title": "Music-based interventions for people with kidney failure undergoing haemodialysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "Dialysis / Symptom Management",
-      "summary": "A Cochrane systematic review and meta-analysis of 27 RCTs assessing music-based interventions for symptom burden in hemodialysis patients.",
-      "pico": {
-        "population": "Patients with kidney failure undergoing hemodialysis",
-        "intervention": "Music-based interventions",
-        "comparison": "Usual care, headphones without music, or video",
-        "outcome": "Fatigue, blood pressure, depression, and pain"
-      },
-      "inclusion": [
-        "Randomized controlled trials",
-        "Participants with kidney failure undergoing hemodialysis"
-      ],
-      "exclusion": [
-        "Temporary hemodialysis for acute kidney injury"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42929381/",
-        "doi": "https://doi.org/10.1002/14651858.CD016139.pub2"
-      },
-      "appraisal": {
-        "bottom_line": "Music-based interventions may reduce short-term fatigue (MD -3.14, 95% CI -3.83 to -2.45), depressive symptoms (SMD -0.88, 95% CI -1.51 to -0.25), and pain (SMD -0.89, 95% CI -1.63 to -0.15), though the certainty of evidence is low.",
-        "relevance": "Music offers a low-cost, non-pharmacological adjunct to manage the high symptom burden associated with maintenance dialysis.",
-        "caveat": "High heterogeneity (I² up to 92%) and low-to-very-low certainty of evidence across outcomes; long-term effects remain unknown."
-      }
-    },
-    {
-      "pmid": "42964092",
-      "doi": "10.3389/fendo.2026.1969361",
-      "journal": "Front Endocrinol (Lausanne)",
-      "date": "2026-10-16",
-      "authors": "Gao J, Wang J, Wang Z",
-      "title": "Association of remnant cholesterol with kidney outcomes in adults with type 2 diabetes: a systematic review and meta-analysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "CKD / Diabetes",
-      "summary": "A systematic review and meta-analysis of 17 studies exploring the association between remnant cholesterol (RC) and kidney outcomes in type 2 diabetes.",
-      "pico": {
-        "population": "Adults with type 2 diabetes mellitus",
-        "intervention": "Higher circulating remnant cholesterol",
-        "comparison": "Lower circulating remnant cholesterol",
-        "outcome": "Incident diabetic kidney disease (DKD), kidney failure, and DKD progression"
-      },
-      "inclusion": [
-        "Longitudinal and cross-sectional observational studies",
-        "Adults with T2DM"
-      ],
-      "exclusion": [
-        "Mixed populations where T2DM-specific data could not be extracted"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42964092/",
-        "doi": "https://doi.org/10.3389/fendo.2026.1969361"
-      },
-      "appraisal": {
-        "bottom_line": "Higher remnant cholesterol is associated with incident DKD (HR 1.27, 95% CI 1.17-1.37), but the association with kidney failure did not reach statistical significance (HR 1.56, 95% CI 0.82-2.97).",
-        "relevance": "RC may serve as a complementary lipid marker for kidney risk in diabetic patients beyond traditional LDL-C measurements.",
-        "caveat": "The evidence is purely observational and cannot establish causality; significant heterogeneity was noted in the overall analysis (I² = 87.6%)."
-      }
-    },
-    {
-      "pmid": "42959041",
-      "doi": "10.3389/fimmu.2026.1942324",
-      "journal": "Front Immunol",
-      "date": "2026-10-15",
-      "authors": "Zhang J, Chen X, Yao L, Li T, Sun X et al.",
-      "title": "Crystalline κ-light-chain proximal tubulopathy in Waldenström macroglobulinemia with an IgA nephropathy pattern: a case report and systematic review.",
-      "study_type": "Systematic review",
-      "topic": "Onconephrology",
-      "summary": "A case report and systematic review of crystalline κ-light-chain proximal tubulopathy (LCPT) in Waldenström macroglobulinemia (WM).",
-      "pico": {
-        "population": "Patients with Waldenström macroglobulinemia and LCPT or crystal-storing histiocytosis",
-        "intervention": "BTK inhibitor-based therapy (e.g., ibrutinib, zanubrutinib)",
-        "comparison": "N/A (Case report and literature review)",
-        "outcome": "Renal pathology and hematological/renal response"
-      },
-      "inclusion": [
-        "Waldenström macroglobulinemia-associated LCPT",
-        "Crystal-storing histiocytosis"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42959041/",
-        "doi": "https://doi.org/10.3389/fimmu.2026.1942324"
-      },
-      "appraisal": {
-        "bottom_line": "Crystalline κ-LCPT is a rare renal manifestation of WM that can be successfully managed with BTK inhibitors, leading to stable renal function and sustained hematological response.",
-        "relevance": "Nephrologists should consider LCPT in WM patients with proteinuria and dysfunction, as targeted hematological therapy can preserve kidney function.",
-        "caveat": "The systematic review identified only 7 prior cases, making the evidence base extremely limited and subject to publication bias."
-      }
-    },
-    {
-      "pmid": "42948020",
-      "doi": "10.3389/fcimb.2026.1803544",
-      "journal": "Front Cell Infect Microbiol",
-      "date": "2026-10-13",
-      "authors": "Chen S, Wu M, Huang M, Lu B, Wang J et al.",
-      "title": "Baseline gut microbiota and short-term response to acupressure combined with thermal stimulation in maintenance hemodialysis patients with functional constipation: an exploratory responder analysis.",
-      "study_type": "Randomized controlled trial",
-      "topic": "Dialysis / Constipation",
-      "summary": "An exploratory responder analysis of a crossover trial investigating if baseline gut microbiota predicts response to acupressure and thermal stimulation for constipation in HD patients.",
-      "pico": {
-        "population": "Maintenance hemodialysis patients with functional constipation (n=26)",
-        "intervention": "Acupressure combined with thermal stimulation",
-        "comparison": "Responders (≥1 BM/week increase) vs. non-responders",
-        "outcome": "Baseline gut microbiota composition (16S rRNA sequencing)"
-      },
-      "inclusion": [
-        "Maintenance hemodialysis patients",
-        "Functional constipation"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42948020/",
-        "doi": "https://doi.org/10.3389/fcimb.2026.1803544"
-      },
-      "appraisal": {
-        "bottom_line": "While Veillonella and Lactobacillus showed nominal associations with treatment response, no baseline microbial characteristics were robustly predictive of response to acupressure and thermal stimulation.",
-        "relevance": "The gut-kidney axis may influence symptom management, but current microbial profiling is not yet ready for clinical use in predicting intervention success.",
-        "caveat": "Small sample size (n=26) and the exploratory, post-hoc nature of the responder analysis limit the reliability of the findings."
-      }
-    },
-    {
-      "pmid": "42942928",
-      "doi": "10.3390/nu18203357",
-      "journal": "Nutrients",
-      "date": "2026-10-13",
-      "authors": "Walter-Cano S, Lee A, Andrade JM",
-      "title": "Effectiveness of mHealth Nutrition Interventions on Nutrition-Related and Clinical Outcomes in Adults with Chronic Kidney Disease: A Systematic Review and Meta-Analysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "CKD / Nutrition",
-      "summary": "A systematic review and meta-analysis of 23 studies evaluating mHealth nutrition interventions in adults with CKD.",
-      "pico": {
-        "population": "Adults with chronic kidney disease",
-        "intervention": "Mobile health (mHealth) nutrition interventions",
-        "comparison": "Usual care or no intervention",
-        "outcome": "Biochemical outcomes, interdialytic weight gain, and dietary intake"
-      },
-      "inclusion": [
-        "Controlled trials",
-        "Quasi-experimental designs",
-        "Pre-post studies"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42942928/",
-        "doi": "https://doi.org/10.3390/nu18203357"
-      },
-      "appraisal": {
-        "bottom_line": "Meta-analysis of randomized trials found no significant effect of mHealth interventions on biochemical outcomes or interdialytic weight gain in dialysis patients.",
-        "relevance": "Despite the proliferation of health apps, high-quality evidence supporting their clinical efficacy in improving hard nutritional or clinical outcomes in CKD is currently lacking.",
-        "caveat": "Most positive findings were derived from pre-post studies without control groups, which are prone to temporal bias and cannot establish intervention efficacy."
-      }
-    },
-    {
-      "pmid": "42935779",
-      "doi": "10.3389/fendo.2026.1938521",
-      "journal": "Front Endocrinol (Lausanne)",
-      "date": "2026-10-12",
-      "authors": "Hu J, Pan X, Wei S, Wei J",
-      "title": "Prognostic value of multiple biomarkers for kidney function decline in type 2 diabetes with relatively preserved kidney function: a systematic review and exploratory meta-analysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "CKD / Diabetes",
-      "summary": "A systematic review and exploratory meta-analysis of prospective cohort studies evaluating biomarkers for kidney function decline in early DKD.",
-      "pico": {
-        "population": "Patients with type 2 diabetes and relatively preserved kidney function",
-        "intervention": "Baseline circulating or urinary biomarkers (e.g., TNFR1, TNFR2, KIM-1)",
-        "comparison": "N/A (Prognostic association)",
-        "outcome": "Kidney function decline"
-      },
-      "inclusion": [
-        "Prospective cohort studies",
-        "Type 2 diabetes with relatively preserved kidney function"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42935779/",
-        "doi": "https://doi.org/10.3389/fendo.2026.1938521"
-      },
-      "appraisal": {
-        "bottom_line": "Circulating TNFR1, TNFR2, and KIM-1 show potential associations with kidney function decline in early DKD, but evidence is currently too heterogeneous for definitive quantitative pooling.",
-        "relevance": "Identifying patients at high risk for progression when GFR is still preserved is critical for early intensive intervention.",
-        "caveat": "The meta-analysis is exploratory; most pooled estimates were based on only two studies with varying definitions of kidney decline."
-      }
-    },
-    {
-      "pmid": "42945230",
-      "doi": "10.1111/ctr.70734",
+      "pmid": "42977693",
+      "doi": "10.1111/ctr.70733",
       "journal": "Clin Transplant",
-      "date": "2026-10-01",
-      "authors": "Mozafar M, Bigdeli Y, Lichani MA, Looha MA, Mozafar M et al.",
-      "title": "Vascular Management Strategies and Outcomes of Infectious Arterial Complications Involving the Kidney Transplant Vasculature: A Systematic Review and Evidence-Informed Treatment Framework.",
+      "date": "2026-11-01",
+      "authors": "Ahuja D, Concepcion BP, Yuan Y, Forbes R, Rogers JL et al.",
+      "title": "Transplantation of Hepatitis B Surface Antigen Positive or Viremic Kidneys: A Systematic Review and Meta-Analysis.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "Kidney Transplantation",
+      "summary": "A meta-analysis of 6 studies comparing 638 recipients of HBV-positive kidneys with 2800 recipients of HBV-negative kidneys found similar allograft survival at 1 year (RR = 1.00, 95% CI: 0.98-1.01), 3 years (RR = 1.01, 95% CI: 0.98-1.04), and 5 years (RR = 1.00, 95% CI: 0.91-1.09), alongside a low transmission rate (4.94%).",
+      "pico": {
+        "population": "Non-viremic kidney transplant recipients",
+        "intervention": "Transplantation of kidneys from HBsAg-positive or viremic donors (n=638)",
+        "comparison": "Transplantation of kidneys from HBsAg-negative non-viremic donors (n=2800)",
+        "outcome": "Patient survival and allograft survival at 1, 3, and 5 years post-transplant, and HBV transmission rate"
+      },
+      "inclusion": [
+        "Studies of recipients of HBsAg+ or viremic kidneys with a comparison group of HBV-negative donor kidney recipients reporting patient and graft survival"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42977693/",
+        "doi": "https://doi.org/10.1111/ctr.70733"
+      },
+      "appraisal": {
+        "bottom_line": "Kidneys from HBV-infected donors demonstrate allograft and patient survival equivalent to HBV-negative kidneys up to 5 years post-transplant (5-year allograft RR = 1.00, 95% CI: 0.91-1.09) with low viral transmission rates (4.94%).",
+        "relevance": "Supports expanding the donor organ pool by safely utilizing HBV-positive kidneys in immune recipients under antiviral prophylaxis.",
+        "caveat": "Pooled analyses rely on observational cohort studies; explicit numerical effect sizes and confidence intervals for patient survival were omitted in the abstract, and long-term liver outcomes remain unassessed."
+      }
+    },
+    {
+      "pmid": "42991236",
+      "doi": "10.3389/fimmu.2026.1940345",
+      "journal": "Front Immunol",
+      "date": "2026-10-22",
+      "authors": "Wu Q, Yu Z, Lin X, Yang L, Wu Z",
+      "title": "Soluble urokinase plasminogen activator receptor across the kidney-cardiometabolic continuum: a systematic review.",
       "study_type": "Systematic review",
-      "topic": "Transplantation",
-      "summary": "A systematic review of 139 cases of infectious arterial complications in kidney transplant recipients to evaluate vascular management strategies.",
+      "topic": "Chronic Kidney Disease / Biomarkers",
+      "summary": "A systematic review of 20 studies (n=31,416) found that elevated suPAR predicted incident CKD (adjusted OR = 3.13, 95% CI: 2.11-4.65) and ESKD (adjusted HR = 1.53, 95% CI: 1.10-2.12) in adults with preserved baseline function, but offered minimal discriminative gain (C-statistic increase 0.027-0.08) and failed to differentiate FSGS from other glomerular diseases.",
       "pico": {
-        "population": "Kidney transplant recipients with culture-proven infectious vascular complications",
-        "intervention": "Various vascular management strategies (e.g., autologous grafting, stenting, ligation)",
-        "comparison": "N/A (Narrative synthesis of proportions)",
-        "outcome": "Uneventful recovery, reintervention, mortality, and limb loss"
+        "population": "Adults and pediatric patients across the kidney-cardiometabolic spectrum (n=31,416 across 20 studies)",
+        "intervention": "Elevated circulating soluble urokinase plasminogen activator receptor (suPAR) levels",
+        "comparison": "Lower circulating suPAR levels",
+        "outcome": "Incident CKD, ESKD, FSGS diagnostic discrimination, pediatric CKD progression, and cardiovascular outcomes"
       },
       "inclusion": [
-        "Culture-proven infectious vascular complications",
-        "Kidney transplant recipients"
+        "Studies evaluating suPAR as a risk biomarker in CKD and cardiometabolic conditions searched through May 2026"
       ],
       "exclusion": [
         "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42945230/",
-        "doi": "https://doi.org/10.1111/ctr.70734"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42991236/",
+        "doi": "https://doi.org/10.3389/fimmu.2026.1940345"
       },
       "appraisal": {
-        "bottom_line": "Autologous interposition grafting demonstrated the most favorable outcome pattern (86.7% uneventful recovery), while arterial ligation was associated with the highest mortality (43.8%).",
-        "relevance": "Provides a clinical framework for managing rare but catastrophic infectious vascular events in transplant recipients, favoring autologous reconstruction over ligation.",
-        "caveat": "The review is based on case reports spanning 50 years, which are subject to significant reporting bias and lack of standardized management protocols."
+        "bottom_line": "Although elevated suPAR independently predicts incident CKD (aOR = 3.13) and ESKD (aHR = 1.53) in adults with preserved kidney function, it provides trivial incremental discrimination (C-statistic gain <= 0.08) and cannot differentiate FSGS.",
+        "relevance": "Advises against routine clinical suPAR measurement in nephrology for risk stratification or primary FSGS diagnostic evaluation.",
+        "caveat": "Observational evidence base lacking decision curve analyses, lack of assay standardization, and loss of statistical independence after adjusting for baseline kidney function in pediatric and metabolic cohorts."
       }
     },
     {
-      "pmid": "42930526",
-      "doi": "10.3390/medsci14060607",
-      "journal": "Med Sci (Basel)",
-      "date": "2026-09-27",
-      "authors": "Sotiriou G, Karava V, Dotis J",
-      "title": "Thyroid Dysfunction in Children with Chronic Kidney Disease: A Systematic Review and Meta-Analysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "Pediatric Nephrology",
-      "summary": "A systematic review and meta-analysis of 11 studies estimating the prevalence of subclinical hypothyroidism (SCH) in children with CKD.",
+      "pmid": "42978583",
+      "doi": "10.3389/fimmu.2026.1982870",
+      "journal": "Front Immunol",
+      "date": "2026-10-20",
+      "authors": "Liang C, Bao R, Yin S, Song T, Lin T",
+      "title": "Peri-transplant eculizumab for preventing antibody-mediated rejection in kidney transplant recipients at high immunologic risk: a systematic review with design-stratified evidence synthesis.",
+      "study_type": "Systematic review",
+      "topic": "Kidney Transplantation / Rejection",
+      "summary": "A systematic review of peri-transplant eculizumab in high-immunologic-risk kidney transplantation found no reduction in centrally confirmed AMR in the only randomized trial (5/51 vs. 5/51; RR = 1.00, 95% CI: 0.31-3.25), despite historical cohort signals of benefit (RR = 0.19, 95% CI: 0.05-0.74).",
       "pico": {
-        "population": "Children (0-18 years) with CKD stages 1-5",
-        "intervention": "N/A (Prevalence study)",
-        "comparison": "N/A",
-        "outcome": "Prevalence of subclinical hypothyroidism"
+        "population": "High-immunologic-risk kidney transplant recipients (sensitized, preformed DSA, or ABO-incompatible)",
+        "intervention": "Peri-transplant eculizumab-containing prophylactic regimen",
+        "comparison": "Standard desensitization regimens or historical control protocols",
+        "outcome": "Antibody-mediated rejection (AMR), long-term graft survival, kidney function, persistent DSA, and chronic microvascular injury"
       },
       "inclusion": [
-        "Patients aged 0-18 years",
-        "CKD stages 1-5 including kidney replacement therapy",
-        "Peer-reviewed studies with SCH definition"
+        "Studies evaluating peri-transplant eculizumab prophylaxis in high-immunologic-risk kidney transplantation"
       ],
       "exclusion": [
         "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42930526/",
-        "doi": "https://doi.org/10.3390/medsci14060607"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42978583/",
+        "doi": "https://doi.org/10.3389/fimmu.2026.1982870"
       },
       "appraisal": {
-        "bottom_line": "The pooled prevalence of subclinical hypothyroidism in children with CKD is 12.8% (95% CI, 9.2-17.6%), with no detected heterogeneity among peer-reviewed studies.",
-        "relevance": "Thyroid dysfunction is common in pediatric CKD, but the clinical significance and benefit of levothyroxine therapy in this population remain unproven.",
-        "caveat": "The meta-analysis is based on a small number of studies (n=7) and participants (n=403), and definitions of SCH varied across the included literature."
+        "bottom_line": "Randomized evidence does not show that peri-transplant eculizumab lowers antibody-mediated rejection compared with standard desensitization alone (RR = 1.00, 95% CI: 0.31-3.25) or improves long-term graft survival.",
+        "relevance": "Indicates that routine addition of expensive terminal complement blockade with eculizumab is not supported by RCT evidence for incremental AMR reduction over standard protocols.",
+        "caveat": "Randomized evidence is restricted to a single small trial (N=102 total); historical cohort benefits (RR = 0.19) were strongly confounded by era changes in clinical management and plasma exchange."
       }
     },
     {
-      "pmid": "42934563",
-      "doi": "10.1186/s12882-026-05239-8",
+      "pmid": "42973539",
+      "doi": "10.3389/fendo.2026.1991940",
+      "journal": "Front Endocrinol (Lausanne)",
+      "date": "2026-10-19",
+      "authors": "Gong Y, Zheng J, Huang W, Jeon Y",
+      "title": "Comparative efficacy of different exercise modalities on renal function and glycemic control in patients with non-dialysis diabetic kidney disease: a systematic review and network meta-analysis.",
+      "study_type": "Systematic review",
+      "topic": "Diabetic Kidney Disease / Lifestyle",
+      "summary": "A network meta-analysis of 20 RCTs (n=1,746) in non-dialysis DKD showed resistance training increased eGFR vs. usual care (MD = 11.36 mL/min/1.73 m², 95% CI: 4.47 to 18.25), mind-body exercise reduced UAE (SMD = -1.41, 95% CI: -2.67 to -0.16), and combined training lowered FBG persistently (MD = -1.71 mmol/L).",
+      "pico": {
+        "population": "Adults with non-dialysis diabetic kidney disease (20 RCTs, n=1,746)",
+        "intervention": "Structured exercise modalities (resistance, aerobic, combined, or mind-body) for >= 4 weeks",
+        "comparison": "Usual care or active control",
+        "outcome": "eGFR, urinary albumin excretion (UAE), HbA1c, fasting blood glucose (FBG), and adverse events"
+      },
+      "inclusion": [
+        "RCTs evaluating structured exercise (duration >= 4 weeks) vs. usual care or active comparator in non-dialysis DKD adults"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42973539/",
+        "doi": "https://doi.org/10.3389/fendo.2026.1991940"
+      },
+      "appraisal": {
+        "bottom_line": "Combined exercise offers durable glycemic control (FBG MD = -1.71 mmol/L), mind-body exercise reduces albuminuria (SMD = -1.41), and resistance training's eGFR benefit (MD = 11.36) loses significance when high-risk trials are excluded.",
+        "relevance": "Provides evidence for tailoring specific exercise prescriptions to renal versus glycemic goals in non-dialysis DKD management.",
+        "caveat": "Low certainty of evidence across main outcomes, fragility of resistance training's eGFR benefit in sensitivity analyses, and poor safety monitoring (only 25% of trials reported adverse events)."
+      }
+    },
+    {
+      "pmid": "42983348",
+      "doi": "10.1186/s12882-026-05342-w",
       "journal": "BMC Nephrol",
-      "date": "2026-07-29",
-      "authors": "Guo M, Han X, Xu X",
-      "title": "Meta-analysis of the effectiveness of nursing interventions in the care of adult patients with kidney failure.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "Nursing / Kidney Failure",
-      "summary": "A broad systematic review and meta-analysis of 142 studies evaluating the impact of various nursing interventions on outcomes in kidney failure.",
+      "date": "2026-09-24",
+      "authors": "Fernandes DCM, Gomide R, Magalhaes TR, de Sousa Lima RT, Silva RM et al.",
+      "title": "Biomarker-dependent detection of contrast-associated acute kidney injury after intra-arterial contrast procedures: an exploratory randomized trial.",
+      "study_type": "Randomized controlled trial",
+      "topic": "Acute Kidney Injury / Contrast",
+      "summary": "In an exploratory single-blind RCT of 76 patients undergoing intra-arterial contrast procedures, creatinine-based criteria identified 4 CA-AKI cases while cystatin C-based criteria identified 7 additional cases, demonstrating poor diagnostic agreement (kappa = 0.07) and zero overlapping cases.",
       "pico": {
-        "population": "Adult patients with kidney failure",
-        "intervention": "Nursing interventions (shared-care, education, music therapy, etc.)",
-        "comparison": "Control groups",
-        "outcome": "Patient satisfaction and complication rates"
+        "population": "Patients with peripheral arterial disease undergoing elective intra-arterial contrast-enhanced vascular procedures (n=76)",
+        "intervention": "Standardized hydration plus high-dose atorvastatin and N-acetylcysteine",
+        "comparison": "Standardized hydration alone",
+        "outcome": "CA-AKI incidence defined by creatinine (>= 25% or >= 0.5 mg/dL increase within 72h) vs. cystatin C (>= 10% increase within 24h); diagnostic concordance"
       },
       "inclusion": [
-        "Adult patients with kidney failure",
-        "Studies evaluating nursing interventions"
+        "Patients with peripheral arterial disease undergoing elective intra-arterial contrast-enhanced vascular procedures"
       ],
       "exclusion": [
         "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42934563/",
-        "doi": "https://doi.org/10.1186/s12882-026-05239-8"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42983348/",
+        "doi": "https://doi.org/10.1186/s12882-026-05342-w"
       },
       "appraisal": {
-        "bottom_line": "Nursing interventions significantly increased patient satisfaction (MD 2.71, 95% CI 1.72-3.70) and reduced complication rates (MD -7.39, 95% CI -11.48 to -3.31) compared to control groups.",
-        "relevance": "Underscores the critical role of specialized nursing care in improving patient-centered outcomes in the dialysis and CKD population.",
-        "caveat": "The meta-analysis pools extremely diverse interventions (from music therapy to shared-care models), making the aggregate effect size difficult to apply to any single specific nursing practice."
+        "bottom_line": "Creatinine- and cystatin C-based criteria for CA-AKI show near-zero diagnostic agreement (kappa = 0.07, 0 overlapping cases) after intra-arterial contrast, confirming that event detection is heavily biomarker-dependent.",
+        "relevance": "Highlights how endpoint selection profoundly alters event ascertainment and therapeutic effect estimates in clinical trials evaluating CA-AKI prevention.",
+        "caveat": "Small exploratory single-blind trial (N=76) with low overall event numbers (4 by creatinine, 7 by cystatin C), preventing definitive assessment of statin/NAC efficacy."
+      }
+    },
+    {
+      "pmid": "42983853",
+      "doi": "10.1186/s40359-026-05334-3",
+      "journal": "BMC Psychol",
+      "date": "2026-08-08",
+      "authors": "Rabiei L, Baharanchi FG, Nazari AM, Masoudi R",
+      "title": "Comparative effectiveness of cognitive behavioral therapy versus group-based optimism training on psychological outcomes in hemodialysis patients: a randomized controlled trial.",
+      "study_type": "Randomized controlled trial",
+      "topic": "Hemodialysis / Dialysis",
+      "summary": "An 8-week RCT of 135 hemodialysis patients demonstrated that group-based optimism training yielded superior sustained improvements over CBT at 4-month follow-up for depression (Cohen's d = 0.45, p = 0.032) and optimism (d = 0.36, p = 0.041), while both interventions equally improved acute anxiety and hope.",
+      "pico": {
+        "population": "Hemodialysis patients (n=135)",
+        "intervention": "Cognitive behavioral therapy (8 sessions) OR Group-based optimism training (8 sessions)",
+        "comparison": "Standard educational interventions (active control)",
+        "outcome": "Anxiety, depression, optimism, and hope measured immediately post-intervention, 2 months, and 4 months later"
+      },
+      "inclusion": [
+        "Hemodialysis patients"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42983853/",
+        "doi": "https://doi.org/10.1186/s40359-026-05334-3"
+      },
+      "appraisal": {
+        "bottom_line": "Both CBT and group optimism training reduce psychological distress versus control in HD patients, but optimism training produces superior long-term reductions in depression (d = 0.45, p = 0.032) at 4-month follow-up.",
+        "relevance": "Identifies group optimism training as an effective and potentially more durable non-pharmacological alternative to traditional CBT for treating depression in hemodialysis units.",
+        "caveat": "Trial was retrospectively registered and outcomes relied entirely on self-reported psychological instruments without blinded clinical diagnostic interviews."
+      }
+    },
+    {
+      "pmid": "42983655",
+      "doi": "10.1186/s12882-026-05209-0",
+      "journal": "BMC Nephrol",
+      "date": "2026-08-05",
+      "authors": "An X, Geng J, Lei K, Su B",
+      "title": "Urinary kidney injury molecule-1 as a diagnostic biomarker for persistent severe acute kidney injury: a systematic review and Bayesian meta-analysis.",
+      "study_type": "Systematic review and meta-analysis",
+      "topic": "Acute Kidney Injury / Biomarkers",
+      "summary": "A Bayesian meta-analysis of 8 studies (n=2,349; 378 persistent severe AKI cases) showed uKIM-1 has moderate diagnostic performance for persistent severe AKI in adults, with a pooled sensitivity of 0.67 (95% CrI: 0.59-0.75), specificity of 0.73 (95% CrI: 0.61-0.84), DOR of 5.91 (95% CrI: 2.91-11.20), and AUC of 0.75 (95% CrI: 0.62-0.84).",
+      "pico": {
+        "population": "Adult patients across heterogeneous clinical settings (ICU, ED, postoperative, sepsis, COVID-19, liver transplant; n=2,349)",
+        "intervention": "Urinary kidney injury molecule-1 (uKIM-1) measurement",
+        "comparison": "Reference standard clinical definitions for persistent severe AKI",
+        "outcome": "Sensitivity, specificity, diagnostic odds ratio (DOR), area under the curve (AUC)"
+      },
+      "inclusion": [
+        "Adult patient studies evaluating the diagnostic value of uKIM-1 for persistent severe AKI"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42983655/",
+        "doi": "https://doi.org/10.1186/s12882-026-05209-0"
+      },
+      "appraisal": {
+        "bottom_line": "Urinary KIM-1 exhibits only moderate diagnostic accuracy (sensitivity 0.67, specificity 0.73, AUC 0.75) for detecting persistent severe AKI in adult patients.",
+        "relevance": "Demonstrates that uKIM-1 cannot be relied upon as a standalone diagnostic biomarker for persistent severe AKI in routine nephrology or critical care practice.",
+        "caveat": "Included studies spanned highly heterogeneous clinical settings (sepsis, liver transplant, post-op, COVID-19) with non-standardized diagnostic cutoff thresholds."
       }
     }
   ]
