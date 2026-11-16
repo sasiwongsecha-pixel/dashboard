@@ -1,333 +1,211 @@
 {
   "meta": {
     "title": "Nephrology Literature Update",
-    "generated_at": "2026-11-09",
-    "window": "New to PubMed 2026-11-02 to 2026-11-09",
+    "generated_at": "2026-11-16",
+    "window": "New to PubMed 2026-11-09 to 2026-11-16",
     "query": "Clinical nephrology — RCTs, systematic reviews & meta-analyses (humans, English)",
     "source": "PubMed (NLM) abstracts; summaries and appraisals generated automatically from those abstracts. Each entry links to its PubMed record and DOI.",
-    "count": 10,
+    "count": 6,
     "note": "Summaries and PICO are machine analyses of the source abstracts; criteria marked “not specified” were not stated. Read the source before acting clinically.",
     "appraisal_source": "Automated critical appraisal (clinical bottom-line, relevance, caveat)."
   },
   "articles": [
     {
-      "pmid": "42978535",
-      "doi": "10.1080/0886022X.2026.2755136",
-      "journal": "Ren Fail",
-      "date": "2026-11-04",
-      "authors": "Chen S, Gao Y, Liang Z, Zhang Y, Wang C et al.",
-      "title": "Effect of Kunxian capsule, a novel Tripterygium wilfordii preparation, on reducing proteinuria and slowing renal function decline in diabetic kidney disease: a 48-week randomized controlled trial.",
+      "pmid": "43026212",
+      "doi": "10.1038/s41467-026-78584-9",
+      "journal": "Nat Commun",
+      "date": "2026-11-13",
+      "authors": "Small C, Kumar D, Abbas A, Sánchez Fructuoso A, Yamanaga S et al.",
+      "title": "AS01E-adjuvanted RSV pre-F protein vaccine in adults with lung or kidney transplant: a phase 2b randomized trial.",
       "study_type": "Randomized controlled trial",
-      "topic": "Diabetic Kidney Disease",
-      "summary": "In an RCT of 80 DKD patients receiving irbesartan, adding Kunxian capsule increased 48-week proteinuria remission (57.50% vs. 25.00%) and reduced renal composite hard endpoints (10.00% vs. 32.50%) with a shorter median time to remission (5 months vs. not reached) and no difference in adverse events.",
+      "topic": "Transplantation",
+      "summary": "Phase 2b open-label randomized trial evaluating the immunogenicity and safety of AS01E-adjuvanted RSVPreF3 vaccine in kidney or lung transplant recipients receiving one (n=131) or two doses (n=130) versus non-immunocompromised controls ≥50 years (n=125). A second dose increased RSV-A and RSV-B neutralizing antibody titers (mean geometric increases 1.34 and 1.26), with responses sustained over 12 months.",
       "pico": {
-        "population": "Patients with diabetic kidney disease (N=80)",
-        "intervention": "Kunxian capsule plus standard therapy with irbesartan for 48 weeks",
-        "comparison": "Standard therapy with irbesartan alone for 48 weeks",
-        "outcome": "Proteinuria remission rate, degree of proteinuria reduction, median time to remission, slope of eGFR decline, incidence of renal composite hard endpoint, adverse events, and inflammatory markers"
+        "population": "Kidney or lung transplant recipients aged ≥18 years (and non-immunocompromised controls aged ≥50 years).",
+        "intervention": "Two doses of AS01E-adjuvanted RSVPreF3 vaccine 30-60 days apart (or single dose).",
+        "comparison": "Single dose of AS01E-adjuvanted RSVPreF3 vaccine in transplant recipients, or single dose in non-immunocompromised controls.",
+        "outcome": "Primary: Mean geometric increase in RSV-A and RSV-B neutralizing titers 1 month post-dose 2 relative to dose 1 in transplant recipients. Secondary: Safety and immunogenicity compared with controls."
       },
       "inclusion": [
-        "Patients with diabetic kidney disease"
+        "Kidney or lung transplant recipients aged ≥18 years",
+        "Non-immunocompromised controls aged ≥50 years"
       ],
       "exclusion": [
         "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42978535/",
-        "doi": "https://doi.org/10.1080/0886022X.2026.2755136"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/43026212/",
+        "doi": "https://doi.org/10.1038/s41467-026-78584-9"
       },
       "appraisal": {
-        "bottom_line": "Adding Kunxian capsule to irbesartan increased 48-week proteinuria remission (57.50% vs. 25.00%) and lowered the incidence of a renal composite hard endpoint (10.00% vs. 32.50%) without increasing adverse events in 80 DKD patients.",
-        "relevance": "Provides preliminary clinical evidence for an herbal preparation (Tripterygium wilfordii derivative) as an adjunctive therapy to RAS blockade for reducing proteinuria and eGFR decline in DKD.",
-        "caveat": "Small sample size (N=80), lack of reporting of exact 95% confidence intervals, p-values, eGFR slope estimates, or detailed hard endpoint definitions in the abstract."
+        "bottom_line": "A two-dose regimen of AS01E-adjuvanted RSVPreF3 vaccine in kidney and lung transplant recipients increased neutralizing antibody titers against RSV-A (mean geometric increase 1.34, 95% CI 1.20-1.48) and RSV-B (mean geometric increase 1.26, 95% CI 1.14-1.40) post-second dose, with humoral and cellular responses persisting for 12 months and an acceptable safety profile.",
+        "relevance": "Solid organ transplant recipients are at high risk for severe RSV complications; these data show that a two-dose strategy induces better immunogenicity than a single dose, particularly in patients on mycophenolate.",
+        "caveat": "Open-label phase 2b trial evaluated surrogate immunogenicity metrics (neutralizing antibody titers and CD4+ T-cell counts) rather than clinical efficacy endpoints such as laboratory-confirmed RSV infection or hospitalizations."
       }
     },
     {
-      "pmid": "42974671",
-      "doi": "10.1080/0886022X.2026.2741985",
-      "journal": "Ren Fail",
-      "date": "2026-11-03",
-      "authors": "Liu J, Wan JF, Chen J, Zhang WW, Peng CX et al.",
-      "title": "Risk factors for cognitive impairment in patients undergoing hemodialysis: an umbrella review and meta-analysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "Hemodialysis / Cognitive Impairment",
-      "summary": "An umbrella review of 5 meta-analyses (97 associations) identified multiple factors associated with cognitive impairment and frailty in hemodialysis patients, including higher education protective against cognitive impairment (OR = 0.21, 95% CI: 0.13-0.34) and depression (OR = 4.66, 95% CI: 2.98-7.27), low-flux HD (OR = 4.16, 95% CI: 1.97-8.79), stroke (OR = 2.94, 95% CI: 1.72-5.03), interdialytic hypotension (OR = 2.42, 95% CI: 1.53-4.21), and longer HD duration (OR = 2.30, 95% CI: 1.49-3.53) linked to cognitive frailty.",
+      "pmid": "43015282",
+      "doi": "10.1038/s41467-026-78377-0",
+      "journal": "Nat Commun",
+      "date": "2026-10-14",
+      "authors": "Banerjee D, Ali M, Tumelty E, Murphy D, Warrens H et al.",
+      "title": "Rapid Renin Angiotensin Aldosterone System inhibitor optimisation in patients with chronic kidney disease and heart failure with reduced ejection fraction using potassium binder: a randomised, double-blinded, placebo-controlled trial.",
+      "study_type": "Randomized controlled trial",
+      "topic": "CKD",
+      "summary": "Double-blind, randomized, placebo-controlled trial evaluating sodium zirconium cyclosilicate (SZC) versus placebo in 112 patients with CKD stages 3-5 and HFrEF with serum potassium 5.0-5.5 mmol/L to facilitate RAASi up-titration over 14 weeks. SZC significantly increased the proportion of patients reaching target RAASi dose without hyperkalemia (56% vs 28%, ITT OR 3.16).",
       "pico": {
-        "population": "Adults undergoing maintenance hemodialysis",
-        "intervention": "Risk factors including depression, stroke history, longer dialysis duration, low-flux hemodialysis, interdialytic hypotension, and demographic/clinical traits",
-        "comparison": "Absence of risk factors or protective factors such as higher educational attainment and higher serum albumin",
-        "outcome": "Cognitive impairment and cognitive frailty"
+        "population": "Patients with HFrEF, CKD stages 3-5, and serum potassium 5.0-5.5 mmol/L (n=112).",
+        "intervention": "Sodium zirconium cyclosilicate (SZC).",
+        "comparison": "Placebo.",
+        "outcome": "Achieving target RAASi dose without developing hyperkalemia (serum potassium ≥5.6 mmol/L) over 14 weeks."
       },
       "inclusion": [
-        "Meta-analyses evaluating factors associated with cognitive impairment or cognitive frailty in adult hemodialysis patients"
+        "HFrEF patients",
+        "CKD stages 3-5",
+        "Baseline serum potassium 5.0-5.5 mmol/L"
       ],
       "exclusion": [
         "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42974671/",
-        "doi": "https://doi.org/10.1080/0886022X.2026.2741985"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/43015282/",
+        "doi": "https://doi.org/10.1038/s41467-026-78377-0"
       },
       "appraisal": {
-        "bottom_line": "Multiple demographic, clinical, and dialysis-related factors are associated with cognitive impairment and frailty in maintenance hemodialysis patients, though the certainty of evidence for nearly all associations is low or very low.",
-        "relevance": "Identifies potentially modifiable dialysis prescriptions (such as low-flux dialyzers and interdialytic hypotension) and patient sub-populations for cognitive screening in HD units.",
-        "caveat": "Umbrella synthesis of observational evidence where association does not establish causality; only 2 of 97 evaluated associations possessed moderate-certainty evidence."
+        "bottom_line": "Co-administration of SZC allowed more patients with CKD 3-5 and HFrEF to achieve target RAASi doses without developing hyperkalemia over 14 weeks compared with placebo (56% vs 28% in per-protocol analysis, p=0.006; ITT OR 3.16, 95% CI 1.35-7.39, p=0.008).",
+        "relevance": "Hyperkalemia is the main barrier to optimizing evidence-based RAASi therapy in patients with combined heart failure and advanced CKD; potassium binders offer a potential strategy to enable guideline-directed medical therapy.",
+        "caveat": "Small sample size (112 total randomized; 96 completed per-protocol analysis) and short duration (14 weeks) evaluating a composite surrogate endpoint of medication titration and serum potassium rather than clinical cardiovascular or renal outcomes. Funded by AstraZeneca."
       }
     },
     {
-      "pmid": "42980842",
-      "doi": "10.1007/s00520-026-11435-x",
-      "journal": "Support Care Cancer",
-      "date": "2026-11-04",
-      "authors": "Pakkhesal S, Mohammadi P, Rezagholizadeh A, Koochaki Z, Ramezani MA et al.",
-      "title": "Proton pump inhibitors in prevention of cisplatin-induced nephrotoxicity: a systematic review.",
-      "study_type": "Systematic review",
-      "topic": "Acute Kidney Injury / Nephrotoxicity",
-      "summary": "A systematic review of 8 studies (n=1062; 2 RCTs, 6 observational) found conflicting evidence on PPI co-administration during cisplatin chemotherapy, ranging from one RCT showing a non-significant trend toward protection (0% vs. 25% nephrotoxicity, p=0.078) to a cohort study showing increased AKI risk (OR = 2.78, p=0.010).",
-      "pico": {
-        "population": "Patients receiving cisplatin chemotherapy",
-        "intervention": "Cisplatin therapy with proton pump inhibitor (PPI) co-administration",
-        "comparison": "Cisplatin therapy without PPI co-administration",
-        "outcome": "Cisplatin-induced nephrotoxicity, AKI incidence, post-treatment eGFR, and renal injury biomarkers"
-      },
-      "inclusion": [
-        "RCTs and observational studies comparing cisplatin with PPI co-administration versus cisplatin without PPIs reporting renal outcomes"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42980842/",
-        "doi": "https://doi.org/10.1007/s00520-026-11435-x"
-      },
-      "appraisal": {
-        "bottom_line": "Current evidence regarding PPI co-administration for preventing cisplatin nephrotoxicity is conflicting across 8 heterogeneous studies, yielding signals that range from modest protective trends to a significant risk of AKI (OR = 2.78, p=0.010).",
-        "relevance": "Cautions nephrologists and oncologists against using PPIs as a nephroprotective strategy during cisplatin treatment, given the potential signal for renal harm.",
-        "caveat": "High clinical and methodological heterogeneity precluded quantitative meta-analysis; included studies were predominantly small observational cohorts subject to residual confounding."
-      }
-    },
-    {
-      "pmid": "42977693",
-      "doi": "10.1111/ctr.70733",
-      "journal": "Clin Transplant",
-      "date": "2026-11-01",
-      "authors": "Ahuja D, Concepcion BP, Yuan Y, Forbes R, Rogers JL et al.",
-      "title": "Transplantation of Hepatitis B Surface Antigen Positive or Viremic Kidneys: A Systematic Review and Meta-Analysis.",
-      "study_type": "Systematic review and meta-analysis",
-      "topic": "Kidney Transplantation",
-      "summary": "A meta-analysis of 6 studies comparing 638 recipients of HBV-positive kidneys with 2800 recipients of HBV-negative kidneys found similar allograft survival at 1 year (RR = 1.00, 95% CI: 0.98-1.01), 3 years (RR = 1.01, 95% CI: 0.98-1.04), and 5 years (RR = 1.00, 95% CI: 0.91-1.09), alongside a low transmission rate (4.94%).",
-      "pico": {
-        "population": "Non-viremic kidney transplant recipients",
-        "intervention": "Transplantation of kidneys from HBsAg-positive or viremic donors (n=638)",
-        "comparison": "Transplantation of kidneys from HBsAg-negative non-viremic donors (n=2800)",
-        "outcome": "Patient survival and allograft survival at 1, 3, and 5 years post-transplant, and HBV transmission rate"
-      },
-      "inclusion": [
-        "Studies of recipients of HBsAg+ or viremic kidneys with a comparison group of HBV-negative donor kidney recipients reporting patient and graft survival"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42977693/",
-        "doi": "https://doi.org/10.1111/ctr.70733"
-      },
-      "appraisal": {
-        "bottom_line": "Kidneys from HBV-infected donors demonstrate allograft and patient survival equivalent to HBV-negative kidneys up to 5 years post-transplant (5-year allograft RR = 1.00, 95% CI: 0.91-1.09) with low viral transmission rates (4.94%).",
-        "relevance": "Supports expanding the donor organ pool by safely utilizing HBV-positive kidneys in immune recipients under antiviral prophylaxis.",
-        "caveat": "Pooled analyses rely on observational cohort studies; explicit numerical effect sizes and confidence intervals for patient survival were omitted in the abstract, and long-term liver outcomes remain unassessed."
-      }
-    },
-    {
-      "pmid": "42991236",
-      "doi": "10.3389/fimmu.2026.1940345",
-      "journal": "Front Immunol",
-      "date": "2026-10-22",
-      "authors": "Wu Q, Yu Z, Lin X, Yang L, Wu Z",
-      "title": "Soluble urokinase plasminogen activator receptor across the kidney-cardiometabolic continuum: a systematic review.",
-      "study_type": "Systematic review",
-      "topic": "Chronic Kidney Disease / Biomarkers",
-      "summary": "A systematic review of 20 studies (n=31,416) found that elevated suPAR predicted incident CKD (adjusted OR = 3.13, 95% CI: 2.11-4.65) and ESKD (adjusted HR = 1.53, 95% CI: 1.10-2.12) in adults with preserved baseline function, but offered minimal discriminative gain (C-statistic increase 0.027-0.08) and failed to differentiate FSGS from other glomerular diseases.",
-      "pico": {
-        "population": "Adults and pediatric patients across the kidney-cardiometabolic spectrum (n=31,416 across 20 studies)",
-        "intervention": "Elevated circulating soluble urokinase plasminogen activator receptor (suPAR) levels",
-        "comparison": "Lower circulating suPAR levels",
-        "outcome": "Incident CKD, ESKD, FSGS diagnostic discrimination, pediatric CKD progression, and cardiovascular outcomes"
-      },
-      "inclusion": [
-        "Studies evaluating suPAR as a risk biomarker in CKD and cardiometabolic conditions searched through May 2026"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42991236/",
-        "doi": "https://doi.org/10.3389/fimmu.2026.1940345"
-      },
-      "appraisal": {
-        "bottom_line": "Although elevated suPAR independently predicts incident CKD (aOR = 3.13) and ESKD (aHR = 1.53) in adults with preserved kidney function, it provides trivial incremental discrimination (C-statistic gain <= 0.08) and cannot differentiate FSGS.",
-        "relevance": "Advises against routine clinical suPAR measurement in nephrology for risk stratification or primary FSGS diagnostic evaluation.",
-        "caveat": "Observational evidence base lacking decision curve analyses, lack of assay standardization, and loss of statistical independence after adjusting for baseline kidney function in pediatric and metabolic cohorts."
-      }
-    },
-    {
-      "pmid": "42978583",
-      "doi": "10.3389/fimmu.2026.1982870",
-      "journal": "Front Immunol",
-      "date": "2026-10-20",
-      "authors": "Liang C, Bao R, Yin S, Song T, Lin T",
-      "title": "Peri-transplant eculizumab for preventing antibody-mediated rejection in kidney transplant recipients at high immunologic risk: a systematic review with design-stratified evidence synthesis.",
-      "study_type": "Systematic review",
-      "topic": "Kidney Transplantation / Rejection",
-      "summary": "A systematic review of peri-transplant eculizumab in high-immunologic-risk kidney transplantation found no reduction in centrally confirmed AMR in the only randomized trial (5/51 vs. 5/51; RR = 1.00, 95% CI: 0.31-3.25), despite historical cohort signals of benefit (RR = 0.19, 95% CI: 0.05-0.74).",
-      "pico": {
-        "population": "High-immunologic-risk kidney transplant recipients (sensitized, preformed DSA, or ABO-incompatible)",
-        "intervention": "Peri-transplant eculizumab-containing prophylactic regimen",
-        "comparison": "Standard desensitization regimens or historical control protocols",
-        "outcome": "Antibody-mediated rejection (AMR), long-term graft survival, kidney function, persistent DSA, and chronic microvascular injury"
-      },
-      "inclusion": [
-        "Studies evaluating peri-transplant eculizumab prophylaxis in high-immunologic-risk kidney transplantation"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42978583/",
-        "doi": "https://doi.org/10.3389/fimmu.2026.1982870"
-      },
-      "appraisal": {
-        "bottom_line": "Randomized evidence does not show that peri-transplant eculizumab lowers antibody-mediated rejection compared with standard desensitization alone (RR = 1.00, 95% CI: 0.31-3.25) or improves long-term graft survival.",
-        "relevance": "Indicates that routine addition of expensive terminal complement blockade with eculizumab is not supported by RCT evidence for incremental AMR reduction over standard protocols.",
-        "caveat": "Randomized evidence is restricted to a single small trial (N=102 total); historical cohort benefits (RR = 0.19) were strongly confounded by era changes in clinical management and plasma exchange."
-      }
-    },
-    {
-      "pmid": "42973539",
-      "doi": "10.3389/fendo.2026.1991940",
-      "journal": "Front Endocrinol (Lausanne)",
-      "date": "2026-10-19",
-      "authors": "Gong Y, Zheng J, Huang W, Jeon Y",
-      "title": "Comparative efficacy of different exercise modalities on renal function and glycemic control in patients with non-dialysis diabetic kidney disease: a systematic review and network meta-analysis.",
-      "study_type": "Systematic review",
-      "topic": "Diabetic Kidney Disease / Lifestyle",
-      "summary": "A network meta-analysis of 20 RCTs (n=1,746) in non-dialysis DKD showed resistance training increased eGFR vs. usual care (MD = 11.36 mL/min/1.73 m², 95% CI: 4.47 to 18.25), mind-body exercise reduced UAE (SMD = -1.41, 95% CI: -2.67 to -0.16), and combined training lowered FBG persistently (MD = -1.71 mmol/L).",
-      "pico": {
-        "population": "Adults with non-dialysis diabetic kidney disease (20 RCTs, n=1,746)",
-        "intervention": "Structured exercise modalities (resistance, aerobic, combined, or mind-body) for >= 4 weeks",
-        "comparison": "Usual care or active control",
-        "outcome": "eGFR, urinary albumin excretion (UAE), HbA1c, fasting blood glucose (FBG), and adverse events"
-      },
-      "inclusion": [
-        "RCTs evaluating structured exercise (duration >= 4 weeks) vs. usual care or active comparator in non-dialysis DKD adults"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42973539/",
-        "doi": "https://doi.org/10.3389/fendo.2026.1991940"
-      },
-      "appraisal": {
-        "bottom_line": "Combined exercise offers durable glycemic control (FBG MD = -1.71 mmol/L), mind-body exercise reduces albuminuria (SMD = -1.41), and resistance training's eGFR benefit (MD = 11.36) loses significance when high-risk trials are excluded.",
-        "relevance": "Provides evidence for tailoring specific exercise prescriptions to renal versus glycemic goals in non-dialysis DKD management.",
-        "caveat": "Low certainty of evidence across main outcomes, fragility of resistance training's eGFR benefit in sensitivity analyses, and poor safety monitoring (only 25% of trials reported adverse events)."
-      }
-    },
-    {
-      "pmid": "42983348",
-      "doi": "10.1186/s12882-026-05342-w",
+      "pmid": "43035638",
+      "doi": "10.1186/s12882-026-05232-1",
       "journal": "BMC Nephrol",
-      "date": "2026-09-24",
-      "authors": "Fernandes DCM, Gomide R, Magalhaes TR, de Sousa Lima RT, Silva RM et al.",
-      "title": "Biomarker-dependent detection of contrast-associated acute kidney injury after intra-arterial contrast procedures: an exploratory randomized trial.",
-      "study_type": "Randomized controlled trial",
-      "topic": "Acute Kidney Injury / Contrast",
-      "summary": "In an exploratory single-blind RCT of 76 patients undergoing intra-arterial contrast procedures, creatinine-based criteria identified 4 CA-AKI cases while cystatin C-based criteria identified 7 additional cases, demonstrating poor diagnostic agreement (kappa = 0.07) and zero overlapping cases.",
-      "pico": {
-        "population": "Patients with peripheral arterial disease undergoing elective intra-arterial contrast-enhanced vascular procedures (n=76)",
-        "intervention": "Standardized hydration plus high-dose atorvastatin and N-acetylcysteine",
-        "comparison": "Standardized hydration alone",
-        "outcome": "CA-AKI incidence defined by creatinine (>= 25% or >= 0.5 mg/dL increase within 72h) vs. cystatin C (>= 10% increase within 24h); diagnostic concordance"
-      },
-      "inclusion": [
-        "Patients with peripheral arterial disease undergoing elective intra-arterial contrast-enhanced vascular procedures"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42983348/",
-        "doi": "https://doi.org/10.1186/s12882-026-05342-w"
-      },
-      "appraisal": {
-        "bottom_line": "Creatinine- and cystatin C-based criteria for CA-AKI show near-zero diagnostic agreement (kappa = 0.07, 0 overlapping cases) after intra-arterial contrast, confirming that event detection is heavily biomarker-dependent.",
-        "relevance": "Highlights how endpoint selection profoundly alters event ascertainment and therapeutic effect estimates in clinical trials evaluating CA-AKI prevention.",
-        "caveat": "Small exploratory single-blind trial (N=76) with low overall event numbers (4 by creatinine, 7 by cystatin C), preventing definitive assessment of statin/NAC efficacy."
-      }
-    },
-    {
-      "pmid": "42983853",
-      "doi": "10.1186/s40359-026-05334-3",
-      "journal": "BMC Psychol",
-      "date": "2026-08-08",
-      "authors": "Rabiei L, Baharanchi FG, Nazari AM, Masoudi R",
-      "title": "Comparative effectiveness of cognitive behavioral therapy versus group-based optimism training on psychological outcomes in hemodialysis patients: a randomized controlled trial.",
-      "study_type": "Randomized controlled trial",
-      "topic": "Hemodialysis / Dialysis",
-      "summary": "An 8-week RCT of 135 hemodialysis patients demonstrated that group-based optimism training yielded superior sustained improvements over CBT at 4-month follow-up for depression (Cohen's d = 0.45, p = 0.032) and optimism (d = 0.36, p = 0.041), while both interventions equally improved acute anxiety and hope.",
-      "pico": {
-        "population": "Hemodialysis patients (n=135)",
-        "intervention": "Cognitive behavioral therapy (8 sessions) OR Group-based optimism training (8 sessions)",
-        "comparison": "Standard educational interventions (active control)",
-        "outcome": "Anxiety, depression, optimism, and hope measured immediately post-intervention, 2 months, and 4 months later"
-      },
-      "inclusion": [
-        "Hemodialysis patients"
-      ],
-      "exclusion": [
-        "not specified"
-      ],
-      "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42983853/",
-        "doi": "https://doi.org/10.1186/s40359-026-05334-3"
-      },
-      "appraisal": {
-        "bottom_line": "Both CBT and group optimism training reduce psychological distress versus control in HD patients, but optimism training produces superior long-term reductions in depression (d = 0.45, p = 0.032) at 4-month follow-up.",
-        "relevance": "Identifies group optimism training as an effective and potentially more durable non-pharmacological alternative to traditional CBT for treating depression in hemodialysis units.",
-        "caveat": "Trial was retrospectively registered and outcomes relied entirely on self-reported psychological instruments without blinded clinical diagnostic interviews."
-      }
-    },
-    {
-      "pmid": "42983655",
-      "doi": "10.1186/s12882-026-05209-0",
-      "journal": "BMC Nephrol",
-      "date": "2026-08-05",
-      "authors": "An X, Geng J, Lei K, Su B",
-      "title": "Urinary kidney injury molecule-1 as a diagnostic biomarker for persistent severe acute kidney injury: a systematic review and Bayesian meta-analysis.",
+      "date": "2026-08-19",
+      "authors": "de Oliveira AN, Aguiar PEG, Babadopoulos YD, Alves MVS, da Cruz Júnior JL et al.",
+      "title": "Diagnostic accuracy and prognostic value of urinary soluble CD163 in lupus nephritis: a systematic review and diagnostic meta-analysis : Urinary sCD163 for active lupus nephritis.",
       "study_type": "Systematic review and meta-analysis",
-      "topic": "Acute Kidney Injury / Biomarkers",
-      "summary": "A Bayesian meta-analysis of 8 studies (n=2,349; 378 persistent severe AKI cases) showed uKIM-1 has moderate diagnostic performance for persistent severe AKI in adults, with a pooled sensitivity of 0.67 (95% CrI: 0.59-0.75), specificity of 0.73 (95% CrI: 0.61-0.84), DOR of 5.91 (95% CrI: 2.91-11.20), and AUC of 0.75 (95% CrI: 0.62-0.84).",
+      "topic": "Lupus Nephritis",
+      "summary": "Systematic review and diagnostic meta-analysis of 8 studies (1,110 participants) evaluating urinary soluble CD163 (uCD163) for identifying active lupus nephritis. Pooled sensitivity was 0.89 and specificity was 0.91, with an SROC AUC of 0.93.",
       "pico": {
-        "population": "Adult patients across heterogeneous clinical settings (ICU, ED, postoperative, sepsis, COVID-19, liver transplant; n=2,349)",
-        "intervention": "Urinary kidney injury molecule-1 (uKIM-1) measurement",
-        "comparison": "Reference standard clinical definitions for persistent severe AKI",
-        "outcome": "Sensitivity, specificity, diagnostic odds ratio (DOR), area under the curve (AUC)"
+        "population": "Patients with systemic lupus erythematosus being evaluated for active lupus nephritis (8 studies, n=1,110).",
+        "intervention": "Urinary soluble CD163 (uCD163) assay.",
+        "comparison": "Renal biopsy or standard clinical diagnostic criteria for active lupus nephritis.",
+        "outcome": "Diagnostic performance parameters: sensitivity, specificity, diagnostic odds ratio (DOR), and area under the SROC curve (AUC)."
       },
       "inclusion": [
-        "Adult patient studies evaluating the diagnostic value of uKIM-1 for persistent severe AKI"
+        "Studies evaluating the performance of uCD163 in detecting active lupus nephritis in patients with SLE"
       ],
       "exclusion": [
         "not specified"
       ],
       "links": {
-        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/42983655/",
-        "doi": "https://doi.org/10.1186/s12882-026-05209-0"
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/43035638/",
+        "doi": "https://doi.org/10.1186/s12882-026-05232-1"
       },
       "appraisal": {
-        "bottom_line": "Urinary KIM-1 exhibits only moderate diagnostic accuracy (sensitivity 0.67, specificity 0.73, AUC 0.75) for detecting persistent severe AKI in adult patients.",
-        "relevance": "Demonstrates that uKIM-1 cannot be relied upon as a standalone diagnostic biomarker for persistent severe AKI in routine nephrology or critical care practice.",
-        "caveat": "Included studies spanned highly heterogeneous clinical settings (sepsis, liver transplant, post-op, COVID-19) with non-standardized diagnostic cutoff thresholds."
+        "bottom_line": "Urinary soluble CD163 demonstrated strong diagnostic accuracy for active lupus nephritis, with a pooled sensitivity of 0.89 (95% CI 0.79-0.94), pooled specificity of 0.91 (95% CI 0.81-0.96), pooled DOR of 63.37 (95% CI 14.25-281.75), and SROC AUC of 0.93.",
+        "relevance": "Noninvasive urinary biomarkers that accurately mirror active renal macrophage activation could reduce reliance on repeat kidney biopsies for monitoring lupus nephritis flares.",
+        "caveat": "High between-study heterogeneity (I² = 85%) and potential publication bias/small-study effects (Deeks' test p=0.0995); optimal diagnostic cutoffs were not standardized across studies, and overall certainty of evidence was graded as low."
+      }
+    },
+    {
+      "pmid": "43026518",
+      "doi": "10.1186/s12871-026-04148-5",
+      "journal": "BMC Anesthesiol",
+      "date": "2026-08-19",
+      "authors": "Kumar S, Loganathan S, Kajal K, Gandhi K, Sethi S et al.",
+      "title": "Comparison of the effects of normal saline versus Plasma-Lyte® on acid-base balance during living donor kidney transplantation surgery using goal-directed fluid therapy based on pulse pressure variation- a randomised controlled trial.",
+      "study_type": "Randomized controlled trial",
+      "topic": "Transplantation",
+      "summary": "Prospective, assessor-blinded randomized trial comparing intraoperative normal saline (NS, n=55) vs Plasma-Lyte (PL, n=56) using PPV-guided goal-directed fluid therapy in 111 living donor kidney transplant recipients. There was no statistically significant difference in apparent strong ion difference (SIDa) at end of surgery (adjusted difference 0.71 mmol/L), though formal equivalence was not met.",
+      "pico": {
+        "population": "Adult patients undergoing living donor kidney transplantation (n=111).",
+        "intervention": "Plasma-Lyte® (PL) titrated via PPV-guided algorithm (n=56).",
+        "comparison": "0.9% Normal Saline (NS) titrated via PPV-guided algorithm (n=55).",
+        "outcome": "Primary: Adjusted difference in apparent strong ion difference (SIDa) at end of surgery. Secondary: SIDe, SIG, pH, potassium, lactate, delayed graft function, and serum creatinine trends."
+      },
+      "inclusion": [
+        "Adult patients undergoing living donor kidney transplantation"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/43026518/",
+        "doi": "https://doi.org/10.1186/s12871-026-04148-5"
+      },
+      "appraisal": {
+        "bottom_line": "When intraoperative fluid is administered via a pulse pressure variation (PPV)-guided algorithm, Normal Saline and Plasma-Lyte yielded similar acid-base outcomes at end of surgery (adjusted SIDa difference 0.71 mmol/L, 90% CI -0.90 to +2.32 mmol/L; p=0.46), though formal equivalence within ±2 mmol/L was not statistically proven.",
+        "relevance": "Hyperchloremic metabolic acidosis from normal saline is a major concern in kidney transplantation; this trial suggests that delivering moderate fluid volumes (~1.8-1.9 L) guided by dynamic hemodynamic protocols may attenuate major acid-base disparities regardless of crystalloid type.",
+        "caveat": "Failed to establish formal statistical equivalence for the primary endpoint; single-center trial with a small sample size (n=111) that was underpowered to detect clinical differences in graft function outcomes such as DGF or early graft dysfunction."
+      }
+    },
+    {
+      "pmid": "43009887",
+      "doi": "10.1186/s12889-026-28365-2",
+      "journal": "BMC Public Health",
+      "date": "2026-07-28",
+      "authors": "Tesfaw LM, Dalugoda Y, Tiong MK, Osborne NJ, Williams GM et al.",
+      "title": "Geographical disparities and temporal trends of end stage kidney disease incidence: a systematic review.",
+      "study_type": "Systematic review",
+      "topic": "Epidemiology",
+      "summary": "Systematic review of 41 original studies assessing geographic variations and temporal trends in ESKD incidence globally over two decades. ESKD incidence varied widely across countries (100 per million in Nepal to >450 per million in Taiwan) and exhibited increasing temporal trends in most regions.",
+      "pico": {
+        "population": "Adults aged ≥18 years with end-stage kidney disease globally (41 studies).",
+        "intervention": "Geographical location (country, region, small areas) or time period (annual, seasonal).",
+        "comparison": "Cross-geographical and cross-temporal comparisons.",
+        "outcome": "ESKD incidence rates, geographical disparities, and temporal trends."
+      },
+      "inclusion": [
+        "Original studies published between 01 Jan 2003 and 23 Mar 2026",
+        "Focus on ESKD incidence in adults (≥18 years)",
+        "Reporting geographical variations and/or temporal trends"
+      ],
+      "exclusion": [
+        "Non-original studies",
+        "Pediatric populations (<18 years)"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/43009887/",
+        "doi": "https://doi.org/10.1186/s12889-026-28365-2"
+      },
+      "appraisal": {
+        "bottom_line": "ESKD incidence shows broad global variation ranging from 100 per million in Nepal to >450 per million in Taiwan, with significant small-area intra-country clustering and a general upward temporal trajectory globally.",
+        "relevance": "Synthesizing geographical and temporal epidemiology highlights environmental, systemic, and healthcare access factors influencing kidney disease progression, supporting targeted preventive strategies.",
+        "caveat": "Systematic review summarizing heterogeneous observational and ecological studies; identified associations (e.g., ACEi use, EPO use, paraquat exposure) represent population-level correlates rather than proven causal mechanisms."
+      }
+    },
+    {
+      "pmid": "43034909",
+      "doi": "10.1155/cdr/4232591",
+      "journal": "Cardiovasc Ther",
+      "date": "2026-01-01",
+      "authors": "Zeng CM, Liu GQ, Lin H, Cai L, Huang CZ et al.",
+      "title": "Enhanced External Counterpulsation Reduces the Risk of Early Cystatin-C Rise in STEMI Patients After Primary PCI: A Single-Center Randomized Controlled Clinical Trial.",
+      "study_type": "Randomized controlled trial",
+      "topic": "Acute Kidney Injury",
+      "summary": "Single-center randomized trial evaluating enhanced external counterpulsation (EECP) initiated within 4-12 hours post-primary PCI for up to 72 hours in 436 STEMI patients (211 EECP vs 225 control). EECP significantly reduced post-PCI cystatin-C rise (OR 0.44), but showed no significant reduction in serum creatinine-defined contrast-induced AKI (p=0.584).",
+      "pico": {
+        "population": "STEMI patients undergoing primary PCI (n=436).",
+        "intervention": "Enhanced external counterpulsation (EECP) for up to 72 hours post-PCI plus routine care (n=211).",
+        "comparison": "Routine care alone (n=225).",
+        "outcome": "Cystatin-C levels, risk of cystatin-C rise, post-PCI eGFR, serum creatinine, and SCr-defined contrast-induced AKI (CI-AKI)."
+      },
+      "inclusion": [
+        "STEMI patients undergoing primary PCI"
+      ],
+      "exclusion": [
+        "not specified"
+      ],
+      "links": {
+        "pubmed": "https://pubmed.ncbi.nlm.nih.gov/43034909/",
+        "doi": "https://doi.org/10.1155/cdr/4232591"
+      },
+      "appraisal": {
+        "bottom_line": "Adjunctive EECP therapy after primary PCI in STEMI patients reduced the risk of early cystatin-C elevation (OR 0.44, 95% CI 0.19-0.94, p=0.034), but did not significantly alter the incidence of serum creatinine-defined contrast-induced AKI (p=0.584).",
+        "relevance": "Non-pharmacological strategies to mitigate acute kidney injury after urgent cardiac catheterization are needed; however, biomarker efficacy must translate into clinical AKI endpoints.",
+        "caveat": "Single-center unblinded trial where the primary positive finding was limited to a surrogate serum biomarker (cystatin-C elevation risk), while clinical SCr-defined AKI rates were not significantly reduced."
       }
     }
   ]
